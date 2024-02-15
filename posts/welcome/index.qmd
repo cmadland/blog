@@ -1,0 +1,20 @@
+---
+title: "Welcome To My Blog"
+author: "Colin Madland"
+date: "2024-02-14"
+categories: [news]
+---
+
+Hey!
+
+![](thumbnail.jpg)
+
+I plan to use this space to record my learning and review of stats using R and this blog built with [Quarto](https://quarto.org/docs/websites/website-blog.html). The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I'm curious to see how this works out.
+
+I'm using a few books in this journey, including 
+
+Desjardins, C. D., & Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498
+
+Field, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.
+
+Navarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/

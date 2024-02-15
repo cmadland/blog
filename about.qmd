@@ -1,0 +1,19 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: mastodon
+      text: Mastodon
+      href: https://scholar.social/@cmadland
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/cmad.bsky.social
+    - icon: github
+      text: Github
+      href: https://github.com/cmadland
+
+---
+
+Sharing as I learn statistics with R and Quarto.
