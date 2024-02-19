@@ -1,0 +1,23 @@
+---
+title: "Variance and Standard Deviation"
+author: "Colin Madland"
+date: "2024-02-18"
+categories: [intro-stats, variance, standard-deviation]
+---
+
+
+```{r setup, include=true}
+knitr::opts_chunk$set(echo = TRUE)
+require(UsingR)
+require(HistData)
+```
+
+$sample variance=s^2=\frac{1}{n-1}‎‎\sum_i(x_i - \bar{x})^2$
+
+```{r}
+wts <- c(38, 43, 48, 61, 47, 24, 29, 48, 59, 24, 40, 27)
+```
+
+```{r}
+sort(wts)
+```

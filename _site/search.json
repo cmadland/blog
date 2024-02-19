@@ -21,10 +21,17 @@
     "text": "This is a post with executable code."
   },
   {
+    "objectID": "posts/variance-std-dev/index.html",
+    "href": "posts/variance-std-dev/index.html",
+    "title": "Variance and Standard Deviation",
+    "section": "",
+    "text": "\\(sample variance=s^2=\\frac{1}{n-1}‎‎\\sum_i(x_i - \\bar{x})^2\\)\nsort(wts)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "hempr",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
+    "text": "Variance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
   }
 ]
