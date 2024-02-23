@@ -9,7 +9,7 @@
 <meta name="author" content="Colin Madland">
 <meta name="dcterms.date" content="2024-02-18">
 
-<title>Stats Blog - Variance and Standard Deviation</title>
+<title>Stats Blog - Simple Regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,11 +144,9 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Variance and Standard Deviation</h1>
+      <h1 class="title">Simple Regression</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">intro-stats</div>
-                <div class="quarto-category">variance</div>
-                <div class="quarto-category">standard-deviation</div>
+                <div class="quarto-category">505</div>
               </div>
                   </div>
   </div>
@@ -185,10 +183,71 @@ window.Quarto = {
 
 
 
-<p><span class="math inline">\(sample variance=s^2=\frac{1}{n-1}‎‎\sum_i(x_i - \bar{x})^2\)</span></p>
-<p>sort(wts)</p>
+<section id="regression-equation" class="level2">
+<h2 class="anchored" data-anchor-id="regression-equation">Regression Equation</h2>
+<p>Linear regression expresses the relationship between two variables, <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span>.</p>
+<p>The <span class="math inline">\(_i\)</span> refers to the cases in the dataset, so if there are 1000 cases, then <span class="math inline">\(_i\)</span> is 1-1000. Each <span class="math inline">\(_i\)</span> refers to a ‘student’.</p>
+<p><span class="math display">\[Y_i=b_0+{b_1}{X_i}+\epsilon_i\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(b_1\)</span> is the slope or regression coefficient (how much <span class="math inline">\(Y\)</span> will change when <span class="math inline">\(X\)</span> increases by 1)<br>
+</li>
+<li><span class="math inline">\(b_0\)</span> is the <span class="math inline">\(Y\)</span>-intercept, where the regression line crosses the <span class="math inline">\(Y\)</span> axis</li>
+<li><span class="math inline">\(\epsilon_i\)</span> is the error term</li>
+</ul>
+<p>or</p>
+<p><span class="math display">\[\hat{Y}=b_0+{b_1}{X_i}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\hat{Y}\)</span> is the predicted value of <span class="math inline">\(Y\)</span></li>
+</ul>
+<p>Notes:</p>
+<p>Larger values of <span class="math inline">\(b_1\)</span> indicate a steeper regression line</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="slope.png" class="img-fluid figure-img"></p>
+<figcaption>examples of slope and intercept</figcaption>
+</figure>
+</div>
+<ul>
+<li>left image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)</li>
+<li>right image, all slopes positive</li>
+</ul>
+</section>
+<section id="calculating-regression" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-regression">Calculating Regression</h2>
+<ul>
+<li>any dataset is made up of points, and regression finds the best fitting straight line for the dataset</li>
+</ul>
+</section>
+<section id="best-fit" class="level2">
+<h2 class="anchored" data-anchor-id="best-fit">Best Fit</h2>
+<ul>
+<li>need to define mathematically the distance between each data point and the regression line<br>
+</li>
+<li>for every <span class="math inline">\(X\)</span> value in the data, the linear equation can determine the <span class="math inline">\(Y\)</span> value on the line - called <strong>predicted <span class="math inline">\(Y\)</span></strong>, or <span class="math inline">\(\hat{Y}\)</span></li>
+<li>this distance measures the error between the line and the data</li>
+<li>if all data points were on the line, then the line ‘fits’ the data perfectly</li>
+<li><span class="math inline">\(\hat{Y}\)</span> should be close to actual <span class="math inline">\(Y\)</span></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="predicted.png" class="img-fluid figure-img"></p>
+<figcaption>graph showing the difference between predicted and actual values of <span class="math inline">\(Y\)</span></figcaption>
+</figure>
+</div>
+<ul>
+<li>green dots = <span class="math inline">\(\hat{Y}\)</span></li>
+<li>blue dots = <span class="math inline">\(Y\)</span></li>
+<li>distance between the green and blue dots is the prediction error - need to minimize</li>
+<li>some are positive (above the line) and some are negative (below the line)<br>
+</li>
+<li>since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error</li>
+</ul>
+<p><span class="math display">\[total \space squared \space error ={\sum^n_{i=1}}({Y_i}-{\hat{Y_i}})^2\]</span></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

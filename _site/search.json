@@ -14,6 +14,34 @@
     "text": "Hey!\n\nI plan to use this space to record my learning and review of stats using R and this blog built with Quarto. The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I’m curious to see how this works out.\nI’m using a few books in this journey, including\nDesjardins, C. D., & Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498\nField, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.\nNavarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/"
   },
   {
+    "objectID": "posts/simple-regression/index.html",
+    "href": "posts/simple-regression/index.html",
+    "title": "Simple Regression",
+    "section": "",
+    "text": "Linear regression expresses the relationship between two variables, \\(X_i\\) and \\(Y_i\\).\nThe \\(_i\\) refers to the cases in the dataset, so if there are 1000 cases, then \\(_i\\) is 1-1000. Each \\(_i\\) refers to a ‘student’.\n\\[Y_i=b_0+{b_1}{X_i}+\\epsilon_i\\]\nWhere:\n\n\\(b_1\\) is the slope or regression coefficient (how much \\(Y\\) will change when \\(X\\) increases by 1)\n\n\\(b_0\\) is the \\(Y\\)-intercept, where the regression line crosses the \\(Y\\) axis\n\\(\\epsilon_i\\) is the error term\n\nor\n\\[\\hat{Y}=b_0+{b_1}{X_i}\\]\nWhere:\n\n\\(\\hat{Y}\\) is the predicted value of \\(Y\\)\n\nNotes:\nLarger values of \\(b_1\\) indicate a steeper regression line\n\n\n\nexamples of slope and intercept\n\n\n\nleft image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)\nright image, all slopes positive"
+  },
+  {
+    "objectID": "posts/simple-regression/index.html#regression-equation",
+    "href": "posts/simple-regression/index.html#regression-equation",
+    "title": "Simple Regression",
+    "section": "",
+    "text": "Linear regression expresses the relationship between two variables, \\(X_i\\) and \\(Y_i\\).\nThe \\(_i\\) refers to the cases in the dataset, so if there are 1000 cases, then \\(_i\\) is 1-1000. Each \\(_i\\) refers to a ‘student’.\n\\[Y_i=b_0+{b_1}{X_i}+\\epsilon_i\\]\nWhere:\n\n\\(b_1\\) is the slope or regression coefficient (how much \\(Y\\) will change when \\(X\\) increases by 1)\n\n\\(b_0\\) is the \\(Y\\)-intercept, where the regression line crosses the \\(Y\\) axis\n\\(\\epsilon_i\\) is the error term\n\nor\n\\[\\hat{Y}=b_0+{b_1}{X_i}\\]\nWhere:\n\n\\(\\hat{Y}\\) is the predicted value of \\(Y\\)\n\nNotes:\nLarger values of \\(b_1\\) indicate a steeper regression line\n\n\n\nexamples of slope and intercept\n\n\n\nleft image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)\nright image, all slopes positive"
+  },
+  {
+    "objectID": "posts/simple-regression/index.html#calculating-regression",
+    "href": "posts/simple-regression/index.html#calculating-regression",
+    "title": "Simple Regression",
+    "section": "Calculating Regression",
+    "text": "Calculating Regression\n\nany dataset is made up of points, and regression finds the best fitting straight line for the dataset"
+  },
+  {
+    "objectID": "posts/simple-regression/index.html#best-fit",
+    "href": "posts/simple-regression/index.html#best-fit",
+    "title": "Simple Regression",
+    "section": "Best Fit",
+    "text": "Best Fit\n\nneed to define mathematically the distance between each data point and the regression line\n\nfor every \\(X\\) value in the data, the linear equation can determine the \\(Y\\) value on the line - called predicted \\(Y\\), or \\(\\hat{Y}\\)\nthis distance measures the error between the line and the data\nif all data points were on the line, then the line ‘fits’ the data perfectly\n\\(\\hat{Y}\\) should be close to actual \\(Y\\)\n\n\n\n\ngraph showing the difference between predicted and actual values of \\(Y\\)\n\n\n\ngreen dots = \\(\\hat{Y}\\)\nblue dots = \\(Y\\)\ndistance between the green and blue dots is the prediction error - need to minimize\nsome are positive (above the line) and some are negative (below the line)\n\nsince some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error\n\n\\[total \\space squared \\space error ={\\sum^n_{i=1}}({Y_i}-{\\hat{Y_i}})^2\\]"
+  },
+  {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
     "title": "Post With Code",
@@ -30,8 +58,8 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "hempr",
+    "title": "Stats Blog",
     "section": "",
-    "text": "Variance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
+    "text": "Simple Regression\n\n\n\n\n\n\n505\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nVariance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -1,0 +1,59 @@
+---
+title: "Simple Regression"
+author: "Colin Madland"
+date: "2024-02-18"
+categories: [505]
+---
+
+## Regression Equation
+
+Linear regression expresses the relationship between two variables, $X_i$ and $Y_i$.
+
+The $_i$ refers to the cases in the dataset, so if there are 1000 cases, then $_i$ is 1-1000. Each $_i$ refers to a 'student'.
+
+$$Y_i=b_0+{b_1}{X_i}+\epsilon_i$$
+
+Where:
+
+- $b_1$ is the slope or regression coefficient (how much $Y$ will change when $X$ increases by 1)  
+- $b_0$ is the $Y$-intercept, where the regression line crosses the $Y$  axis
+- $\epsilon_i$ is the error term
+
+or
+
+$$\hat{Y}=b_0+{b_1}{X_i}$$
+
+Where:
+
+- $\hat{Y}$ is the predicted value of $Y$
+
+Notes:
+
+Larger values of $b_1$ indicate a steeper regression line
+
+![examples of slope and intercept](slope.png)
+
+- left image, red is positive slope and green is negative slope  (negative correlation; when predictor increases, outcome decreases)
+- right image, all slopes positive
+
+## Calculating Regression
+
+- any dataset is made up of points, and regression finds the best fitting straight line for the dataset
+
+## Best Fit
+
+- need to define mathematically the distance between each data point and the regression line  
+- for every $X$ value in the data, the linear equation can determine the $Y$ value on the line - called **predicted $Y$**, or $\hat{Y}$
+- this distance measures the error between the line and the data
+- if all data points were on the line, then the line 'fits' the data perfectly
+- $\hat{Y}$ should be close to actual $Y$
+
+![graph showing the difference between predicted and actual values of $Y$](predicted.png)
+
+- green dots = $\hat{Y}$
+- blue dots = $Y$
+- distance between the green and blue dots is the prediction error - need to minimize
+- some are positive (above the line) and some are negative (below the line)  
+- since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error
+
+$$total \space squared \space error ={\sum^n_{i=1}}({Y_i}-{\hat{Y_i}})^2$$ 
