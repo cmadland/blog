@@ -245,8 +245,37 @@ window.Quarto = {
 <li>since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error</li>
 </ul>
 <p><span class="math display">\[total \space squared \space error ={\sum^n_{i=1}}({Y_i}-{\hat{Y_i}})^2\]</span></p>
+<ul>
+<li>for each poissible line, we can calculate the total squared error, then choose the line with the lowest total squared error, which is the regression line</li>
+<li>this minimizes the difference between the line and the observed data</li>
+<li>this line is called the <em>least squared error</em> solution</li>
+<li>this method is inefficient due to the infinite number of lines possible</li>
+<li>calculus is a mathematical technique to find the maxima or minima of a mathematical expression.</li>
+<li>Using this method, the regression coefficients (slope (<span class="math inline">\(b_1\)</span>) and intercept (<span class="math inline">\(b_0\)</span>)) that produce the minimum errors can be calculated.</li>
+</ul>
+</section>
+<section id="calculating-regression-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-regression-coefficients">Calculating Regression Coefficients</h2>
+<p><span class="math display">\[\hat{Y}_i=b_0+b_1X_i\]</span></p>
+<p><span class="math display">\[\hat{b_1}=r\frac{S_Y}{S_X}\]</span></p>
+<p><span class="math display">\[\hat{b_0}=M_Y-\hat{b_1}M_x\]</span></p>
+<p>Where</p>
+<p><span class="math inline">\(r\)</span> is the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span><br>
+<span class="math inline">\(S_X\)</span> and <span class="math inline">\(S_Y\)</span> are sample standard deviations for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span><br>
+<span class="math inline">\(M_X\)</span> and <span class="math inline">\(M_Y\)</span> are sample means for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
+<p>These are <em>raw regression coefficients</em> (<span class="math inline">\(b_1\)</span>): the change in outcome is associated with a change in the predictor</p>
+<section id="standardized-regression-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="standardized-regression-coefficients">Standardized regression coefficients</h3>
+<ul>
+<li>tell us the same thing, except expressed as standard deviations</li>
+<li>if both variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have been standardized by transforming tehm into <em>Z-scores</em> before calculating the regression coefficients, then the regression coefficients become *standardized coefficients</li>
+</ul>
+<p><span class="math display">\[\hat{Z_{Y_i}}=\Beta{Z_{X_i}}\]</span></p>
+<p><span class="math display">\[\Beta=r\]</span></p>
+<p>Standardizing <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> puts the variables on the same scale - when <span class="math inline">\(X\)</span> increases by 1SD, <span class="math inline">\(Y\)</span> increases by 1SD -</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

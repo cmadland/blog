@@ -57,3 +57,40 @@ Larger values of $b_1$ indicate a steeper regression line
 - since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error
 
 $$total \space squared \space error ={\sum^n_{i=1}}({Y_i}-{\hat{Y_i}})^2$$ 
+
+- for each poissible line, we can calculate the total squared error, then choose the line with the lowest total squared error, which is the regression line
+- this minimizes the difference between the line and the observed data
+- this line is called the *least squared error* solution
+- this method is inefficient due to the infinite number of lines possible
+- calculus is a mathematical technique to find the maxima or minima of a mathematical expression. 
+- Using this method, the regression coefficients (slope ($b_1$) and intercept ($b_0$)) that produce the minimum errors can be calculated.
+
+## Calculating Regression Coefficients
+
+
+$$\hat{Y}_i=b_0+b_1X_i$$
+
+$$\hat{b_1}=r\frac{S_Y}{S_X}$$
+
+$$\hat{b_0}=M_Y-\hat{b_1}M_x$$
+
+Where
+
+$r$ is the correlation between $X$ and $Y$  
+$S_X$ and $S_Y$ are sample standard deviations for $X$ and $Y$  
+$M_X$ and $M_Y$ are sample means for $X$ and $Y$  
+
+These are *raw regression coefficients* ($b_1$): the change in outcome is associated with a change in the predictor
+
+### Standardized regression coefficients 
+
+- tell us the same thing, except expressed as standard deviations
+- if both variables $X$ and $Y$ have been standardized by transforming tehm into *Z-scores* before calculating the regression coefficients, then the regression coefficients become *standardized coefficients
+
+$$\hat{Z_{Y_i}}=\Beta{Z_{X_i}}$$
+
+$$\Beta=r$$
+
+Standardizing $X$ and $Y$ puts the variables on the same scale
+- when $X$ increases by 1SD, $Y$ increases by 1SD
+- 
