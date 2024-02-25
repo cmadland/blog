@@ -270,12 +270,171 @@ window.Quarto = {
 <li>tell us the same thing, except expressed as standard deviations</li>
 <li>if both variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have been standardized by transforming tehm into <em>Z-scores</em> before calculating the regression coefficients, then the regression coefficients become *standardized coefficients</li>
 </ul>
-<p><span class="math display">\[\hat{Z_{Y_i}}=\Beta{Z_{X_i}}\]</span></p>
-<p><span class="math display">\[\Beta=r\]</span></p>
-<p>Standardizing <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> puts the variables on the same scale - when <span class="math inline">\(X\)</span> increases by 1SD, <span class="math inline">\(Y\)</span> increases by 1SD -</p>
-
-
+<p><span class="math display">\[\hat{Z_{Y_i}}=\beta{Z_{X_i}}\]</span></p>
+<p><span class="math display">\[\beta=r\]</span></p>
+<p>Where</p>
+<p><span class="math inline">\(\hat{Z_{Y_i}}\)</span> is the standard deviation of <span class="math inline">\(Y\)</span><br>
+<span class="math inline">\(\hat{Z_{X_i}}\)</span> is the styandard deviation of <span class="math inline">\(X\)</span><br>
+<span class="math inline">\(\beta\)</span> is the correlation coefficient</p>
+<p>Standardizing <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> puts the variables on the same scale - when <span class="math inline">\(X\)</span> increases by 1SD, <span class="math inline">\(Y\)</span> increases by 1SD</p>
 </section>
+</section>
+<section id="analysis-of-regression" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-regression">Analysis of regression</h2>
+<ul>
+<li>regression line is only a model based on the data</li>
+<li>process of testing the significance of a regression equation is called <em>analysis of regression</em></li>
+<li>null hypothesis in the analysis of regression states that the equation does not account for a significant proportion of the variance in <span class="math inline">\(Y\)</span> scores</li>
+<li>analysis of regression is similar to ANOVA</li>
+</ul>
+<p><img src="anoreg.png" class="img-fluid"></p>
+<p>Sum Square Total (<span class="math inline">\(SS_T\)</span> (left plot)) is <span class="math inline">\(\sum(Y-\bar{Y})^2\)</span></p>
+<p>Sum Square Residual (<span class="math inline">\(SS_R\)</span> (right plot)) is <span class="math inline">\(\sum(Y-\hat{Y})^2\)</span></p>
+<ul>
+<li>prediction error - squared distance between the data and the regression line</li>
+<li>needs to be minimized</li>
+<li>this is the variability that is not explained by the regression equation</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ssm.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<p>Sum Square model (<span class="math inline">\(SS_M\)</span>) is <span class="math inline">\(\sum(\hat{Y}-\bar{Y})^2\)</span></p>
+<ul>
+<li><p>in this equation, <span class="math inline">\(\hat{Y}=b_0+b_1X\)</span></p></li>
+<li><p><span class="math inline">\(SS_T\)</span>: total variability is the variability between the scores and the mean<br>
+</p></li>
+<li><p><span class="math inline">\(SS_R\)</span>: sum squared residual is the residual or error variability between the regression model and the data<br>
+</p></li>
+<li><p><span class="math inline">\(SS_M\)</span> or sum square regression: Model variability - difference in variability between the model and the mean.<span class="math inline">\(Y\)</span> are determined by the value of <span class="math inline">\(X\)</span><br>
+</p></li>
+<li><p><span class="math inline">\(SS_T\)</span> is the sum of <span class="math inline">\(SS_R\)</span> and <span class="math inline">\(SS_M\)</span></p>
+<ul>
+<li>part of the variability is residual - we don’t know what is causing<br>
+</li>
+<li>part of it is due to the model - the relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span></li>
+</ul></li>
+</ul>
+<p>The proportion of variability in <span class="math inline">\(Y\)</span> that is predicted by its relationship with <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[\frac{SS_{regression}}{SS_T}=r^2\]</span></p>
+<p><span class="math inline">\(r^2\)</span> is an effect size that tells us the proportion of variability that is accounted for by the model</p>
+<p>The proportion of the variability that is not accounted for is</p>
+<p><span class="math display">\[\frac{SS_{residual}}{SS_T}=1-r^2\]</span></p>
+<p><span class="math inline">\(r^2\)</span> is very mieaningful</p>
+<p>if <span class="math inline">\(R^2\)</span> is 20%, then the amount of the variability in <span class="math inline">\(Y\)</span> that is accounted for by the model is 20%, which is quite large.</p>
+<p>Therefore</p>
+<p><span class="math display">\[SS_{regression}=r^2SS_T\]</span></p>
+<p><span class="math display">\[SS_{residual}=(1-r^2)SS_Y\]</span></p>
+<p><span class="math inline">\(SS_Y\)</span> is the same thing as <span class="math inline">\(SS_T\)</span></p>
+<p><span class="math inline">\(r^2\)</span> is the Pearson Correlation Coefficient squared</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="components.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<p>Total variability is partitioned into two - sum squared regression (explained by the model) and sum squared residual (not explained by the model).</p>
+<p>Same for degrees of freedom</p>
+<p>Sums of squares are total values and can be expressed as averages called <em>Mean Squares</em>, or <span class="math inline">\(MS\)</span> AKA <em>variance</em></p>
+<p><span class="math display">\[MS_{regression}=\frac{SS_{regression}}{df_{regression}}\]</span></p>
+<ul>
+<li>mean square variance is the variance accounted for in the model</li>
+</ul>
+<p><span class="math display">\[MS_{residual}=\frac{SS_{residual}}{df_{residual}}\]</span></p>
+<ul>
+<li>mean square residual is the variance not accounted for in the model</li>
+</ul>
+<p>An <span class="math inline">\(F\)</span>-ratio can be used to compare these two mean squares</p>
+<p><span class="math display">\[F=\frac{MS_{regression}}{MS_{residual}} \text{with}\: df=1,n-2\]</span></p>
+<ul>
+<li>if the mean square regression is small compared to the mean square residual, then the model does not account for much variance<br>
+</li>
+<li>if the mean square regression is larger than the mean square residual, then the model accounts for more variance</li>
+</ul>
+</section>
+<section id="an-example-fields" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-fields">An Example (Fields)</h2>
+<ul>
+<li>record company boss interested in predicting album sales from advertising bsed on 200 different album releases<br>
+</li>
+<li>outcome variable: sales of CDs and downloads in the week after release<br>
+</li>
+<li>predictor variable: amount in GBP spent promoting the album before release</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="album-sales.png" class="img-fluid figure-img"></p>
+<figcaption>scatterplot of album sales by advertising budget</figcaption>
+</figure>
+</div>
+<p><span class="math inline">\(r^2\)</span> = 0.335, so 33.5% of the variability is shared by both variables (cutoffs, 9% - small, 25% - large effect size)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="model-summary.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="anova.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="coefficients.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+</section>
+<section id="activities" class="level2">
+<h2 class="anchored" data-anchor-id="activities">Activities</h2>
+<p>In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:<br>
+<span class="math inline">\(r_XY\)</span> = .32, <span class="math inline">\(N\)</span> = 1, 296<br>
+Wife height: <span class="math inline">\(M_X\)</span> = 64.42, <span class="math inline">\(S_X\)</span> = 2.56<br>
+Husband height: <span class="math inline">\(M_Y\)</span> = 70.46, <span class="math inline">\(S_Y\)</span> = 2.87<br>
+a. Calculates the values of <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation</p>
+<p><span class="math display">\[\hat{b_1}=r\frac{S_Y}{S_X}\]</span></p>
+<p><span class="math display">\[\hat{b_1}=.32\frac{2.87}{2.56}\]</span></p>
+<p><span class="math display">\[\hat{b_1}=0.35\]</span></p>
+<p><span class="math display">\[b_0=M_Y-\hat{b_1}M_X\]</span></p>
+<p><span class="math display">\[b_0=70.46-(0.35*64.42)\]</span></p>
+<p><span class="math display">\[b_0=70.46-22.54\]</span></p>
+<p><span class="math display">\[b_0=47.91\]</span></p>
+<p>Predictive Equation <span class="math display">\[\hat{Y}=b_0+{b_1}{X_i}\]</span> <span class="math display">\[\hat{Y}=47.91+(0.35*{X_i})\]</span></p>
+<ol start="2" type="a">
+<li>For women: what is your own height? Substitute your own height into the equation from step a, and calculate the predicted height of your present or future spouse.</li>
+</ol>
+<p><span class="math display">\[\hat{Y}=47.91+(0.35*67)\]</span></p>
+<p><span class="math display">\[\hat{Y}=71.36\]</span></p>
+<ol start="3" type="a">
+<li>Now reverse the roles of the variables (i.e., use husband height as the predictor and wife height as the outcome variable). Calculates the values of bb0 and bb1.</li>
+</ol>
+<p><span class="math display">\[\hat{b_1}=r\frac{S_Y}{S_X}\]</span></p>
+<p><span class="math display">\[\hat{b_1}=.32\frac{2.56}{2.87}\]</span></p>
+<p><span class="math display">\[\hat{b_1}=.32*.89\]</span></p>
+<p><span class="math display">\[\hat{b_1}=.28\]</span></p>
+<p><span class="math display">\[b_0=M_Y-\hat{b_1}M_X\]</span></p>
+<p><span class="math display">\[b_0=64.42-(0.28*70.46)\]</span></p>
+<p><span class="math display">\[b_0=64.42-19.72\]</span></p>
+<p><span class="math display">\[b_0=44.7\]</span></p>
+<p><span class="math display">\[\hat{Y}=44.7+(0.28*{X_i})\]</span></p>
+<ol start="4" type="a">
+<li>For men: what is your height in inches? Substitute your own height into the equation from step c, and calculate the predicted height of your present or future spouse.</li>
+</ol>
+<p><span class="math display">\[\hat{Y}=44.7+(0.28*70)\]</span></p>
+<p><span class="math display">\[\hat{Y}=64.3\]</span></p>
+<ol start="5" type="a">
+<li>What proportion of variance in husband height is predictable from wife height? Test the significance of the regression equation.</li>
+</ol>
+<p><span class="math display">\[r^2=.10\]</span></p>
+<ol start="6" type="a">
+<li>If both X and Y have been standardized by transforming into Z scores before calculating the regression coefficients, what would be the values of bb0 and bb1 to predict husband height in inches (Y) from wife height in inches (X)? How does this standardized version of the prediction equation tell us about “regression toward the mean” for predictions?</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
