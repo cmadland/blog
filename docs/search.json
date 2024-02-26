@@ -35,13 +35,6 @@
     "text": "\\(sample variance=s^2=\\frac{1}{n-1}‎‎\\sum_i(x_i - \\bar{x})^2\\)\nsort(wts)"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
     "objectID": "posts/simple-regression/index.html",
     "href": "posts/simple-regression/index.html",
     "title": "Simple Regression",
@@ -109,6 +102,6 @@
     "href": "index.html",
     "title": "Stats Blog",
     "section": "",
-    "text": "discover_08 - General Linear Model\n\n\n\n\n\n\nregression\n\n\nR\n\n\ndiscovr\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nSimple Regression\n\n\n\n\n\n\n505\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nVariance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
+    "text": "discover_08 - General Linear Model\n\n\n\n\n\n\nregression\n\n\nR\n\n\ndiscovr\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nSimple Regression\n\n\n\n\n\n\n505\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nVariance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
   }
 ]

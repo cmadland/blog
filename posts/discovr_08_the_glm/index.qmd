@@ -4,6 +4,7 @@ author: "Colin Madland"
 date: "2024-02-26"
 categories: [regression, R, discovr]
 editor: visual
+image: "image.jpg"
 ---
 
 ``` {r}

@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Stats Blog</title>
+<link>https://cmadland.github.io/blog/</link>
+<atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
+<description>Colins Stats Blog</description>
+<generator>quarto-1.4.545</generator>
+<lastBuildDate>Mon, 26 Feb 2024 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>discover_08 - General Linear Model</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">album_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/album_sales.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 200 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): album_id
+dbl (4): adverts, sales, airplay, image
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">soc_anx_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/social_anxiety.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 134 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (4): spai, iii, obq, tosca
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">metal_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/metal_health.csv"</span>)  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2506 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (2): hm, suicide
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="fitting-the-linear-model" class="level1">
+<h1>Fitting the Linear Model</h1>
+<ul>
+<li>scatterplots to get an idea of whether assumption of linearity is met, look for outliers or other unusual cases</li>
+<li>run an initial regression and save the diagnostics</li>
+<li>if we want to generalize or test for significance or confidence intervals…
+<ul>
+<li>examine residuals for homoscedasticity, independence, normality, and linearity
+<ul>
+<li>lack of linearity –&gt; fit a non-linear model</li>
+<li>assumptions met and no bias –&gt; Model can be generalized</li>
+<li>lack of independent errors –&gt; multi-level model</li>
+<li>all other situations –&gt; fit a robust version of the model using bootstrapping (small samples) or robust standard errors</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/dsr2_fig_08_12_glm_process.png" class="img-fluid figure-img"></p>
+<figcaption>General process of fitting a linear model from <code>discovr_08</code></figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">album_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 200 × 5
+   album_id adverts sales airplay image
+   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+ 1 aox1foms    10.3   330      43    10
+ 2 u453js2i   986.    120      28     7
+ 3 pie89xnr  1446.    360      35     7
+ 4 u2k5a0df  1188.    270      33     7
+ 5 t4699ux3   575.    220      44     5
+ 6 s4h49cu2   569.    170      19     5
+ 7 1235a8sf   472.     70      20     1
+ 8 p2v24p5k   537.    210      22     9
+ 9 4fbjg024   514.    200      21     7
+10 e9w6usdb   174.    300      40     7
+# ℹ 190 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>Use <code>GGally::ggscatmat</code> package to visualize the data</li>
+<li>produces
+<ul>
+<li>a matrix of scatterplots below the diagonal</li>
+<li>distributions along the diagonal</li>
+<li>the correlation coefficient above the diagonal</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">GGally<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggscatmat</span>(album_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">columns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"adverts"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"airplay"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"image"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sales"</span>))  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<ul>
+<li>3 predictors have reasonably linear relationships with album sales and no obvious outliers (except bottom left of ‘band image’ scatterplots)</li>
+<li>across the diagonal (distributions)
+<ul>
+<li>advertising is very skewed</li>
+<li>airplay and sales look heavy-tailed</li>
+</ul></li>
+<li>correlations in the plot give us an idea of the relationships between predictors and outcome</li>
+<li>if we ignore album sales, the highest correlation is between image ratings and amount of airplay, which is significant and the 0.01 level (<img src="https://latex.codecogs.com/png.latex?r=0.18">)</li>
+<li>focussing on the outcome variable, adverts and airplay correlate best with the outcome (<img src="https://latex.codecogs.com/png.latex?r=0.58"> and <img src="https://latex.codecogs.com/png.latex?r=0.6">)</li>
+</ul>
+</section>
+<section id="one-predictor" class="level2">
+<h2 class="anchored" data-anchor-id="one-predictor">One predictor</h2>
+<section id="fitting-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-the-model">Fitting the model</h3>
+<ul>
+<li>predicting sales from advertising alone</li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?Y_i=b_0+%7Bb_1%7D%7BX_i%7D+%5Cepsilon_i"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7BSales%7D_i=b_0+%7Bb_1%7D%7B%5Ctext%7BAdvertising%7D_i%7D+%5Cepsilon_i"></p>
+<ul>
+<li>it is clear from the bottom left scatterplot and the correlation (<img src="https://latex.codecogs.com/png.latex?r=0.58">) that a positive relation exists. More advertising money spent leads to greater album sales.</li>
+<li>some albums sell well regardless of advertising (top-left of scatterplot)</li>
+<li>no albums sell badly when adverts are high (bottom-right of scatterplot)</li>
+<li>to fit a linear model, we use <code>lm()</code> function <code>my_model &lt;- lm(outcome ~ predictor(s), data = tibble, na.action = an action)</code>
+<ul>
+<li><code>my_model</code> is the name of the model</li>
+<li><code>outcome</code> is the name of the outcome variable (sales)</li>
+<li><code>predictor</code> is the name of the predictor variable (adverts) or, a list of variables separated by <code>+</code> symbols</li>
+<li><code>tibble</code> is the name of the tibble containing the data (album_tib)</li>
+</ul></li>
+<li>this function maps directly to the equation for the model
+<ul>
+<li><code>adverts ~ sales</code> maps to <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BSales%7D_i=b_0+%7Bb_1%7D%7B%5Ctext%7BAdvertising%7D_i%7D+%5Cepsilon_i"> except we ignore the error term and parameter estimates and we replace the <code>=</code> with <code>~</code> (which means ‘predicted from’)</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">album_lm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(sales <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> adverts, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> album_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.action =</span> na.exclude)</span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(album_lm)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sales ~ adverts, data = album_tib, na.action = na.exclude)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-152.949  -43.796   -0.393   37.040  211.866 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1.341e+02  7.537e+00  17.799   &lt;2e-16 ***
+adverts     9.612e-02  9.632e-03   9.979   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 65.99 on 198 degrees of freedom
+Multiple R-squared:  0.3346,    Adjusted R-squared:  0.3313 
+F-statistic: 99.59 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glance</span>(album_lm)  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-2">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.335</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">65.991</td>
+<td style="text-align: right;">99.587</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1120.688</td>
+<td style="text-align: right;">2247.375</td>
+<td style="text-align: right;">2257.27</td>
+<td style="text-align: right;">862264.2</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>regression</category>
+  <category>R</category>
+  <category>discovr</category>
+  <guid>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</guid>
+  <pubDate>Mon, 26 Feb 2024 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/discovr_08_the_glm/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Simple Regression</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/simple-regression/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="regression-equation" class="level2">
+<h2 class="anchored" data-anchor-id="regression-equation">Regression Equation</h2>
+<p>Linear regression expresses the relationship between two variables, <img src="https://latex.codecogs.com/png.latex?X_i"> and <img src="https://latex.codecogs.com/png.latex?Y_i">.</p>
+<p>The <img src="https://latex.codecogs.com/png.latex?_i"> refers to the cases in the dataset, so if there are 1000 cases, then <img src="https://latex.codecogs.com/png.latex?_i"> is 1-1000. Each <img src="https://latex.codecogs.com/png.latex?_i"> refers to a ‘student’.</p>
+<p><img src="https://latex.codecogs.com/png.latex?Y_i=b_0+%7Bb_1%7D%7BX_i%7D+%5Cepsilon_i"></p>
+<p>Where:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?b_1"> is the slope or regression coefficient (how much <img src="https://latex.codecogs.com/png.latex?Y"> will change when <img src="https://latex.codecogs.com/png.latex?X"> increases by 1)<br>
+</li>
+<li><img src="https://latex.codecogs.com/png.latex?b_0"> is the <img src="https://latex.codecogs.com/png.latex?Y">-intercept, where the regression line crosses the <img src="https://latex.codecogs.com/png.latex?Y"> axis</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cepsilon_i"> is the error term</li>
+</ul>
+<p>or</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+%7Bb_1%7D%7BX_i%7D"></p>
+<p>Where:</p>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"> is the predicted value of <img src="https://latex.codecogs.com/png.latex?Y"></li>
+</ul>
+<p>Notes:</p>
+<p>Larger values of <img src="https://latex.codecogs.com/png.latex?b_1"> indicate a steeper regression line</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/slope.png" class="img-fluid figure-img"></p>
+<figcaption>examples of slope and intercept</figcaption>
+</figure>
+</div>
+<ul>
+<li>left image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)</li>
+<li>right image, all slopes positive</li>
+</ul>
+</section>
+<section id="calculating-regression" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-regression">Calculating Regression</h2>
+<ul>
+<li>any dataset is made up of points, and regression finds the best fitting straight line for the dataset</li>
+</ul>
+</section>
+<section id="best-fit" class="level2">
+<h2 class="anchored" data-anchor-id="best-fit">Best Fit</h2>
+<ul>
+<li>need to define mathematically the distance between each data point and the regression line<br>
+</li>
+<li>for every <img src="https://latex.codecogs.com/png.latex?X"> value in the data, the linear equation can determine the <img src="https://latex.codecogs.com/png.latex?Y"> value on the line - called <strong>predicted <img src="https://latex.codecogs.com/png.latex?Y"></strong>, or <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"></li>
+<li>this distance measures the error between the line and the data</li>
+<li>if all data points were on the line, then the line ‘fits’ the data perfectly</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"> should be close to actual <img src="https://latex.codecogs.com/png.latex?Y"></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/predicted.png" class="img-fluid figure-img"></p>
+<figcaption>graph showing the difference between predicted and actual values of <img src="https://latex.codecogs.com/png.latex?Y"></figcaption>
+</figure>
+</div>
+<ul>
+<li>green dots = <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"></li>
+<li>blue dots = <img src="https://latex.codecogs.com/png.latex?Y"></li>
+<li>distance between the green and blue dots is the prediction error - need to minimize</li>
+<li>some are positive (above the line) and some are negative (below the line)<br>
+</li>
+<li>since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error</li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?total%20%5Cspace%20squared%20%5Cspace%20error%20=%7B%5Csum%5En_%7Bi=1%7D%7D(%7BY_i%7D-%7B%5Chat%7BY_i%7D%7D)%5E2"></p>
+<ul>
+<li>for each poissible line, we can calculate the total squared error, then choose the line with the lowest total squared error, which is the regression line</li>
+<li>this minimizes the difference between the line and the observed data</li>
+<li>this line is called the <em>least squared error</em> solution</li>
+<li>this method is inefficient due to the infinite number of lines possible</li>
+<li>calculus is a mathematical technique to find the maxima or minima of a mathematical expression.</li>
+<li>Using this method, the regression coefficients (slope (<img src="https://latex.codecogs.com/png.latex?b_1">) and intercept (<img src="https://latex.codecogs.com/png.latex?b_0">)) that produce the minimum errors can be calculated.</li>
+</ul>
+</section>
+<section id="calculating-regression-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-regression-coefficients">Calculating Regression Coefficients</h2>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D_i=b_0+b_1X_i"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_0%7D=M_Y-%5Chat%7Bb_1%7DM_x"></p>
+<p>Where</p>
+<p><img src="https://latex.codecogs.com/png.latex?r"> is the correlation between <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"><br>
+<img src="https://latex.codecogs.com/png.latex?S_X"> and <img src="https://latex.codecogs.com/png.latex?S_Y"> are sample standard deviations for <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"><br>
+<img src="https://latex.codecogs.com/png.latex?M_X"> and <img src="https://latex.codecogs.com/png.latex?M_Y"> are sample means for <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"></p>
+<p>These are <em>raw regression coefficients</em> (<img src="https://latex.codecogs.com/png.latex?b_1">): the change in outcome is associated with a change in the predictor</p>
+<section id="standardized-regression-coefficients" class="level3">
+<h3 class="anchored" data-anchor-id="standardized-regression-coefficients">Standardized regression coefficients</h3>
+<ul>
+<li>tell us the same thing, except expressed as standard deviations</li>
+<li>if both variables <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"> have been standardized by transforming tehm into <em>Z-scores</em> before calculating the regression coefficients, then the regression coefficients become *standardized coefficients</li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D=%5Cbeta%7BZ_%7BX_i%7D%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cbeta=r"></p>
+<p>Where</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D"> is the standard deviation of <img src="https://latex.codecogs.com/png.latex?Y"><br>
+<img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BX_i%7D%7D"> is the styandard deviation of <img src="https://latex.codecogs.com/png.latex?X"><br>
+<img src="https://latex.codecogs.com/png.latex?%5Cbeta"> is the correlation coefficient</p>
+<p>Standardizing <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"> puts the variables on the same scale - when <img src="https://latex.codecogs.com/png.latex?X"> increases by 1SD, <img src="https://latex.codecogs.com/png.latex?Y"> increases by 1SD</p>
+</section>
+</section>
+<section id="analysis-of-regression" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-regression">Analysis of regression</h2>
+<ul>
+<li>regression line is only a model based on the data</li>
+<li>process of testing the significance of a regression equation is called <em>analysis of regression</em></li>
+<li>null hypothesis in the analysis of regression states that the equation does not account for a significant proportion of the variance in <img src="https://latex.codecogs.com/png.latex?Y"> scores</li>
+<li>analysis of regression is similar to ANOVA</li>
+</ul>
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/anoreg.png" class="img-fluid"></p>
+<p>Sum Square Total (<img src="https://latex.codecogs.com/png.latex?SS_T"> (left plot)) is <img src="https://latex.codecogs.com/png.latex?%5Csum(Y-%5Cbar%7BY%7D)%5E2"></p>
+<p>Sum Square Residual (<img src="https://latex.codecogs.com/png.latex?SS_R"> (right plot)) is <img src="https://latex.codecogs.com/png.latex?%5Csum(Y-%5Chat%7BY%7D)%5E2"></p>
+<ul>
+<li>prediction error - squared distance between the data and the regression line</li>
+<li>needs to be minimized</li>
+<li>this is the variability that is not explained by the regression equation</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/ssm.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<p>Sum Square model (<img src="https://latex.codecogs.com/png.latex?SS_M">) is <img src="https://latex.codecogs.com/png.latex?%5Csum(%5Chat%7BY%7D-%5Cbar%7BY%7D)%5E2"></p>
+<ul>
+<li><p>in this equation, <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+b_1X"></p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?SS_T">: total variability is the variability between the scores and the mean<br>
+</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?SS_R">: sum squared residual is the residual or error variability between the regression model and the data<br>
+</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?SS_M"> or sum square regression: Model variability - difference in variability between the model and the mean.<img src="https://latex.codecogs.com/png.latex?Y"> are determined by the value of <img src="https://latex.codecogs.com/png.latex?X"><br>
+</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?SS_T"> is the sum of <img src="https://latex.codecogs.com/png.latex?SS_R"> and <img src="https://latex.codecogs.com/png.latex?SS_M"></p>
+<ul>
+<li>part of the variability is residual - we don’t know what is causing<br>
+</li>
+<li>part of it is due to the model - the relationship between <img src="https://latex.codecogs.com/png.latex?Y"> and <img src="https://latex.codecogs.com/png.latex?X"></li>
+</ul></li>
+</ul>
+<p>The proportion of variability in <img src="https://latex.codecogs.com/png.latex?Y"> that is predicted by its relationship with <img src="https://latex.codecogs.com/png.latex?X">:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BSS_%7Bregression%7D%7D%7BSS_T%7D=r%5E2"></p>
+<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is an effect size that tells us the proportion of variability that is accounted for by the model</p>
+<p>The proportion of the variability that is not accounted for is</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BSS_%7Bresidual%7D%7D%7BSS_T%7D=1-r%5E2"></p>
+<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is very mieaningful</p>
+<p>if <img src="https://latex.codecogs.com/png.latex?R%5E2"> is 20%, then the amount of the variability in <img src="https://latex.codecogs.com/png.latex?Y"> that is accounted for by the model is 20%, which is quite large.</p>
+<p>Therefore</p>
+<p><img src="https://latex.codecogs.com/png.latex?SS_%7Bregression%7D=r%5E2SS_T"></p>
+<p><img src="https://latex.codecogs.com/png.latex?SS_%7Bresidual%7D=(1-r%5E2)SS_Y"></p>
+<p><img src="https://latex.codecogs.com/png.latex?SS_Y"> is the same thing as <img src="https://latex.codecogs.com/png.latex?SS_T"></p>
+<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is the Pearson Correlation Coefficient squared</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/components.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<p>Total variability is partitioned into two - sum squared regression (explained by the model) and sum squared residual (not explained by the model).</p>
+<p>Same for degrees of freedom</p>
+<p>Sums of squares are total values and can be expressed as averages called <em>Mean Squares</em>, or <img src="https://latex.codecogs.com/png.latex?MS"> AKA <em>variance</em></p>
+<p><img src="https://latex.codecogs.com/png.latex?MS_%7Bregression%7D=%5Cfrac%7BSS_%7Bregression%7D%7D%7Bdf_%7Bregression%7D%7D"></p>
+<ul>
+<li>mean square variance is the variance accounted for in the model</li>
+</ul>
+<p><img src="https://latex.codecogs.com/png.latex?MS_%7Bresidual%7D=%5Cfrac%7BSS_%7Bresidual%7D%7D%7Bdf_%7Bresidual%7D%7D"></p>
+<ul>
+<li>mean square residual is the variance not accounted for in the model</li>
+</ul>
+<p>An <img src="https://latex.codecogs.com/png.latex?F">-ratio can be used to compare these two mean squares</p>
+<p><img src="https://latex.codecogs.com/png.latex?F=%5Cfrac%7BMS_%7Bregression%7D%7D%7BMS_%7Bresidual%7D%7D%20%5Ctext%7Bwith%7D%5C:%20df=1,n-2"></p>
+<ul>
+<li>if the mean square regression is small compared to the mean square residual, then the model does not account for much variance<br>
+</li>
+<li>if the mean square regression is larger than the mean square residual, then the model accounts for more variance</li>
+</ul>
+</section>
+<section id="an-example-fields" class="level2">
+<h2 class="anchored" data-anchor-id="an-example-fields">An Example (Fields)</h2>
+<ul>
+<li>record company boss interested in predicting album sales from advertising bsed on 200 different album releases<br>
+</li>
+<li>outcome variable: sales of CDs and downloads in the week after release<br>
+</li>
+<li>predictor variable: amount in GBP spent promoting the album before release</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/album-sales.png" class="img-fluid figure-img"></p>
+<figcaption>scatterplot of album sales by advertising budget</figcaption>
+</figure>
+</div>
+<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> = 0.335, so 33.5% of the variability is shared by both variables (cutoffs, 9% - small, 25% - large effect size)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/model-summary.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/anova.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/simple-regression/coefficients.png" class="img-fluid figure-img"></p>
+<figcaption>Alt text</figcaption>
+</figure>
+</div>
+</section>
+<section id="activities" class="level2">
+<h2 class="anchored" data-anchor-id="activities">Activities</h2>
+<p>In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:<br>
+<img src="https://latex.codecogs.com/png.latex?r_XY"> = .32, <img src="https://latex.codecogs.com/png.latex?N"> = 1, 296<br>
+Wife height: <img src="https://latex.codecogs.com/png.latex?M_X"> = 64.42, <img src="https://latex.codecogs.com/png.latex?S_X"> = 2.56<br>
+Husband height: <img src="https://latex.codecogs.com/png.latex?M_Y"> = 70.46, <img src="https://latex.codecogs.com/png.latex?S_Y"> = 2.87<br>
+a. Calculates the values of <img src="https://latex.codecogs.com/png.latex?b_0"> and <img src="https://latex.codecogs.com/png.latex?b_1"> to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation</p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32%5Cfrac%7B2.87%7D%7B2.56%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=0.35"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=M_Y-%5Chat%7Bb_1%7DM_X"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=70.46-(0.35*64.42)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=70.46-22.54"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=47.91"></p>
+<p>Predictive Equation <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+%7Bb_1%7D%7BX_i%7D"> <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=47.91+(0.35*%7BX_i%7D)"></p>
+<ol start="2" type="a">
+<li>For women: what is your own height? Substitute your own height into the equation from step a, and calculate the predicted height of your present or future spouse.</li>
+</ol>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=47.91+(0.35*67)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=71.36"></p>
+<ol start="3" type="a">
+<li>Now reverse the roles of the variables (i.e., use husband height as the predictor and wife height as the outcome variable). Calculates the values of bb0 and bb1.</li>
+</ol>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32%5Cfrac%7B2.56%7D%7B2.87%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32*.89"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.28"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=M_Y-%5Chat%7Bb_1%7DM_X"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=64.42-(0.28*70.46)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=64.42-19.72"></p>
+<p><img src="https://latex.codecogs.com/png.latex?b_0=44.7"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=44.7+(0.28*%7BX_i%7D)"></p>
+<ol start="4" type="a">
+<li>For men: what is your height in inches? Substitute your own height into the equation from step c, and calculate the predicted height of your present or future spouse.</li>
+</ol>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=44.7+(0.28*70)"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=64.3"></p>
+<ol start="5" type="a">
+<li>What proportion of variance in husband height is predictable from wife height? Test the significance of the regression equation.</li>
+</ol>
+<p><img src="https://latex.codecogs.com/png.latex?r%5E2=.10"></p>
+<ol start="6" type="a">
+<li>If both X and Y have been standardized by transforming into Z scores before calculating the regression coefficients, what would be the values of bb0 and bb1 to predict husband height in inches (Y) from wife height in inches (X)? How does this standardized version of the prediction equation tell us about “regression toward the mean” for predictions?</li>
+</ol>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D=%5Cbeta%7BZ_%7BX_i%7D%7D"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7B2.87%7D=0.32%7B2.56%7D"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>505</category>
+  <guid>https://cmadland.github.io/blog/posts/simple-regression/</guid>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Variance and Standard Deviation</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/variance-std-dev/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://latex.codecogs.com/png.latex?sample%20variance=s%5E2=%5Cfrac%7B1%7D%7Bn-1%7D%E2%80%8E%E2%80%8E%5Csum_i(x_i%20-%20%5Cbar%7Bx%7D)%5E2"></p>
+<p>sort(wts)</p>
+
+
+
+ ]]></description>
+  <category>intro-stats</category>
+  <category>variance</category>
+  <category>standard-deviation</category>
+  <guid>https://cmadland.github.io/blog/posts/variance-std-dev/</guid>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/welcome/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Hey!</p>
+<p><img src="https://cmadland.github.io/blog/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>I plan to use this space to record my learning and review of stats using R and this blog built with <a href="https://quarto.org/docs/websites/website-blog.html">Quarto</a>. The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I’m curious to see how this works out.</p>
+<p>I’m using a few books in this journey, including</p>
+<p>Desjardins, C. D., &amp; Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498</p>
+<p>Field, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.</p>
+<p>Navarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://cmadland.github.io/blog/posts/welcome/</guid>
+  <pubDate>Wed, 14 Feb 2024 08:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
