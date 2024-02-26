@@ -259,3 +259,7 @@ $$r^2=.10$$
 
 
 f. If both X and Y have been standardized by transforming into Z scores before calculating the regression coefficients, what would be the values of bb0 and bb1 to predict husband height in inches (Y) from wife height in inches (X)? How does this standardized version of the prediction equation tell us about “regression toward the mean” for predictions?
+
+$$\hat{Z_{Y_i}}=\beta{Z_{X_i}}$$
+
+$$\hat{2.87}=0.32{2.56}$$
