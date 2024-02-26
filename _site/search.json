@@ -7,11 +7,25 @@
     "text": "Sharing as I learn statistics with R and Quarto."
   },
   {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "objectID": "posts/discovr_08_the_glm/index.html",
+    "href": "posts/discovr_08_the_glm/index.html",
+    "title": "discover_08 - General Linear Model",
     "section": "",
-    "text": "Hey!\n\nI plan to use this space to record my learning and review of stats using R and this blog built with Quarto. The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I’m curious to see how this works out.\nI’m using a few books in this journey, including\nDesjardins, C. D., & Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498\nField, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.\nNavarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/"
+    "text": "library(tidyverse, ggplot2)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nalbum_tib &lt;- here::here(\"data/album_sales.csv\") |&gt; readr::read_csv()\n\nRows: 200 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): album_id\ndbl (4): adverts, sales, airplay, image\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nsoc_anx_tib &lt;- here::here(\"data/social_anxiety.csv\") |&gt; readr::read_csv()\n\nRows: 134 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (4): spai, iii, obq, tosca\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nmetal_tib &lt;- here::here(\"data/metal_health.csv\")  |&gt; readr::read_csv()\n\nRows: 2506 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (2): hm, suicide\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nFitting the Linear Model\n\nscatterplots to get an idea of whether assumption of linearity is met, look for outliers or other unusual cases\nrun an initial regression and save the diagnostics\nif we want to generalize or test for significance or confidence intervals…\n\nexamine residuals for homoscedasticity, independence, normality, and linearity\n\nlack of linearity –&gt; fit a non-linear model\nassumptions met and no bias –&gt; Model can be generalized\nlack of independent errors –&gt; multi-level model\nall other situations –&gt; fit a robust version of the model using bootstrapping (small samples) or robust standard errors\n\n\n\n\n\n\nGeneral process of fitting a linear model from discovr_08\n\n\n\nalbum_tib\n\n# A tibble: 200 × 5\n   album_id adverts sales airplay image\n   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n 1 aox1foms    10.3   330      43    10\n 2 u453js2i   986.    120      28     7\n 3 pie89xnr  1446.    360      35     7\n 4 u2k5a0df  1188.    270      33     7\n 5 t4699ux3   575.    220      44     5\n 6 s4h49cu2   569.    170      19     5\n 7 1235a8sf   472.     70      20     1\n 8 p2v24p5k   537.    210      22     9\n 9 4fbjg024   514.    200      21     7\n10 e9w6usdb   174.    300      40     7\n# ℹ 190 more rows"
+  },
+  {
+    "objectID": "posts/variance-std-dev/index.html",
+    "href": "posts/variance-std-dev/index.html",
+    "title": "Variance and Standard Deviation",
+    "section": "",
+    "text": "\\(sample variance=s^2=\\frac{1}{n-1}‎‎\\sum_i(x_i - \\bar{x})^2\\)\nsort(wts)"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
   },
   {
     "objectID": "posts/simple-regression/index.html",
@@ -49,27 +63,6 @@
     "text": "Calculating Regression Coefficients\n\\[\\hat{Y}_i=b_0+b_1X_i\\]\n\\[\\hat{b_1}=r\\frac{S_Y}{S_X}\\]\n\\[\\hat{b_0}=M_Y-\\hat{b_1}M_x\\]\nWhere\n\\(r\\) is the correlation between \\(X\\) and \\(Y\\)\n\\(S_X\\) and \\(S_Y\\) are sample standard deviations for \\(X\\) and \\(Y\\)\n\\(M_X\\) and \\(M_Y\\) are sample means for \\(X\\) and \\(Y\\)\nThese are raw regression coefficients (\\(b_1\\)): the change in outcome is associated with a change in the predictor\n\nStandardized regression coefficients\n\ntell us the same thing, except expressed as standard deviations\nif both variables \\(X\\) and \\(Y\\) have been standardized by transforming tehm into Z-scores before calculating the regression coefficients, then the regression coefficients become *standardized coefficients\n\n\\[\\hat{Z_{Y_i}}=\\beta{Z_{X_i}}\\]\n\\[\\beta=r\\]\nWhere\n\\(\\hat{Z_{Y_i}}\\) is the standard deviation of \\(Y\\)\n\\(\\hat{Z_{X_i}}\\) is the styandard deviation of \\(X\\)\n\\(\\beta\\) is the correlation coefficient\nStandardizing \\(X\\) and \\(Y\\) puts the variables on the same scale - when \\(X\\) increases by 1SD, \\(Y\\) increases by 1SD"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/variance-std-dev/index.html",
-    "href": "posts/variance-std-dev/index.html",
-    "title": "Variance and Standard Deviation",
-    "section": "",
-    "text": "\\(sample variance=s^2=\\frac{1}{n-1}‎‎\\sum_i(x_i - \\bar{x})^2\\)\nsort(wts)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Stats Blog",
-    "section": "",
-    "text": "Simple Regression\n\n\n\n\n\n\n505\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nVariance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/simple-regression/index.html#analysis-of-regression",
     "href": "posts/simple-regression/index.html#analysis-of-regression",
     "title": "Simple Regression",
@@ -89,5 +82,19 @@
     "title": "Simple Regression",
     "section": "Activities",
     "text": "Activities\nIn a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:\n\\(r_XY\\) = .32, \\(N\\) = 1, 296\nWife height: \\(M_X\\) = 64.42, \\(S_X\\) = 2.56\nHusband height: \\(M_Y\\) = 70.46, \\(S_Y\\) = 2.87\na. Calculates the values of \\(b_0\\) and \\(b_1\\) to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation\n\\[\\hat{b_1}=r\\frac{S_Y}{S_X}\\]\n\\[\\hat{b_1}=.32\\frac{2.87}{2.56}\\]\n\\[\\hat{b_1}=0.35\\]\n\\[b_0=M_Y-\\hat{b_1}M_X\\]\n\\[b_0=70.46-(0.35*64.42)\\]\n\\[b_0=70.46-22.54\\]\n\\[b_0=47.91\\]\nPredictive Equation \\[\\hat{Y}=b_0+{b_1}{X_i}\\] \\[\\hat{Y}=47.91+(0.35*{X_i})\\]\n\nFor women: what is your own height? Substitute your own height into the equation from step a, and calculate the predicted height of your present or future spouse.\n\n\\[\\hat{Y}=47.91+(0.35*67)\\]\n\\[\\hat{Y}=71.36\\]\n\nNow reverse the roles of the variables (i.e., use husband height as the predictor and wife height as the outcome variable). Calculates the values of bb0 and bb1.\n\n\\[\\hat{b_1}=r\\frac{S_Y}{S_X}\\]\n\\[\\hat{b_1}=.32\\frac{2.56}{2.87}\\]\n\\[\\hat{b_1}=.32*.89\\]\n\\[\\hat{b_1}=.28\\]\n\\[b_0=M_Y-\\hat{b_1}M_X\\]\n\\[b_0=64.42-(0.28*70.46)\\]\n\\[b_0=64.42-19.72\\]\n\\[b_0=44.7\\]\n\\[\\hat{Y}=44.7+(0.28*{X_i})\\]\n\nFor men: what is your height in inches? Substitute your own height into the equation from step c, and calculate the predicted height of your present or future spouse.\n\n\\[\\hat{Y}=44.7+(0.28*70)\\]\n\\[\\hat{Y}=64.3\\]\n\nWhat proportion of variance in husband height is predictable from wife height? Test the significance of the regression equation.\n\n\\[r^2=.10\\]\n\nIf both X and Y have been standardized by transforming into Z scores before calculating the regression coefficients, what would be the values of bb0 and bb1 to predict husband height in inches (Y) from wife height in inches (X)? How does this standardized version of the prediction equation tell us about “regression toward the mean” for predictions?"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Hey!\n\nI plan to use this space to record my learning and review of stats using R and this blog built with Quarto. The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I’m curious to see how this works out.\nI’m using a few books in this journey, including\nDesjardins, C. D., & Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498\nField, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.\nNavarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stats Blog",
+    "section": "",
+    "text": "discover_08 - General Linear Model\n\n\n\n\n\n\n\n\n\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nSimple Regression\n\n\n\n\n\n\n505\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nVariance and Standard Deviation\n\n\n\n\n\n\nintro-stats\n\n\nvariance\n\n\nstandard-deviation\n\n\n\n\n\n\n\n\n\nFeb 18, 2024\n\n\nColin Madland\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nFeb 14, 2024\n\n\nColin Madland\n\n\n\n\n\n\nNo matching items"
   }
 ]

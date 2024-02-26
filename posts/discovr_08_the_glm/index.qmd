@@ -1,0 +1,29 @@
+---
+title: "discover_08 - General Linear Model"
+author: "Colin Madland"
+editor: visual
+---
+
+``` {r}
+library(tidyverse, ggplot2)
+album_tib <- here::here("data/album_sales.csv") |> readr::read_csv()
+soc_anx_tib <- here::here("data/social_anxiety.csv") |> readr::read_csv()
+metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
+```
+
+# Fitting the Linear Model
+
+- scatterplots to get an idea of whether assumption of linearity is met, look for outliers or other unusual cases
+- run an initial regression and save the diagnostics
+- if we want to generalize or test for significance or confidence intervals...
+  - examine residuals for homoscedasticity, independence, normality, and linearity
+    - lack of linearity --> fit a non-linear model
+    - assumptions met and no bias --> Model can be generalized
+    - lack of independent errors --> multi-level model
+    - all other situations --> fit a robust version of the model using bootstrapping (small samples) or robust standard errors
+
+![General process of fitting a linear model from `discovr_08`](dsr2_fig_08_12_glm_process.png)
+
+```{r}
+album_tib
+```
