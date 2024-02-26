@@ -27,3 +27,52 @@ metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
 ```{r}
 album_tib
 ```
+
+- Use `GGally::ggscatmat` package to visualize the data
+- produces 
+  - a matrix of scatterplots below the diagonal
+  - distributions along the diagonal
+  - the correlation coefficient above the diagonal
+
+```{r}
+GGally::ggscatmat(album_tib, columns = c("adverts", "airplay", "image", "sales"))  +
+theme_minimal()
+```
+
+## Interpretation
+
+- 3 predictors have reasonably linear relationships with album sales and no obvious outliers (except bottom left of 'band image' scatterplots)
+- across the diagonal (distributions)
+  - advertising is very skewed
+  - airplay and sales look heavy-tailed
+- correlations in the plot give us an idea of the relationships between predictors and outcome
+- if we ignore album sales, the highest correlation is between image ratings and amount of airplay, which is significant and the 0.01 level ($r=0.18$)
+- focussing on the outcome variable, adverts and airplay correlate best with the outcome ($r=0.58$ and $r=0.6$)
+
+## One predictor
+### Fitting the model
+
+- predicting sales from advertising alone
+
+$$Y_i=b_0+{b_1}{X_i}+\epsilon_i$$
+
+$$\text{Sales}_i=b_0+{b_1}{\text{Advertising}_i}+\epsilon_i$$
+
+- it is clear from the bottom left scatterplot and the correlation ($r=0.58$) that a positive relation exists. More advertising money spent leads to greater album sales.
+- some albums sell well regardless of advertising (top-left of scatterplot)
+- no albums sell badly when adverts are high (bottom-right of scatterplot)
+- to fit a linear model, we use `lm()` function
+`my_model <- lm(outcome ~ predictor(s), data = tibble, na.action = an action)`
+  - `my_model` is the name of the model
+  - `outcome` is the name of the outcome variable (sales)
+  - `predictor` is the name of the predictor variable (adverts) or, a list of variables separated by `+` symbols
+  - `tibble` is the name of the tibble containing the data (album_tib)
+- this function maps directly to the equation for the model
+  - `adverts ~ sales` maps to $\text{Sales}_i=b_0+{b_1}{\text{Advertising}_i}+\epsilon_i$ except we ignore the error term and parameter estimates and we replace the `= ` with `~` (which means 'predicted from')
+
+```{r}
+album_lm <- lm(sales ~ adverts, data = album_tib, na.action = na.exclude)
+summary(album_lm)
+broom::glance(album_lm)  |> 
+  knitr::kable(digits = 3)
+```

@@ -102,6 +102,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -265,8 +294,150 @@ dbl (2): hm, suicide
 # ℹ 190 more rows</code></pre>
 </div>
 </div>
+<ul>
+<li>Use <code>GGally::ggscatmat</code> package to visualize the data</li>
+<li>produces
+<ul>
+<li>a matrix of scatterplots below the diagonal</li>
+<li>distributions along the diagonal</li>
+<li>the correlation coefficient above the diagonal</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggscatmat</span>(album_tib, <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"adverts"</span>, <span class="st">"airplay"</span>, <span class="st">"image"</span>, <span class="st">"sales"</span>))  <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="interpretation">Interpretation</h2>
+<ul>
+<li>3 predictors have reasonably linear relationships with album sales and no obvious outliers (except bottom left of ‘band image’ scatterplots)</li>
+<li>across the diagonal (distributions)
+<ul>
+<li>advertising is very skewed</li>
+<li>airplay and sales look heavy-tailed</li>
+</ul></li>
+<li>correlations in the plot give us an idea of the relationships between predictors and outcome</li>
+<li>if we ignore album sales, the highest correlation is between image ratings and amount of airplay, which is significant and the 0.01 level (<span class="math inline">\(r=0.18\)</span>)</li>
+<li>focussing on the outcome variable, adverts and airplay correlate best with the outcome (<span class="math inline">\(r=0.58\)</span> and <span class="math inline">\(r=0.6\)</span>)</li>
+</ul>
+</section>
+<section id="one-predictor" class="level2">
+<h2 class="anchored" data-anchor-id="one-predictor">One predictor</h2>
+<section id="fitting-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="fitting-the-model">Fitting the model</h3>
+<ul>
+<li>predicting sales from advertising alone</li>
+</ul>
+<p><span class="math display">\[Y_i=b_0+{b_1}{X_i}+\epsilon_i\]</span></p>
+<p><span class="math display">\[\text{Sales}_i=b_0+{b_1}{\text{Advertising}_i}+\epsilon_i\]</span></p>
+<ul>
+<li>it is clear from the bottom left scatterplot and the correlation (<span class="math inline">\(r=0.58\)</span>) that a positive relation exists. More advertising money spent leads to greater album sales.</li>
+<li>some albums sell well regardless of advertising (top-left of scatterplot)</li>
+<li>no albums sell badly when adverts are high (bottom-right of scatterplot)</li>
+<li>to fit a linear model, we use <code>lm()</code> function <code>my_model &lt;- lm(outcome ~ predictor(s), data = tibble, na.action = an action)</code>
+<ul>
+<li><code>my_model</code> is the name of the model</li>
+<li><code>outcome</code> is the name of the outcome variable (sales)</li>
+<li><code>predictor</code> is the name of the predictor variable (adverts) or, a list of variables separated by <code>+</code> symbols</li>
+<li><code>tibble</code> is the name of the tibble containing the data (album_tib)</li>
+</ul></li>
+<li>this function maps directly to the equation for the model
+<ul>
+<li><code>adverts ~ sales</code> maps to <span class="math inline">\(\text{Sales}_i=b_0+{b_1}{\text{Advertising}_i}+\epsilon_i\)</span> except we ignore the error term and parameter estimates and we replace the <code>=</code> with <code>~</code> (which means ‘predicted from’)</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>album_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adverts, <span class="at">data =</span> album_tib, <span class="at">na.action =</span> na.exclude)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(album_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sales ~ adverts, data = album_tib, na.action = na.exclude)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-152.949  -43.796   -0.393   37.040  211.866 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1.341e+02  7.537e+00  17.799   &lt;2e-16 ***
+adverts     9.612e-02  9.632e-03   9.979   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 65.99 on 198 degrees of freedom
+Multiple R-squared:  0.3346,    Adjusted R-squared:  0.3313 
+F-statistic: 99.59 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(album_lm)  <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.335</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">65.991</td>
+<td style="text-align: right;">99.587</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-1120.688</td>
+<td style="text-align: right;">2247.375</td>
+<td style="text-align: right;">2257.27</td>
+<td style="text-align: right;">862264.2</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
