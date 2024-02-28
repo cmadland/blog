@@ -6,8 +6,7 @@ categories: [intro-stats, variance, standard-deviation]
 ---
 
 
-```{r setup, include=true}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
 require(UsingR)
 require(HistData)
 ```
