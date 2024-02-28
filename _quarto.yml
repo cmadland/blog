@@ -17,7 +17,7 @@ website:
         href: index.xml
 format:
   html:
-    theme: cosmo
+    theme: slate
     css: styles.css
 
 
