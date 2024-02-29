@@ -596,8 +596,107 @@ Tip
 <p>We can only compare hierarchical models; that is to say that the second model must contain everything that was in the first model plus something new, and the third model must contain everything in the second model plus something new, and so on.</p>
 </div>
 </div>
+<section id="model-parameter-estimates-hatb" class="level3">
+<h3 class="anchored" data-anchor-id="model-parameter-estimates-hatb">Model parameter estimates (<img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D">)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tidy</span>(album_full_lm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.int =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb23-2">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-26.613</td>
+<td style="text-align: right;">17.350</td>
+<td style="text-align: right;">-1.534</td>
+<td style="text-align: right;">0.127</td>
+<td style="text-align: right;">-60.830</td>
+<td style="text-align: right;">7.604</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">12.261</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.099</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">3.367</td>
+<td style="text-align: right;">0.278</td>
+<td style="text-align: right;">12.123</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">2.820</td>
+<td style="text-align: right;">3.915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">11.086</td>
+<td style="text-align: right;">2.438</td>
+<td style="text-align: right;">4.548</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">6.279</td>
+<td style="text-align: right;">15.894</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>output gives estimates of the <img src="https://latex.codecogs.com/png.latex?b">-balues (column labelled <code>estimate</code>) and statistics that indicate the individual contribution of each predictor in the model.</li>
+<li>all three predictors have positive <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D">values, indicating positive relationships
+<ul>
+<li>as all three predictors increase, so do album sales</li>
+</ul></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> vlaues also tell us to what degree each predictor affects the outcome if the effects of all other predictors are held constant
+<ul>
+<li>advertising budget -&gt; <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D=0.085"> -&gt; as advertising increases by 1 unit (1000gbp), sales increases by 0.085 units (85 albums), but this is only true if the other two predictors are held constant</li>
+<li>airplay <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D=3.367"> -&gt; as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 

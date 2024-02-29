@@ -663,8 +663,89 @@ Tip
 <p>We can only compare hierarchical models; that is to say that the second model must contain everything that was in the first model plus something new, and the third model must contain everything in the second model plus something new, and so on.</p>
 </div>
 </div>
+<section id="model-parameter-estimates-hatb" class="level3">
+<h3 class="anchored" data-anchor-id="model-parameter-estimates-hatb">Model parameter estimates (<span class="math inline">\(\hat{b}\)</span>)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(album_full_lm, <span class="at">conf.int =</span> <span class="cn">TRUE</span>)  <span class="sc">|&gt;</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">std.error</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">conf.low</th>
+<th style="text-align: right;">conf.high</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-26.613</td>
+<td style="text-align: right;">17.350</td>
+<td style="text-align: right;">-1.534</td>
+<td style="text-align: right;">0.127</td>
+<td style="text-align: right;">-60.830</td>
+<td style="text-align: right;">7.604</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">12.261</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.099</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">3.367</td>
+<td style="text-align: right;">0.278</td>
+<td style="text-align: right;">12.123</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">2.820</td>
+<td style="text-align: right;">3.915</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">11.086</td>
+<td style="text-align: right;">2.438</td>
+<td style="text-align: right;">4.548</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">6.279</td>
+<td style="text-align: right;">15.894</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>output gives estimates of the <span class="math inline">\(b\)</span>-balues (column labelled <code>estimate</code>) and statistics that indicate the individual contribution of each predictor in the model.</li>
+<li>all three predictors have positive <span class="math inline">\(\hat{b}\)</span>values, indicating positive relationships
+<ul>
+<li>as all three predictors increase, so do album sales</li>
+</ul></li>
+<li><span class="math inline">\(\hat{b}\)</span> vlaues also tell us to what degree each predictor affects the outcome if the effects of all other predictors are held constant
+<ul>
+<li>advertising budget -&gt; <span class="math inline">\(\hat{b}=0.085\)</span> -&gt; as advertising increases by 1 unit (1000gbp), sales increases by 0.085 units (85 albums), but this is only true if the other two predictors are held constant</li>
+<li>airplay <span class="math inline">\(\hat{b}=3.367\)</span> -&gt; as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
