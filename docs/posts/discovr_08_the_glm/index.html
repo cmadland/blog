@@ -509,6 +509,105 @@ F-statistic: 99.59 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Imagine we collect 100 samples of data measuring the same variables as the current model, then estimate the same model, including confidence intervals for unstandardized values.The boundaries are constructed such that 95% of our 100 samples contain the population value of <span class="math inline">\(b\)</span>. 95 of 100 sample will yield confidence intervals for <span class="math inline">\(b\)</span> that contain the population value, but we don’t know if our sample is one of the 95.</p>
 <p>We might just assume that it does, but if the confidence interval contains 0, then there is a possibility that there is no relationship, or the relationship might be negative. The trouble is that we would be wrong 5% of the time.</p>
 <p>If the interval does not contain 0, we might conclude there is a genuine positive relationship.</p>
+</section>
+<section id="using-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="using-the-model">Using the model</h3>
+<p><span class="math display">\[\text{Sales}_i=\hat{b_0}+\hat{b_1}{\text{Advertising}_i}\]</span></p>
+<p><span class="math display">\[\text{Sales}_i=134.14+.096*{Advertising}_i\]</span></p>
+<p>Now we can make a prediction by entering a value for the advertising budget, say 100 (equal to 100,000 gbp)</p>
+<p><span class="math display">\[\text{Sales}_i=134.14+.096*{100}_i\]</span></p>
+<p><span class="math display">\[\text{Sales}_i=143.74\]</span> or 143,740 sales</p>
+</section>
+</section>
+<section id="several-predictors" class="level2">
+<h2 class="anchored" data-anchor-id="several-predictors">Several Predictors</h2>
+<p>add multiple predictors hierarchically, after advertising is shown to be significant</p>
+<p><span class="math display">\[Y_i=b_0+{b_1}{X_1i}+{b_2}{X_2i}+{b_3}{X_3i}+ ... +{b_n}{X_ni}\epsilon_i\]</span></p>
+<p><span class="math display">\[Y_i=b_0+{b_1}{advertising_i}+{b_2}{airplay_i}+{b_3}{image_i}+\epsilon_i\]</span></p>
+<section id="building-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-model">Building the model</h3>
+<ul>
+<li>add predictors to the R code the same way as we do in the equation, by adding <code>+</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>album_full_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adverts <span class="sc">+</span> airplay <span class="sc">+</span> image, <span class="at">data =</span> album_tib, <span class="at">na.action =</span> na.exclude)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(album_full_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sales ~ adverts + airplay + image, data = album_tib, 
+    na.action = na.exclude)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-121.324  -28.336   -0.451   28.967  144.132 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -26.612958  17.350001  -1.534    0.127    
+adverts       0.084885   0.006923  12.261  &lt; 2e-16 ***
+airplay       3.367425   0.277771  12.123  &lt; 2e-16 ***
+image        11.086335   2.437849   4.548 9.49e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 47.09 on 196 degrees of freedom
+Multiple R-squared:  0.6647,    Adjusted R-squared:  0.6595 
+F-statistic: 129.5 on 3 and 196 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">glance</span>(album_full_lm)  <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.665</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">47.087</td>
+<td style="text-align: right;">129.498</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">-1052.168</td>
+<td style="text-align: right;">2114.337</td>
+<td style="text-align: right;">2130.828</td>
+<td style="text-align: right;">434574.6</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">200</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 
 </section>

@@ -126,3 +126,34 @@ We might just assume that it does, but if the confidence interval contains 0, th
 
 If the interval does not contain 0, we might conclude there is a genuine positive relationship.
 
+### Using the model
+
+$$\text{Sales}_i=\hat{b_0}+\hat{b_1}{\text{Advertising}_i}$$
+
+$$\text{Sales}_i=134.14+.096*{Advertising}_i$$
+
+Now we can make a prediction by entering a value for the advertising budget, say 100 (equal to 100,000 gbp)
+
+$$\text{Sales}_i=134.14+.096*{100}_i$$
+
+$$\text{Sales}_i=143.74$$
+or 143,740 sales
+
+## Several Predictors
+
+add multiple predictors hierarchically, after advertising is shown to be significant
+
+$$Y_i=b_0+{b_1}{X_1i}+{b_2}{X_2i}+{b_3}{X_3i}+ ... +{b_n}{X_ni}\epsilon_i$$
+
+$$Y_i=b_0+{b_1}{advertising_i}+{b_2}{airplay_i}+{b_3}{image_i}+\epsilon_i$$
+
+### Building the model
+
+- add predictors to the R code the same way as we do in the equation, by adding `+`
+
+```{r}
+album_full_lm <- lm(sales ~ adverts + airplay + image, data = album_tib, na.action = na.exclude)
+summary(album_full_lm)
+broom::glance(album_full_lm)  |> 
+  knitr::kable(digits = 3)
+```
