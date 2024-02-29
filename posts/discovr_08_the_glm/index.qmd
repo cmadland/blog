@@ -157,3 +157,37 @@ summary(album_full_lm)
 broom::glance(album_full_lm)  |> 
   knitr::kable(digits = 3)
 ```
+
+- `r.squared` $R^2$ tells us the variance in album sales -> .665, or 66.5%.
+- $R^2$ for adverts was 0.335, so the difference -> .665-.335=.33 means that airplay and image account for a further 33% of the variance
+- adjusted $R^2$ `adj.r.squared` tells us how well the model generalizes, and the value should be close to r.squared.
+  - in this case it is .66, or only .005 away
+- $F$-statistic is the ratio of the improvementin prediction that results from fitting the model, relative to the inaccuracy that sitll exists in the model
+- the variable `p.value` contains the p-value associated with $F$ ->  in this case is $2.88×10^{−46}$ -> much smaller than .001
+- degrees of freedom are `df` and `df.residual`
+- we can interpret the result as meaning that the model significantly improves our ability to predict the outcome variable ocmpared to not fitting the model.
+- reported as $F(3, 196)=129.5, p=<0.001$
+
+## Comparing Models
+
+- we can compare hierarchical models using an $F$-statisticusing the `anova()` function -> `anova(model_1, model_2, … , model_n)` 
+- list the models in order that we want to compare
+
+```{r}
+anova(album_lm, album_full_lm) |>
+broom::tidy()
+```
+
+- $F$ (`statistic`) is 96.5
+- $p$-value (`p.value`) is $6.8793949^{-30}$
+- `df` is 2 (difference between df in 2 models)
+- `df.residual` is 196
+- Conclusion -> adding airplay and image to the model significantly improved model fit
+  - $F(2, 196) = 96.45, p < 0.001$
+
+
+::: {.callout-tip}
+## Tip 
+
+We can only compare hierarchical models; that is to say that the second model must contain everything that was in the first model plus something new, and the third model must contain everything in the second model plus something new, and so on.
+:::

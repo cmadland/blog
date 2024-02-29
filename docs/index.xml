@@ -533,9 +533,71 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </table>
 </div>
 </div>
-
-
+<ul>
+<li><code>r.squared</code> <img src="https://latex.codecogs.com/png.latex?R%5E2"> tells us the variance in album sales -&gt; .665, or 66.5%.</li>
+<li><img src="https://latex.codecogs.com/png.latex?R%5E2"> for adverts was 0.335, so the difference -&gt; .665-.335=.33 means that airplay and image account for a further 33% of the variance</li>
+<li>adjusted <img src="https://latex.codecogs.com/png.latex?R%5E2"> <code>adj.r.squared</code> tells us how well the model generalizes, and the value should be close to r.squared.
+<ul>
+<li>in this case it is .66, or only .005 away</li>
+</ul></li>
+<li><img src="https://latex.codecogs.com/png.latex?F">-statistic is the ratio of the improvementin prediction that results from fitting the model, relative to the inaccuracy that sitll exists in the model</li>
+<li>the variable <code>p.value</code> contains the p-value associated with <img src="https://latex.codecogs.com/png.latex?F"> -&gt; in this case is <img src="https://latex.codecogs.com/png.latex?2.88%C3%9710%5E%7B%E2%88%9246%7D"> -&gt; much smaller than .001</li>
+<li>degrees of freedom are <code>df</code> and <code>df.residual</code></li>
+<li>we can interpret the result as meaning that the model significantly improves our ability to predict the outcome variable ocmpared to not fitting the model.</li>
+<li>reported as <img src="https://latex.codecogs.com/png.latex?F(3,%20196)=129.5,%20p=%3C0.001"></li>
+</ul>
 </section>
+</section>
+<section id="comparing-models" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-models">Comparing Models</h2>
+<ul>
+<li>we can compare hierarchical models using an <img src="https://latex.codecogs.com/png.latex?F">-statisticusing the <code>anova()</code> function -&gt; <code>anova(model_1, model_2, … , model_n)</code></li>
+<li>list the models in order that we want to compare</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">anova</span>(album_lm, album_full_lm) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb21-2">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tidy</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term                      df.residual    rss    df   sumsq statistic   p.value
+  &lt;chr&gt;                           &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 sales ~ adverts                   198 8.62e5    NA     NA       NA   NA       
+2 sales ~ adverts + airpla…         196 4.35e5     2 427690.      96.4  6.88e-30</code></pre>
+</div>
+</div>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?F"> (<code>statistic</code>) is 96.5</li>
+<li><img src="https://latex.codecogs.com/png.latex?p">-value (<code>p.value</code>) is <img src="https://latex.codecogs.com/png.latex?6.8793949%5E%7B-30%7D"></li>
+<li><code>df</code> is 2 (difference between df in 2 models)</li>
+<li><code>df.residual</code> is 196</li>
+<li>Conclusion -&gt; adding airplay and image to the model significantly improved model fit
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?F(2,%20196)%20=%2096.45,%20p%20%3C%200.001"></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can only compare hierarchical models; that is to say that the second model must contain everything that was in the first model plus something new, and the third model must contain everything in the second model plus something new, and so on.</p>
+</div>
+</div>
+
+
 </section>
 </section>
 
