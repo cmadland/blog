@@ -743,6 +743,134 @@ Tip
 <li>airplay <span class="math inline">\(\hat{b}=3.367\)</span> -&gt; as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)</li>
 </ul></li>
 </ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How would we interpret the 𝑏̂ (11.086) for band image?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If a band can increase their image rating by 1 unit they can expect additional album sales of 11,086 units</p>
+</div>
+</div>
+</div>
+</section>
+<section id="standardized-hatbs" class="level3">
+<h3 class="anchored" data-anchor-id="standardized-hatbs">Standardized <span class="math inline">\(\hat{b}\)</span>s</h3>
+<p>The <code>lm()</code> function does not provide standardized betas, so use <code>model_parameters()</code></p>
+<p><code>parameters::model_parameters(my_model, standardize = refit)</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(album_full_lm, <span class="at">standardize =</span> <span class="st">"refit"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.041</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.081</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.511</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.429</td>
+<td style="text-align: right;">0.593</td>
+<td style="text-align: right;">12.261</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">0.512</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.429</td>
+<td style="text-align: right;">0.595</td>
+<td style="text-align: right;">12.123</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">0.192</td>
+<td style="text-align: right;">0.042</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.109</td>
+<td style="text-align: right;">0.275</td>
+<td style="text-align: right;">4.548</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>advertising budget -&gt; Standardized <span class="math inline">\(\hat{\beta}=0.511\)</span>
+<ul>
+<li>as the advertising budgetr increases by one standard deviation (485,655gbp), album sales increase by .511 standard deviations.</li>
+<li>the standard deviation for album sales is 80,699, so .511 SD is 41,240 sales</li>
+<li>for every increase in advert budget of 485655gbp, album sales will increase by 41,240 IF the other predictors are held constant</li>
+</ul></li>
+<li>Image -&gt; Standardized <span class="math inline">\(\hat{\beta}=0.192\)</span>
+<ul>
+<li>a band rated 1 SD on the image scale (1.4 units) will sell .192 SD more units.</li>
+<li>this is a change of 15,490 sales IF the other predictors are held constant</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How would we interpret the Standardized B (0.512) for airplay?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As the number of plays on radio in the week before release increases by 1 standard deviation, album sales increase by 0.512 standard deviations</p>
+</div>
+</div>
+</div>
 
 
 </section>

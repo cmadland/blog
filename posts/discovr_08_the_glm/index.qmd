@@ -206,3 +206,37 @@ broom::tidy(album_full_lm, conf.int = TRUE)  |>
 - $\hat{b}$ vlaues also tell us to what degree each predictor affects the outcome if the effects of all other predictors are held constant
   - advertising budget -> $\hat{b}=0.085$ -> as advertising increases by 1 unit (1000gbp), sales increases by 0.085 units (85 albums), but this is only true if the other two predictors are held constant
   - airplay $\hat{b}=3.367$ -> as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)
+
+::: {.callout-caution collapse="true"}
+## How would we interpret the 𝑏̂ (11.086) for band image?
+
+
+If a band can increase their image rating by 1 unit they can expect additional album sales of 11,086 units
+
+:::
+
+### Standardized $\hat{b}$s
+
+The `lm()` function does not provide standardized betas, so use `model_parameters()`
+
+`parameters::model_parameters(my_model, standardize = refit)`
+
+```{r}
+parameters::model_parameters(album_full_lm, standardize = "refit") |> 
+  knitr::kable(digits = 3)
+```
+
+- advertising budget -> Standardized $\hat{\beta}=0.511$
+  - as the advertising budgetr increases by one standard deviation (485,655gbp), album sales increase by .511 standard deviations. 
+  - the standard deviation for album sales is 80,699, so .511 SD is 41,240 sales
+  - for every increase in advert budget of 485655gbp, album sales will increase by 41,240 IF the other predictors are held constant
+- Image -> Standardized $\hat{\beta}=0.192$
+  - a band rated 1 SD on the image scale (1.4 units) will sell .192 SD more units.
+  - this is a change of 15,490 sales IF the other predictors are held constant
+
+::: {.callout-caution collapse="true"}
+## How would we interpret the Standardized B (0.512) for airplay?
+
+As the number of plays on radio in the week before release increases by 1 standard deviation, album sales increase by 0.512 standard deviations
+
+:::
