@@ -80,9 +80,8 @@ broom::glance(album_lm)  |>
   knitr::kable(digits = 3)
 ```
 
-
-- note $df=1$ and $df.residual=198$ therefore we can say that adding the predictor of advertising significantly improved the fit of the model to the data compared to having no predictors in the model
-- $F(1,198)=99.59, p<.001$
+-   note $df=1$ and $df.residual=198$ therefore we can say that adding the predictor of advertising significantly improved the fit of the model to the data compared to having no predictors in the model
+-   $F(1,198)=99.59, p<.001$
 
 ### Model Parameters
 
@@ -90,37 +89,37 @@ To see model parameters, use `broom::tidy()`
 
 `broom::tidy(model_name, conf.int = FALSE, conf.level = 0.95)`
 
-- put the model name into the function, then two optional arguments
-  - confidence intervals `conf.int=TRUE` (confidence intervals are not included by default)
-  - default is 95%, but you can change it with `conf.level=.99` for 99% confidence interval
+-   put the model name into the function, then two optional arguments
+    -   confidence intervals `conf.int=TRUE` (confidence intervals are not included by default)
+    -   default is 95%, but you can change it with `conf.level=.99` for 99% confidence interval
 
 ```{r}
 broom::tidy(album_lm, conf.int = TRUE)
 ```
 
-- output provides estimates of the model parameters ($\hat{b}$-values)
-- $Y$ intercept ($b_0$) is 134.14 (when $X$ is 0, sales will be 134140)
-- $X$ ($b_1$) is 0.096. 
-  - represents the change in outcome associated with a unit change in predictor.
-  - when the predictor increases by 1, the outcome increases by .096, but since the units of measurement was thousands of pounds and thousands of sales, an increase in $1000 will lead to 96 more albums sold
-  - not very good return
-  - BUT, we know that advertising only accounts for 1/3 of the variance
-- If a predictor is having a significant impact on our ability to predict the outcome, then $\hat{b}$ should be different from 0 and large relative to its standard error
-- the $t$-test (labelled statistic) and the associated $p$-value tell us whether the $\hat{b}$ is significantly different from 0
-- the column p.value contains the exact probability that a value of $t$ at least as big as the one in the table would occur if the value of $b$ in the population were 0
-- if this propbability is less than 0.05, then we interpret that as the predictor being a significant predictor of hte outcome.
-- for both $t$s, the probabilities are in scientific notation 
-  - `2.91e-19` means $2.91*10^{-19}$, or `move the decimal 19 places to the left` or `0.000000000000000000291`
-  -  `2.91e+19` means $2.91*10^{19}$, or `move the decimal 19 places to the right` or `29100000000000000000`  
-- both values are 0 at 3 decimal places
-  
+-   output provides estimates of the model parameters ($\hat{b}$-values)
+-   $Y$ intercept ($b_0$) is 134.14 (when $X$ is 0, sales will be 134140)
+-   $X$ ($b_1$) is 0.096.
+    -   represents the change in outcome associated with a unit change in predictor.
+    -   when the predictor increases by 1, the outcome increases by .096, but since the units of measurement was thousands of pounds and thousands of sales, an increase in \$1000 will lead to 96 more albums sold
+    -   not very good return
+    -   BUT, we know that advertising only accounts for 1/3 of the variance
+-   If a predictor is having a significant impact on our ability to predict the outcome, then $\hat{b}$ should be different from 0 and large relative to its standard error
+-   the $t$-test (labelled statistic) and the associated $p$-value tell us whether the $\hat{b}$ is significantly different from 0
+-   the column p.value contains the exact probability that a value of $t$ at least as big as the one in the table would occur if the value of $b$ in the population were 0
+-   if this propbability is less than 0.05, then we interpret that as the predictor being a significant predictor of hte outcome.
+-   for both $t$s, the probabilities are in scientific notation
+    -   `2.91e-19` means $2.91*10^{-19}$, or `move the decimal 19 places to the left` or `0.000000000000000000291`
+    -   `2.91e+19` means $2.91*10^{19}$, or `move the decimal 19 places to the right` or `29100000000000000000`\
+-   both values are 0 at 3 decimal places
+
 ### Exploring the standard error of $\hat{b}$
 
 https://www.youtube-nocookie.com/embed/3L9ZMdzJyyI?si=ET90VDYq3RVKnKDq
 
 ### Confidence intervals for $\hat{b}$
 
-Imagine we collect 100 samples of data measuring the same variables as the current model, then estimate the same model, including confidence intervals for unstandardized values.The boundaries are constructed such that  95% of our 100 samples contain the population value of $b$. 95 of 100 sample will yield confidence intervals for $b$ that contain the population value, but we don't know if our sample is one of the 95.
+Imagine we collect 100 samples of data measuring the same variables as the current model, then estimate the same model, including confidence intervals for unstandardized values.The boundaries are constructed such that 95% of our 100 samples contain the population value of $b$. 95 of 100 sample will yield confidence intervals for $b$ that contain the population value, but we don't know if our sample is one of the 95.
 
 We might just assume that it does, but if the confidence interval contains 0, then there is a possibility that there is no relationship, or the relationship might be negative. The trouble is that we would be wrong 5% of the time.
 
@@ -136,8 +135,7 @@ Now we can make a prediction by entering a value for the advertising budget, say
 
 $$\text{Sales}_i=134.14+.096*{100}_i$$
 
-$$\text{Sales}_i=143.74$$
-or 143,740 sales
+$$\text{Sales}_i=143.74$$ or 143,740 sales
 
 ## Several Predictors
 
@@ -149,7 +147,7 @@ $$Y_i=b_0+{b_1}{advertising_i}+{b_2}{airplay_i}+{b_3}{image_i}+\epsilon_i$$
 
 ### Building the model
 
-- add predictors to the R code the same way as we do in the equation, by adding `+`
+-   add predictors to the R code the same way as we do in the equation, by adding `+`
 
 ```{r}
 album_full_lm <- lm(sales ~ adverts + airplay + image, data = album_tib, na.action = na.exclude)
@@ -158,37 +156,35 @@ broom::glance(album_full_lm)  |>
   knitr::kable(digits = 3)
 ```
 
-- `r.squared` $R^2$ tells us the variance in album sales -> .665, or 66.5%.
-- $R^2$ for adverts was 0.335, so the difference -> .665-.335=.33 means that airplay and image account for a further 33% of the variance
-- adjusted $R^2$ `adj.r.squared` tells us how well the model generalizes, and the value should be close to r.squared.
-  - in this case it is .66, or only .005 away
-- $F$-statistic is the ratio of the improvementin prediction that results from fitting the model, relative to the inaccuracy that sitll exists in the model
-- the variable `p.value` contains the p-value associated with $F$ ->  in this case is $2.88×10^{−46}$ -> much smaller than .001
-- degrees of freedom are `df` and `df.residual`
-- we can interpret the result as meaning that the model significantly improves our ability to predict the outcome variable ocmpared to not fitting the model.
-- reported as $F(3, 196)=129.5, p=<0.001$
+-   `r.squared` $R^2$ tells us the variance in album sales -\> .665, or 66.5%.
+-   $R^2$ for adverts was 0.335, so the difference -\> .665-.335=.33 means that airplay and image account for a further 33% of the variance
+-   adjusted $R^2$ `adj.r.squared` tells us how well the model generalizes, and the value should be close to r.squared.
+    -   in this case it is .66, or only .005 away
+-   $F$-statistic is the ratio of the improvementin prediction that results from fitting the model, relative to the inaccuracy that sitll exists in the model
+-   the variable `p.value` contains the p-value associated with $F$ -\> in this case is $2.88×10^{−46}$ -\> much smaller than .001
+-   degrees of freedom are `df` and `df.residual`
+-   we can interpret the result as meaning that the model significantly improves our ability to predict the outcome variable ocmpared to not fitting the model.
+-   reported as $F(3, 196)=129.5, p=<0.001$
 
 ## Comparing Models
 
-- we can compare hierarchical models using an $F$-statisticusing the `anova()` function -> `anova(model_1, model_2, … , model_n)` 
-- list the models in order that we want to compare
+-   we can compare hierarchical models using an $F$-statisticusing the `anova()` function -\> `anova(model_1, model_2, … , model_n)`
+-   list the models in order that we want to compare
 
 ```{r}
 anova(album_lm, album_full_lm) |>
 broom::tidy()
-
 ```
 
-- $F$ (`statistic`) is 96.5
-- $p$-value (`p.value`) is $6.8793949^{-30}$
-- `df` is 2 (difference between df in 2 models)
-- `df.residual` is 196
-- Conclusion -> adding airplay and image to the model significantly improved model fit
-  - $F(2, 196) = 96.45, p < 0.001$
+-   $F$ (`statistic`) is 96.5
+-   $p$-value (`p.value`) is $6.8793949^{-30}$
+-   `df` is 2 (difference between df in 2 models)
+-   `df.residual` is 196
+-   Conclusion -\> adding airplay and image to the model significantly improved model fit
+    -   $F(2, 196) = 96.45, p < 0.001$
 
-
-::: {.callout-tip}
-## Tip 
+::: callout-tip
+## Tip
 
 We can only compare hierarchical models; that is to say that the second model must contain everything that was in the first model plus something new, and the third model must contain everything in the second model plus something new, and so on.
 :::
@@ -200,19 +196,17 @@ broom::tidy(album_full_lm, conf.int = TRUE)  |>
   knitr::kable(digits = 3)
 ```
 
-- output gives estimates of the $b$-balues (column labelled `estimate`) and statistics that indicate the individual contribution of each predictor in the model.
-- all three predictors have positive $\hat{b}$values, indicating positive relationships
-  - as all three predictors increase, so do album sales
-- $\hat{b}$ vlaues also tell us to what degree each predictor affects the outcome if the effects of all other predictors are held constant
-  - advertising budget -> $\hat{b}=0.085$ -> as advertising increases by 1 unit (1000gbp), sales increases by 0.085 units (85 albums), but this is only true if the other two predictors are held constant
-  - airplay $\hat{b}=3.367$ -> as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)
+-   output gives estimates of the $b$-balues (column labelled `estimate`) and statistics that indicate the individual contribution of each predictor in the model.
+-   all three predictors have positive $\hat{b}$values, indicating positive relationships
+    -   as all three predictors increase, so do album sales
+-   $\hat{b}$ vlaues also tell us to what degree each predictor affects the outcome if the effects of all other predictors are held constant
+    -   advertising budget -\> $\hat{b}=0.085$ -\> as advertising increases by 1 unit (1000gbp), sales increases by 0.085 units (85 albums), but this is only true if the other two predictors are held constant
+    -   airplay $\hat{b}=3.367$ -\> as airplay prior to release increases by one unit (1 play), album sales increase by 3.367 units (3367 album sales, but only if the other two predictors are held constant)
 
 ::: {.callout-caution collapse="true"}
 ## How would we interpret the 𝑏̂ (11.086) for band image?
 
-
 If a band can increase their image rating by 1 unit they can expect additional album sales of 11,086 units
-
 :::
 
 ### Standardized $\hat{b}$s
@@ -226,17 +220,156 @@ parameters::model_parameters(album_full_lm, standardize = "refit") |>
   knitr::kable(digits = 3)
 ```
 
-- advertising budget -> Standardized $\hat{\beta}=0.511$
-  - as the advertising budgetr increases by one standard deviation (485,655gbp), album sales increase by .511 standard deviations. 
-  - the standard deviation for album sales is 80,699, so .511 SD is 41,240 sales
-  - for every increase in advert budget of 485655gbp, album sales will increase by 41,240 IF the other predictors are held constant
-- Image -> Standardized $\hat{\beta}=0.192$
-  - a band rated 1 SD on the image scale (1.4 units) will sell .192 SD more units.
-  - this is a change of 15,490 sales IF the other predictors are held constant
+-   advertising budget -\> Standardized $\hat{\beta}=0.511$
+    -   as the advertising budgetr increases by one standard deviation (485,655gbp), album sales increase by .511 standard deviations.
+    -   the standard deviation for album sales is 80,699, so .511 SD is 41,240 sales
+    -   for every increase in advert budget of 485655gbp, album sales will increase by 41,240 IF the other predictors are held constant
+-   Image -\> Standardized $\hat{\beta}=0.192$
+    -   a band rated 1 SD on the image scale (1.4 units) will sell .192 SD more units.
+    -   this is a change of 15,490 sales IF the other predictors are held constant
 
 ::: {.callout-caution collapse="true"}
 ## How would we interpret the Standardized B (0.512) for airplay?
 
 As the number of plays on radio in the week before release increases by 1 standard deviation, album sales increase by 0.512 standard deviations
-
 :::
+
+### Confidence Intervals
+
+::: {.callout-caution collapse="true"}
+## The confidence interval for airplay ranges from 2.82 to 3.92. What does this tell us?
+
+-   ~~The probability of this confidence interval containing the population value is 0.95.~~
+-   If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 2.82 and 3.92.
+-   ~~I can be 95% confident that the population value of b lies between 2.82 and 3.92~~
+-   ~~There is a 95% chance that the population value of b lies between 2.82 and 3.92~~
+:::
+
+Assuming that each confidence interval is one of the 95% that contains the population parameter: - the true size of the relationship between advertising budget and album sales lies somewhere between 0.071 and 0.099 - the true size of the relationship between band image and album sales lies somewhere between 6.279 and 15.894
+
+-   the two best predictors have tight confidence intervals (airplay and adverts) indicating that the estimates are likely representative of the true population values
+-   the interval for band image is much wider, but does not cross zero indicating this parameter is less representative of the population, but is still significant.
+
+### Significance tests
+
+The values in `statistic` are the values of $t$ associated with each $\hat{b}$ and `p.value` is the associated significance of the $t$-statistic. For every predictor, the $\hat{b}$ is significantly different from 0 ($p<.001$) meaning that all predictors significantly predict album sales.
+
+::: {.callout-caution collapse="true"}
+## How might we interpret the statistic and p.value for the three predictors?
+
+-   ~~The probability of the null hypothesis is less than 0.001 in all cases~~
+-   ~~The probability that each b is a chance result is less than 0.001~~
+-   They tell us that the probability of getting a value of t at least as big as these values if the value of b were, in fact, zero is smaller than 0.001 for all predictors.
+:::
+
+::: callout-note
+## $p$-values
+
+Many students and researchers think of *p*-values in terms of the ‘probability of a chance result’ or ‘the probability of a hypothesis being true’ but they are neither of these things. [**They are the long-run probability that you would get a test-statistic (in this case *t*) at least as large as the one you have if the null hypothesis were true.**]{.underline} In other words, if there really were no relationship between advertising budget and album sales (the null hypothesis) then the population value of *b* would be zero.
+
+Imagine we sampled from this null population and computed *t*, and then repeated this process 1000 times. We’d have 1000 values of *t* from a population in which there was no effect. We could plot these values as a histogram. This would tell us how often certain values of *t* occur. From it we could work out the probability of getting a particular value of *t*. If we then took another sample, and computed *t* (because we’re kind of obsessed with this sort of thing) we would be able to compare this value of *t* to the distribution of all the previous 1000 samples. Is the *t* in our current sample large of small compared to the others? Let’s say it was larger than 999 of the previous values. That would be quite an unlikely value of *t* whereas if it was larger than 500 of them this would not surprise us. [**This is what a *p*-value is: it is the long run probability of getting test statistic at least as large as the one you have if the null hypothesis were true.**]{.underline} If the value is less than 0.05, people typically take this as supporting the idea that the null hypothesis isn’t true.
+:::
+
+::: callout-important
+## Report
+
+-   the model that included the band's image and airplay was significantly better fit than the model that included advertising budget alone $f(2, 196)=96.45, p<0.001$
+-   the final model explained 66.5% of the variance in album sales
+-   advertising budget significantly predicted album sales $\hat{b}=0.08[0.07, 0.10], t(196)=12.26, p>.001$
+-   airplay significantly predicted album sales $\hat{b}=3.37[2.82, 3.92], t(196)=12.12, p<.001$
+-   band image significantly predicted album sales -\> $\hat{b}=11.09[6.28, 15.89], t=4.55, p<.001$
+:::
+
+## Unguided Example
+
+### Metal and mental health
+
+```{r}
+metal_tib
+```
+
+```{r}
+GGally::ggscatmat(metal_tib, columns=c("hm", "suicide")) + theme_minimal()
+```
+
+```{r}
+metal_lm <- lm(suicide ~ hm, data = metal_tib, na.action = na.exclude)
+broom::glance(metal_lm) |>
+knitr::kable(digits=3)
+```
+
+```{r}
+broom::tidy(metal_lm, conf.int = TRUE, conf.level=0.95)
+```
+
+::: {.callout-caution collapse="true"}
+## How much variance does the final model explain?
+
+12.5%
+:::
+
+::: {.callout-caution collapse="true"}
+## What is the nature of the relationship between listening to heavy metal and suicide risk?
+
+-   As love of heavy metal increases, suicide risk decreases
+-   because the $\hat{b}$ value is negative (-.0612)
+:::
+
+::: {.callout-caution collapse="true"}
+## As listening to heavy metal increases by 1 unit, by how much does suicide risk change?
+
+-   -0.612 units
+:::
+
+### Predicting Social Anxiety
+
+```{r}
+soc_anx_tib
+```
+
+```{r}
+GGally::ggscatmat(soc_anx_tib, columns = c("spai", "tosca"))  +
+theme_minimal()
+```
+
+```{r}
+soc_anx_lm <- lm(spai ~ tosca, data = soc_anx_tib, na.action = na.exclude)
+broom::glance(soc_anx_lm)  |> 
+  knitr::kable(digits = 3)
+broom::tidy(soc_anx_lm, conf.int = TRUE, conf.level = 0.95)
+```
+
+```{r}
+soc_anx_obq_lm <- lm(spai ~ tosca + obq, data = soc_anx_tib, na.action = na.exclude)
+broom::glance(soc_anx_obq_lm)  |>
+  knitr::kable(digits = 3)
+broom::tidy(soc_anx_obq_lm, conf.int = TRUE, conf.level = 0.95)
+```
+
+```{r}
+parameters::model_parameters(soc_anx_obq_lm, standardize = "refit") |> 
+  knitr::kable(digits = 3)
+```
+
+```
+anova(soc_anx_lm, soc_anx_obq_lm) |>
+broom::tidy()
+```
+
+::: callout-warning
+## Error message
+
+Error in anova.lmlist(object, ...) : models were not all fitted to the same size of dataset
+
+-   as of this writing (Mar-04-24), there is a solution listed in the `discovr_08` tutorial to start by finding the error with
+    `soc_anx_tib |> dplyr::summarise( across(.fns = list(valid = ~sum(!is.na(.x)), missing = ~sum(is.na(.x))), .names = "{.col}_{.fn}") )` 
+
+    -   The output from running this function in the tutorial is a table showing that there are missing values in `obq`. this means that `spai` and `tosca` have 134 values and `obq` has 132 values, so they are not the same size.
+
+-   However, the output above in my own .qmd file throws a `deprecated` error in `dplyr 1.1.4` that the use of `across` without `.cols` is deprecated since `dplyr 1.1.1`
+-   this means that I can't currently generate the table showing the sizes of the datasets with the code provided
+-   the workaround to the problem is normally to use `multiple imputation` to estimate the missing values, which is beyond the scope of this tutorial, so Field recommends a `very bad practice`, which is to omit the missing values. 
+
+-   I've [filed an issue in the `discover.rocks` repo](https://github.com/profandyfield/discovr/issues/17)
+:::
+

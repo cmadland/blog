@@ -840,6 +840,665 @@ How would we interpret the Standardized B (0.512) for airplay?
 </div>
 </div>
 </div>
+</section>
+<section id="confidence-intervals" class="level3">
+<h3 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h3>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The confidence interval for airplay ranges from 2.82 to 3.92. What does this tell us?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><del>The probability of this confidence interval containing the population value is 0.95.</del></li>
+<li>If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 2.82 and 3.92.</li>
+<li><del>I can be 95% confident that the population value of b lies between 2.82 and 3.92</del></li>
+<li><del>There is a 95% chance that the population value of b lies between 2.82 and 3.92</del></li>
+</ul>
+</div>
+</div>
+</div>
+<p>Assuming that each confidence interval is one of the 95% that contains the population parameter: - the true size of the relationship between advertising budget and album sales lies somewhere between 0.071 and 0.099 - the true size of the relationship between band image and album sales lies somewhere between 6.279 and 15.894</p>
+<ul>
+<li>the two best predictors have tight confidence intervals (airplay and adverts) indicating that the estimates are likely representative of the true population values</li>
+<li>the interval for band image is much wider, but does not cross zero indicating this parameter is less representative of the population, but is still significant.</li>
+</ul>
+</section>
+<section id="significance-tests" class="level3">
+<h3 class="anchored" data-anchor-id="significance-tests">Significance tests</h3>
+<p>The values in <code>statistic</code> are the values of <img src="https://latex.codecogs.com/png.latex?t"> associated with each <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> and <code>p.value</code> is the associated significance of the <img src="https://latex.codecogs.com/png.latex?t">-statistic. For every predictor, the <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> is significantly different from 0 (<img src="https://latex.codecogs.com/png.latex?p%3C.001">) meaning that all predictors significantly predict album sales.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How might we interpret the statistic and p.value for the three predictors?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><del>The probability of the null hypothesis is less than 0.001 in all cases</del></li>
+<li><del>The probability that each b is a chance result is less than 0.001</del></li>
+<li>They tell us that the probability of getting a value of t at least as big as these values if the value of b were, in fact, zero is smaller than 0.001 for all predictors.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<img src="https://latex.codecogs.com/png.latex?p">-values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many students and researchers think of <em>p</em>-values in terms of the ‘probability of a chance result’ or ‘the probability of a hypothesis being true’ but they are neither of these things. <u><strong>They are the long-run probability that you would get a test-statistic (in this case <em>t</em>) at least as large as the one you have if the null hypothesis were true.</strong></u> In other words, if there really were no relationship between advertising budget and album sales (the null hypothesis) then the population value of <em>b</em> would be zero.</p>
+<p>Imagine we sampled from this null population and computed <em>t</em>, and then repeated this process 1000 times. We’d have 1000 values of <em>t</em> from a population in which there was no effect. We could plot these values as a histogram. This would tell us how often certain values of <em>t</em> occur. From it we could work out the probability of getting a particular value of <em>t</em>. If we then took another sample, and computed <em>t</em> (because we’re kind of obsessed with this sort of thing) we would be able to compare this value of <em>t</em> to the distribution of all the previous 1000 samples. Is the <em>t</em> in our current sample large of small compared to the others? Let’s say it was larger than 999 of the previous values. That would be quite an unlikely value of <em>t</em> whereas if it was larger than 500 of them this would not surprise us. <u><strong>This is what a <em>p</em>-value is: it is the long run probability of getting test statistic at least as large as the one you have if the null hypothesis were true.</strong></u> If the value is less than 0.05, people typically take this as supporting the idea that the null hypothesis isn’t true.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Report
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>the model that included the band’s image and airplay was significantly better fit than the model that included advertising budget alone <img src="https://latex.codecogs.com/png.latex?f(2,%20196)=96.45,%20p%3C0.001"></li>
+<li>the final model explained 66.5% of the variance in album sales</li>
+<li>advertising budget significantly predicted album sales <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D=0.08%5B0.07,%200.10%5D,%20t(196)=12.26,%20p%3E.001"></li>
+<li>airplay significantly predicted album sales <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D=3.37%5B2.82,%203.92%5D,%20t(196)=12.12,%20p%3C.001"></li>
+<li>band image significantly predicted album sales -&gt; <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D=11.09%5B6.28,%2015.89%5D,%20t=4.55,%20p%3C.001"></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="unguided-example" class="level2">
+<h2 class="anchored" data-anchor-id="unguided-example">Unguided Example</h2>
+<section id="metal-and-mental-health" class="level3">
+<h3 class="anchored" data-anchor-id="metal-and-mental-health">Metal and mental health</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">metal_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,506 × 2
+      hm suicide
+   &lt;dbl&gt;   &lt;dbl&gt;
+ 1    10       7
+ 2    10      11
+ 3    10       8
+ 4     4      14
+ 5    10      13
+ 6     8      12
+ 7     8       7
+ 8     5      15
+ 9     8       7
+10     9      10
+# ℹ 2,496 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">GGally<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggscatmat</span>(metal_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">columns=</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hm"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"suicide"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 200 rows containing non-finite outside the scale range
+(`stat_density()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 284 rows containing non-finite outside the scale range
+(`stat_density()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1">metal_lm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(suicide <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> hm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> metal_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.action =</span> na.exclude)</span>
+<span id="cb30-2">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glance</span>(metal_lm) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb30-3">knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.125</td>
+<td style="text-align: right;">0.125</td>
+<td style="text-align: right;">4.842</td>
+<td style="text-align: right;">304.784</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-6401.851</td>
+<td style="text-align: right;">12809.7</td>
+<td style="text-align: right;">12826.7</td>
+<td style="text-align: right;">50047.05</td>
+<td style="text-align: right;">2135</td>
+<td style="text-align: right;">2137</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tidy</span>(metal_lm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.int =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.level=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)   16.0      0.261       61.4 0          15.5      16.5  
+2 hm            -0.612    0.0350     -17.5 6.64e-64   -0.680    -0.543</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How much variance does the final model explain?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>12.5%</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is the nature of the relationship between listening to heavy metal and suicide risk?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>As love of heavy metal increases, suicide risk decreases</li>
+<li>because the <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> value is negative (-.0612)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+As listening to heavy metal increases by 1 unit, by how much does suicide risk change?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>-0.612 units</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="predicting-social-anxiety" class="level3">
+<h3 class="anchored" data-anchor-id="predicting-social-anxiety">Predicting Social Anxiety</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">soc_anx_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 134 × 4
+    spai   iii   obq tosca
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1    26 56.5   4.43  4.18
+ 2    51 16.1   2.03  4.20
+ 3    33 37.4   2.59  3.25
+ 4   106 16.7   4.84  4.07
+ 5    25  5.16  1.76  3.80
+ 6   109 36.0   2.13  4.25
+ 7    39 34.5   2.01  4.95
+ 8   134 18.0   1.76  4.52
+ 9    43 12.9   2.29  3.59
+10    57  7.10  3.20  3.64
+# ℹ 124 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">GGally<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggscatmat</span>(soc_anx_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">columns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"spai"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"tosca"</span>))  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb35-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1">soc_anx_lm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(spai <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> tosca, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> soc_anx_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.action =</span> na.exclude)</span>
+<span id="cb36-2">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glance</span>(soc_anx_lm)  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb36-3">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">0.095</td>
+<td style="text-align: right;">29.918</td>
+<td style="text-align: right;">14.989</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">-644.525</td>
+<td style="text-align: right;">1295.05</td>
+<td style="text-align: right;">1303.743</td>
+<td style="text-align: right;">118153.3</td>
+<td style="text-align: right;">132</td>
+<td style="text-align: right;">134</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tidy</span>(soc_anx_lm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.int =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.level =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term        estimate std.error statistic  p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)    -54.8     30.0      -1.82 0.0703     -114.       4.60
+2 tosca           27.4      7.08      3.87 0.000169     13.4     41.4 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1">soc_anx_obq_lm <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lm</span>(spai <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> tosca <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> obq, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> soc_anx_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.action =</span> na.exclude)</span>
+<span id="cb39-2">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glance</span>(soc_anx_obq_lm)  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb39-3">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 2%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">r.squared</th>
+<th style="text-align: right;">adj.r.squared</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">logLik</th>
+<th style="text-align: right;">AIC</th>
+<th style="text-align: right;">BIC</th>
+<th style="text-align: right;">deviance</th>
+<th style="text-align: right;">df.residual</th>
+<th style="text-align: right;">nobs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0.148</td>
+<td style="text-align: right;">0.135</td>
+<td style="text-align: right;">29.015</td>
+<td style="text-align: right;">11.218</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">-630.333</td>
+<td style="text-align: right;">1268.666</td>
+<td style="text-align: right;">1280.197</td>
+<td style="text-align: right;">108599.6</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">132</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1">broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tidy</span>(soc_anx_obq_lm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.int =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">conf.level =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term        estimate std.error statistic p.value conf.low conf.high
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)   -53.3      29.2      -1.82 0.0704   -111.        4.50
+2 tosca          22.1       7.24      3.05 0.00276     7.77     36.4 
+3 obq             7.25      2.91      2.49 0.0141      1.49     13.0 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1">parameters<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">model_parameters</span>(soc_anx_obq_lm, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">standardize =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"refit"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb42-2">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.081</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.160</td>
+<td style="text-align: right;">0.160</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">1.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tosca</td>
+<td style="text-align: right;">0.261</td>
+<td style="text-align: right;">0.086</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.092</td>
+<td style="text-align: right;">0.430</td>
+<td style="text-align: right;">3.052</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">0.003</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">obq</td>
+<td style="text-align: right;">0.213</td>
+<td style="text-align: right;">0.086</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.044</td>
+<td style="text-align: right;">0.382</td>
+<td style="text-align: right;">2.489</td>
+<td style="text-align: right;">129</td>
+<td style="text-align: right;">0.014</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre><code>anova(soc_anx_lm, soc_anx_obq_lm) |&gt;
+broom::tidy()</code></pre>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Error message
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Error in anova.lmlist(object, …) : models were not all fitted to the same size of dataset</p>
+<ul>
+<li><p>as of this writing (Mar-04-24), there is a solution listed in the <code>discovr_08</code> tutorial to start by finding the error with <code>soc_anx_tib |&gt; dplyr::summarise( across(.fns = list(valid = ~sum(!is.na(.x)), missing = ~sum(is.na(.x))), .names = "{.col}_{.fn}") )</code></p>
+<ul>
+<li>The output from running this function in the tutorial is a table showing that there are missing values in <code>obq</code>. this means that <code>spai</code> and <code>tosca</code> have 134 values and <code>obq</code> has 132 values, so they are not the same size.</li>
+</ul></li>
+<li><p>However, the output above in my own .qmd file throws a <code>deprecated</code> error in <code>dplyr 1.1.4</code> that the use of <code>across</code> without <code>.cols</code> is deprecated since <code>dplyr 1.1.1</code></p></li>
+<li><p>this means that I can’t currently generate the table showing the sizes of the datasets with the code provided</p></li>
+<li><p>the workaround to the problem is normally to use <code>multiple imputation</code> to estimate the missing values, which is beyond the scope of this tutorial, so Field recommends a <code>very bad practice</code>, which is to omit the missing values.</p></li>
+<li><p>I’ve <a href="https://github.com/profandyfield/discovr/issues/17">filed an issue in the <code>discover.rocks</code> repo</a></p></li>
+</ul>
+</div>
+</div>
 
 
 </section>
