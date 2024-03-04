@@ -371,5 +371,6 @@ Error in anova.lmlist(object, ...) : models were not all fitted to the same size
 -   the workaround to the problem is normally to use `multiple imputation` to estimate the missing values, which is beyond the scope of this tutorial, so Field recommends a `very bad practice`, which is to omit the missing values. 
 
 -   I've [filed an issue in the `discover.rocks` repo](https://github.com/profandyfield/discovr/issues/17)
+-   [Fix't](https://github.com/profandyfield/discovr/issues/17#issuecomment-1976799279)
 :::
 
