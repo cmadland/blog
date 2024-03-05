@@ -9,6 +9,7 @@ image: "image.jpg"
 
 ```{r}
 library(tidyverse, ggplot2)
+library(ggfortify)
 album_tib <- here::here("data/album_sales.csv") |> readr::read_csv()
 soc_anx_tib <- here::here("data/social_anxiety.csv") |> readr::read_csv()
 metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
@@ -25,6 +26,12 @@ metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
         -   lack of independent errors --\> multi-level model
         -   all other situations --\> fit a robust version of the model using bootstrapping (small samples) or robust standard errors
 
+homoscedasticity
+
+:   assumption of equal or similar variances in different groups being compared
+:   homogeneity of variance
+
+**Figure 1**
 ![General process of fitting a linear model from `discovr_08`](dsr2_fig_08_12_glm_process.png)
 
 ```{r}
@@ -351,7 +358,7 @@ parameters::model_parameters(soc_anx_obq_lm, standardize = "refit") |>
   knitr::kable(digits = 3)
 ```
 
-```
+```         
 anova(soc_anx_lm, soc_anx_obq_lm) |>
 broom::tidy()
 ```
@@ -361,16 +368,167 @@ broom::tidy()
 
 Error in anova.lmlist(object, ...) : models were not all fitted to the same size of dataset
 
--   as of this writing (Mar-04-24), there is a solution listed in the `discovr_08` tutorial to start by finding the error with
-    `soc_anx_tib |> dplyr::summarise( across(.fns = list(valid = ~sum(!is.na(.x)), missing = ~sum(is.na(.x))), .names = "{.col}_{.fn}") )` 
+-   as of this writing (Mar-04-24), there is a solution listed in the `discovr_08` tutorial to start by finding the error with `soc_anx_tib |> dplyr::summarise( across(.fns = list(valid = ~sum(!is.na(.x)), missing = ~sum(is.na(.x))), .names = "{.col}_{.fn}") )`
 
     -   The output from running this function in the tutorial is a table showing that there are missing values in `obq`. this means that `spai` and `tosca` have 134 values and `obq` has 132 values, so they are not the same size.
 
 -   However, the output above in my own .qmd file throws a `deprecated` error in `dplyr 1.1.4` that the use of `across` without `.cols` is deprecated since `dplyr 1.1.1`
+
 -   this means that I can't currently generate the table showing the sizes of the datasets with the code provided
--   the workaround to the problem is normally to use `multiple imputation` to estimate the missing values, which is beyond the scope of this tutorial, so Field recommends a `very bad practice`, which is to omit the missing values. 
+
+-   the workaround to the problem is normally to use `multiple imputation` to estimate the missing values, which is beyond the scope of this tutorial, so Field recommends a `very bad practice`, which is to omit the missing values.
 
 -   I've [filed an issue in the `discover.rocks` repo](https://github.com/profandyfield/discovr/issues/17)
+
 -   [Fix't](https://github.com/profandyfield/discovr/issues/17#issuecomment-1976799279)
 :::
 
+Here is the fixed code, adding `.cols = everything()`, and the intended output
+
+```{r}
+soc_anx_tib |>
+  dplyr::summarise(
+    across(.cols = everything(), .fns = list(valid = ~sum(!is.na(.x)), missing = ~sum(is.na(.x))), .names = "{.col}_{.fn}")
+    )
+```
+
+```{r}
+soc_anx_lm <- soc_anx_tib |>
+  dplyr::select(-iii) |> 
+  na.omit() |> 
+  lm(spai ~ tosca, data = _)
+anova(soc_anx_lm, soc_anx_obq_lm) |> 
+  broom::tidy() |> 
+  knitr::kable(digits = 3)
+```
+
+::: {.callout-caution collapse="true"}
+## How much variance in social anxiety do OCD and shame account for?
+
+14.8%
+:::
+
+::: {.callout-caution collapse="true"}
+## The confidence interval for shame ranges from 7.77 to 36.42. What does this tell us?
+
+If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 7.77 and 36.42.
+:::
+
+::: {.callout-caution collapse="true"}
+## As shame increases by 1 unit, by how much does social anxiety change?
+
+22.10 units
+:::
+
+:::{.callout-caution collapse="true"}
+## As OCD increases by 1 standard deviation, by how many standard deviations does social anxiety change? 
+
+0.213
+:::
+
+:::{.callout-caution collapse="true"} 
+## The p-value for OCD is 0.014, what does this mean?
+
+The probability of getting a value of t at least as big as 2.49 if the value of b were, in fact, zero is 0.014. I’m going to assume, therefore, that b isn’t zero (i.e. OCD significantly predicts social anxiety.)
+:::
+
+
+
+## The Beast of Bias
+
+:::{.callout-caution collapse="true"} 
+## Which of these assumptions of the linear model is the most important
+
+Linearity and additivity
+
+This assumption is the most important because if it is not met then the phenomenon you’re trying to model is not well represented by the model you are trying to fit
+:::
+
+:::{.callout-caution collapse="true"} 
+## Which of these assumptions of the linear model is the least important
+
+Normality of errors
+
+This assumption is the least important because even with non-normal errors the parameter estimates (using ordinary least squares methods) of the model will be unbiased (they match the expected population value) and optimal (they minimize the squared error).
+:::
+
+:::{.callout-caution collapse="true"} 
+## What does homoscedasticity mean?
+
+The variance in errors from the (population) model is constant at all levels of the predictor variable(s)
+:::
+
+### Diagnostic Plots
+
+Use `plot()` function
+
+`plot(my_model, which = numbers_of_the_plots_you_want)`
+
+```{r}
+plot(album_full_lm)
+```
+
+`plot()` function can produce 6 plots (below) 
+- default is to produce 1,2,3,5. 
+
+1. predicted values from the model (x-axis) against the residuals (y-axis). Use to look for linearity and homoscedasticity.
+2. A Q-Q plot of standardised residuals to look for normality of residuals
+3. predicted values from the model(x-axis) against the square root of the standardized residuals (y-axis). This is a variant of plot 1 and is used to look for linearity and homoscedasticity.
+4. Case number (x-axis) against the Cooks distance (y-axis). This plot can help identify influential cases (large values of Cooks distance).
+5. The leverage value for each case (x-axis) against the standardised residual (y-axis). Used to identify influential cases and outliers. Leverage values indicate the influence of an individual case on the model and are related to the Cooks distance.
+6. The leverage value for each case (x-axis) against the corresponing Cooks distance (y-axis). Used to identify influential cases and outliers.
+
+To get plot #1
+
+```{r}
+plot(album_full_lm, which = 1)
+```
+
+To get plot #1 and #2
+
+```{r}
+plot(album_full_lm, which = c(1, 2))
+```
+
+:::{.callout-tip}
+To get all six, use `which = 1:6`
+:::
+
+Plots below show the patterns of dots we want (random = assumptions met)
+
+- curvature indicates lack of linearity
+- funnel shape indicates heteroscedasticity
+- curvature and funnel shape indicate non-linearity and heteroscedasticity
+- 
+
+**Figure 2**
+![Examples of residual plots from Field (2023)](dsr2_fig_06_29_pred_resid.png)
+
+
+```{r}
+plot(album_full_lm, which = c(1,3))
+```
+
+If both assumptions of linearity and homoscedasticity are met, then these plots should look like a random array of dots and the red trend line should be flat.
+
+::: {.callout-caution collapse="true"}
+## Comparing the plot to those in Figure 2, how would you interpret it?
+
+No problems. random array of dots, no funnels, no bananas.
+
+:::
+
+
+```{r}
+plot(album_full_lm, which = 2)
+```
+
+::: {.callout-caution collapse="true"}
+## Based on the Q-Q plot, can we assume normality of the residuals?
+
+Yes, the dots line up along the diagonal, indicating a normal distribution.
+:::
+
+### Pretty residual plots
+
+with `ggfortify`, we can use `ggplot2::autoplot()` to produce nicely formatted plots that are `ggplot2` objects, including themes
