@@ -1978,9 +1978,401 @@ Based on the Q-Q plot, can we assume normality of the residuals?
 <section id="pretty-residual-plots" class="level3">
 <h3 class="anchored" data-anchor-id="pretty-residual-plots">Pretty residual plots</h3>
 <p>with <code>ggfortify</code>, we can use <code>ggplot2::autoplot()</code> to produce nicely formatted plots that are <code>ggplot2</code> objects, including themes</p>
-
-
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Using <code>GGfortify</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>for <code>autoplot()</code> function to work, the <code>ggfortify</code> package must be loaded. We can’t use verbose code because <code>ggfortify</code> adds functionality to <code>ggplot2</code> rather than to itself. Need to include <code>library(ggfortify)</code> at the beginning of the document.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">autoplot</span>(album_full_lm,</span>
+<span id="cb52-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">which =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>),</span>
+<span id="cb52-3">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#440154"</span>,</span>
+<span id="cb52-4">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">smooth.colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#21918c"</span>,</span>
+<span id="cb52-5">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb52-6">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb52-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="influential-cases-and-outliers-plots" class="level2">
+<h2 class="anchored" data-anchor-id="influential-cases-and-outliers-plots">Influential cases and outliers: plots</h2>
+<ul>
+<li>use Cook’s distance to identify influential cases and</li>
+<li>use standardized residuals to check for outliers</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>in an average sample,
+<ul>
+<li>95% of standardized residuals should lie between <img src="https://latex.codecogs.com/png.latex?%5Cpm1.96"> and</li>
+<li>99% should lie between <img src="https://latex.codecogs.com/png.latex?%5Cpm2.58">, and</li>
+<li>any case for which absolute value of the standardized residual is 3 or more, is likely to be an outlier</li>
+</ul></li>
+<li>Cook’s distance measure the influence of a single case on model as a whole.
+<ul>
+<li>absolute values greater than 1 may be cause for concern</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">autoplot</span>(album_full_lm,</span>
+<span id="cb53-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">which =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>),</span>
+<span id="cb53-3">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#440154"</span>,</span>
+<span id="cb53-4">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">smooth.colour =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#21918c"</span>,</span>
+<span id="cb53-5">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>,</span>
+<span id="cb53-6">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb53-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>First plot show Cook’s distance and labels cases with largest values (1, 164, 169), but largest values are in the region of 0.06, well below the threshold of 1.</li>
+<li>second shows leverage values plotted against standardized residuals
+<ul>
+<li>we want the green trend line to be flat and lie along zero, which is the case here</li>
+<li>if the trend line deviates substantially from horizontal, then it indicates one of the assumptions of the model has been violated</li>
+<li>this plot usually also has red dashed lines indicating values of Cook’s distance of 0.5 and 1. this plot has none, indicating all values of Cook’s distance are well below thresholds.</li>
+</ul></li>
+<li>Final plot shows leverage, Cook’s distance, and the standardized residual on the same plot.
+<ul>
+<li>can be used to identify cases that have high leverage, high Cook’s distance, large residual, or some combination of all three.</li>
+<li>e.g.&nbsp;across the plots, case 164 has a standardized residual between -2.5 and -3 and the largest Cook’s distance (although still only around 0.7)</li>
+</ul></li>
+</ul>
+</section>
+<section id="influential-cases-and-outliers-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="influential-cases-and-outliers-numbers">Influential cases and outliers: numbers</h2>
+<p>For a more precise look, we can see values for Cook’s distance and standardized residuals using <code>broom::augment()</code>. All we need to do is pass the lm object into the function and save the results as a new tibble. also useful to save the case number as a variable so that you can identify cases should you need to.</p>
+<ul>
+<li>create a new tibble called <code>album_full_rsd</code> (rsd for <code>residuals</code>) by
+<ul>
+<li>piping model into <code>broom::augment()</code> to get residuals, then</li>
+<li>into <code>tibble::row_id_to_column()</code> to create a variable that contains the row number</li>
+</ul></li>
+<li>the <code>var = "case_no"</code> tells the function to name the variable containing the numbers <code>case_no</code></li>
+<li>the result is a tibble called <code>album_full_rsd</code> that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1">album_full_rsd <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> album_full_lm <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb54-2">  broom<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">augment</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb54-3">  tibble<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rowid_to_column</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">var =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"case_no"</span>) </span>
+<span id="cb54-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">head</span>(album_full_rsd) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb54-5">  tibble<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb54-6">    knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6
+Columns: 11
+$ case_no    &lt;int&gt; 1, 2, 3, 4, 5, 6
+$ sales      &lt;dbl&gt; 330, 120, 360, 270, 220, 170
+$ adverts    &lt;dbl&gt; 10.256, 985.685, 1445.563, 1188.193, 574.513, 568.954
+$ airplay    &lt;dbl&gt; 43, 28, 35, 33, 44, 19
+$ image      &lt;dbl&gt; 10, 7, 7, 7, 5, 5
+$ .fitted    &lt;dbl&gt; 229.9203, 228.9490, 291.5576, 262.9760, 225.7529, 141.0954
+$ .resid     &lt;dbl&gt; 100.079745, -108.948992, 68.442368, 7.024026, -5.752861, 28…
+$ .hat       &lt;dbl&gt; 0.047190526, 0.008006536, 0.020700427, 0.012560946, 0.02606…
+$ .sigma     &lt;dbl&gt; 46.63346, 46.55347, 46.94739, 47.20520, 47.20607, 47.16186
+$ .cooksd    &lt;dbl&gt; 5.870388e-02, 1.088943e-02, 1.140066e-02, 7.166478e-05, 1.0…
+$ .std.resid &lt;dbl&gt; 2.1774041, -2.3230828, 1.4688016, 0.1501160, -0.1237983, 0.…</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">case_no</th>
+<th style="text-align: right;">sales</th>
+<th style="text-align: right;">adverts</th>
+<th style="text-align: right;">airplay</th>
+<th style="text-align: right;">image</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.resid</th>
+<th style="text-align: right;">.hat</th>
+<th style="text-align: right;">.sigma</th>
+<th style="text-align: right;">.cooksd</th>
+<th style="text-align: right;">.std.resid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">330</td>
+<td style="text-align: right;">10.26</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">229.92</td>
+<td style="text-align: right;">100.08</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">46.63</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">2.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">985.68</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">228.95</td>
+<td style="text-align: right;">-108.95</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">46.55</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">-2.32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">360</td>
+<td style="text-align: right;">1445.56</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">291.56</td>
+<td style="text-align: right;">68.44</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">46.95</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">1.47</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">270</td>
+<td style="text-align: right;">1188.19</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">262.98</td>
+<td style="text-align: right;">7.02</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">47.21</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">574.51</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">225.75</td>
+<td style="text-align: right;">-5.75</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">47.21</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.12</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">568.95</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">141.10</td>
+<td style="text-align: right;">28.90</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">47.16</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.62</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Standardized residuals are in a variable called <code>.std.resid</code> and the Cook’s distances in <code>.cooksd</code></p>
+<p>to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the <code>abs()</code> function to return the absolute value (ignoring the plus/minus signs) of the residual</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb56-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.96</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb56-3">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb56-4">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 13 × 3
+   case_no .std.resid .resid
+     &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+ 1     164      -2.63 -121. 
+ 2      47      -2.46 -115. 
+ 3      55      -2.46 -114. 
+ 4      68      -2.36 -110. 
+ 5       2      -2.32 -109. 
+ 6     200      -2.09  -97.2
+ 7     167      -2.00  -93.6
+ 8     100       2.10   97.3
+ 9      52       2.10   97.4
+10      61       2.10   98.8
+11      10       2.13   99.5
+12       1       2.18  100. 
+13     169       3.09  144. </code></pre>
+</div>
+</div>
+
+
 </section>
 </section>
 

@@ -532,3 +532,85 @@ Yes, the dots line up along the diagonal, indicating a normal distribution.
 ### Pretty residual plots
 
 with `ggfortify`, we can use `ggplot2::autoplot()` to produce nicely formatted plots that are `ggplot2` objects, including themes
+
+::: {.callout-tip}
+## Using `GGfortify`
+
+for `autoplot()` function to work, the `ggfortify` package must be loaded. We can't use verbose code because `ggfortify` adds functionality to `ggplot2` rather than to itself. Need to include `library(ggfortify)` at the beginning of the document.
+:::
+
+
+```{r}
+ggplot2::autoplot(album_full_lm,
+                  which = c(1, 2, 3),
+                  colour = "#440154",
+                  smooth.colour = "#21918c",
+                  alpha = 0.5,
+                  size = 1) + 
+  theme_minimal()
+```
+
+## Influential cases and outliers: plots
+
+- use Cook's distance to identify influential cases and
+- use standardized residuals to check for outliers
+
+::: {.callout-important}
+- in an average sample, 
+  - 95% of standardized residuals should lie between $\pm1.96$ and 
+  - 99% should lie between $\pm2.58$, and
+  -  any case for which absolute value of the standardized residual is 3 or more, is likely to be an outlier
+-  Cook's distance measure the influence of a single case on model as a whole.
+   -  absolute values greater than 1 may be cause for concern
+
+:::
+
+```{r}
+ggplot2::autoplot(album_full_lm,
+                  which = c(4:6),
+                  colour = "#440154",
+                  smooth.colour = "#21918c",
+                  alpha = 0.5,
+                  size = 1) + 
+  theme_minimal()
+```
+- First plot show Cook's distance and labels cases with largest values (1, 164, 169), but largest values are in the region of 0.06, well below the threshold of 1.
+- second shows leverage values plotted against standardized residuals
+  - we want the green trend line to be flat and lie along zero, which is the case here
+  - if the trend line deviates substantially from horizontal, then it indicates one of the assumptions of the model has been violated
+  - this plot usually also has  red dashed lines indicating values of Cook's distance of 0.5 and 1. this plot has none, indicating all values of Cook's distance are well below thresholds.
+- Final plot shows leverage, Cook's distance, and the standardized residual on the same plot.
+  - can be used to identify cases that have high leverage, high Cook's distance, large residual, or some combination of all three.
+  - e.g. across the plots, case 164 has a standardized residual between -2.5 and -3 and the largest Cook's distance (although still only around 0.7)
+
+## Influential cases and outliers: numbers
+
+For a more precise look, we can see values for Cook's distance and standardized residuals using `broom::augment()`. All we need to do is pass the lm object into the function and save the results as a new tibble. also useful to save the case number as a variable so that you can identify cases should you need to.
+
+- create a new tibble called `album_full_rsd` (rsd for `residuals`) by
+  - piping model into `broom::augment()` to get residuals, then
+  - into `tibble::row_id_to_column()` to create a variable that contains the row number
+- the `var = "case_no"` tells the function to name the variable containing the numbers `case_no`
+- the result is a tibble called `album_full_rsd` that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.
+
+
+```{r}
+album_full_rsd <- album_full_lm |> 
+  broom::augment() |> 
+  tibble::rowid_to_column(var = "case_no") 
+head(album_full_rsd) |>
+  tibble::glimpse() |>
+    knitr::kable(digits = 2)
+```
+
+Standardized residuals are in a variable called `.std.resid` and the Cook's distances in `.cooksd`
+
+to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the `abs()` function to return the absolute value (ignoring the plus/minus signs) of the residual 
+
+
+```{r}
+album_full_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 1.96) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+```
