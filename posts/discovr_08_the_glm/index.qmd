@@ -10,6 +10,7 @@ image: "image.jpg"
 ```{r}
 library(tidyverse, ggplot2)
 library(ggfortify)
+library(robust)
 album_tib <- here::here("data/album_sales.csv") |> readr::read_csv()
 soc_anx_tib <- here::here("data/social_anxiety.csv") |> readr::read_csv()
 metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
@@ -614,3 +615,92 @@ album_full_rsd |>
   dplyr::select(case_no, .std.resid, .resid) |> 
   dplyr::arrange(.std.resid)
 ```
+
+```{r}
+album_full_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 2.5) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+```
+
+```{r}
+album_full_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 3.0) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+```
+
+::: {.callout-warning collapse="true"}
+## What percentage of cases have standardized residuals with absolute values greater than 1.96?
+
+13/200 = 6.5%
+
+:::
+
+::: {.callout-warning collapse="true"}
+## What percentage of cases have standardized residuals with absolute values greater than 2.5?
+
+2/200 = 1%
+
+:::
+
+::: {.callout-warning collapse="true"}
+## All things considered do you think there are outliers?
+
+No, the appropriate proportion of cases have standardized residuals in the expected range and no case has a value grossly exceeding 3.
+
+:::
+
+- Something similar with Cook's distance...we can filter the tibble to look at cases with cooksd>1, or sort the tibble in descending order using `arrange()`
+- also use `select()` so we only see Cook's value and case numbers
+
+
+```{r}
+album_full_rsd |> 
+  dplyr::arrange(desc(.cooksd)) |>
+  dplyr::select(case_no, .cooksd)
+```
+
+- no cooksd>1 so no cases having undue influence on the model as a whole
+
+## Robust linear models
+
+- model appears to be accurate for the sample and generalizable to the population
+- not always the case though
+- 2 things to do
+  - test whether the parameter estimates have been biased
+  - check whether confidence intervals and significance tests have been biased
+
+### Robust parameter estimates
+
+- use `robust::lmRob()`
+- used the same way as `lm()`
+- replace `lm()` with `lmRob()`
+- can't use any `broom` functions with `lmRob()`, so text output using `summary()`
+
+
+```{r}
+album_full_rob <- lmRob(sales ~ adverts + airplay + image, data = album_tib, na.action = na.exclude)
+summary(album_full_rob)
+```
+
+- bottom of output givessignificance tests of bias
+- significance tests need to be interpreted within the context of sample size, but these tests suggest that bias in the original model is not problematic
+  - $p$-value is not significant
+
+| Variable |Original $\hat{b}$| Robust $\hat{b}$      |
+|  --- |  ---  |  ---  |
+| Adverts |  0.085     | 0.085      |
+|  Airplay | 3.37    | 3.42      |
+| Image | 11.09      | 11.77      |
+
+- estimates are virtually identical to the originals, suggesting the original model is unbiased
+
+## Robust Confidence Intervals and significance tests
+
+- to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors for heteroscedastic residuals
+- if the sample is small, use a bootstrap
+- both can be done by placing the model in the `parameters::model_parameters()` function
+- same function to standardize parameter estimates, but three new arguments
+
+-
