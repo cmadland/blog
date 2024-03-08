@@ -2405,34 +2405,34 @@ LS-estimate     7.659  0.1049</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-27.042</td>
+<td style="text-align: right;">-26.942</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-57.484</td>
-<td style="text-align: right;">5.587</td>
-<td style="text-align: right;">0.092</td>
+<td style="text-align: right;">-56.954</td>
+<td style="text-align: right;">6.547</td>
+<td style="text-align: right;">0.116</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.072</td>
 <td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.382</td>
+<td style="text-align: right;">3.369</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.786</td>
-<td style="text-align: right;">3.996</td>
+<td style="text-align: right;">2.762</td>
+<td style="text-align: right;">3.975</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.082</td>
+<td style="text-align: right;">11.055</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.667</td>
-<td style="text-align: right;">15.149</td>
+<td style="text-align: right;">6.412</td>
+<td style="text-align: right;">15.237</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -2730,8 +2730,160 @@ $ .std.resid &lt;dbl&gt; -1.5846267, -0.1175478, -0.1529180, 1.2144842, -0.64012
 # ℹ 124 more rows</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How would you interpret the plot of ZPRED vs ZRESID?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I can’t see any problems</p>
+<p>The dots look like a random, evenly-dispersed pattern. No funnel shapes, no banana shapes, so all is fine.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Can we assume normality of the residuals?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Yes The distribution is fairly normal: the dots in the P-P plot lie close to the diagonal.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What percentage of cases have standardized residuals with absolute values greater than 1.96?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>4.55% 6 cases from 132 have standardized residuals with absolute values greater than 1.96, and <span class="math inline">\(\frac{6}{132}×100=4.55\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What percentage of cases have standardized residuals with absolute values greater than 2.5?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>1.51% 2 cases from 132 have standardized residuals with absolute values greater than 2.5, and <span class="math inline">\(\frac{2}{132}×100=1.51\)</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+All things considered do you think there are outliers?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No The appropriate proportion of cases have standardized residuals in the expected range and no case has a value exceeding 3.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Are there any Cook’s distances greater than 1?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>No The fact there are no Cook’s distances greater than 1 suggests that no cases are having undue influence on the model as a whole.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="bayesian-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-approaches">Bayesian Approaches</h2>
+<ul>
+<li>2 possible things to do
+<ul>
+<li>compare models using Bayes factors</li>
+<li>estimate model parameters using Bayesian methods</li>
+</ul></li>
+</ul>
+<section id="bayes-factors" class="level3">
+<h3 class="anchored" data-anchor-id="bayes-factors">Bayes factors</h3>
+<ul>
+<li>compare models using a Bayes factor using <code>regressionBF()</code> funtion in the <code>BayesFactor</code> package</li>
+<li>compare models against each other hierarchically to see which model has the largest Bayes factor, and to evaluate the strength of evidence that this Bayes factor suggests that a particular model predicts the outcome better than the intercept alone (i.e.&nbsp;a model with no predictors).</li>
+</ul>
+<p><code>model_bf &lt;- BayesFactor::regressionBF(formula, rscaleCont = "medium", data = tibble)</code></p>
+<ul>
+<li>creates an object called <code>model_bf</code> based onthe same type of formula we put in the <code>lm()</code> function to specify the model</li>
+<li>the argument <code>rscaleCont</code> sets the scale of the prior distribution for the distribution for the standardized <span class="math inline">\(\hat{b}s\)</span> in the model.</li>
+<li>arguemnt can be set as a numeric value or one of three pre-defined values</li>
+<li>default value is <code>medium</code>, corresponding to a value of about <span class="math inline">\(\frac{\sqrt{2}}{4}\)</span>, or about 0.354</li>
+<li>example uses the default to illustrate, but consider what value is appropriate for a given model</li>
+</ul>
+<p>Fitting the model with Bayes factors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>album_bf <span class="ot">&lt;-</span> BayesFactor<span class="sc">::</span><span class="fu">regressionBF</span>(sales <span class="sc">~</span> adverts <span class="sc">+</span> airplay <span class="sc">+</span> image, <span class="at">rscaleCont =</span> <span class="st">"medium"</span>, <span class="at">data =</span> album_tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: data coerced from tibble to data frame</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>album_bf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bayes factor analysis
+--------------
+[1] adverts                   : 1.320123e+16 ±0%
+[2] airplay                   : 4.723817e+17 ±0.01%
+[3] image                     : 6039.289     ±0%
+[4] adverts + airplay         : 5.65038e+39  ±0%
+[5] adverts + image           : 2.65494e+20  ±0%
+[6] airplay + image           : 1.034464e+20 ±0%
+[7] adverts + airplay + image : 7.746101e+42 ±0%
+
+Against denominator:
+  Intercept only 
+---
+Bayes factor type: BFlinearModel, JZS</code></pre>
+</div>
+</div>
+<ul>
+<li>Output shows Bayes factors for all potential models we can get from our predictor variables (7 in total)</li>
+<li>each model is compared to a model that contains only the intercept</li>
+<li>all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone</li>
+<li>best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of <span class="math inline">\(7.75×10^{42}\)</span></li>
+</ul>
 
 
+</section>
 </section>
 </section>
 

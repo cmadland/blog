@@ -823,3 +823,91 @@ soc_anx_obq_rsd |>
   dplyr::arrange(desc(.cooksd)) |>
   dplyr::select(case_no, .cooksd)
 ```
+
+::: {.callout-warning collapse="true"}
+## How would you interpret the plot of ZPRED vs ZRESID?
+
+
+I can’t see any problems
+
+
+The dots look like a random, evenly-dispersed pattern. No funnel shapes, no banana shapes, so all is fine.
+:::
+
+::: {.callout-warning collapse="true"}
+## Can we assume normality of the residuals?
+
+
+Yes
+The distribution is fairly normal: the dots in the P-P plot lie close to the diagonal.
+
+
+:::
+
+::: {.callout-warning collapse="true"}
+## What percentage of cases have standardized residuals with absolute values greater than 1.96?
+
+
+4.55%
+6 cases from 132 have standardized residuals with absolute values greater than 1.96, and  $\frac{6}{132}×100=4.55$
+
+:::
+
+::: {.callout-warning collapse="true"}
+## What percentage of cases have standardized residuals with absolute values greater than 2.5?
+
+
+1.51%
+2 cases from 132 have standardized residuals with absolute values greater than 2.5, and  $\frac{2}{132}×100=1.51$
+
+:::
+
+::: {.callout-warning collapse="true"}
+## All things considered do you think there are outliers?
+
+
+No
+The appropriate proportion of cases have standardized residuals in the expected range and no case has a value exceeding 3.
+
+:::
+
+::: {.callout-warning collapse="true"}
+## Are there any Cook’s distances greater than 1?
+
+
+No
+The fact there are no Cook’s distances greater than 1 suggests that no cases are having undue influence on the model as a whole.
+
+:::
+
+## Bayesian Approaches
+
+- 2 possible things to do
+  - compare models using Bayes factors
+  - estimate model parameters using Bayesian methods
+
+### Bayes factors
+
+- compare models using a Bayes factor using `regressionBF()` funtion in the `BayesFactor` package
+- compare models against each other hierarchically to see which model has the largest Bayes factor, and to evaluate the strength of evidence that this Bayes factor suggests that a particular model predicts the outcome better than the intercept alone (i.e. a model with no predictors).
+
+`model_bf <- BayesFactor::regressionBF(formula, rscaleCont = "medium", data = tibble)`
+
+- creates an object called `model_bf` based onthe same type of formula we put in the `lm()` function to specify the model
+- the argument `rscaleCont` sets the scale of the prior distribution for the distribution for the standardized $\hat{b}s$ in the model.
+- arguemnt can be set as a numeric value or one of three pre-defined values
+- default value is `medium`, corresponding to a value of about $\frac{\sqrt{2}}{4}$, or about 0.354
+- example uses the default to illustrate, but consider what value is appropriate for a given model
+
+Fitting the model with Bayes factors
+
+```{r}
+album_bf <- BayesFactor::regressionBF(sales ~ adverts + airplay + image, rscaleCont = "medium", data = album_tib)
+album_bf
+``` 
+
+- Output shows Bayes factors for all potential models we can get from our predictor variables (7 in total)
+- each model is compared to a model that contains only the intercept
+- all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone
+- best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of $7.75×10^{42}$
+
