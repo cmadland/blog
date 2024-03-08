@@ -143,7 +143,9 @@ Now we can make a prediction by entering a value for the advertising budget, say
 
 $$\text{Sales}_i=134.14+.096*{100}_i$$
 
-$$\text{Sales}_i=143.74$$ or 143,740 sales
+$$\text{Sales}_i=143.74$$ 
+
+or 143,740 sales
 
 ## Several Predictors
 
@@ -545,7 +547,7 @@ for `autoplot()` function to work, the `ggfortify` package must be loaded. We ca
 ggplot2::autoplot(album_full_lm,
                   which = c(1, 2, 3),
                   colour = "#440154",
-                  smooth.colour = "#21918c",
+                  smooth.colour = "#5ec962",
                   alpha = 0.5,
                   size = 1) + 
   theme_minimal()
@@ -570,7 +572,7 @@ ggplot2::autoplot(album_full_lm,
 ggplot2::autoplot(album_full_lm,
                   which = c(4:6),
                   colour = "#440154",
-                  smooth.colour = "#21918c",
+                  smooth.colour = "#5ec962",
                   alpha = 0.5,
                   size = 1) + 
   theme_minimal()
@@ -594,6 +596,16 @@ For a more precise look, we can see values for Cook's distance and standardized 
 - the `var = "case_no"` tells the function to name the variable containing the numbers `case_no`
 - the result is a tibble called `album_full_rsd` that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.
 
+::: {.callout-important}
+## De-bug: residuals when you have missing values
+
+If you have missing values in the data and used `na.action = na.exclude` when fitting the model, you must also tell `augment()` where to find the original data so it can map the residuals to the original cases.
+
+In this case:
+`album_full_rsd <- album_full_lm |> 
+  broom::augment(data = album_tib)`
+
+:::
 
 ```{r}
 album_full_rsd <- album_full_lm |> 
@@ -698,9 +710,116 @@ summary(album_full_rob)
 
 ## Robust Confidence Intervals and significance tests
 
-- to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors for heteroscedastic residuals
+- to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors designed for heteroscedastic residuals
 - if the sample is small, use a bootstrap
 - both can be done by placing the model in the `parameters::model_parameters()` function
 - same function to standardize parameter estimates, but three new arguments
 
--
+- we can obtain models based on robust standard errors by setting `vcov = "method"` and replacing `method` with the name of the method we want to use to compute robust standard errors.
+- `vcov = "HC3"` willuse HC3  method, though some think `HC4` is better
+
+
+```{r}
+parameters::model_parameters(album_full_lm, vcov = "HC4") |> 
+  knitr::kable(digits = 3)
+```
+
+```{r}
+parameters::model_parameters(album_full_lm, vcov = "HC3") |> 
+  knitr::kable(digits = 3)
+```
+
+- Values are not much different from the non-robust versions, mainly becasue the original model didn't violate its assumptions
+- if a robust model yields the same-ish values as a non-robust model, we know the non-robust model has not been unduly biased.
+- if the robust estimates are hugely different, then use and report the robust versions
+- fitting a robust model is a win-win
+
+### Small samples
+
+- we might prefer to bootstrap confidence intervals by setting the bootstrap argument in `model_parameters()` to `TRUE`
+- by default, 1000 bootstrap samples are used
+
+
+```{r}
+parameters::model_parameters(album_full_lm, bootstrap = TRUE) |> 
+  knitr::kable(digits = 3)
+```
+
+- these bootstrapped confidence intervals don't rely on assumptions of normality or homoscedasticity, so they give an accurate estimate of the population value of $b$ for each predictor (assuming our sample is one of the 95% with confidence intervals that contain the population value)
+
+::: {.callout-tip}
+## Bootstrapping
+
+Because bootstrapping relies on random sampling from the data, you will get a slightly different estimate each time you bootstrap a model. This is normal.
+:::
+
+::: {.callout-warning collapse="true"}
+## Bootstrapping is a technique from which the sampling distribution of a statistic is estimated by …
+
+Taking repeated samples (with replacement) from the data set.
+
+:::
+
+::: {.callout-warning collapse="true"}
+## The bootstrap confidence interval for image ranges from 6.63 to 15.45 (the values might not exactly match these). What does this tell us?
+
+
+If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 6.63 and 15.45.
+
+:::
+
+## Unguided example
+
+```{r}
+plot(soc_anx_obq_lm, which = c(1, 3))
+```
+
+```{r}
+plot(soc_anx_obq_lm, which = c(4:6))
+```
+
+
+```{r}
+soc_anx_obq_rsd <- soc_anx_obq_lm |> 
+  broom::augment(data = soc_anx_tib) |>
+    tibble::rowid_to_column(var = "case_no") 
+```
+
+
+```{r}
+head(soc_anx_obq_rsd) |>
+  tibble::glimpse() |>
+    knitr::kable(digits = 2)
+```
+
+
+```{r}
+soc_anx_obq_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 1.96) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+
+```
+
+```{r}
+soc_anx_obq_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 2.5) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+
+```
+
+```{r}
+soc_anx_obq_rsd |> 
+  dplyr::filter(abs(.std.resid) >= 3.0) |>
+  dplyr::select(case_no, .std.resid, .resid) |> 
+  dplyr::arrange(.std.resid)
+
+```
+
+
+```{r}
+soc_anx_obq_rsd |> 
+  dplyr::arrange(desc(.cooksd)) |>
+  dplyr::select(case_no, .cooksd)
+```

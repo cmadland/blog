@@ -525,7 +525,8 @@ F-statistic: 99.59 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><span class="math display">\[\text{Sales}_i=134.14+.096*{Advertising}_i\]</span></p>
 <p>Now we can make a prediction by entering a value for the advertising budget, say 100 (equal to 100,000 gbp)</p>
 <p><span class="math display">\[\text{Sales}_i=134.14+.096*{100}_i\]</span></p>
-<p><span class="math display">\[\text{Sales}_i=143.74\]</span> or 143,740 sales</p>
+<p><span class="math display">\[\text{Sales}_i=143.74\]</span></p>
+<p>or 143,740 sales</p>
 </section>
 </section>
 <section id="several-predictors" class="level2">
@@ -1756,7 +1757,7 @@ Using <code>GGfortify</code>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">autoplot</span>(album_full_lm,</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">which =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">"#440154"</span>,</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth.colour =</span> <span class="st">"#21918c"</span>,</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth.colour =</span> <span class="st">"#5ec962"</span>,</span>
 <span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
 <span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1804,7 +1805,7 @@ Important
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">autoplot</span>(album_full_lm,</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">which =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>),</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">"#440154"</span>,</span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth.colour =</span> <span class="st">"#21918c"</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">smooth.colour =</span> <span class="st">"#5ec962"</span>,</span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
 <span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
 <span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1843,6 +1844,20 @@ Important
 <li>the <code>var = "case_no"</code> tells the function to name the variable containing the numbers <code>case_no</code></li>
 <li>the result is a tibble called <code>album_full_rsd</code> that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.</li>
 </ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+De-bug: residuals when you have missing values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have missing values in the data and used <code>na.action = na.exclude</code> when fitting the model, you must also tell <code>augment()</code> where to find the original data so it can map the residuals to the original cases.</p>
+<p>In this case: <code>album_full_rsd &lt;- album_full_lm |&gt;    broom::augment(data = album_tib)</code></p>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>album_full_rsd <span class="ot">&lt;-</span> album_full_lm <span class="sc">|&gt;</span> </span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">|&gt;</span> </span>
@@ -2030,7 +2045,7 @@ $ .std.resid &lt;dbl&gt; 2.1774041, -2.3230828, 1.4688016, 0.1501160, -0.1237983
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2039,25 +2054,9 @@ What percentage of cases have standardized residuals with absolute values greate
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>13/200 = 6.5%</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What percentage of cases have standardized residuals with absolute values greater than 2.5?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
 <div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>2/200 = 1%</p>
+<p>13/200 = 6.5%</p>
 </div>
 </div>
 </div>
@@ -2067,11 +2066,27 @@ What percentage of cases have standardized residuals with absolute values greate
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-All things considered do you think there are outliers?
+What percentage of cases have standardized residuals with absolute values greater than 2.5?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>2/200 = 1%</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+All things considered do you think there are outliers?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>No, the appropriate proportion of cases have standardized residuals in the expected range and no case has a value grossly exceeding 3.</p>
 </div>
@@ -2197,12 +2212,524 @@ LS-estimate     7.659  0.1049</code></pre>
 <section id="robust-confidence-intervals-and-significance-tests" class="level2">
 <h2 class="anchored" data-anchor-id="robust-confidence-intervals-and-significance-tests">Robust Confidence Intervals and significance tests</h2>
 <ul>
-<li><p>to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors for heteroscedastic residuals</p></li>
+<li><p>to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors designed for heteroscedastic residuals</p></li>
 <li><p>if the sample is small, use a bootstrap</p></li>
 <li><p>both can be done by placing the model in the <code>parameters::model_parameters()</code> function</p></li>
 <li><p>same function to standardize parameter estimates, but three new arguments</p></li>
-<li></li>
+<li><p>we can obtain models based on robust standard errors by setting <code>vcov = "method"</code> and replacing <code>method</code> with the name of the method we want to use to compute robust standard errors.</p></li>
+<li><p><code>vcov = "HC3"</code> willuse HC3 method, though some think <code>HC4</code> is better</p></li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(album_full_lm, <span class="at">vcov =</span> <span class="st">"HC4"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-26.613</td>
+<td style="text-align: right;">16.242</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-58.645</td>
+<td style="text-align: right;">5.419</td>
+<td style="text-align: right;">-1.638</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">12.306</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">3.367</td>
+<td style="text-align: right;">0.314</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">2.749</td>
+<td style="text-align: right;">3.986</td>
+<td style="text-align: right;">10.738</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">11.086</td>
+<td style="text-align: right;">2.260</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">6.630</td>
+<td style="text-align: right;">15.543</td>
+<td style="text-align: right;">4.906</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(album_full_lm, <span class="at">vcov =</span> <span class="st">"HC3"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-26.613</td>
+<td style="text-align: right;">16.170</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-58.503</td>
+<td style="text-align: right;">5.277</td>
+<td style="text-align: right;">-1.646</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.101</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">12.246</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">3.367</td>
+<td style="text-align: right;">0.315</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">2.746</td>
+<td style="text-align: right;">3.989</td>
+<td style="text-align: right;">10.687</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">11.086</td>
+<td style="text-align: right;">2.247</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">6.654</td>
+<td style="text-align: right;">15.519</td>
+<td style="text-align: right;">4.933</td>
+<td style="text-align: right;">196</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>Values are not much different from the non-robust versions, mainly becasue the original model didn’t violate its assumptions</li>
+<li>if a robust model yields the same-ish values as a non-robust model, we know the non-robust model has not been unduly biased.</li>
+<li>if the robust estimates are hugely different, then use and report the robust versions</li>
+<li>fitting a robust model is a win-win</li>
+</ul>
+<section id="small-samples" class="level3">
+<h3 class="anchored" data-anchor-id="small-samples">Small samples</h3>
+<ul>
+<li>we might prefer to bootstrap confidence intervals by setting the bootstrap argument in <code>model_parameters()</code> to <code>TRUE</code></li>
+<li>by default, 1000 bootstrap samples are used</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(album_full_lm, <span class="at">bootstrap =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">Coefficient</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">-27.042</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-57.484</td>
+<td style="text-align: right;">5.587</td>
+<td style="text-align: right;">0.092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adverts</td>
+<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">airplay</td>
+<td style="text-align: right;">3.382</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">2.786</td>
+<td style="text-align: right;">3.996</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">image</td>
+<td style="text-align: right;">11.082</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">6.667</td>
+<td style="text-align: right;">15.149</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>these bootstrapped confidence intervals don’t rely on assumptions of normality or homoscedasticity, so they give an accurate estimate of the population value of <span class="math inline">\(b\)</span> for each predictor (assuming our sample is one of the 95% with confidence intervals that contain the population value)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bootstrapping
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because bootstrapping relies on random sampling from the data, you will get a slightly different estimate each time you bootstrap a model. This is normal.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bootstrapping is a technique from which the sampling distribution of a statistic is estimated by …
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Taking repeated samples (with replacement) from the data set.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The bootstrap confidence interval for image ranges from 6.63 to 15.45 (the values might not exactly match these). What does this tell us?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 6.63 and 15.45.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="unguided-example-1" class="level2">
+<h2 class="anchored" data-anchor-id="unguided-example-1">Unguided example</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soc_anx_obq_lm, <span class="at">which =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-37-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(soc_anx_obq_lm, <span class="at">which =</span> <span class="fu">c</span>(<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-38-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-38-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>soc_anx_obq_rsd <span class="ot">&lt;-</span> soc_anx_obq_lm <span class="sc">|&gt;</span> </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>(<span class="at">data =</span> soc_anx_tib) <span class="sc">|&gt;</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    tibble<span class="sc">::</span><span class="fu">rowid_to_column</span>(<span class="at">var =</span> <span class="st">"case_no"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(soc_anx_obq_rsd) <span class="sc">|&gt;</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">glimpse</span>() <span class="sc">|&gt;</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 6
+Columns: 11
+$ case_no    &lt;int&gt; 1, 2, 3, 4, 5, 6
+$ spai       &lt;dbl&gt; 26, 51, 33, 106, 25, 109
+$ iii        &lt;dbl&gt; 56.45161, 16.12903, 37.41935, 16.67742, 5.16129, 36.03226
+$ obq        &lt;dbl&gt; 4.425287, 2.034483, 2.586207, 4.839080, 1.758621, 2.126437
+$ tosca      &lt;dbl&gt; 4.181818, 4.204545, 3.250000, 4.068182, 3.795455, 4.250000
+$ .fitted    &lt;dbl&gt; 71.21490, 54.38582, 37.29426, 71.70370, 43.34703, 56.05675
+$ .resid     &lt;dbl&gt; -45.214901, -3.385823, -4.294257, 34.296304, -18.347028, 52…
+$ .hat       &lt;dbl&gt; 0.03290194, 0.01449059, 0.06325813, 0.05273344, 0.02419968,…
+$ .sigma     &lt;dbl&gt; 28.84302, 29.12634, 29.12526, 28.96090, 29.08160, 28.74430
+$ .cooksd    &lt;dbl&gt; 2.847631e-02, 6.772251e-05, 5.263717e-04, 2.737010e-02, 3.3…
+$ .std.resid &lt;dbl&gt; -1.5846267, -0.1175478, -0.1529180, 1.2144842, -0.6401266, …</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">case_no</th>
+<th style="text-align: right;">spai</th>
+<th style="text-align: right;">iii</th>
+<th style="text-align: right;">obq</th>
+<th style="text-align: right;">tosca</th>
+<th style="text-align: right;">.fitted</th>
+<th style="text-align: right;">.resid</th>
+<th style="text-align: right;">.hat</th>
+<th style="text-align: right;">.sigma</th>
+<th style="text-align: right;">.cooksd</th>
+<th style="text-align: right;">.std.resid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">56.45</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">4.18</td>
+<td style="text-align: right;">71.21</td>
+<td style="text-align: right;">-45.21</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">28.84</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-1.58</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">16.13</td>
+<td style="text-align: right;">2.03</td>
+<td style="text-align: right;">4.20</td>
+<td style="text-align: right;">54.39</td>
+<td style="text-align: right;">-3.39</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">29.13</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">37.42</td>
+<td style="text-align: right;">2.59</td>
+<td style="text-align: right;">3.25</td>
+<td style="text-align: right;">37.29</td>
+<td style="text-align: right;">-4.29</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">29.13</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.15</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">16.68</td>
+<td style="text-align: right;">4.84</td>
+<td style="text-align: right;">4.07</td>
+<td style="text-align: right;">71.70</td>
+<td style="text-align: right;">34.30</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">28.96</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">1.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">5.16</td>
+<td style="text-align: right;">1.76</td>
+<td style="text-align: right;">3.80</td>
+<td style="text-align: right;">43.35</td>
+<td style="text-align: right;">-18.35</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">29.08</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.64</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">36.03</td>
+<td style="text-align: right;">2.13</td>
+<td style="text-align: right;">4.25</td>
+<td style="text-align: right;">56.06</td>
+<td style="text-align: right;">52.94</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">28.74</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">1.84</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>soc_anx_obq_rsd <span class="sc">|&gt;</span> </span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">abs</span>(.std.resid) <span class="sc">&gt;=</span> <span class="fl">1.96</span>) <span class="sc">|&gt;</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(case_no, .std.resid, .resid) <span class="sc">|&gt;</span> </span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(.std.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  case_no .std.resid .resid
+    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1      49      -2.26  -65.1
+2      16      -2.13  -61.1
+3     127      -1.98  -56.7
+4     120       2.18   62.9
+5       8       2.61   74.6
+6      45       2.64   75.7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>soc_anx_obq_rsd <span class="sc">|&gt;</span> </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">abs</span>(.std.resid) <span class="sc">&gt;=</span> <span class="fl">2.5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(case_no, .std.resid, .resid) <span class="sc">|&gt;</span> </span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(.std.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  case_no .std.resid .resid
+    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1       8       2.61   74.6
+2      45       2.64   75.7</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>soc_anx_obq_rsd <span class="sc">|&gt;</span> </span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">abs</span>(.std.resid) <span class="sc">&gt;=</span> <span class="fl">3.0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(case_no, .std.resid, .resid) <span class="sc">|&gt;</span> </span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(.std.resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: case_no &lt;int&gt;, .std.resid &lt;dbl&gt;, .resid &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>soc_anx_obq_rsd <span class="sc">|&gt;</span> </span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(.cooksd)) <span class="sc">|&gt;</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(case_no, .cooksd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 134 × 2
+   case_no .cooksd
+     &lt;int&gt;   &lt;dbl&gt;
+ 1       8  0.0724
+ 2      45  0.0497
+ 3      14  0.0397
+ 4      40  0.0373
+ 5      16  0.0330
+ 6      87  0.0304
+ 7     127  0.0289
+ 8       1  0.0285
+ 9       4  0.0274
+10      12  0.0268
+# ℹ 124 more rows</code></pre>
+</div>
+</div>
 
 
 </section>
