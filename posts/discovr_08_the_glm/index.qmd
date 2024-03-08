@@ -616,6 +616,7 @@ head(album_full_rsd) |>
     knitr::kable(digits = 2)
 ```
 
+
 Standardized residuals are in a variable called `.std.resid` and the Cook's distances in `.cooksd`
 
 to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the `abs()` function to return the absolute value (ignoring the plus/minus signs) of the residual 
@@ -785,7 +786,6 @@ soc_anx_obq_rsd <- soc_anx_obq_lm |>
     tibble::rowid_to_column(var = "case_no") 
 ```
 
-
 ```{r}
 head(soc_anx_obq_rsd) |>
   tibble::glimpse() |>
@@ -911,3 +911,53 @@ album_bf
 - all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone
 - best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of $7.75×10^{42}$
 
+## Bayesian parameter estimates
+
+- knowing model is best ( we know this from the nonBayesian model) we can estimate the parameters using the `lmBF()` function
+- same format as `regressionBF()`
+- `lmBF()` fits only the model we specify
+
+
+```{r}
+album_full_bf <- BayesFactor::lmBF(sales ~ adverts + airplay + image, rscaleCont = "medium", data = album_tib)
+album_full_bf
+```
+
+- same result in the previous output
+- but we can extract $\hat{b}$-values derived from Bayesian estimaten and their credible intervals using the `posterior()` function
+  - enter the name of the model we just created `album_full_bf` into 'posterior()` function in which we also set the number of iterations to 10000
+  - samples taken from the posterios distribution of the `album_full_bf` model and stored in an object called `album_full_post`
+  - place posterios samples into `summary()`
+
+
+```{r}
+album_full_post <- BayesFactor::posterior(album_full_bf, iterations = 10000)
+summary(album_full_post) 
+```
+
+- Bayesian estimate of $\hat{b}$ can be found in the column labeled `Mean`
+  - 0.084 for adverts
+  - 3.34 for airplay
+  - 10.96 for image 
+
+| Predictor |   Bayesian estimate of $\hat{b}$    |   non-Bayesian estimate of $\hat{b}$    |
+|  --- |  ---  |  ---  |
+| adverts |0.084      | 0.085      |
+| airplay     | 3.34 | 3.37      |
+| image |10.96     | 11.09      |
+
+- most useful are the `credible intervals` for these parameters
+  - if we want the 95% credible interval, then we read the values from columns labelled 2.5% and 97.5% in the table of quantiles
+
+::: {.callout-important}
+Unlike confidence intervals, credible intervals contain the population value with a probability of 0.95 (95%)
+:::
+
+- there is a 95% probability that the population value of $\hat{b}$ lies between
+| Predictor |   2.5%    |   97.5%    |
+|  --- |  ---  |  ---  |
+| adverts | 0.07      | 0.097      |
+| airplay     | 2.78 | 3.87      |
+| image |6.26     | 15.86    |
+
+- these intervals are constructed assuming that an effect exists, so you cannot use them to test the hypothesis that the null is exactly 0, only to establish plausible population values of the $b$s in the model.

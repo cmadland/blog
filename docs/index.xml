@@ -27,11 +27,11 @@ background-color: null;
 font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.5.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -2910,34 +2910,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.942</td>
+<td style="text-align: right;">-25.594</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.954</td>
-<td style="text-align: right;">6.547</td>
-<td style="text-align: right;">0.116</td>
+<td style="text-align: right;">-54.650</td>
+<td style="text-align: right;">9.703</td>
+<td style="text-align: right;">0.144</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.071</td>
 <td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.369</td>
+<td style="text-align: right;">3.355</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.762</td>
-<td style="text-align: right;">3.975</td>
+<td style="text-align: right;">2.785</td>
+<td style="text-align: right;">3.993</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.055</td>
+<td style="text-align: right;">10.895</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.412</td>
-<td style="text-align: right;">15.237</td>
+<td style="text-align: right;">6.022</td>
+<td style="text-align: right;">15.192</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -3550,9 +3550,167 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <li>all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone</li>
 <li>best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of <img src="https://latex.codecogs.com/png.latex?7.75%C3%9710%5E%7B42%7D"></li>
 </ul>
-
-
 </section>
+</section>
+<section id="bayesian-parameter-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-parameter-estimates">Bayesian parameter estimates</h2>
+<ul>
+<li>knowing model is best ( we know this from the nonBayesian model) we can estimate the parameters using the <code>lmBF()</code> function</li>
+<li>same format as <code>regressionBF()</code></li>
+<li><code>lmBF()</code> fits only the model we specify</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1">album_full_bf <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BayesFactor<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lmBF</span>(sales <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> adverts <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> airplay <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> image, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">rscaleCont =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"medium"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> album_tib)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: data coerced from tibble to data frame</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1">album_full_bf</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bayes factor analysis
+--------------
+[1] adverts + airplay + image : 7.746101e+42 ±0%
+
+Against denominator:
+  Intercept only 
+---
+Bayes factor type: BFlinearModel, JZS</code></pre>
+</div>
+</div>
+<ul>
+<li>same result in the previous output</li>
+<li>but we can extract <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D">-values derived from Bayesian estimaten and their credible intervals using the <code>posterior()</code> function
+<ul>
+<li>enter the name of the model we just created <code>album_full_bf</code> into ’posterior()` function in which we also set the number of iterations to 10000</li>
+<li>samples taken from the posterios distribution of the <code>album_full_bf</code> model and stored in an object called <code>album_full_post</code></li>
+<li>place posterios samples into <code>summary()</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1">album_full_post <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> BayesFactor<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">posterior</span>(album_full_bf, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">iterations =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000</span>)</span>
+<span id="cb92-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summary</span>(album_full_post) </span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Iterations = 1:10000
+Thinning interval = 1 
+Number of chains = 1 
+Sample size per chain = 10000 
+
+1. Empirical mean and standard deviation for each variable,
+   plus standard error of the mean:
+
+             Mean        SD  Naive SE Time-series SE
+mu      1.932e+02 3.336e+00 3.336e-02      3.199e-02
+adverts 8.409e-02 6.897e-03 6.897e-05      6.847e-05
+airplay 3.333e+00 2.808e-01 2.808e-03      2.808e-03
+image   1.099e+01 2.462e+00 2.462e-02      2.462e-02
+sig2    2.249e+03 2.326e+02 2.326e+00      2.428e+00
+g       9.823e-01 1.838e+00 1.838e-02      1.838e-02
+
+2. Quantiles for each variable:
+
+             2.5%       25%       50%       75%     97.5%
+mu      1.866e+02 1.911e+02 1.932e+02 1.955e+02 1.997e+02
+adverts 7.051e-02 7.944e-02 8.408e-02 8.864e-02 9.781e-02
+airplay 2.786e+00 3.143e+00 3.335e+00 3.522e+00 3.877e+00
+image   6.093e+00 9.354e+00 1.102e+01 1.262e+01 1.579e+01
+sig2    1.835e+03 2.089e+03 2.232e+03 2.392e+03 2.754e+03
+g       1.817e-01 3.680e-01 5.967e-01 1.022e+00 3.994e+00</code></pre>
+</div>
+</div>
+<ul>
+<li>Bayesian estimate of <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> can be found in the column labeled <code>Mean</code>
+<ul>
+<li>0.084 for adverts</li>
+<li>3.34 for airplay</li>
+<li>10.96 for image</li>
+</ul></li>
+</ul>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Predictor</th>
+<th>Bayesian estimate of <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"></th>
+<th>non-Bayesian estimate of <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>adverts</td>
+<td>0.084</td>
+<td>0.085</td>
+</tr>
+<tr class="even">
+<td>airplay</td>
+<td>3.34</td>
+<td>3.37</td>
+</tr>
+<tr class="odd">
+<td>image</td>
+<td>10.96</td>
+<td>11.09</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>most useful are the <code>credible intervals</code> for these parameters
+<ul>
+<li>if we want the 95% credible interval, then we read the values from columns labelled 2.5% and 97.5% in the table of quantiles</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike confidence intervals, credible intervals contain the population value with a probability of 0.95 (95%)</p>
+</div>
+</div>
+<ul>
+<li><p>there is a 95% probability that the population value of <img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D"> lies between | Predictor | 2.5% | 97.5% | | — | — | — | | adverts | 0.07 | 0.097 | | airplay | 2.78 | 3.87 | | image |6.26 | 15.86 |</p></li>
+<li><p>these intervals are constructed assuming that an effect exists, so you cannot use them to test the hypothesis that the null is exactly 0, only to establish plausible population values of the <img src="https://latex.codecogs.com/png.latex?b">s in the model.</p></li>
+</ul>
+
+
 </section>
 </section>
 
