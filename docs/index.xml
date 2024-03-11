@@ -10,7 +10,861 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colins Stats Blog</description>
 <generator>quarto-1.4.545</generator>
-<lastBuildDate>Mon, 26 Feb 2024 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 10 Mar 2024 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>discover_07 - Associations</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/discovr_07_associations/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">liar_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/biggest_liar.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 68 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (2): id, novice
+dbl (2): creativity, position
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">exam_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/exam_anxiety.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 103 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): sex
+dbl (4): id, revise, exam_grade, anxiety
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">liar_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> liar_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb7-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb7-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">novice =</span> forcats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(novice)</span>
+<span id="cb7-4">  )</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">exam_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> exam_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb8-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> forcats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(id),</span>
+<span id="cb8-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sex =</span> forcats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(sex)</span>
+<span id="cb8-5">  )</span></code></pre></div>
+</div>
+<ul>
+<li>psychologist uses a questionnaire to assess state anxiety related to exams (EAQ)</li>
+<li>scale produced a measure of anxiety scored out of 100</li>
+<li>anxiety was measured before the exam, and the percentage grade on the exam was recorded</li>
+<li>also measured the number of hours spent revising Data are in</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">exam_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 103 × 5
+   id    revise exam_grade anxiety sex   
+   &lt;fct&gt;  &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt; 
+ 1 1          4         40    86.3 Male  
+ 2 2         11         65    88.7 Female
+ 3 3         27         80    70.2 Male  
+ 4 4         53         80    61.3 Male  
+ 5 5          4         40    89.5 Male  
+ 6 6         22         70    60.5 Female
+ 7 7         16         20    81.5 Female
+ 8 8         21         55    75.8 Female
+ 9 9         25         50    69.4 Female
+10 10        18         40    82.3 Female
+# ℹ 93 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>visualise with <code>GGally</code></li>
+<li>plot continuous variables, the <code>ggscatmat()</code> function produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal)</li>
+<li>general form of <code>ggscatmat()</code>
+<ul>
+<li><code>GGally::ggscatmat(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …))</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">GGally<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggscatmat</span>(exam_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">columns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"exam_grade"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"revise"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"anxiety"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'GGally':
+  method from   
+  +.gg   ggplot2</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_07_associations/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>resulting plots are all skewed</li>
+<li>could be a problem if we want significance tests or confidence intervals</li>
+<li>sample contains 103 obs
+<ul>
+<li>could be large enough for central limit theorem to relieve us of concerns about normality</li>
+<li>consider doing a robust method to compute correlation coefficient</li>
+</ul></li>
+</ul>
+<section id="pearsons-correlation-using-r" class="level2">
+<h2 class="anchored" data-anchor-id="pearsons-correlation-using-r">Pearson’s correlation using <code>R</code></h2>
+<ul>
+<li><code>correlation</code> package -&gt; workhorse function called <code>correlation()</code></li>
+</ul>
+<pre><code>correlation::correlation(tibble,
+                         method = "pearson",
+                         p_adjust = "holm",
+                         ci = 0.95
+                         )</code></pre>
+<dl>
+<dt><code>tibble</code></dt>
+<dd>
+should be replaced with the name of tibble containing any variables to correlate
+</dd>
+<dt><code>method</code></dt>
+<dd>
+method of correlation coefficient, default is <code>pearson</code>, but can also accept <code>spearman, kendall, biserial, polychoric, tetrachoric, and percentage</code>
+</dd>
+<dt><code>p_adjust</code></dt>
+<dd>
+corrects the <img src="https://latex.codecogs.com/png.latex?p">-value for the number of tests you have performed using the Holm-Bonferroni method
+</dd>
+<dd>
+applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error
+</dd>
+<dd>
+can change to <code>none</code> (bad idea), <code>bonferroni</code> (to apply the standard Bonferroni method) or several other methods.
+</dd>
+<dt><code>ci</code></dt>
+<dd>
+set the confidence interval width; default is 0.95 for general use
+</dd>
+</dl>
+<p>To use the function, - pipe tibble into the <code>select()</code> function from <code>dplyr</code> to select variables to correlate, then pipe that into the correlation function - use the same syntax whether you want to correlate two variables or produce all correlations between pairs of multiple variables]</p>
+<p>To calculate Pearson correlation btwn variables <code>exam_grade</code> and <code>revise</code> in <code>exam_tib</code>…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">exam_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(exam_grade, revise) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-3">  correlation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb14-4">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 21%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">revise</td>
+<td style="text-align: right;">0.397</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">4.343</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">exam_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(exam_grade, anxiety) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-3">  correlation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-4">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 21%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">anxiety</td>
+<td style="text-align: right;">-0.441</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.585</td>
+<td style="text-align: right;">-0.271</td>
+<td style="text-align: right;">-4.938</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">exam_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb16-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(exam_grade, revise, anxiety) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb16-3">  correlation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb16-4">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 21%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">revise</td>
+<td style="text-align: right;">0.397</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.220</td>
+<td style="text-align: right;">0.548</td>
+<td style="text-align: right;">4.343</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">anxiety</td>
+<td style="text-align: right;">-0.441</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.585</td>
+<td style="text-align: right;">-0.271</td>
+<td style="text-align: right;">-4.938</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">revise</td>
+<td style="text-align: left;">anxiety</td>
+<td style="text-align: right;">-0.709</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.794</td>
+<td style="text-align: right;">-0.598</td>
+<td style="text-align: right;">-10.111</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Pearson correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The confidence interval for the association between exam grade and revision is 0.22 to 0.55. What does this tell us?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If this confidence interval is one of the 95% that contains the population value then the population value of r lies between 0.22 and 0.55.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The p-value for the association between exam grade and revision is &lt; 0.001, what does this value mean?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The probability of getting a value of t at least as big as the value we have observed, if the value of r were, in fact, zero is less than 0.001. I’m going to assume, therefore, that the association between exam grade and revision is not zero.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>exam grade correlates with revision - <img src="https://latex.codecogs.com/png.latex?r">=0.4</li>
+<li>exam grade had a similar strength relationship with exam anxiety <img src="https://latex.codecogs.com/png.latex?r">=-0.44 but in the opposite direction</li>
+<li>revision had a strong negative relationship with anxiety - <img src="https://latex.codecogs.com/png.latex?r">=-0.709</li>
+<li>the more you revise, the better your performance</li>
+<li>the more anxiety you have, the worse your performance</li>
+<li>the mopre you revise, the less anxiety you have</li>
+<li>all <img src="https://latex.codecogs.com/png.latex?p">-values are less than 0.001 and would be interpreted as the correlation coefficients being significantly different from zero</li>
+<li>significance values tell us that the probability of getting correlation coefficients at least as big as this in a sample of 103 people if the null were true (that there was no relationship between the variables) is very low</li>
+<li>if we assume the sample is one of the 95% of samples that will produce a confidence interval containing the population value, then the confidence intervals tell us about the uncertainty around <img src="https://latex.codecogs.com/png.latex?r">.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rounding
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can control the number of decimal places using <code>knitr::kable(digits = 3)</code></p>
+<p>We can also specify different columns to contain different rounding using <code>knitr::kable(digits = c(2, 2, 2, 2, 2, 2, 2, 2, 8))</code> (column 9 to 8 decimal places) or <code>knitr::kable(digits = c(rep(2, 8), 8))</code></p>
+</div>
+</div>
+</section>
+<section id="robust-correlation-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="robust-correlation-coefficients">Robust correlation coefficients</h2>
+<p>Given the skew in the variables, we should use a robust correlation coefficient, like the <code>percentage bend correlation coefficient</code> by setting <code>method = "percentage"</code> within <code>correlation()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">exam_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(exam_grade, revise, anxiety) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-3">  correlation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">correlation</span>(</span>
+<span id="cb17-4">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"percentage"</span></span>
+<span id="cb17-5">   ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-6">  knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 25%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">df_error</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">revise</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">3.60</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0.00049502</td>
+<td style="text-align: left;">Percentage Bend correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">exam_grade</td>
+<td style="text-align: left;">anxiety</td>
+<td style="text-align: right;">-0.40</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.55</td>
+<td style="text-align: right;">-0.23</td>
+<td style="text-align: right;">-4.41</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0.00005235</td>
+<td style="text-align: left;">Percentage Bend correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">revise</td>
+<td style="text-align: left;">anxiety</td>
+<td style="text-align: right;">-0.61</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.72</td>
+<td style="text-align: right;">-0.47</td>
+<td style="text-align: right;">-7.66</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">0.00000000</td>
+<td style="text-align: left;">Percentage Bend correlation</td>
+<td style="text-align: right;">103</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Par1</th>
+<th>Par2</th>
+<th>Percentage Bend <img src="https://latex.codecogs.com/png.latex?r"></th>
+<th>raw Pearson <img src="https://latex.codecogs.com/png.latex?r"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exam_grade</td>
+<td>revise</td>
+<td>0.34</td>
+<td>0.397</td>
+</tr>
+<tr class="even">
+<td>exam_grade</td>
+<td>anxiety</td>
+<td>-0.40</td>
+<td>-0.441</td>
+</tr>
+<tr class="odd">
+<td>revise</td>
+<td>anxiety</td>
+<td>-0.61</td>
+<td>-0.709</td>
+</tr>
+</tbody>
+</table>
+<p>All robust correlations (percentage bend) are less than raw, though all are significant at <img src="https://latex.codecogs.com/png.latex?p%3C0.001"></p>
+</section>
+<section id="spearmans-correlation-coefficient" class="level2">
+<h2 class="anchored" data-anchor-id="spearmans-correlation-coefficient">Spearman’s correlation coefficient</h2>
+<ul>
+<li>data from World’s Best Liar competition</li>
+<li>want to know if creativity impacts lying ability</li>
+<li>position data (1st, 2nd, etc) is ordinal, so Spearman’s correlation coefficient should be used</li>
+<li>Data are in</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">liar_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 68 × 4
+   id    creativity position novice          
+   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;fct&gt;           
+ 1 lnwe          53        1 First time      
+ 2 vxob          36        3 Previous entrant
+ 3 qpli          31        4 First time      
+ 4 pwsq          43        2 First time      
+ 5 xafq          30        4 Previous entrant
+ 6 njra          41        1 First time      
+ 7 lxty          32        4 First time      
+ 8 dxcw          54        1 Previous entrant
+ 9 uxgp          47        2 Previous entrant
+10 dvew          50        2 First time      
+# ℹ 58 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">GGally<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggscatmat</span>(liar_tib, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">columns =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"creativity"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"position"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_07_associations/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To get Spearman correlation, we use <code>correlation()</code> the same way as we did with <code>Pearson</code>, except we add <code>method = "spearman"</code> to the function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">liar_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb21-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(creativity, position) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb21-3">  correlation<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">correlation</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"spearman"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb21-4">    knitr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">kable</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">digits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">rho</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">S</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">creativity</td>
+<td style="text-align: left;">position</td>
+<td style="text-align: right;">-0.37</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.57</td>
+<td style="text-align: right;">-0.14</td>
+<td style="text-align: right;">71948.4</td>
+<td style="text-align: right;">0.00172042</td>
+<td style="text-align: left;">Spearman correlation</td>
+<td style="text-align: right;">68</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Cover Photo by <a href="https://unsplash.com/@heebase?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Zhuojun Yu</a> on <a href="https://unsplash.com/photos/a-sandy-beach-covered-in-snow-at-sunset-RsBkqnfmgjA?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>correlation</category>
+  <category>R</category>
+  <category>discovr</category>
+  <guid>https://cmadland.github.io/blog/posts/discovr_07_associations/</guid>
+  <pubDate>Sun, 10 Mar 2024 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/discovr_07_associations/image.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>discover_08 - General Linear Model</title>
   <dc:creator>Colin Madland</dc:creator>

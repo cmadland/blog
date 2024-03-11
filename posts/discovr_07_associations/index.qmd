@@ -1,0 +1,208 @@
+---
+title: "discover_07 - Associations"
+author: "Colin Madland"
+date: "2024-03-10"
+categories: [correlation, R, discovr]
+editor: visual
+image: "image.jpg"
+---
+
+```{r}
+library(tidyverse, ggplot2)
+liar_tib <- here::here("data/biggest_liar.csv") |> readr::read_csv()
+exam_tib <- here::here("data/exam_anxiety.csv") |> readr::read_csv()
+```
+
+
+```{r}
+liar_tib <- liar_tib |> 
+  dplyr::mutate(
+    novice = forcats::as_factor(novice)
+  )
+```
+
+
+```{r}
+exam_tib <- exam_tib |>
+  dplyr::mutate(
+    id = forcats::as_factor(id),
+    sex = forcats::as_factor(sex)
+  )
+```
+
+- psychologist uses a questionnaire to assess state anxiety related to exams (EAQ)
+- scale produced a measure of anxiety scored out of 100
+- anxiety was measured before the exam, and the percentage grade on the exam was recorded
+- also measured the number of hours spent revising
+Data are in
+
+```{r}
+exam_tib
+```
+
+- visualise with `GGally`
+- plot continuous variables, the `ggscatmat()` function produces a matrix of scatterplots (below the diagonal), distributions (along the diagonal) and the correlation coefficient (above the diagonal)
+- general form of `ggscatmat()`
+  - `GGally::ggscatmat(my_tibble, columns = c("variable 1", " variable 2", " variable 3" …)) `
+
+```{r}
+GGally::ggscatmat(exam_tib, columns = c("exam_grade", "revise", "anxiety")) +
+theme_minimal()
+```
+
+- resulting plots are all skewed
+- could be a problem if we want significance tests or confidence intervals
+- sample contains 103 obs
+  - could be large enough for central limit theorem to relieve us of concerns about normality
+  - consider doing a robust method to compute correlation coefficient
+
+## Pearson's correlation using `R`
+
+- `correlation` package -> workhorse function called `correlation()`
+```
+correlation::correlation(tibble,
+                         method = "pearson",
+                         p_adjust = "holm",
+                         ci = 0.95
+                         )
+```
+
+`tibble`
+:  should be replaced with the name of tibble containing any variables to correlate
+
+`method`
+: method of correlation coefficient, default is `pearson`, but can also accept `spearman, kendall, biserial, polychoric, tetrachoric, and percentage`
+
+`p_adjust`
+: corrects the $p$-value for the number of tests you have performed using the Holm-Bonferroni method
+: applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error
+: can change to `none` (bad idea), `bonferroni` (to apply the standard Bonferroni method) or several other methods.
+
+`ci`
+: set the confidence interval width; default is 0.95 for general use
+
+To use the function,
+- pipe tibble into the `select()` function from `dplyr` to select variables to correlate, then pipe that into the correlation function
+- use the same syntax whether you want to correlate two variables or produce all correlations between pairs of multiple variables]
+
+To calculate Pearson correlation btwn variables `exam_grade` and `revise` in `exam_tib`...
+
+```{r}
+exam_tib |> 
+  dplyr::select(exam_grade, revise) |> 
+  correlation::correlation() |> 
+  knitr::kable(digits = 3)
+```
+
+```{r}
+exam_tib |> 
+  dplyr::select(exam_grade, anxiety) |> 
+  correlation::correlation() |> 
+  knitr::kable(digits = 3)
+```
+
+```{r}
+exam_tib |> 
+  dplyr::select(exam_grade, revise, anxiety) |> 
+  correlation::correlation() |> 
+  knitr::kable(digits = 3)
+```
+
+::: {.callout-important collapse="true"}
+## The confidence interval for the association between exam grade and revision is 0.22 to 0.55. What does this tell us?
+
+If this confidence interval is one of the 95% that contains the population value then the population value of r lies between 0.22 and 0.55.
+
+:::
+
+::: {.callout-important collapse="true"}
+## The p-value for the association between exam grade and revision is < 0.001, what does this value mean?
+
+The probability of getting a value of t at least as big as the value we have observed, if the value of r were, in fact, zero is less than 0.001. I’m going to assume, therefore, that the association between exam grade and revision is not zero.
+
+:::
+
+- exam grade correlates with revision - $r$=0.4
+- exam grade had a similar strength relationship with exam anxiety $r$=-0.44 but in the opposite direction
+- revision had a strong negative relationship with anxiety - $r$=-0.709
+- the more you revise, the better your performance
+- the more anxiety you have, the worse your performance
+- the mopre you revise, the less anxiety you have
+- all $p$-values are less than 0.001 and would be interpreted as the correlation coefficients being significantly different from zero
+- significance values tell us that the probability of getting correlation coefficients at least as big as this in a sample of 103 people if the null were true (that there was no relationship between the variables) is very low
+- if we assume the sample is one of the 95% of samples that will produce a confidence interval containing the population value, then the confidence intervals tell us about the uncertainty around $r$.
+
+::: {.callout-tip}
+## Rounding
+
+We can control the number of decimal places using `knitr::kable(digits = 3)`
+
+We can also specify different columns to contain different rounding using `knitr::kable(digits = c(2, 2, 2, 2, 2, 2, 2, 2, 8))` (column 9 to 8 decimal places) or `knitr::kable(digits = c(rep(2, 8), 8))`
+:::
+
+## Robust correlation coefficients
+
+Given the skew in the variables, we should use a robust correlation coefficient, like the `percentage bend correlation coefficient` by setting `method = "percentage"` within `correlation()`
+
+```{r}
+exam_tib |> 
+  dplyr::select(exam_grade, revise, anxiety) |> 
+  correlation::correlation(
+   method = "percentage"
+   ) |> 
+  knitr::kable(digits = c(rep(2, 8), 8))
+```
+
+|Par1| Par2      | Percentage Bend $r$      | raw Pearson $r$       |
+|  ---  |  ---  |  ---  |  ---  |
+|exam_grade | revise      |   0.34    |0.397|
+|  exam_grade     | anxiety      |  -0.40     | -0.441      |
+|  revise     | anxiety      |  -0.61     | -0.709      |
+
+All robust correlations (percentage bend) are less than raw, though all are significant at $p<0.001$
+
+## Spearman's correlation coefficient
+
+- data from World's Best Liar competition 
+- want to know if creativity impacts lying ability
+- position data (1st, 2nd, etc) is ordinal, so Spearman's correlation coefficient should be used
+- Data are in
+
+```{r}
+liar_tib
+GGally::ggscatmat(liar_tib, columns = c("creativity", "position")) +
+theme_minimal()
+```
+
+To get Spearman correlation, we use `correlation()` the same way as we did with `Pearson`, except we add `method = "spearman"` to the function
+
+```{r}
+liar_tib |>
+  dplyr::select(creativity, position) |> 
+  correlation::correlation(method = "spearman") |> 
+    knitr::kable(digits = c(rep(2, 7), 8))
+```
+
+- Spearman correlation between the two is $r_s=-0.37$ with an associated $p$-value of 0.002 and a sample size of  68
+- as creativity increased, position decreased
+  - this might seem contrary to the hypothesis, but a position of `4` is a lower position than `1`
+
+## Kendall's tau ($\tau$)
+
+- another non-parametric correlation
+- used instead of Spearman's correlation when data set is small with a large number of tied ranks
+- `correlation()` function will calculate Kendall's $\tau$ by including `method = "kendall"`
+
+```{r}
+liar_tib |>
+  dplyr::select(creativity, position) |> 
+  correlation::correlation(method = "kendall") |> 
+    knitr::kable(digits = c(rep(4, 7), 8))
+```
+
+- output shows $\tau=-0.3$ -> closer to 0 than Spearman (-.38) therefore Kendall's value is likely a more accurate guage of what the correlation in the population would be
+::: {.callout}
+
+Cover Photo by <a href="https://unsplash.com/@heebase?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zhuojun Yu</a> on <a href="https://unsplash.com/photos/a-sandy-beach-covered-in-snow-at-sunset-RsBkqnfmgjA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+:::
