@@ -201,6 +201,8 @@ liar_tib |>
 ```
 
 - output shows $\tau=-0.3$ -> closer to 0 than Spearman (-.38) therefore Kendall's value is likely a more accurate guage of what the correlation in the population would be
+
+
 ::: {.callout}
 
 Cover Photo by <a href="https://unsplash.com/@heebase?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zhuojun Yu</a> on <a href="https://unsplash.com/photos/a-sandy-beach-covered-in-snow-at-sunset-RsBkqnfmgjA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>

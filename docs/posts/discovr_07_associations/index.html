@@ -814,6 +814,74 @@ Rounding
 </table>
 </div>
 </div>
+<ul>
+<li>Spearman correlation between the two is <span class="math inline">\(r_s=-0.37\)</span> with an associated <span class="math inline">\(p\)</span>-value of 0.002 and a sample size of 68</li>
+<li>as creativity increased, position decreased
+<ul>
+<li>this might seem contrary to the hypothesis, but a position of <code>4</code> is a lower position than <code>1</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="kendalls-tau-tau" class="level2">
+<h2 class="anchored" data-anchor-id="kendalls-tau-tau">Kendall’s tau (<span class="math inline">\(\tau\)</span>)</h2>
+<ul>
+<li>another non-parametric correlation</li>
+<li>used instead of Spearman’s correlation when data set is small with a large number of tied ranks</li>
+<li><code>correlation()</code> function will calculate Kendall’s <span class="math inline">\(\tau\)</span> by including <code>method = "kendall"</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>liar_tib <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(creativity, position) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  correlation<span class="sc">::</span><span class="fu">correlation</span>(<span class="at">method =</span> <span class="st">"kendall"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">4</span>, <span class="dv">7</span>), <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 21%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter1</th>
+<th style="text-align: left;">Parameter2</th>
+<th style="text-align: right;">tau</th>
+<th style="text-align: right;">CI</th>
+<th style="text-align: right;">CI_low</th>
+<th style="text-align: right;">CI_high</th>
+<th style="text-align: right;">z</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">Method</th>
+<th style="text-align: right;">n_Obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">creativity</td>
+<td style="text-align: left;">position</td>
+<td style="text-align: right;">-0.3002</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-0.4396</td>
+<td style="text-align: right;">-0.1468</td>
+<td style="text-align: right;">-3.2252</td>
+<td style="text-align: right;">0.0012588</td>
+<td style="text-align: left;">Kendall correlation</td>
+<td style="text-align: right;">68</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>output shows <span class="math inline">\(\tau=-0.3\)</span> -&gt; closer to 0 than Spearman (-.38) therefore Kendall’s value is likely a more accurate guage of what the correlation in the population would be</li>
+</ul>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
