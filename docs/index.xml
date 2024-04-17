@@ -10,7 +10,240 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colins Stats Blog</description>
 <generator>quarto-1.4.545</generator>
-<lastBuildDate>Sun, 10 Mar 2024 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 16 Apr 2024 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>discover_06 - The Beast of Bias</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/discovr_06_bias/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">download_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/download_festival.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 810 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): gender
+dbl (4): ticket_no, day_1, day_2, day_3
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">download_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> download_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb5-2">dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb5-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ticket_no =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.character</span>(ticket_no),</span>
+<span id="cb5-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> forcats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_factor</span>(gender) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-5">      forcats<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fct_relevel</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Male"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Female"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Non-binary"</span>)</span>
+<span id="cb5-6">  )</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">download_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 810 × 5
+   ticket_no gender day_1 day_2 day_3
+   &lt;chr&gt;     &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2111      Male    2.64  1.35  1.61
+ 2 2229      Female  0.97  1.41  0.29
+ 3 2338      Male    0.84 NA    NA   
+ 4 2384      Female  3.03 NA    NA   
+ 5 2401      Female  0.88  0.08 NA   
+ 6 2405      Male    0.85 NA    NA   
+ 7 2467      Female  1.56 NA    NA   
+ 8 2478      Female  3.02 NA    NA   
+ 9 2490      Male    2.29 NA    NA   
+10 2504      Female  1.11  0.44  0.55
+# ℹ 800 more rows</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Which of the following describes tidy data?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Data that are arranged such that scores on a variable appear in a single column and rows represent a combination of the attributes of those scores – the entity from which the scores came, when the score was recorded, etc. Scores from a single entity can appear over multiple rows where each row represents a combination of the attributes of the score – for example, levels of an independent variable or time point at which the score was recorded.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Are the download data in tidy or messy format?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Messy</p>
+<p>Correct - well done! The download data are messy because the hygiene scores on different days are spread across different columns rather than being in a single colum with an additional column to indicate the day of the festival that the hygiene score was measured.</p>
+</div>
+</div>
+</div>
+<p><code>tidyr</code> has two functions for converting data from messy to tidy. - <code>pivot_longer()</code> takes columns and puts them into rosw to make messy data tidy - <code>pivot_wider()</code> takes rows and puts them in columns to make tidy data messy</p>
+<section id="making-messy-data-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="making-messy-data-tidy">Making messy data tidy</h2>
+<pre><code>tidyr::pivot_longer(
+  data = tibble,
+  cols = column_names,
+  names_to = "name_of_column_to_contain_variable_names",
+  values_to = "name_of_column_to_contain_values",
+)</code></pre>
+<dl>
+<dt><code>tibble</code></dt>
+<dd>
+Name of the messy tibble
+</dd>
+<dt><code>column_names</code></dt>
+<dd>
+list of columns to be restructured into rows
+</dd>
+<dt><code>names_to</code></dt>
+<dd>
+name for the new variable that contains names of the original columns
+</dd>
+<dt><code>value_to</code></dt>
+<dd>
+name for the new variable that will contain the values.
+</dd>
+</dl>
+</section>
+<section id="code-example" class="level2">
+<h2 class="anchored" data-anchor-id="code-example">Code example</h2>
+<ul>
+<li>in <code>download_tib</code>, there are three columns/variables that need to be restructured into rows</li>
+<li>specify the variables using <code>day_1:day_3</code></li>
+<li>scores in these columns represent hygiene scores, so we could use <code>hygiene</code> as the variable to contain values after restructuring</li>
+<li>columns we are transforming represent different days at the festival, so we can use <code>day</code> as the name of the variable created to contain column names</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">download_tidy_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> download_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb9-2">  tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_longer</span>(</span>
+<span id="cb9-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cols =</span> day_1<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>day_3,</span>
+<span id="cb9-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"day"</span>,</span>
+<span id="cb9-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hygiene"</span>,</span>
+<span id="cb9-6">)</span>
+<span id="cb9-7">download_tidy_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,430 × 4
+   ticket_no gender day   hygiene
+   &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 2111      Male   day_1    2.64
+ 2 2111      Male   day_2    1.35
+ 3 2111      Male   day_3    1.61
+ 4 2229      Female day_1    0.97
+ 5 2229      Female day_2    1.41
+ 6 2229      Female day_3    0.29
+ 7 2338      Male   day_1    0.84
+ 8 2338      Male   day_2   NA   
+ 9 2338      Male   day_3   NA   
+10 2384      Female day_1    3.03
+# ℹ 2,420 more rows</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>bias</category>
+  <category>R</category>
+  <category>discovr</category>
+  <guid>https://cmadland.github.io/blog/posts/discovr_06_bias/</guid>
+  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>discover_07 - Associations</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -3866,34 +4099,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.594</td>
+<td style="text-align: right;">-26.572</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-54.650</td>
-<td style="text-align: right;">9.703</td>
-<td style="text-align: right;">0.144</td>
+<td style="text-align: right;">-55.093</td>
+<td style="text-align: right;">2.749</td>
+<td style="text-align: right;">0.094</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.072</td>
 <td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.355</td>
+<td style="text-align: right;">3.367</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.785</td>
-<td style="text-align: right;">3.993</td>
+<td style="text-align: right;">2.813</td>
+<td style="text-align: right;">3.953</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.895</td>
+<td style="text-align: right;">11.059</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.022</td>
-<td style="text-align: right;">15.192</td>
+<td style="text-align: right;">6.759</td>
+<td style="text-align: right;">14.987</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -4585,22 +4818,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.336e+00 3.336e-02      3.199e-02
-adverts 8.409e-02 6.897e-03 6.897e-05      6.847e-05
-airplay 3.333e+00 2.808e-01 2.808e-03      2.808e-03
-image   1.099e+01 2.462e+00 2.462e-02      2.462e-02
-sig2    2.249e+03 2.326e+02 2.326e+00      2.428e+00
-g       9.823e-01 1.838e+00 1.838e-02      1.838e-02
+mu      1.932e+02 3.335e+00 3.335e-02      0.0333499
+adverts 8.416e-02 6.937e-03 6.937e-05      0.0000693
+airplay 3.340e+00 2.805e-01 2.805e-03      0.0028052
+image   1.099e+01 2.412e+00 2.412e-02      0.0241218
+sig2    2.247e+03 2.298e+02 2.298e+00      2.3810027
+g       9.932e-01 1.788e+00 1.788e-02      0.0188914
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.911e+02 1.932e+02 1.955e+02 1.997e+02
-adverts 7.051e-02 7.944e-02 8.408e-02 8.864e-02 9.781e-02
-airplay 2.786e+00 3.143e+00 3.335e+00 3.522e+00 3.877e+00
-image   6.093e+00 9.354e+00 1.102e+01 1.262e+01 1.579e+01
-sig2    1.835e+03 2.089e+03 2.232e+03 2.392e+03 2.754e+03
-g       1.817e-01 3.680e-01 5.967e-01 1.022e+00 3.994e+00</code></pre>
+mu      1.866e+02  190.9875 1.932e+02 1.954e+02 1.997e+02
+adverts 7.085e-02    0.0794 8.412e-02 8.878e-02 9.784e-02
+airplay 2.795e+00    3.1484 3.342e+00 3.533e+00 3.888e+00
+image   6.237e+00    9.3519 1.101e+01 1.265e+01 1.567e+01
+sig2    1.839e+03 2088.0126 2.233e+03 2.388e+03 2.741e+03
+g       1.749e-01    0.3740 6.140e-01 1.066e+00 4.082e+00</code></pre>
 </div>
 </div>
 <ul>

@@ -1,0 +1,79 @@
+---
+title: "discover_06 - The Beast of Bias"
+author: "Colin Madland"
+date: "2024-04-16"
+categories: [bias, R, discovr]
+editor: visual
+image: "ellie.jpg"
+---
+
+```{r}
+library(tidyverse, ggplot2)
+download_tib <- here::here("data/download_festival.csv") |> readr::read_csv()
+download_tib <- download_tib |> 
+dplyr::mutate(
+    ticket_no = as.character(ticket_no),
+    gender = forcats::as_factor(gender) |>
+      forcats::fct_relevel("Male", "Female", "Non-binary")
+  )
+```
+```{r}
+download_tib
+```
+
+::: {.callout-important collapse="true"}
+## Which of the following describes tidy data?
+
+Data that are arranged such that scores on a variable appear in a single column and rows represent a combination of the attributes of those scores – the entity from which the scores came, when the score was recorded, etc. Scores from a single entity can appear over multiple rows where each row represents a combination of the attributes of the score – for example, levels of an independent variable or time point at which the score was recorded.
+:::
+
+::: {.callout-important collapse="true"}
+## Are the download data in tidy or messy format?
+Messy
+
+Correct - well done! The download data are messy because the hygiene scores on different days are spread across different columns rather than being in a single colum with an additional column to indicate the day of the festival that the hygiene score was measured.
+:::
+
+`tidyr` has two functions for converting data from messy to tidy.
+- `pivot_longer()` takes columns and puts them into rosw to make messy data tidy
+- `pivot_wider()` takes rows and puts them in columns to make tidy data messy
+
+## Making messy data tidy
+
+```
+tidyr::pivot_longer(
+  data = tibble,
+  cols = column_names,
+  names_to = "name_of_column_to_contain_variable_names",
+  values_to = "name_of_column_to_contain_values",
+)
+```
+
+`tibble`
+:  Name of the messy tibble
+
+`column_names`
+:  list of columns to be restructured into rows
+
+`names_to`
+:  name for the new variable that contains names of the original columns
+
+`value_to`
+: name for the new variable that will contain the values.
+
+## Code example
+
+- in `download_tib`, there are three columns/variables that need to be restructured into rows
+- specify the variables using `day_1:day_3`
+- scores in these columns represent hygiene scores, so we could use `hygiene` as the variable to contain values after restructuring
+- columns we are transforming represent different days at the festival, so we can use `day` as the name of the variable created to contain column names
+
+```{r}
+download_tidy_tib <- download_tib |> 
+  tidyr::pivot_longer(
+  cols = day_1:day_3,
+  names_to = "day",
+  values_to = "hygiene",
+)
+download_tidy_tib
+```
