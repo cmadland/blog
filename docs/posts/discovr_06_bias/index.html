@@ -9,7 +9,7 @@
 <meta name="author" content="Colin Madland">
 <meta name="dcterms.date" content="2024-04-16">
 
-<title>Stats Blog - discover_06 - The Beast of Bias</title>
+<title>Stats Blog - discovr_06 - The Beast of Bias</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">discover_06 - The Beast of Bias</h1>
+      <h1 class="title">discovr_06 - The Beast of Bias</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">bias</div>
                 <div class="quarto-category">R</div>
@@ -316,13 +316,13 @@ name for the new variable that will contain the values.
 <li>columns we are transforming represent different days at the festival, so we can use <code>day</code> as the name of the variable created to contain column names</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>download_tidy_tib <span class="ot">&lt;-</span> download_tib <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> day_1<span class="sc">:</span>day_3,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"day"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"hygiene"</span>,</span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>download_tidy_tib <span class="ot">&lt;-</span> download_tib <span class="sc">|&gt;</span>  <span class="co"># create a new object called `download_tidy_tib`</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(                              <span class="co"># use the `pivot_longer()` function from `tidyr`</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> day_1<span class="sc">:</span>day_3,                           <span class="co"># specify columns `day_1:day_3` for restructuring</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"day"</span>,                             <span class="co"># names of the columns be placed in a variable called `day`</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"hygiene"</span>,                        <span class="co"># values of the columns placed in a variable called `hygiene`</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>download_tidy_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>download_tidy_tib                               <span class="co"># display the new object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,430 × 4
    ticket_no gender day   hygiene
@@ -338,6 +338,106 @@ name for the new variable that will contain the values.
  9 2338      Male   day_3   NA   
 10 2384      Female day_1    3.03
 # ℹ 2,420 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="tidying-labels" class="level2">
+<h2 class="anchored" data-anchor-id="tidying-labels">Tidying labels</h2>
+<ul>
+<li>the values in <code>day</code> match the original column names exactly (<code>day_1</code>)</li>
+<li>we want sentence case (<code>Day 1</code>)</li>
+<li>use <code>stringr</code></li>
+</ul>
+<pre><code>download_tidy_tib &lt;- download_tidy_tib |&gt;   # recreates `download_tidy_tib` from itself
+   dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
+    day = stringr::str_to_sentence(day) |&gt; stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
+  )</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>download_tidy_tib <span class="ot">&lt;-</span> download_tidy_tib <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">day =</span> stringr<span class="sc">::</span><span class="fu">str_to_sentence</span>(day) <span class="sc">|&gt;</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(<span class="st">"_"</span>, <span class="st">" "</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  download_tidy_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,430 × 4
+   ticket_no gender day   hygiene
+   &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 2111      Male   Day 1    2.64
+ 2 2111      Male   Day 2    1.35
+ 3 2111      Male   Day 3    1.61
+ 4 2229      Female Day 1    0.97
+ 5 2229      Female Day 2    1.41
+ 6 2229      Female Day 3    0.29
+ 7 2338      Male   Day 1    0.84
+ 8 2338      Male   Day 2   NA   
+ 9 2338      Male   Day 3   NA   
+10 2384      Female Day 1    3.03
+# ℹ 2,420 more rows</code></pre>
+</div>
+</div>
+<p>## Making tidy data messy</p>
+<ul>
+<li><code>pivot_wider()</code> reverses the process above</li>
+</ul>
+<pre><code>tidyr::pivot_wider(
+  data = tibble,  # tibble to be restructured
+  id_cols = variables_that_you_do_not_want_to_restructure,
+  names_from = "variable_containing_the_names_of_columns",
+  values_from = " variable_containing_the_scores",
+)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>download_tib <span class="ot">&lt;-</span> download_tidy_tib <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id_cols =</span> <span class="fu">c</span>(ticket_no, gender),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> <span class="st">"day"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> <span class="st">"hygiene"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>download_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 810 × 5
+   ticket_no gender `Day 1` `Day 2` `Day 3`
+   &lt;chr&gt;     &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 2111      Male      2.64    1.35    1.61
+ 2 2229      Female    0.97    1.41    0.29
+ 3 2338      Male      0.84   NA      NA   
+ 4 2384      Female    3.03   NA      NA   
+ 5 2401      Female    0.88    0.08   NA   
+ 6 2405      Male      0.85   NA      NA   
+ 7 2467      Female    1.56   NA      NA   
+ 8 2478      Female    3.02   NA      NA   
+ 9 2490      Male      2.29   NA      NA   
+10 2504      Female    1.11    0.44    0.55
+# ℹ 800 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks</li>
+<li>rename using <code>dplyr::rename_with</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>download_tib <span class="ot">&lt;-</span> download_tib <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(<span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"Day"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">.fn =</span> \(column) stringr<span class="sc">::</span><span class="fu">str_replace</span>(<span class="at">string =</span> column,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">pattern =</span> <span class="st">"Day "</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">replacement =</span> <span class="st">"day_"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>download_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 810 × 5
+   ticket_no gender day_1 day_2 day_3
+   &lt;chr&gt;     &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2111      Male    2.64  1.35  1.61
+ 2 2229      Female  0.97  1.41  0.29
+ 3 2338      Male    0.84 NA    NA   
+ 4 2384      Female  3.03 NA    NA   
+ 5 2401      Female  0.88  0.08 NA   
+ 6 2405      Male    0.85 NA    NA   
+ 7 2467      Female  1.56 NA    NA   
+ 8 2478      Female  3.02 NA    NA   
+ 9 2490      Male    2.29 NA    NA   
+10 2504      Female  1.11  0.44  0.55
+# ℹ 800 more rows</code></pre>
 </div>
 </div>
 

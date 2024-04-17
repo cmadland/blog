@@ -1,5 +1,5 @@
 ---
-title: "discover_08 - General Linear Model"
+title: "discovr_08 - General Linear Model"
 author: "Colin Madland"
 date: "2024-02-26"
 categories: [regression, R, discovr]

@@ -1,5 +1,5 @@
 ---
-title: "discover_06 - The Beast of Bias"
+title: "discovr_06 - The Beast of Bias"
 author: "Colin Madland"
 date: "2024-04-16"
 categories: [bias, R, discovr]
@@ -69,11 +69,68 @@ tidyr::pivot_longer(
 - columns we are transforming represent different days at the festival, so we can use `day` as the name of the variable created to contain column names
 
 ```{r}
-download_tidy_tib <- download_tib |> 
-  tidyr::pivot_longer(
-  cols = day_1:day_3,
-  names_to = "day",
-  values_to = "hygiene",
+download_tidy_tib <- download_tib |>  # create a new object called `download_tidy_tib`
+  tidyr::pivot_longer(                              # use the `pivot_longer()` function from `tidyr`
+  cols = day_1:day_3,                           # specify columns `day_1:day_3` for restructuring
+  names_to = "day",                             # names of the columns be placed in a variable called `day`
+  values_to = "hygiene",                        # values of the columns placed in a variable called `hygiene`
 )
-download_tidy_tib
+download_tidy_tib                               # display the new object
+```
+
+## Tidying labels
+
+- the values in `day` match the original column names exactly (`day_1`)
+- we want sentence case (`Day 1`)
+- use `stringr`
+```
+download_tidy_tib <- download_tidy_tib |>   # recreates `download_tidy_tib` from itself
+   dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
+    day = stringr::str_to_sentence(day) |> stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
+  )
+  ```
+
+```{r}
+download_tidy_tib <- download_tidy_tib |> 
+   dplyr::mutate(
+    day = stringr::str_to_sentence(day) |> stringr::str_replace("_", " ")
+  )
+  download_tidy_tib
+```
+
+  ## Making tidy data messy
+
+- `pivot_wider()` reverses the process above
+
+```
+tidyr::pivot_wider(
+  data = tibble,  # tibble to be restructured
+  id_cols = variables_that_you_do_not_want_to_restructure,
+  names_from = "variable_containing_the_names_of_columns",
+  values_from = " variable_containing_the_scores",
+)
+```
+
+```{r}
+download_tib <- download_tidy_tib |> 
+  tidyr::pivot_wider(
+  id_cols = c(ticket_no, gender),
+  names_from = "day",
+  values_from = "hygiene",
+)
+download_tib
+```
+
+- in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks
+- rename using `dplyr::rename_with`
+
+```{r}
+download_tib <- download_tib |> 
+  dplyr::rename_with(.cols = starts_with("Day"),
+     .fn = \(column) stringr::str_replace(string = column,
+        pattern = "Day ",
+        replacement = "day_")
+)
+
+download_tib
 ```

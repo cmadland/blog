@@ -1,5 +1,5 @@
 ---
-title: "discover_07 - Associations"
+title: "discovr_07 - Associations"
 author: "Colin Madland"
 date: "2024-03-10"
 categories: [correlation, R, discovr]

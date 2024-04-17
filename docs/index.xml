@@ -12,7 +12,7 @@
 <generator>quarto-1.4.545</generator>
 <lastBuildDate>Tue, 16 Apr 2024 07:00:00 GMT</lastBuildDate>
 <item>
-  <title>discover_06 - The Beast of Bias</title>
+  <title>discovr_06 - The Beast of Bias</title>
   <dc:creator>Colin Madland</dc:creator>
   <link>https://cmadland.github.io/blog/posts/discovr_06_bias/</link>
   <description><![CDATA[ 
@@ -192,29 +192,41 @@ name for the new variable that will contain the values.
 background-color: null;
 font-style: inherit;">&lt;-</span> download_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">|&gt;</span> </span>
+font-style: inherit;">|&gt;</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># create a new object called `download_tidy_tib`</span></span>
 <span id="cb9-2">  tidyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">pivot_longer</span>(</span>
+font-style: inherit;">pivot_longer</span>(                              <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># use the `pivot_longer()` function from `tidyr`</span></span>
 <span id="cb9-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cols =</span> day_1<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">:</span>day_3,</span>
+font-style: inherit;">:</span>day_3,                           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># specify columns `day_1:day_3` for restructuring</span></span>
 <span id="cb9-4">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">names_to =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"day"</span>,</span>
+font-style: inherit;">"day"</span>,                             <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># names of the columns be placed in a variable called `day`</span></span>
 <span id="cb9-5">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">values_to =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"hygiene"</span>,</span>
+font-style: inherit;">"hygiene"</span>,                        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># values of the columns placed in a variable called `hygiene`</span></span>
 <span id="cb9-6">)</span>
-<span id="cb9-7">download_tidy_tib</span></code></pre></div>
+<span id="cb9-7">download_tidy_tib                               <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># display the new object</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,430 × 4
    ticket_no gender day   hygiene
@@ -232,6 +244,180 @@ font-style: inherit;">"hygiene"</span>,</span>
 # ℹ 2,420 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="tidying-labels" class="level2">
+<h2 class="anchored" data-anchor-id="tidying-labels">Tidying labels</h2>
+<ul>
+<li>the values in <code>day</code> match the original column names exactly (<code>day_1</code>)</li>
+<li>we want sentence case (<code>Day 1</code>)</li>
+<li>use <code>stringr</code></li>
+</ul>
+<pre><code>download_tidy_tib &lt;- download_tidy_tib |&gt;   # recreates `download_tidy_tib` from itself
+   dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
+    day = stringr::str_to_sentence(day) |&gt; stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
+  )</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">download_tidy_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> download_tidy_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb12-2">   dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb12-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">day =</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_to_sentence</span>(day) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"_"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" "</span>)</span>
+<span id="cb12-4">  )</span>
+<span id="cb12-5">  download_tidy_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,430 × 4
+   ticket_no gender day   hygiene
+   &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;   &lt;dbl&gt;
+ 1 2111      Male   Day 1    2.64
+ 2 2111      Male   Day 2    1.35
+ 3 2111      Male   Day 3    1.61
+ 4 2229      Female Day 1    0.97
+ 5 2229      Female Day 2    1.41
+ 6 2229      Female Day 3    0.29
+ 7 2338      Male   Day 1    0.84
+ 8 2338      Male   Day 2   NA   
+ 9 2338      Male   Day 3   NA   
+10 2384      Female Day 1    3.03
+# ℹ 2,420 more rows</code></pre>
+</div>
+</div>
+<p>## Making tidy data messy</p>
+<ul>
+<li><code>pivot_wider()</code> reverses the process above</li>
+</ul>
+<pre><code>tidyr::pivot_wider(
+  data = tibble,  # tibble to be restructured
+  id_cols = variables_that_you_do_not_want_to_restructure,
+  names_from = "variable_containing_the_names_of_columns",
+  values_from = " variable_containing_the_scores",
+)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">download_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> download_tidy_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb15-2">  tidyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pivot_wider</span>(</span>
+<span id="cb15-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id_cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(ticket_no, gender),</span>
+<span id="cb15-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names_from =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"day"</span>,</span>
+<span id="cb15-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">values_from =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hygiene"</span>,</span>
+<span id="cb15-6">)</span>
+<span id="cb15-7">download_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 810 × 5
+   ticket_no gender `Day 1` `Day 2` `Day 3`
+   &lt;chr&gt;     &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 2111      Male      2.64    1.35    1.61
+ 2 2229      Female    0.97    1.41    0.29
+ 3 2338      Male      0.84   NA      NA   
+ 4 2384      Female    3.03   NA      NA   
+ 5 2401      Female    0.88    0.08   NA   
+ 6 2405      Male      0.85   NA      NA   
+ 7 2467      Female    1.56   NA      NA   
+ 8 2478      Female    3.02   NA      NA   
+ 9 2490      Male      2.29   NA      NA   
+10 2504      Female    1.11    0.44    0.55
+# ℹ 800 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks</li>
+<li>rename using <code>dplyr::rename_with</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">download_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> download_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb17-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rename_with</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.cols =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">starts_with</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Day"</span>),</span>
+<span id="cb17-3">     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.fn =</span> \(column) stringr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_replace</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">string =</span> column,</span>
+<span id="cb17-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">pattern =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Day "</span>,</span>
+<span id="cb17-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">replacement =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"day_"</span>)</span>
+<span id="cb17-6">)</span>
+<span id="cb17-7"></span>
+<span id="cb17-8">download_tib</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 810 × 5
+   ticket_no gender day_1 day_2 day_3
+   &lt;chr&gt;     &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 2111      Male    2.64  1.35  1.61
+ 2 2229      Female  0.97  1.41  0.29
+ 3 2338      Male    0.84 NA    NA   
+ 4 2384      Female  3.03 NA    NA   
+ 5 2401      Female  0.88  0.08 NA   
+ 6 2405      Male    0.85 NA    NA   
+ 7 2467      Female  1.56 NA    NA   
+ 8 2478      Female  3.02 NA    NA   
+ 9 2490      Male    2.29 NA    NA   
+10 2504      Female  1.11  0.44  0.55
+# ℹ 800 more rows</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -245,7 +431,7 @@ font-style: inherit;">"hygiene"</span>,</span>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>discover_07 - Associations</title>
+  <title>discovr_07 - Associations</title>
   <dc:creator>Colin Madland</dc:creator>
   <link>https://cmadland.github.io/blog/posts/discovr_07_associations/</link>
   <description><![CDATA[ 
@@ -1201,7 +1387,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_07_associations/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
-  <title>discover_08 - General Linear Model</title>
+  <title>discovr_08 - General Linear Model</title>
   <dc:creator>Colin Madland</dc:creator>
   <link>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</link>
   <description><![CDATA[ 
@@ -4099,35 +4285,35 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.716</td>
+<td style="text-align: right;">-26.668</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-57.196</td>
-<td style="text-align: right;">4.526</td>
-<td style="text-align: right;">0.108</td>
+<td style="text-align: right;">-56.586</td>
+<td style="text-align: right;">6.698</td>
+<td style="text-align: right;">0.122</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
-<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.371</td>
+<td style="text-align: right;">3.376</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.758</td>
-<td style="text-align: right;">4.000</td>
+<td style="text-align: right;">2.769</td>
+<td style="text-align: right;">3.978</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.971</td>
+<td style="text-align: right;">11.108</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.416</td>
-<td style="text-align: right;">15.194</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">6.033</td>
+<td style="text-align: right;">15.361</td>
+<td style="text-align: right;">0.002</td>
 </tr>
 </tbody>
 </table>
@@ -4818,22 +5004,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.931e+02 3.363e+00 3.363e-02      3.308e-02
-adverts 8.403e-02 6.926e-03 6.926e-05      6.845e-05
-airplay 3.335e+00 2.843e-01 2.843e-03      2.758e-03
-image   1.097e+01 2.434e+00 2.434e-02      2.434e-02
-sig2    2.251e+03 2.293e+02 2.293e+00      2.383e+00
-g       1.030e+00 1.811e+00 1.811e-02      1.785e-02
+mu      1.932e+02 3.341e+00 3.341e-02      3.264e-02
+adverts 8.395e-02 6.942e-03 6.942e-05      6.942e-05
+airplay 3.329e+00 2.795e-01 2.795e-03      2.795e-03
+image   1.101e+01 2.432e+00 2.432e-02      2.481e-02
+sig2    2.246e+03 2.285e+02 2.285e+00      2.367e+00
+g       1.005e+00 1.929e+00 1.929e-02      1.929e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.865e+02 1.909e+02 1.931e+02 1.954e+02 1.997e+02
-adverts 7.046e-02 7.931e-02 8.397e-02 8.875e-02 9.743e-02
-airplay 2.776e+00 3.145e+00 3.335e+00 3.527e+00 3.898e+00
-image   6.192e+00 9.322e+00 1.094e+01 1.260e+01 1.575e+01
-sig2    1.846e+03 2.092e+03 2.232e+03 2.392e+03 2.744e+03
-g       1.737e-01 3.785e-01 6.122e-01 1.078e+00 4.408e+00</code></pre>
+mu      1.866e+02 1.909e+02 1.932e+02 1.954e+02  199.7709
+adverts 7.027e-02 7.928e-02 8.394e-02 8.869e-02    0.0975
+airplay 2.779e+00 3.141e+00 3.326e+00 3.514e+00    3.8871
+image   6.253e+00 9.391e+00 1.099e+01 1.260e+01   15.8292
+sig2    1.838e+03 2.088e+03 2.234e+03 2.386e+03 2737.7878
+g       1.796e-01 3.764e-01 6.030e-01 1.070e+00    4.1289</code></pre>
 </div>
 </div>
 <ul>
