@@ -1,0 +1,86 @@
+---
+title: "discovr_02 - Summarizing Data"
+author: "Colin Madland"
+date: "2024-04-16"
+categories: [frequency, histograms, variance, standard deviation, R, discovr]
+editor: visual
+image: "raft-falls.jpeg"
+---
+
+```{r}
+library(tidyverse)
+ice_tib <- here::here("data/ice_bucket.csv") |> readr::read_csv()
+```
+
+## Frequency tables
+
+- use `group_by()` and `summarise()` and `n()` functions from `dplyr`
+ `group_by()`
+ : groups data by whatever variable(s) you name within the function
+ `summarise()`
+ : creates summary table based on the variables in the function
+`n()`
+: counts the number of scores
+
+To count frequencies:
+
+- tell R to treat values that are the same, as being in the same category
+  - `group_by(upload_day)` tells R that  scores that are the same within `upload_day` are in the same group
+  - subsequent operations are conducted on the groups
+- count how many scores fall into each category
+  - `summarize()` creates a variable called `frequency` that counts how many items are in each group created by `group_by()`
+
+```{r}
+freq_tbl <- ice_tib |>
+  dplyr::group_by(upload_day) |> 
+  dplyr::summarise(
+    frequency = n()
+  )
+freq_tbl
+```
+
+- this is a large table and a bit unwieldy
+- use a `grouped frequency distribution`
+  - place values of `upload_days` into bins
+- if we want to split the variable `upload_day` into bins of 4 days...
+
+```
+ggplot2::cut_width(upload_day, 4)
+```
+
+- combine this with `dplyr::mutate()` to create a new variable called `days_group`
+
+```{r}
+gp_freq_dist <- ice_tib |> 
+  dplyr::mutate(
+    days_group = ggplot2::cut_width(upload_day, 4)
+    )
+gp_freq_dist
+```
+
+- this creates a new object called `gp_freq_dist` that contains each value within `ice_tib` but with an extra column/variable called `days_group` that indicates the bin the value of `upload_day` is in
+::: {.callout-note}
+## Set notation
+- the value of `upload_day` now has a corresponding value of `days_group` containing the bin
+- the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34
+- the label uses standard mathematical notation for sets where `(` or `)` means 'not including' and `[` or `]` means 'including'
+:::
+
+- now we can use `summarize()` and `n()` to count scores like before, except to use `days_group` instead of `upload_day`
+
+### Coding challenge
+
+Create a grouped frequency table called gp_freq_dist by starting with the code in the code example and then using the code we used to create freq_tbl to create a pipe that summarizes the grouped scores.
+
+
+```{r}
+gp_freq_dist <- ice_tib |> 
+  dplyr::mutate(
+    days_group = ggplot2::cut_width(upload_day, 4)
+    ) |>
+  dplyr::group_by(days_group) |> 
+  dplyr::summarise(
+    frequency = n()
+  )
+gp_freq_dist
+```

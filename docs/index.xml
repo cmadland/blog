@@ -12,6 +12,256 @@
 <generator>quarto-1.4.545</generator>
 <lastBuildDate>Tue, 16 Apr 2024 07:00:00 GMT</lastBuildDate>
 <item>
+  <title>discovr_02 - Summarizing Data</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">ice_tib <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> here<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data/ice_bucket.csv"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> readr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_csv</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2323000 Columns: 1
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (1): upload_day
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<section id="frequency-tables" class="level2">
+<h2 class="anchored" data-anchor-id="frequency-tables">Frequency tables</h2>
+<ul>
+<li>use <code>group_by()</code> and <code>summarise()</code> and <code>n()</code> functions from <code>dplyr</code> <code>group_by()</code> : groups data by whatever variable(s) you name within the function <code>summarise()</code> : creates summary table based on the variables in the function <code>n()</code> : counts the number of scores</li>
+</ul>
+<p>To count frequencies:</p>
+<ul>
+<li>tell R to treat values that are the same, as being in the same category
+<ul>
+<li><code>group_by(upload_day)</code> tells R that scores that are the same within <code>upload_day</code> are in the same group</li>
+<li>subsequent operations are conducted on the groups</li>
+</ul></li>
+<li>count how many scores fall into each category
+<ul>
+<li><code>summarize()</code> creates a variable called <code>frequency</code> that counts how many items are in each group created by <code>group_by()</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">freq_tbl <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(upload_day) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb5-3">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb5-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">frequency =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>()</span>
+<span id="cb5-5">  )</span>
+<span id="cb5-6">freq_tbl</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 56 × 2
+   upload_day frequency
+        &lt;dbl&gt;     &lt;int&gt;
+ 1         21      2000
+ 2         22      2000
+ 3         23      4000
+ 4         24      4000
+ 5         25      8000
+ 6         26      8000
+ 7         27     10000
+ 8         28     16000
+ 9         29     20000
+10         30     29000
+# ℹ 46 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li>this is a large table and a bit unwieldy</li>
+<li>use a <code>grouped frequency distribution</code>
+<ul>
+<li>place values of <code>upload_days</code> into bins</li>
+</ul></li>
+<li>if we want to split the variable <code>upload_day</code> into bins of 4 days…</li>
+</ul>
+<pre><code>ggplot2::cut_width(upload_day, 4)</code></pre>
+<ul>
+<li>combine this with <code>dplyr::mutate()</code> to create a new variable called <code>days_group</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">gp_freq_dist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb8-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb8-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">days_group =</span> ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_width</span>(upload_day, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span>
+<span id="cb8-4">    )</span>
+<span id="cb8-5">gp_freq_dist</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,323,000 × 2
+   upload_day days_group
+        &lt;dbl&gt; &lt;fct&gt;     
+ 1         34 (30,34]   
+ 2         36 (34,38]   
+ 3         31 (30,34]   
+ 4         30 (26,30]   
+ 5         33 (30,34]   
+ 6         38 (34,38]   
+ 7         36 (34,38]   
+ 8         46 (42,46]   
+ 9         45 (42,46]   
+10         31 (30,34]   
+# ℹ 2,322,990 more rows</code></pre>
+</div>
+</div>
+<ul>
+<li><p>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in ::: {.callout-note} ## Set notation</p></li>
+<li><p>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</p></li>
+<li><p>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</p></li>
+<li><p>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’ :::</p></li>
+<li><p>now we can use <code>summarize()</code> and <code>n()</code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code></p></li>
+</ul>
+<section id="coding-challenge" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge">Coding challenge</h3>
+<p>Create a grouped frequency table called gp_freq_dist by starting with the code in the code example and then using the code we used to create freq_tbl to create a pipe that summarizes the grouped scores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">gp_freq_dist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb10-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb10-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">days_group =</span> ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_width</span>(upload_day, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span>
+<span id="cb10-4">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb10-5">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(days_group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb10-6">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb10-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">frequency =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>()</span>
+<span id="cb10-8">  )</span>
+<span id="cb10-9">gp_freq_dist</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 2
+   days_group frequency
+   &lt;fct&gt;          &lt;int&gt;
+ 1 [18,22]         4000
+ 2 (22,26]        24000
+ 3 (26,30]        75000
+ 4 (30,34]       367000
+ 5 (34,38]       770000
+ 6 (38,42]       534000
+ 7 (42,46]       255000
+ 8 (46,50]       102000
+ 9 (50,54]        70000
+10 (54,58]        38000
+11 (58,62]        26000
+12 (62,66]        18000
+13 (66,70]        18000
+14 (70,74]        16000
+15 (74,78]         6000</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>frequency</category>
+  <category>histograms</category>
+  <category>variance</category>
+  <category>standard deviation</category>
+  <category>R</category>
+  <category>discovr</category>
+  <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
+  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>discovr_06 - The Beast of Bias</title>
   <dc:creator>Colin Madland</dc:creator>
   <link>https://cmadland.github.io/blog/posts/discovr_06_bias/</link>
@@ -378,7 +628,9 @@ font-style: inherit;">.cols =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">starts_with</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Day"</span>),</span>
+font-style: inherit;">"Day"</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># finds all columns w/i download_tib that begin with the word `Day'</span></span>
 <span id="cb17-3">     <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">.fn =</span> \(column) stringr<span class="sc" style="color: #5E5E5E;
@@ -387,12 +639,16 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">str_replace</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">string =</span> column,</span>
+font-style: inherit;">string =</span> column, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># creates a lambda or anonymous function that will be applied to the variables that begin with Day</span></span>
 <span id="cb17-4">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">pattern =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Day "</span>,</span>
+font-style: inherit;">"Day "</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># with next line, tells the function what to do</span></span>
 <span id="cb17-5">        <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">replacement =</span> <span class="st" style="color: #20794D;
@@ -418,6 +674,35 @@ font-style: inherit;">"day_"</span>)</span>
 # ℹ 800 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="spotting-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="spotting-outliers">Spotting outliers</h2>
+<p>Two ways:</p>
+<ul>
+<li>visualize the data and look for unusual cases</li>
+<li>look for values that are poorly predicted by the model, using model residuals as described in DSUR</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are the model residuals?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The differences between the values a model predicts and the values observed in the data on which the model is based</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms-and-boxplots" class="level2">
+<h2 class="anchored" data-anchor-id="histograms-and-boxplots">Histograms and Boxplots</h2>
 
 
 </section>
@@ -4285,11 +4570,11 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.668</td>
+<td style="text-align: right;">-27.582</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.586</td>
-<td style="text-align: right;">6.698</td>
-<td style="text-align: right;">0.122</td>
+<td style="text-align: right;">-55.479</td>
+<td style="text-align: right;">6.031</td>
+<td style="text-align: right;">0.114</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
@@ -4301,19 +4586,19 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.376</td>
+<td style="text-align: right;">3.385</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.769</td>
-<td style="text-align: right;">3.978</td>
+<td style="text-align: right;">2.749</td>
+<td style="text-align: right;">3.961</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.108</td>
+<td style="text-align: right;">11.073</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.033</td>
-<td style="text-align: right;">15.361</td>
-<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">6.315</td>
+<td style="text-align: right;">15.226</td>
+<td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
 </table>
@@ -5004,22 +5289,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.341e+00 3.341e-02      3.264e-02
-adverts 8.395e-02 6.942e-03 6.942e-05      6.942e-05
-airplay 3.329e+00 2.795e-01 2.795e-03      2.795e-03
-image   1.101e+01 2.432e+00 2.432e-02      2.481e-02
-sig2    2.246e+03 2.285e+02 2.285e+00      2.367e+00
-g       1.005e+00 1.929e+00 1.929e-02      1.929e-02
+mu       193.1999 3.341e+00 3.341e-02      3.341e-02
+adverts    0.0841 6.958e-03 6.958e-05      7.065e-05
+airplay    3.3334 2.781e-01 2.781e-03      2.781e-03
+image     10.9642 2.441e+00 2.441e-02      2.441e-02
+sig2    2245.3038 2.294e+02 2.294e+00      2.371e+00
+g          1.0211 1.848e+00 1.848e-02      1.848e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.954e+02  199.7709
-adverts 7.027e-02 7.928e-02 8.394e-02 8.869e-02    0.0975
-airplay 2.779e+00 3.141e+00 3.326e+00 3.514e+00    3.8871
-image   6.253e+00 9.391e+00 1.099e+01 1.260e+01   15.8292
-sig2    1.838e+03 2.088e+03 2.234e+03 2.386e+03 2737.7878
-g       1.796e-01 3.764e-01 6.030e-01 1.070e+00    4.1289</code></pre>
+mu       186.7281 1.909e+02 1.932e+02 1.955e+02 1.998e+02
+adverts    0.0707 7.941e-02 8.407e-02 8.879e-02 9.782e-02
+airplay    2.7829 3.146e+00 3.338e+00 3.520e+00 3.877e+00
+image      6.2607 9.294e+00 1.096e+01 1.259e+01 1.582e+01
+sig2    1842.8717 2.084e+03 2.231e+03 2.393e+03 2.735e+03
+g          0.1753 3.777e-01 6.086e-01 1.058e+00 4.230e+00</code></pre>
 </div>
 </div>
 <ul>

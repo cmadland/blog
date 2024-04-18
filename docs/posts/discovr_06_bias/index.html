@@ -416,9 +416,9 @@ name for the new variable that will contain the values.
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>download_tib <span class="ot">&lt;-</span> download_tib <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(<span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"Day"</span>),</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">.fn =</span> \(column) stringr<span class="sc">::</span><span class="fu">str_replace</span>(<span class="at">string =</span> column,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">pattern =</span> <span class="st">"Day "</span>,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(<span class="at">.cols =</span> <span class="fu">starts_with</span>(<span class="st">"Day"</span>), <span class="co"># finds all columns w/i download_tib that begin with the word `Day'</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">.fn =</span> \(column) stringr<span class="sc">::</span><span class="fu">str_replace</span>(<span class="at">string =</span> column, <span class="co"># creates a lambda or anonymous function that will be applied to the variables that begin with Day</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">pattern =</span> <span class="st">"Day "</span>,  <span class="co"># with next line, tells the function what to do</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">replacement =</span> <span class="st">"day_"</span>)</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
@@ -440,6 +440,35 @@ name for the new variable that will contain the values.
 # ℹ 800 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="spotting-outliers" class="level2">
+<h2 class="anchored" data-anchor-id="spotting-outliers">Spotting outliers</h2>
+<p>Two ways:</p>
+<ul>
+<li>visualize the data and look for unusual cases</li>
+<li>look for values that are poorly predicted by the model, using model residuals as described in DSUR</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are the model residuals?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>The differences between the values a model predicts and the values observed in the data on which the model is based</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms-and-boxplots" class="level2">
+<h2 class="anchored" data-anchor-id="histograms-and-boxplots">Histograms and Boxplots</h2>
 
 
 </section>

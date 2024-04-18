@@ -19,6 +19,8 @@ format:
   html:
     theme: cyborg
     css: styles.css
+execute:
+  freeze: auto  # re-render only when source changes
 
 
 
