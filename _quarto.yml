@@ -2,6 +2,9 @@ project:
   type: website
   output-dir: docs
 
+execute:
+    freeze: auto  # re-render only when source changes
+
 website:
   title: "Stats Blog"
   site-url: https://cmadland.github.io/blog
@@ -19,8 +22,7 @@ format:
   html:
     theme: cyborg
     css: styles.css
-execute:
-  freeze: auto  # re-render only when source changes
+
 
 
 
