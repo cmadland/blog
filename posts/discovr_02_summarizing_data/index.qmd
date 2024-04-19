@@ -15,10 +15,13 @@ ice_tib <- here::here("data/ice_bucket.csv") |> readr::read_csv()
 ## Frequency tables
 
 - use `group_by()` and `summarise()` and `n()` functions from `dplyr`
+
  `group_by()`
  : groups data by whatever variable(s) you name within the function
+
  `summarise()`
  : creates summary table based on the variables in the function
+
 `n()`
 : counts the number of scores
 
