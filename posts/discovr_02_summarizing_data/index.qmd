@@ -62,6 +62,7 @@ gp_freq_dist
 ```
 
 - this creates a new object called `gp_freq_dist` that contains each value within `ice_tib` but with an extra column/variable called `days_group` that indicates the bin the value of `upload_day` is in
+
 ::: {.callout-note}
 ## Set notation
 - the value of `upload_day` now has a corresponding value of `days_group` containing the bin
