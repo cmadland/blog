@@ -2,7 +2,7 @@
 title: "discovr_02 - Summarizing Data"
 author: "Colin Madland"
 date: "2024-04-18"
-categories: [frequency, histograms, variance, standard deviation, R, discovr]
+categories: [frequency, histograms, variance, standard deviation, IQR, R, discovr]
 editor: visual
 image: "raft-falls.jpeg"
 ---
@@ -99,6 +99,8 @@ gp_freq_dist
 
 ## Efficient Code
 
+- rather than creating the table of relative frequencies step-by-step, it is usually more efficient to carry out the steps in one piece of code
+- 
 ```{r}
 gp_freq_dist <- ice_tib |> 
   dplyr::mutate(
@@ -116,3 +118,65 @@ gp_freq_dist <- ice_tib |>
 gp_freq_dist
 ```
 
+## Histograms
+
+- `ggplot2` can produce data visualizations
+
+::: {.callout-tip}
+## Tip: Always load `ggplot2`!
+
+We’ve discussed elsewhere that if you include packages when you use functions (e.g., `dplyr::mutate()`) you don’t need to explicitly load the package (in this case `dplyr`). However, to create plots with `ggplot2` you build them up layer by layer, which means you use a lot of `ggplot2` functions. For this reason, I advise loading it at the start of your Quarto document and not worrying too much about including package references when you use functions. You can load it either with `library(ggplot2)` or by loading the entire tidyverse using `library(tidyverse)`.
+:::
+
+- general form of `ggplot2`
+
+```
+`ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))`
+```
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day))
+```
+
+- something is missing b/c we only told `ggplot2` 'what' to plot, not 'how' to plot it.
+- need to add a `geom` with `geom_histogram()`
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day)) +
+geom_histogram()
+```
+
+### Changing bin widths
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day)) +
+geom_histogram(binwidth=1)
+```
+
+### Changing colours
+
+- include `fill =` within the `geom_histogram()` function
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day)) +
+geom_histogram(binwidth = 1, fill = "#440154")
+```
+
+### Transparency and axis labels
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day)) +
+geom_histogram(binwidth = 1, fill = "#440154", alpha = 0.25) +
+labs(y = "Frequency", x = "Days since first ice bucket challenge video")
+```
+
+### Themes
+
+```{r}
+ggplot2::ggplot(ice_tib, aes(upload_day)) +
+geom_histogram(binwidth = 1, fill = "#440154", alpha = 0.9) +
+labs(y = "Frequency", x = "Days since first ice bucket challenge video") +
+theme_minimal()
+```
+
+## Summarizing data

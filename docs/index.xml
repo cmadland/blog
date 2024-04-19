@@ -260,6 +260,10 @@ font-style: inherit;">n</span>()</span>
 </section>
 <section id="efficient-code" class="level2">
 <h2 class="anchored" data-anchor-id="efficient-code">Efficient Code</h2>
+<ul>
+<li>rather than creating the table of relative frequencies step-by-step, it is usually more efficient to carry out the steps in one piece of code</li>
+<li></li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">gp_freq_dist <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -346,6 +350,242 @@ font-style: inherit;">100</span></span>
 15 (74,78]         6000       0.00258   0.258</code></pre>
 </div>
 </div>
+</section>
+<section id="histograms" class="level2">
+<h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
+<ul>
+<li><code>ggplot2</code> can produce data visualizations</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip: Always load <code>ggplot2</code>!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We’ve discussed elsewhere that if you include packages when you use functions (e.g., <code>dplyr::mutate()</code>) you don’t need to explicitly load the package (in this case <code>dplyr</code>). However, to create plots with <code>ggplot2</code> you build them up layer by layer, which means you use a lot of <code>ggplot2</code> functions. For this reason, I advise loading it at the start of your Quarto document and not worrying too much about including package references when you use functions. You can load it either with <code>library(ggplot2)</code> or by loading the entire tidyverse using <code>library(tidyverse)</code>.</p>
+</div>
+</div>
+<ul>
+<li>general form of <code>ggplot2</code></li>
+</ul>
+<pre><code>`ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))`</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day))</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>something is missing b/c we only told <code>ggplot2</code> ‘what’ to plot, not ‘how’ to plot it.</li>
+<li>need to add a <code>geom</code> with <code>geom_histogram()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb17-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="changing-bin-widths" class="level3">
+<h3 class="anchored" data-anchor-id="changing-bin-widths">Changing bin widths</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="changing-colours" class="level3">
+<h3 class="anchored" data-anchor-id="changing-colours">Changing colours</h3>
+<ul>
+<li>include <code>fill =</code> within the <code>geom_histogram()</code> function</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb20-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#440154"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="transparency-and-axis-labels" class="level3">
+<h3 class="anchored" data-anchor-id="transparency-and-axis-labels">Transparency and axis labels</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#440154"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.25</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Frequency"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Days since first ice bucket challenge video"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="themes" class="level3">
+<h3 class="anchored" data-anchor-id="themes">Themes</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ice_tib, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(upload_day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#440154"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.9</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Frequency"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Days since first ice bucket challenge video"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb22-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summarizing-data" class="level2">
+<h2 class="anchored" data-anchor-id="summarizing-data">Summarizing data</h2>
 
 
 </section>
@@ -355,6 +595,7 @@ font-style: inherit;">100</span></span>
   <category>histograms</category>
   <category>variance</category>
   <category>standard deviation</category>
+  <category>IQR</category>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
@@ -4670,34 +4911,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.175</td>
+<td style="text-align: right;">-27.344</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-57.216</td>
-<td style="text-align: right;">9.386</td>
+<td style="text-align: right;">-55.031</td>
+<td style="text-align: right;">7.028</td>
 <td style="text-align: right;">0.108</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
-<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.380</td>
+<td style="text-align: right;">3.363</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.776</td>
-<td style="text-align: right;">3.984</td>
+<td style="text-align: right;">2.772</td>
+<td style="text-align: right;">3.955</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.938</td>
+<td style="text-align: right;">11.180</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">5.791</td>
-<td style="text-align: right;">15.373</td>
+<td style="text-align: right;">6.629</td>
+<td style="text-align: right;">15.015</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -5389,22 +5630,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu       193.1851 3.340e+00 3.340e-02      3.402e-02
-adverts    0.0841 6.931e-03 6.931e-05      6.931e-05
-airplay    3.3371 2.803e-01 2.803e-03      2.869e-03
-image     10.9761 2.442e+00 2.442e-02      2.442e-02
-sig2    2246.1769 2.327e+02 2.327e+00      2.380e+00
-g          1.0401 2.339e+00 2.339e-02      2.339e-02
+mu      1.932e+02   3.34332 0.0334332      0.0334332
+adverts 8.398e-02   0.00694 0.0000694      0.0000694
+airplay 3.337e+00   0.27815 0.0027815      0.0028414
+image   1.098e+01   2.46354 0.0246354      0.0246354
+sig2    2.251e+03 229.64465 2.2964465      2.3903651
+g       9.888e-01   1.64701 0.0164701      0.0164701
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.910e+02 1.932e+02 1.954e+02 1.997e+02
-adverts 7.045e-02 7.944e-02 8.416e-02 8.875e-02 9.759e-02
-airplay 2.781e+00 3.152e+00 3.338e+00 3.530e+00 3.886e+00
-image   6.238e+00 9.323e+00 1.098e+01 1.263e+01 1.580e+01
-sig2    1.832e+03 2.082e+03 2.232e+03 2.392e+03 2.741e+03
-g       1.784e-01 3.783e-01 6.059e-01 1.076e+00 4.241e+00</code></pre>
+mu      1.864e+02 1.910e+02 1.932e+02  195.4726 1.997e+02
+adverts 7.024e-02 7.929e-02 8.407e-02    0.0887 9.733e-02
+airplay 2.791e+00 3.153e+00 3.335e+00    3.5239 3.884e+00
+image   6.119e+00 9.354e+00 1.099e+01   12.6303 1.578e+01
+sig2    1.845e+03 2.090e+03 2.236e+03 2394.6512 2.738e+03
+g       1.772e-01 3.701e-01 5.945e-01    1.0379 4.260e+00</code></pre>
 </div>
 </div>
 <ul>
