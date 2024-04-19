@@ -245,9 +245,109 @@ font-style: inherit;">n</span>()</span>
 15 (74,78]         6000</code></pre>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="relative-frequencies" class="level2">
+<h2 class="anchored" data-anchor-id="relative-frequencies">Relative Frequencies</h2>
+<ul>
+<li>we have an object <code>gp_freq_dist</code> that contains the number of days grouped into bins of 4 days and the number of videos uploaded during each of the time periods represented by those bins</li>
+<li>to calculate the relative frequency we can use <code>dplyr::mutate()</code> to add a variable that divides the frequency by the total number of videos using <code>sum()</code></li>
+</ul>
+<pre><code>... |&gt;
+    dplyr::mutate(
+        relative_freq = frequency/sum(frequency) # creates a new column
+    )</code></pre>
+</section>
+<section id="efficient-code" class="level2">
+<h2 class="anchored" data-anchor-id="efficient-code">Efficient Code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">gp_freq_dist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb13-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">days_group =</span> ggplot2<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cut_width</span>(upload_day, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span>
+<span id="cb13-4">    ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-5">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(days_group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-6">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb13-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">frequency =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">n</span>()</span>
+<span id="cb13-8">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb13-9">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb13-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">relative_freq =</span> frequency<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(frequency),</span>
+<span id="cb13-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">percent =</span> relative_freq<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span></span>
+<span id="cb13-12">  )</span>
+<span id="cb13-13">  </span>
+<span id="cb13-14">gp_freq_dist</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 15 × 4
+   days_group frequency relative_freq percent
+   &lt;fct&gt;          &lt;int&gt;         &lt;dbl&gt;   &lt;dbl&gt;
+ 1 [18,22]         4000       0.00172   0.172
+ 2 (22,26]        24000       0.0103    1.03 
+ 3 (26,30]        75000       0.0323    3.23 
+ 4 (30,34]       367000       0.158    15.8  
+ 5 (34,38]       770000       0.331    33.1  
+ 6 (38,42]       534000       0.230    23.0  
+ 7 (42,46]       255000       0.110    11.0  
+ 8 (46,50]       102000       0.0439    4.39 
+ 9 (50,54]        70000       0.0301    3.01 
+10 (54,58]        38000       0.0164    1.64 
+11 (58,62]        26000       0.0112    1.12 
+12 (62,66]        18000       0.00775   0.775
+13 (66,70]        18000       0.00775   0.775
+14 (70,74]        16000       0.00689   0.689
+15 (74,78]         6000       0.00258   0.258</code></pre>
+</div>
+</div>
+
+
 </section>
 
  ]]></description>
@@ -4570,34 +4670,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.632</td>
+<td style="text-align: right;">-27.196</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-54.664</td>
-<td style="text-align: right;">7.760</td>
-<td style="text-align: right;">0.126</td>
+<td style="text-align: right;">-55.801</td>
+<td style="text-align: right;">4.183</td>
+<td style="text-align: right;">0.098</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.071</td>
 <td style="text-align: right;">0.098</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.375</td>
+<td style="text-align: right;">3.373</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.769</td>
-<td style="text-align: right;">3.957</td>
+<td style="text-align: right;">2.811</td>
+<td style="text-align: right;">3.988</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.893</td>
+<td style="text-align: right;">11.264</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.273</td>
-<td style="text-align: right;">15.117</td>
+<td style="text-align: right;">6.558</td>
+<td style="text-align: right;">15.145</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -5289,22 +5389,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.931e+02 3.362e+00 3.362e-02      3.310e-02
-adverts 8.406e-02 6.949e-03 6.949e-05      6.949e-05
-airplay 3.335e+00 2.786e-01 2.786e-03      2.786e-03
-image   1.099e+01 2.430e+00 2.430e-02      2.430e-02
-sig2    2.252e+03 2.336e+02 2.336e+00      2.425e+00
-g       9.799e-01 1.632e+00 1.632e-02      1.632e-02
+mu      1.932e+02 3.328e+00 3.328e-02      3.328e-02
+adverts 8.411e-02 6.959e-03 6.959e-05      6.959e-05
+airplay 3.330e+00 2.801e-01 2.801e-03      2.821e-03
+image   1.102e+01 2.447e+00 2.447e-02      2.447e-02
+sig2    2.251e+03 2.305e+02 2.305e+00      2.393e+00
+g       1.046e+00 1.850e+00 1.850e-02      1.921e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.954e+02 1.997e+02
-adverts 7.048e-02 7.932e-02 8.404e-02 8.876e-02 9.751e-02
-airplay 2.790e+00 3.153e+00 3.338e+00 3.521e+00 3.882e+00
-image   6.255e+00 9.338e+00 1.096e+01 1.264e+01 1.580e+01
-sig2    1.840e+03 2.087e+03 2.233e+03 2.401e+03 2.758e+03
-g       1.712e-01 3.692e-01 6.025e-01 1.054e+00 3.941e+00</code></pre>
+mu      1.866e+02  190.9472 1.931e+02 1.954e+02 1.997e+02
+adverts 7.072e-02    0.0794 8.407e-02 8.875e-02 9.788e-02
+airplay 2.783e+00    3.1414 3.329e+00 3.516e+00 3.885e+00
+image   6.103e+00    9.4265 1.102e+01 1.265e+01 1.579e+01
+sig2    1.841e+03 2090.1485 2.233e+03 2.394e+03 2.757e+03
+g       1.716e-01    0.3715 6.070e-01 1.072e+00 4.451e+00</code></pre>
 </div>
 </div>
 <ul>

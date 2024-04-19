@@ -84,3 +84,34 @@ gp_freq_dist <- ice_tib |>
   )
 gp_freq_dist
 ```
+
+## Relative Frequencies
+
+- we have an object `gp_freq_dist` that contains the number of days grouped into bins of 4 days and the number of videos uploaded during each of the time periods represented by those bins
+- to calculate the relative frequency we can use `dplyr::mutate()` to add a variable that divides the frequency by the total number of videos using `sum()`
+
+```
+... |>
+    dplyr::mutate(
+        relative_freq = frequency/sum(frequency) # creates a new column
+    )
+```
+
+## Efficient Code
+
+```{r}
+gp_freq_dist <- ice_tib |> 
+  dplyr::mutate(
+    days_group = ggplot2::cut_width(upload_day, 4)
+    ) |> 
+  dplyr::group_by(days_group) |> 
+  dplyr::summarise(
+    frequency = n()
+  ) |> 
+  dplyr::mutate(
+    relative_freq = frequency/sum(frequency),
+    percent = relative_freq*100
+  )
+  
+gp_freq_dist
+```
