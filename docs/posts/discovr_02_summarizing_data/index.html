@@ -232,15 +232,15 @@ dbl (1): upload_day
 <dl>
 <dt><code>group_by()</code></dt>
 <dd>
-groups data by whatever variable(s) you name within the function
+<p>groups data by whatever variable(s) you name within the function</p>
 </dd>
 <dt><code>summarise()</code></dt>
 <dd>
-creates summary table based on the variables in the function
+<p>creates summary table based on the variables in the function</p>
 </dd>
 <dt><code>n()</code></dt>
 <dd>
-counts the number of scores
+<p>counts the number of scores</p>
 </dd>
 </dl>
 <p>To count frequencies:</p>
@@ -315,11 +315,27 @@ counts the number of scores
 </div>
 </div>
 <ul>
-<li><p>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in ::: {.callout-note} ## Set notation</p></li>
-<li><p>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</p></li>
-<li><p>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</p></li>
-<li><p>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’ :::</p></li>
-<li><p>now we can use <code>summarize()</code> and <code>n()</code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code></p></li>
+<li>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Set notation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</li>
+<li>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</li>
+<li>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>now we can use <code>summarize()</code> and <code>n()</code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code></li>
 </ul>
 <section id="coding-challenge" class="level3">
 <h3 class="anchored" data-anchor-id="coding-challenge">Coding challenge</h3>
@@ -526,6 +542,249 @@ Tip: Always load <code>ggplot2</code>!
 </section>
 <section id="summarizing-data" class="level2">
 <h2 class="anchored" data-anchor-id="summarizing-data">Summarizing data</h2>
+<section id="mean-and-median" class="level3">
+<h3 class="anchored" data-anchor-id="mean-and-median">Mean and median</h3>
+<pre><code>mean(variable, trim = 0, na.rm = FALSE)</code></pre>
+<dl>
+<dt><code>trim</code></dt>
+<dd>
+<p>allows you to trim scores before calculating the mean by specifying a value between 0 and 0.5. default is 0 (no trim). to trim 10% of scores fom each end of the distribution you could set <code>trim = 0.1</code></p>
+</dd>
+<dt><code>na.rm</code></dt>
+<dd>
+<p>stands for <code>NA remove</code>. Missing values are denoted <code>NA</code>, for ‘not available’. by setting <code>na.rm = TRUE</code> (or <code>na.rm = T</code>), R will remove missing values before computing the mean</p>
+</dd>
+</dl>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Missing Values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The default in many functions is not to remove missing values (e.g.&nbsp;<code>na.rm = FALSE</code>). If you have missing values in your data and don’t change this default behaviour R will throw an error. Therefore, if you get an error from a function like <code>mean()</code>, check whether you have missing values and whether you have forgotten to set <code>na.rm = TRUE</code>.</p>
+</div>
+</div>
+<p>The function for median is similar, except no trim (median is effectively the mean with 50% trim)</p>
+<pre><code>median(variable, na.rm = FALSE)</code></pre>
+</section>
+<section id="code-example" class="level3">
+<h3 class="anchored" data-anchor-id="code-example">Code example</h3>
+<ul>
+<li>if the defaults are ok, there is no need to set those arguments</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ice_tib<span class="sc">$</span>upload_day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+</div>
+<p>To remove missing values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ice_tib<span class="sc">$</span>upload_day , <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>?mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="coding-challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-1">coding challenge</h3>
+<p>Find the median number of days after the original ice bucket video that other videos were uploaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(ice_tib<span class="sc">$</span>upload_day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="quantifying-the-fit-of-the-mean" class="level2">
+<h2 class="anchored" data-anchor-id="quantifying-the-fit-of-the-mean">Quantifying the ‘fit’ of the mean</h2>
+<dl>
+<dt><code>var()</code></dt>
+<dd>
+variance
+</dd>
+<dd>
+<code>var(variable_name, na.rm = FALSE)</code>
+</dd>
+<dt><code>sd()</code></dt>
+<dd>
+standard deviation
+</dd>
+<dd>
+<code>sd(variable_name, na.rm = FALSE)</code>
+</dd>
+</dl>
+<p><code>var()</code> and <code>sd()</code> take the same syntax as <code>mean()</code></p>
+<section id="coding-challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-2">coding challenge</h3>
+<p>Use what you learned in the previous section and the code example above to get the variance and standard deviation of the days since the original ice bucket video that other videos were uploaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ice_tib<span class="sc">$</span>upload_day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.94197</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ice_tib<span class="sc">$</span>upload_day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.74222</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="inter-quartile-range" class="level2">
+<h2 class="anchored" data-anchor-id="inter-quartile-range">Inter-quartile range</h2>
+<dl>
+<dt><code>IQR()</code></dt>
+<dd>
+<code>IQR(variable_name, na.rm = FALSE, type = 7)</code>
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(ice_tib<span class="sc">$</span>upload_day, <span class="at">type =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(ice_tib<span class="sc">$</span>upload_day, <span class="at">type =</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-a-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-summary-table">Creating a summary table</h2>
+<ul>
+<li>used to comine all the above into one table</li>
+</ul>
+<p><code>summarise()</code></p>
+<pre><code>ice_tib |&gt;
+  dplyr::summarise(
+    median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
+    mean =  mean(upload_day), # creates new variable called `mean` from the output of `mean(upload_day)`
+    ...
+    )</code></pre>
+<section id="coding-challenge-3" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-3">coding challenge</h3>
+<p>Create a summary table containing the mean, median, IQR, variance and SD of the number of days since the original ice bucket video.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>ice_tib <span class="sc">|&gt;</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span>  <span class="fu">median</span>(upload_day),  <span class="co"># creates new variable called `median` from the output of `median(upload_day)`</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span>  <span class="fu">mean</span>(upload_day), <span class="co"># creates new variable called `mean` from the output of `mean(upload_day)`</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR =</span> <span class="fu">IQR</span>(upload_day),</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">var =</span> <span class="fu">var</span>(upload_day),</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(upload_day)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR   var    sd
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     38  39.7     7  59.9  7.74</code></pre>
+</div>
+</div>
+</section>
+<section id="code-example-1" class="level3">
+<h3 class="anchored" data-anchor-id="code-example-1">Code example</h3>
+<p>To store the summary of stats, we assign it to a new object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>upload_summary <span class="ot">&lt;-</span> ice_tib <span class="sc">|&gt;</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span>  <span class="fu">median</span>(upload_day),</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span>  <span class="fu">mean</span>(upload_day),</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR =</span> <span class="fu">IQR</span>(upload_day),</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">variance =</span> <span class="fu">var</span>(upload_day),</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_dev =</span> <span class="fu">sd</span>(upload_day)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    upload_summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR variance std_dev
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1     38  39.7     7     59.9    7.74</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="rounding-values" class="level2">
+<h2 class="anchored" data-anchor-id="rounding-values">Rounding Values</h2>
+<p>use <code>round()</code> function to round values and use <code>kable()</code> from <code>knitr</code> to round an entire table of values</p>
+<dl>
+<dt><code>round()</code></dt>
+<dd>
+round(x, digits = 0)
+</dd>
+<dd>
+default is 0
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.211420</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>also use a pipe to feed a mean, median, or variance into the round function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ice_tib<span class="sc">$</span>upload_day) <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.942</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(ice_tib<span class="sc">$</span>upload_day) <span class="sc">|&gt;</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ice_tib<span class="sc">$</span>upload_day) <span class="sc">|&gt;</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.742</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>upload_summary <span class="ot">&lt;-</span> ice_tib <span class="sc">|&gt;</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">median =</span>  <span class="fu">median</span>(upload_day),</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span>  <span class="fu">mean</span>(upload_day),</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR =</span> <span class="fu">IQR</span>(upload_day),</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">variance =</span> <span class="fu">var</span>(upload_day),</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">std_dev =</span> <span class="fu">sd</span>(upload_day)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    upload_summary <span class="sc">|&gt;</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR variance std_dev
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1     38  39.7     7     59.9    7.74</code></pre>
+</div>
+</div>
+</section>
+<section id="datawizard" class="level2">
+<h2 class="anchored" data-anchor-id="datawizard">Datawizard</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>datawizard<span class="sc">::</span><span class="fu">describe_distribution</span>(<span class="at">x =</span> ice_tib,</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">select =</span> <span class="cn">NULL</span>,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">exclude =</span> <span class="cn">NULL</span>,</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">centrality =</span> <span class="st">"mean"</span>,</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">dispersion =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">iqr =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">range =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">quartiles =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">include_factors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   |  Mean |   SD | IQR |          Range | Skewness | Kurtosis |       n | n_Missing
+--------------------------------------------------------------------------------------------
+upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000 |         0</code></pre>
+</div>
+</div>
 
 
 </section>

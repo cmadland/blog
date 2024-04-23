@@ -70,15 +70,15 @@ dbl (1): upload_day
 <dl>
 <dt><code>group_by()</code></dt>
 <dd>
-groups data by whatever variable(s) you name within the function
+<p>groups data by whatever variable(s) you name within the function</p>
 </dd>
 <dt><code>summarise()</code></dt>
 <dd>
-creates summary table based on the variables in the function
+<p>creates summary table based on the variables in the function</p>
 </dd>
 <dt><code>n()</code></dt>
 <dd>
-counts the number of scores
+<p>counts the number of scores</p>
 </dd>
 </dl>
 <p>To count frequencies:</p>
@@ -187,11 +187,27 @@ font-style: inherit;">4</span>)</span>
 </div>
 </div>
 <ul>
-<li><p>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in ::: {.callout-note} ## Set notation</p></li>
-<li><p>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</p></li>
-<li><p>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</p></li>
-<li><p>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’ :::</p></li>
-<li><p>now we can use <code>summarize()</code> and <code>n()</code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code></p></li>
+<li>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Set notation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</li>
+<li>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</li>
+<li>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’</li>
+</ul>
+</div>
+</div>
+<ul>
+<li>now we can use <code>summarize()</code> and <code>n()</code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code></li>
 </ul>
 <section id="coding-challenge" class="level3">
 <h3 class="anchored" data-anchor-id="coding-challenge">Coding challenge</h3>
@@ -600,6 +616,457 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </section>
 <section id="summarizing-data" class="level2">
 <h2 class="anchored" data-anchor-id="summarizing-data">Summarizing data</h2>
+<section id="mean-and-median" class="level3">
+<h3 class="anchored" data-anchor-id="mean-and-median">Mean and median</h3>
+<pre><code>mean(variable, trim = 0, na.rm = FALSE)</code></pre>
+<dl>
+<dt><code>trim</code></dt>
+<dd>
+<p>allows you to trim scores before calculating the mean by specifying a value between 0 and 0.5. default is 0 (no trim). to trim 10% of scores fom each end of the distribution you could set <code>trim = 0.1</code></p>
+</dd>
+<dt><code>na.rm</code></dt>
+<dd>
+<p>stands for <code>NA remove</code>. Missing values are denoted <code>NA</code>, for ‘not available’. by setting <code>na.rm = TRUE</code> (or <code>na.rm = T</code>), R will remove missing values before computing the mean</p>
+</dd>
+</dl>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Missing Values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The default in many functions is not to remove missing values (e.g.&nbsp;<code>na.rm = FALSE</code>). If you have missing values in your data and don’t change this default behaviour R will throw an error. Therefore, if you get an error from a function like <code>mean()</code>, check whether you have missing values and whether you have forgotten to set <code>na.rm = TRUE</code>.</p>
+</div>
+</div>
+<p>The function for median is similar, except no trim (median is effectively the mean with 50% trim)</p>
+<pre><code>median(variable, na.rm = FALSE)</code></pre>
+</section>
+<section id="code-example" class="level3">
+<h3 class="anchored" data-anchor-id="code-example">Code example</h3>
+<ul>
+<li>if the defaults are ok, there is no need to set those arguments</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+</div>
+<p>To remove missing values:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">?mean</span></code></pre></div>
+</div>
+</section>
+<section id="coding-challenge-1" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-1">coding challenge</h3>
+<p>Find the median number of days after the original ice bucket video that other videos were uploaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 38</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="quantifying-the-fit-of-the-mean" class="level2">
+<h2 class="anchored" data-anchor-id="quantifying-the-fit-of-the-mean">Quantifying the ‘fit’ of the mean</h2>
+<dl>
+<dt><code>var()</code></dt>
+<dd>
+variance
+</dd>
+<dd>
+<code>var(variable_name, na.rm = FALSE)</code>
+</dd>
+<dt><code>sd()</code></dt>
+<dd>
+standard deviation
+</dd>
+<dd>
+<code>sd(variable_name, na.rm = FALSE)</code>
+</dd>
+</dl>
+<p><code>var()</code> and <code>sd()</code> take the same syntax as <code>mean()</code></p>
+<section id="coding-challenge-2" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-2">coding challenge</h3>
+<p>Use what you learned in the previous section and the code example above to get the variance and standard deviation of the days since the original ice bucket video that other videos were uploaded.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.94197</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.74222</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="inter-quartile-range" class="level2">
+<h2 class="anchored" data-anchor-id="inter-quartile-range">Inter-quartile range</h2>
+<dl>
+<dt><code>IQR()</code></dt>
+<dd>
+<code>IQR(variable_name, na.rm = FALSE, type = 7)</code>
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IQR</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IQR</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-a-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-summary-table">Creating a summary table</h2>
+<ul>
+<li>used to comine all the above into one table</li>
+</ul>
+<p><code>summarise()</code></p>
+<pre><code>ice_tib |&gt;
+  dplyr::summarise(
+    median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
+    mean =  mean(upload_day), # creates new variable called `mean` from the output of `mean(upload_day)`
+    ...
+    )</code></pre>
+<section id="coding-challenge-3" class="level3">
+<h3 class="anchored" data-anchor-id="coding-challenge-3">coding challenge</h3>
+<p>Create a summary table containing the mean, median, IQR, variance and SD of the number of days since the original ice bucket video.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb41-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb41-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">median =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(upload_day),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># creates new variable called `median` from the output of `median(upload_day)`</span></span>
+<span id="cb41-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(upload_day), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># creates new variable called `mean` from the output of `mean(upload_day)`</span></span>
+<span id="cb41-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">IQR =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IQR</span>(upload_day),</span>
+<span id="cb41-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">var =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(upload_day),</span>
+<span id="cb41-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(upload_day)</span>
+<span id="cb41-8">    )</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR   var    sd
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1     38  39.7     7  59.9  7.74</code></pre>
+</div>
+</div>
+</section>
+<section id="code-example-1" class="level3">
+<h3 class="anchored" data-anchor-id="code-example-1">Code example</h3>
+<p>To store the summary of stats, we assign it to a new object:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1">upload_summary <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb43-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb43-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">median =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(upload_day),</span>
+<span id="cb43-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(upload_day),</span>
+<span id="cb43-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">IQR =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IQR</span>(upload_day),</span>
+<span id="cb43-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">variance =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(upload_day),</span>
+<span id="cb43-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">std_dev =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(upload_day)</span>
+<span id="cb43-8">    ) </span>
+<span id="cb43-9">    upload_summary</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR variance std_dev
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1     38  39.7     7     59.9    7.74</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="rounding-values" class="level2">
+<h2 class="anchored" data-anchor-id="rounding-values">Rounding Values</h2>
+<p>use <code>round()</code> function to round values and use <code>kable()</code> from <code>knitr</code> to round an entire table of values</p>
+<dl>
+<dt><code>round()</code></dt>
+<dd>
+round(x, digits = 0)
+</dd>
+<dd>
+default is 0
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.211420</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>also use a pipe to feed a mean, median, or variance into the round function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb47-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 59.942</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb49-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 39.678</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(ice_tib<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>upload_day) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb51-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.742</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">upload_summary <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> ice_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb53-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb53-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">median =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(upload_day),</span>
+<span id="cb53-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span>  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(upload_day),</span>
+<span id="cb53-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">IQR =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">IQR</span>(upload_day),</span>
+<span id="cb53-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">variance =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">var</span>(upload_day),</span>
+<span id="cb53-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">std_dev =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(upload_day)</span>
+<span id="cb53-8">    ) </span>
+<span id="cb53-9">    upload_summary <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb53-10">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  median  mean   IQR variance std_dev
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1     38  39.7     7     59.9    7.74</code></pre>
+</div>
+</div>
+</section>
+<section id="datawizard" class="level2">
+<h2 class="anchored" data-anchor-id="datawizard">Datawizard</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">datawizard<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">describe_distribution</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> ice_tib,</span>
+<span id="cb55-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">select =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb55-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">exclude =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb55-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">centrality =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"mean"</span>,</span>
+<span id="cb55-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dispersion =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb55-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">iqr =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb55-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">range =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>,</span>
+<span id="cb55-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quartiles =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>,</span>
+<span id="cb55-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">include_factors =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>,</span>
+<span id="cb55-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ci =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable   |  Mean |   SD | IQR |          Range | Skewness | Kurtosis |       n | n_Missing
+--------------------------------------------------------------------------------------------
+upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000 |         0</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -4925,35 +5392,35 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.412</td>
+<td style="text-align: right;">-27.722</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-57.533</td>
-<td style="text-align: right;">8.359</td>
-<td style="text-align: right;">0.122</td>
+<td style="text-align: right;">-56.905</td>
+<td style="text-align: right;">9.374</td>
+<td style="text-align: right;">0.11</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
-<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.086</td>
 <td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.071</td>
-<td style="text-align: right;">0.098</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.00</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.342</td>
+<td style="text-align: right;">3.368</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.801</td>
-<td style="text-align: right;">4.000</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">2.746</td>
+<td style="text-align: right;">3.995</td>
+<td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.891</td>
+<td style="text-align: right;">11.297</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.423</td>
-<td style="text-align: right;">15.355</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">6.143</td>
+<td style="text-align: right;">15.177</td>
+<td style="text-align: right;">0.00</td>
 </tr>
 </tbody>
 </table>
@@ -5644,22 +6111,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.401e+00 3.401e-02      3.401e-02
-adverts 8.406e-02 7.012e-03 7.012e-05      6.879e-05
-airplay 3.335e+00 2.790e-01 2.790e-03      2.847e-03
-image   1.098e+01 2.451e+00 2.451e-02      2.451e-02
-sig2    2.249e+03 2.309e+02 2.309e+00      2.419e+00
-g       1.003e+00 1.766e+00 1.766e-02      1.766e-02
+mu      1.932e+02 3.355e+00 3.355e-02      3.355e-02
+adverts 8.407e-02 6.946e-03 6.946e-05      6.946e-05
+airplay 3.334e+00 2.789e-01 2.789e-03      2.789e-03
+image   1.100e+01 2.430e+00 2.430e-02      2.430e-02
+sig2    2.249e+03 2.320e+02 2.320e+00      2.370e+00
+g       9.882e-01 1.580e+00 1.580e-02      1.580e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.955e+02  199.9360
-adverts 7.044e-02 7.935e-02 8.402e-02 8.875e-02    0.0978
-airplay 2.787e+00 3.145e+00 3.335e+00 3.520e+00    3.8787
-image   6.200e+00 9.331e+00 1.099e+01 1.265e+01   15.7560
-sig2    1.840e+03 2.087e+03 2.233e+03 2.394e+03 2743.4158
-g       1.721e-01 3.687e-01 6.017e-01 1.047e+00    4.2881</code></pre>
+mu      1.866e+02  190.9067  193.1311 1.954e+02 1.998e+02
+adverts 7.053e-02    0.0794    0.0840 8.881e-02 9.754e-02
+airplay 2.784e+00    3.1455    3.3364 3.521e+00 3.881e+00
+image   6.265e+00    9.3448   11.0040 1.267e+01 1.581e+01
+sig2    1.835e+03 2084.7160 2234.7114 2.396e+03 2.741e+03
+g       1.706e-01    0.3687    0.6043 1.073e+00 3.978e+00</code></pre>
 </div>
 </div>
 <ul>

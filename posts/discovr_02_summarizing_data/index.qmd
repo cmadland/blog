@@ -14,24 +14,27 @@ ice_tib <- here::here("data/ice_bucket.csv") |> readr::read_csv()
 
 ## Frequency tables
 
-- use `group_by()` and `summarise()` and `n()` functions from `dplyr`
+-   use `group_by()` and `summarise()` and `n()` functions from `dplyr`
 
- `group_by()`
- : groups data by whatever variable(s) you name within the function
+`group_by()`
 
- `summarise()`
- : creates summary table based on the variables in the function
+:   groups data by whatever variable(s) you name within the function
+
+`summarise()`
+
+:   creates summary table based on the variables in the function
 
 `n()`
-: counts the number of scores
+
+:   counts the number of scores
 
 To count frequencies:
 
-- tell R to treat values that are the same, as being in the same category
-  - `group_by(upload_day)` tells R that  scores that are the same within `upload_day` are in the same group
-  - subsequent operations are conducted on the groups
-- count how many scores fall into each category
-  - `summarize()` creates a variable called `frequency` that counts how many items are in each group created by `group_by()`
+-   tell R to treat values that are the same, as being in the same category
+    -   `group_by(upload_day)` tells R that scores that are the same within `upload_day` are in the same group
+    -   subsequent operations are conducted on the groups
+-   count how many scores fall into each category
+    -   `summarize()` creates a variable called `frequency` that counts how many items are in each group created by `group_by()`
 
 ```{r}
 freq_tbl <- ice_tib |>
@@ -42,16 +45,16 @@ freq_tbl <- ice_tib |>
 freq_tbl
 ```
 
-- this is a large table and a bit unwieldy
-- use a `grouped frequency distribution`
-  - place values of `upload_days` into bins
-- if we want to split the variable `upload_day` into bins of 4 days...
+-   this is a large table and a bit unwieldy
+-   use a `grouped frequency distribution`
+    -   place values of `upload_days` into bins
+-   if we want to split the variable `upload_day` into bins of 4 days...
 
-```
+```         
 ggplot2::cut_width(upload_day, 4)
 ```
 
-- combine this with `dplyr::mutate()` to create a new variable called `days_group`
+-   combine this with `dplyr::mutate()` to create a new variable called `days_group`
 
 ```{r}
 gp_freq_dist <- ice_tib |> 
@@ -61,21 +64,21 @@ gp_freq_dist <- ice_tib |>
 gp_freq_dist
 ```
 
-- this creates a new object called `gp_freq_dist` that contains each value within `ice_tib` but with an extra column/variable called `days_group` that indicates the bin the value of `upload_day` is in
+-   this creates a new object called `gp_freq_dist` that contains each value within `ice_tib` but with an extra column/variable called `days_group` that indicates the bin the value of `upload_day` is in
 
-::: {.callout-note}
+::: callout-note
 ## Set notation
-- the value of `upload_day` now has a corresponding value of `days_group` containing the bin
-- the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34
-- the label uses standard mathematical notation for sets where `(` or `)` means 'not including' and `[` or `]` means 'including'
+
+-   the value of `upload_day` now has a corresponding value of `days_group` containing the bin
+-   the first score of 34 has been assigned to the bin labelled \`(30, 34\] which is the bin containing any score above 30, up to and including 34
+-   the label uses standard mathematical notation for sets where `(` or `)` means 'not including' and `[` or `]` means 'including'
 :::
 
-- now we can use `summarize()` and `n()` to count scores like before, except to use `days_group` instead of `upload_day`
+-   now we can use `summarize()` and `n()` to count scores like before, except to use `days_group` instead of `upload_day`
 
 ### Coding challenge
 
 Create a grouped frequency table called gp_freq_dist by starting with the code in the code example and then using the code we used to create freq_tbl to create a pipe that summarizes the grouped scores.
-
 
 ```{r}
 gp_freq_dist <- ice_tib |> 
@@ -91,10 +94,10 @@ gp_freq_dist
 
 ## Relative Frequencies
 
-- we have an object `gp_freq_dist` that contains the number of days grouped into bins of 4 days and the number of videos uploaded during each of the time periods represented by those bins
-- to calculate the relative frequency we can use `dplyr::mutate()` to add a variable that divides the frequency by the total number of videos using `sum()`
+-   we have an object `gp_freq_dist` that contains the number of days grouped into bins of 4 days and the number of videos uploaded during each of the time periods represented by those bins
+-   to calculate the relative frequency we can use `dplyr::mutate()` to add a variable that divides the frequency by the total number of videos using `sum()`
 
-```
+```         
 ... |>
     dplyr::mutate(
         relative_freq = frequency/sum(frequency) # creates a new column
@@ -103,8 +106,9 @@ gp_freq_dist
 
 ## Efficient Code
 
-- rather than creating the table of relative frequencies step-by-step, it is usually more efficient to carry out the steps in one piece of code
-- 
+-   rather than creating the table of relative frequencies step-by-step, it is usually more efficient to carry out the steps in one piece of code
+-   
+
 ```{r}
 gp_freq_dist <- ice_tib |> 
   dplyr::mutate(
@@ -124,17 +128,17 @@ gp_freq_dist
 
 ## Histograms
 
-- `ggplot2` can produce data visualizations
+-   `ggplot2` can produce data visualizations
 
-::: {.callout-tip}
+::: callout-tip
 ## Tip: Always load `ggplot2`!
 
 We’ve discussed elsewhere that if you include packages when you use functions (e.g., `dplyr::mutate()`) you don’t need to explicitly load the package (in this case `dplyr`). However, to create plots with `ggplot2` you build them up layer by layer, which means you use a lot of `ggplot2` functions. For this reason, I advise loading it at the start of your Quarto document and not worrying too much about including package references when you use functions. You can load it either with `library(ggplot2)` or by loading the entire tidyverse using `library(tidyverse)`.
 :::
 
-- general form of `ggplot2`
+-   general form of `ggplot2`
 
-```
+```         
 `ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))`
 ```
 
@@ -142,8 +146,8 @@ We’ve discussed elsewhere that if you include packages when you use functions 
 ggplot2::ggplot(ice_tib, aes(upload_day))
 ```
 
-- something is missing b/c we only told `ggplot2` 'what' to plot, not 'how' to plot it.
-- need to add a `geom` with `geom_histogram()`
+-   something is missing b/c we only told `ggplot2` 'what' to plot, not 'how' to plot it.
+-   need to add a `geom` with `geom_histogram()`
 
 ```{r}
 ggplot2::ggplot(ice_tib, aes(upload_day)) +
@@ -159,7 +163,7 @@ geom_histogram(binwidth=1)
 
 ### Changing colours
 
-- include `fill =` within the `geom_histogram()` function
+-   include `fill =` within the `geom_histogram()` function
 
 ```{r}
 ggplot2::ggplot(ice_tib, aes(upload_day)) +
@@ -184,3 +188,180 @@ theme_minimal()
 ```
 
 ## Summarizing data
+
+### Mean and median
+
+```         
+mean(variable, trim = 0, na.rm = FALSE)
+```
+
+`trim`
+
+:   allows you to trim scores before calculating the mean by specifying a value between 0 and 0.5. default is 0 (no trim). to trim 10% of scores fom each end of the distribution you could set `trim = 0.1`
+
+`na.rm`
+
+:   stands for `NA remove`. Missing values are denoted `NA`, for 'not available'. by setting `na.rm = TRUE` (or `na.rm = T`), R will remove missing values before computing the mean
+
+::: callout-tip
+## Missing Values
+
+The default in many functions is not to remove missing values (e.g. `na.rm = FALSE`). If you have missing values in your data and don’t change this default behaviour R will throw an error. Therefore, if you get an error from a function like `mean()`, check whether you have missing values and whether you have forgotten to set `na.rm = TRUE`.
+:::
+
+The function for median is similar, except no trim (median is effectively the mean with 50% trim)
+
+```         
+median(variable, na.rm = FALSE)
+```
+
+### Code example
+
+-   if the defaults are ok, there is no need to set those arguments
+
+```{r}
+mean(ice_tib$upload_day)
+```
+
+To remove missing values:
+
+```{r}
+mean(ice_tib$upload_day , na.rm = TRUE)
+```
+
+```{r}
+?mean
+```
+
+### coding challenge
+
+Find the median number of days after the original ice bucket video that other videos were uploaded.
+
+```{r}
+median(ice_tib$upload_day)
+```
+
+## Quantifying the 'fit' of the mean
+
+`var()`
+:   variance
+:   `var(variable_name, na.rm = FALSE)`
+
+`sd()`
+: standard deviation
+: `sd(variable_name, na.rm = FALSE)`
+
+`var()` and `sd()` take the same syntax as `mean()`
+
+### coding challenge
+Use what you learned in the previous section and the code example above to get the variance and standard deviation of the days since the original ice bucket video that other videos were uploaded.
+
+```{r}
+var(ice_tib$upload_day)
+sd(ice_tib$upload_day)
+```
+
+## Inter-quartile range
+
+`IQR()`
+: `IQR(variable_name, na.rm = FALSE, type = 7)`
+
+```{r}
+IQR(ice_tib$upload_day, type = 7)
+IQR(ice_tib$upload_day, type = 8)
+```
+
+## Creating a summary table
+
+- used to comine all the above into one table
+
+`summarise()`
+```
+ice_tib |>
+  dplyr::summarise(
+    median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
+    mean =  mean(upload_day), # creates new variable called `mean` from the output of `mean(upload_day)`
+    ...
+    )
+```
+
+### coding challenge
+Create a summary table containing the mean, median, IQR, variance and SD of the number of days since the original ice bucket video.
+
+```{r}
+ice_tib |>
+  dplyr::summarise(
+    median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
+    mean =  mean(upload_day), # creates new variable called `mean` from the output of `mean(upload_day)`
+    IQR = IQR(upload_day),
+    var = var(upload_day),
+    sd = sd(upload_day)
+    )
+```
+
+### Code example
+
+To store the summary of stats, we assign it to a new object:
+
+```{r}
+upload_summary <- ice_tib |>
+  dplyr::summarise(
+    median =  median(upload_day),
+    mean =  mean(upload_day),
+    IQR = IQR(upload_day),
+    variance = var(upload_day),
+    std_dev = sd(upload_day)
+    ) 
+    upload_summary
+```
+
+## Rounding Values
+
+use `round()` function to round values and use `kable()` from `knitr` to round an entire table of values
+
+`round()`
+: round(x, digits = 0)
+: default is 0
+
+```{r}
+round(3.211420)
+```
+
+ also use a pipe to feed a mean, median, or variance into the round function
+
+```{r}
+var(ice_tib$upload_day) |>
+  round(3)
+mean(ice_tib$upload_day) |>
+  round(3)
+sd(ice_tib$upload_day) |>
+  round(3)
+```
+
+```{r}
+upload_summary <- ice_tib |>
+  dplyr::summarise(
+    median =  median(upload_day),
+    mean =  mean(upload_day),
+    IQR = IQR(upload_day),
+    variance = var(upload_day),
+    std_dev = sd(upload_day)
+    ) 
+    upload_summary |>
+    round(2)
+```
+
+## Datawizard
+
+```{r}
+datawizard::describe_distribution(x = ice_tib,
+  select = NULL,
+  exclude = NULL,
+  centrality = "mean",
+  dispersion = TRUE,
+  iqr = TRUE,
+  range = TRUE,
+  quartiles = FALSE,
+  include_factors = FALSE,
+  ci = NULL)
+```
