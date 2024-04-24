@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/discovr_05_visualizing_data/index.html",
       "/posts/discovr_02_summarizing_data/index.html",
       "/posts/discovr_06_bias/index.html",
       "/posts/discovr_07_associations/index.html",

@@ -1,0 +1,120 @@
+---
+title: "discovr_05 - Visualizing Data"
+author: "Colin Madland"
+date: "2024-04-23"
+categories: [ggplot2, visualizing-data, R, discovr]
+editor: visual
+image: "raft-canyon.jpeg"
+---
+
+```{r}
+library(tidyverse)
+wish_tib <- here::here("data/jiminy_cricket.csv") |> readr::read_csv()
+notebook_tib <- here::here("data/notebook.csv") |> readr::read_csv()
+exam_tib <- here::here("data/exam_anxiety.csv") |> readr::read_csv()
+```
+
+- need to turn categorical variables into factors
+
+```{r}
+wish_tib <- wish_tib |>
+  dplyr::mutate(
+    strategy = forcats::as_factor(strategy),
+    time = forcats::as_factor(time) |> forcats::fct_relevel("Baseline")
+  )
+```
+
+```{r}
+notebook_tib <- notebook_tib |>
+  dplyr::mutate(
+    sex = forcats::as_factor(sex),
+    film = forcats::as_factor(film)
+  )
+```
+
+```{r}
+exam_tib <- exam_tib |>
+  dplyr::mutate(
+    id = forcats::as_factor(id),
+    sex = forcats::as_factor(sex)
+  )
+```
+
+## `ggplot2`
+
+- part of the `tidyverse`
+
+`aes()`
+: controls aesthetics of the plot
+
+### Geometric objects
+- objects that represent data
+
+`geom_point()`
+: plots data by points/dots
+
+`geom_boxplot()`
+: plots boxplots
+
+`geom_histogram()`
+: plots histograms
+
+`geom_errorbar()`
+: plots error bars
+
+`geom_smooth()`
+: plots summary lines
+
+### Objects or 'stats'
+- some situations where it is easier to display a summary of the data directly to the plot (usually `stat_summary()`)
+
+### Scales
+- control details of how data are mapped to their visual objects to control what appears on *x* and *y* axes using `scale_x_continuous()` and `scale_y_continuous()`, axis labels are controlled with `labs()`
+
+### Coordinate system
+- `ggplot2` uses a Cartesian system. 
+- `coord_cartesian()` sets limits on *x* and *y* axes
+
+### Position adjustments
+- `position_dodge()`forces objects to not overlap side by side
+- `position_jitter()` adds small random adjustments to data points
+
+### Facets
+- used to plot different parts of the data in different panels
+
+### Themes
+- various themes to style the output
+- can be overridden with `theme()` function
+
+Each of the above are layers that can be added to a plot, as below
+
+![Explanation of the layered approach to `ggplot2`](ggplot.png)
+
+## Boxplots (box-whisker plots)
+
+- imaginary data based on peoples' level of success (0-100)
+- one group told to wish for good success, other group told to work hard for success
+- measured success again 5 years later
+- The data are in `wish_tib`. The variables are `id` (the person’s id), `strategy` (hard work or wishing upon a star), `time` (baseline or 5 years), and `success` (the rating on my dodgy scale).
+
+Creating a boxplot...
+
+`geom_boxplot()`
+: `ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))`
+
+```{r} 
+wish_plot <- ggplot2::ggplot(wish_tib, aes(time, success))  # creates an object called `wish_plot` that contains the boxplot
+# ggplot() function specifies the plot will use `wish_tib` and plots time on *x* and success on *y*
+wish_plot +
+  geom_boxplot() # adds boxplot geom to wish_plot
+  ```
+
+```{r}
+wish_plot <- ggplot2::ggplot(wish_tib, aes(time, success))
+wish_plot +
+  geom_boxplot() +
+  labs(x = "Time", y = "Success (%)") + # add labels to axes
+  theme_minimal() # add minimal theme layer
+```
+
+- plot shows slight increase of success, but doesn't show the effect of hard work
