@@ -30,10 +30,10 @@ metal_tib <- here::here("data/metal_health.csv")  |> readr::read_csv()
 homoscedasticity
 
 :   assumption of equal or similar variances in different groups being compared
+
 :   homogeneity of variance
 
-**Figure 1**
-![General process of fitting a linear model from `discovr_08`](dsr2_fig_08_12_glm_process.png)
+**Figure 1** ![General process of fitting a linear model from discovr_08](dsr2_fig_08_12_glm_process.png)
 
 ```{r}
 album_tib
@@ -143,7 +143,7 @@ Now we can make a prediction by entering a value for the advertising budget, say
 
 $$\text{Sales}_i=134.14+.096*{100}_i$$
 
-$$\text{Sales}_i=143.74$$ 
+$$\text{Sales}_i=143.74$$
 
 or 143,740 sales
 
@@ -423,23 +423,21 @@ If this confidence interval is one of the 95% that contains the population value
 22.10 units
 :::
 
-:::{.callout-caution collapse="true"}
-## As OCD increases by 1 standard deviation, by how many standard deviations does social anxiety change? 
+::: {.callout-caution collapse="true"}
+## As OCD increases by 1 standard deviation, by how many standard deviations does social anxiety change?
 
 0.213
 :::
 
-:::{.callout-caution collapse="true"} 
+::: {.callout-caution collapse="true"}
 ## The p-value for OCD is 0.014, what does this mean?
 
 The probability of getting a value of t at least as big as 2.49 if the value of b were, in fact, zero is 0.014. I’m going to assume, therefore, that b isn’t zero (i.e. OCD significantly predicts social anxiety.)
 :::
 
-
-
 ## The Beast of Bias
 
-:::{.callout-caution collapse="true"} 
+::: {.callout-caution collapse="true"}
 ## Which of these assumptions of the linear model is the most important
 
 Linearity and additivity
@@ -447,7 +445,7 @@ Linearity and additivity
 This assumption is the most important because if it is not met then the phenomenon you’re trying to model is not well represented by the model you are trying to fit
 :::
 
-:::{.callout-caution collapse="true"} 
+::: {.callout-caution collapse="true"}
 ## Which of these assumptions of the linear model is the least important
 
 Normality of errors
@@ -455,7 +453,7 @@ Normality of errors
 This assumption is the least important because even with non-normal errors the parameter estimates (using ordinary least squares methods) of the model will be unbiased (they match the expected population value) and optimal (they minimize the squared error).
 :::
 
-:::{.callout-caution collapse="true"} 
+::: {.callout-caution collapse="true"}
 ## What does homoscedasticity mean?
 
 The variance in errors from the (population) model is constant at all levels of the predictor variable(s)
@@ -471,15 +469,14 @@ Use `plot()` function
 plot(album_full_lm)
 ```
 
-`plot()` function can produce 6 plots (below) 
-- default is to produce 1,2,3,5. 
+`plot()` function can produce 6 plots (below) - default is to produce 1,2,3,5.
 
-1. predicted values from the model (x-axis) against the residuals (y-axis). Use to look for linearity and homoscedasticity.
-2. A Q-Q plot of standardised residuals to look for normality of residuals
-3. predicted values from the model(x-axis) against the square root of the standardized residuals (y-axis). This is a variant of plot 1 and is used to look for linearity and homoscedasticity.
-4. Case number (x-axis) against the Cooks distance (y-axis). This plot can help identify influential cases (large values of Cooks distance).
-5. The leverage value for each case (x-axis) against the standardised residual (y-axis). Used to identify influential cases and outliers. Leverage values indicate the influence of an individual case on the model and are related to the Cooks distance.
-6. The leverage value for each case (x-axis) against the corresponing Cooks distance (y-axis). Used to identify influential cases and outliers.
+1.  predicted values from the model (x-axis) against the residuals (y-axis). Use to look for linearity and homoscedasticity.
+2.  A Q-Q plot of standardised residuals to look for normality of residuals
+3.  predicted values from the model(x-axis) against the square root of the standardized residuals (y-axis). This is a variant of plot 1 and is used to look for linearity and homoscedasticity.
+4.  Case number (x-axis) against the Cooks distance (y-axis). This plot can help identify influential cases (large values of Cooks distance).
+5.  The leverage value for each case (x-axis) against the standardised residual (y-axis). Used to identify influential cases and outliers. Leverage values indicate the influence of an individual case on the model and are related to the Cooks distance.
+6.  The leverage value for each case (x-axis) against the corresponing Cooks distance (y-axis). Used to identify influential cases and outliers.
 
 To get plot #1
 
@@ -493,20 +490,18 @@ To get plot #1 and #2
 plot(album_full_lm, which = c(1, 2))
 ```
 
-:::{.callout-tip}
+::: callout-tip
 To get all six, use `which = 1:6`
 :::
 
 Plots below show the patterns of dots we want (random = assumptions met)
 
-- curvature indicates lack of linearity
-- funnel shape indicates heteroscedasticity
-- curvature and funnel shape indicate non-linearity and heteroscedasticity
-- 
+-   curvature indicates lack of linearity
+-   funnel shape indicates heteroscedasticity
+-   curvature and funnel shape indicate non-linearity and heteroscedasticity
+-   
 
-**Figure 2**
-![Examples of residual plots from Field (2023)](dsr2_fig_06_29_pred_resid.png)
-
+**Figure 2** ![Examples of residual plots from Field (2023)](dsr2_fig_06_29_pred_resid.png)
 
 ```{r}
 plot(album_full_lm, which = c(1,3))
@@ -518,9 +513,7 @@ If both assumptions of linearity and homoscedasticity are met, then these plots 
 ## Comparing the plot to those in Figure 2, how would you interpret it?
 
 No problems. random array of dots, no funnels, no bananas.
-
 :::
-
 
 ```{r}
 plot(album_full_lm, which = 2)
@@ -536,12 +529,11 @@ Yes, the dots line up along the diagonal, indicating a normal distribution.
 
 with `ggfortify`, we can use `ggplot2::autoplot()` to produce nicely formatted plots that are `ggplot2` objects, including themes
 
-::: {.callout-tip}
+::: callout-tip
 ## Using `GGfortify`
 
 for `autoplot()` function to work, the `ggfortify` package must be loaded. We can't use verbose code because `ggfortify` adds functionality to `ggplot2` rather than to itself. Need to include `library(ggfortify)` at the beginning of the document.
 :::
-
 
 ```{r}
 ggplot2::autoplot(album_full_lm,
@@ -555,17 +547,16 @@ ggplot2::autoplot(album_full_lm,
 
 ## Influential cases and outliers: plots
 
-- use Cook's distance to identify influential cases and
-- use standardized residuals to check for outliers
+-   use Cook's distance to identify influential cases and
+-   use standardized residuals to check for outliers
 
-::: {.callout-important}
-- in an average sample, 
-  - 95% of standardized residuals should lie between $\pm1.96$ and 
-  - 99% should lie between $\pm2.58$, and
-  -  any case for which absolute value of the standardized residual is 3 or more, is likely to be an outlier
--  Cook's distance measure the influence of a single case on model as a whole.
-   -  absolute values greater than 1 may be cause for concern
-
+::: callout-important
+-   in an average sample,
+    -   95% of standardized residuals should lie between $\pm1.96$ and
+    -   99% should lie between $\pm2.58$, and
+    -   any case for which absolute value of the standardized residual is 3 or more, is likely to be an outlier
+-   Cook's distance measure the influence of a single case on model as a whole.
+    -   absolute values greater than 1 may be cause for concern
 :::
 
 ```{r}
@@ -577,34 +568,32 @@ ggplot2::autoplot(album_full_lm,
                   size = 1) + 
   theme_minimal()
 ```
-- First plot show Cook's distance and labels cases with largest values (1, 164, 169), but largest values are in the region of 0.06, well below the threshold of 1.
-- second shows leverage values plotted against standardized residuals
-  - we want the green trend line to be flat and lie along zero, which is the case here
-  - if the trend line deviates substantially from horizontal, then it indicates one of the assumptions of the model has been violated
-  - this plot usually also has  red dashed lines indicating values of Cook's distance of 0.5 and 1. this plot has none, indicating all values of Cook's distance are well below thresholds.
-- Final plot shows leverage, Cook's distance, and the standardized residual on the same plot.
-  - can be used to identify cases that have high leverage, high Cook's distance, large residual, or some combination of all three.
-  - e.g. across the plots, case 164 has a standardized residual between -2.5 and -3 and the largest Cook's distance (although still only around 0.7)
+
+-   First plot show Cook's distance and labels cases with largest values (1, 164, 169), but largest values are in the region of 0.06, well below the threshold of 1.
+-   second shows leverage values plotted against standardized residuals
+    -   we want the green trend line to be flat and lie along zero, which is the case here
+    -   if the trend line deviates substantially from horizontal, then it indicates one of the assumptions of the model has been violated
+    -   this plot usually also has red dashed lines indicating values of Cook's distance of 0.5 and 1. this plot has none, indicating all values of Cook's distance are well below thresholds.
+-   Final plot shows leverage, Cook's distance, and the standardized residual on the same plot.
+    -   can be used to identify cases that have high leverage, high Cook's distance, large residual, or some combination of all three.
+    -   e.g. across the plots, case 164 has a standardized residual between -2.5 and -3 and the largest Cook's distance (although still only around 0.7)
 
 ## Influential cases and outliers: numbers
 
 For a more precise look, we can see values for Cook's distance and standardized residuals using `broom::augment()`. All we need to do is pass the lm object into the function and save the results as a new tibble. also useful to save the case number as a variable so that you can identify cases should you need to.
 
-- create a new tibble called `album_full_rsd` (rsd for `residuals`) by
-  - piping model into `broom::augment()` to get residuals, then
-  - into `tibble::row_id_to_column()` to create a variable that contains the row number
-- the `var = "case_no"` tells the function to name the variable containing the numbers `case_no`
-- the result is a tibble called `album_full_rsd` that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.
+-   create a new tibble called `album_full_rsd` (rsd for `residuals`) by
+    -   piping model into `broom::augment()` to get residuals, then
+    -   into `tibble::row_id_to_column()` to create a variable that contains the row number
+-   the `var = "case_no"` tells the function to name the variable containing the numbers `case_no`
+-   the result is a tibble called `album_full_rsd` that contains the case number, the original data to which the model was fitted, and various diagnostic statistics.
 
-::: {.callout-important}
+::: callout-important
 ## De-bug: residuals when you have missing values
 
 If you have missing values in the data and used `na.action = na.exclude` when fitting the model, you must also tell `augment()` where to find the original data so it can map the residuals to the original cases.
 
-In this case:
-`album_full_rsd <- album_full_lm |> 
-  broom::augment(data = album_tib)`
-
+In this case: `album_full_rsd <- album_full_lm |>    broom::augment(data = album_tib)`
 :::
 
 ```{r}
@@ -616,11 +605,9 @@ head(album_full_rsd) |>
     knitr::kable(digits = 2)
 ```
 
-
 Standardized residuals are in a variable called `.std.resid` and the Cook's distances in `.cooksd`
 
-to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the `abs()` function to return the absolute value (ignoring the plus/minus signs) of the residual 
-
+to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the `abs()` function to return the absolute value (ignoring the plus/minus signs) of the residual
 
 ```{r}
 album_full_rsd |> 
@@ -647,26 +634,22 @@ album_full_rsd |>
 ## What percentage of cases have standardized residuals with absolute values greater than 1.96?
 
 13/200 = 6.5%
-
 :::
 
 ::: {.callout-warning collapse="true"}
 ## What percentage of cases have standardized residuals with absolute values greater than 2.5?
 
 2/200 = 1%
-
 :::
 
 ::: {.callout-warning collapse="true"}
 ## All things considered do you think there are outliers?
 
 No, the appropriate proportion of cases have standardized residuals in the expected range and no case has a value grossly exceeding 3.
-
 :::
 
-- Something similar with Cook's distance...we can filter the tibble to look at cases with cooksd>1, or sort the tibble in descending order using `arrange()`
-- also use `select()` so we only see Cook's value and case numbers
-
+-   Something similar with Cook's distance...we can filter the tibble to look at cases with cooksd\>1, or sort the tibble in descending order using `arrange()`
+-   also use `select()` so we only see Cook's value and case numbers
 
 ```{r}
 album_full_rsd |> 
@@ -674,51 +657,53 @@ album_full_rsd |>
   dplyr::select(case_no, .cooksd)
 ```
 
-- no cooksd>1 so no cases having undue influence on the model as a whole
+-   no cooksd\>1 so no cases having undue influence on the model as a whole
 
 ## Robust linear models
 
-- model appears to be accurate for the sample and generalizable to the population
-- not always the case though
-- 2 things to do
-  - test whether the parameter estimates have been biased
-  - check whether confidence intervals and significance tests have been biased
+-   model appears to be accurate for the sample and generalizable to the population
+-   not always the case though
+-   2 things to do
+    -   test whether the parameter estimates have been biased
+    -   check whether confidence intervals and significance tests have been biased
 
 ### Robust parameter estimates
 
-- use `robust::lmRob()`
-- used the same way as `lm()`
-- replace `lm()` with `lmRob()`
-- can't use any `broom` functions with `lmRob()`, so text output using `summary()`
-
+-   use `robust::lmRob()`
+-   used the same way as `lm()`
+-   replace `lm()` with `lmRob()`
+-   can't use any `broom` functions with `lmRob()`, so text output using `summary()`
 
 ```{r}
 album_full_rob <- lmRob(sales ~ adverts + airplay + image, data = album_tib, na.action = na.exclude)
 summary(album_full_rob)
 ```
 
-- bottom of output givessignificance tests of bias
-- significance tests need to be interpreted within the context of sample size, but these tests suggest that bias in the original model is not problematic
-  - $p$-value is not significant
+-   bottom of output givessignificance tests of bias
+-   significance tests need to be interpreted within the context of sample size, but these tests suggest that bias in the original model is not problematic
+    -   $p$-value is not significant
 
-| Variable |Original $\hat{b}$| Robust $\hat{b}$      |
-|  --- |  ---  |  ---  |
-| Adverts |  0.085     | 0.085      |
-|  Airplay | 3.37    | 3.42      |
-| Image | 11.09      | 11.77      |
+| Variable | Original $\hat{b}$ | Robust $\hat{b}$ |
+|----------|--------------------|------------------|
+| Adverts  | 0.085              | 0.085            |
+| Airplay  | 3.37               | 3.42             |
+| Image    | 11.09              | 11.77            |
 
-- estimates are virtually identical to the originals, suggesting the original model is unbiased
+-   estimates are virtually identical to the originals, suggesting the original model is unbiased
 
 ## Robust Confidence Intervals and significance tests
 
-- to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors designed for heteroscedastic residuals
-- if the sample is small, use a bootstrap
-- both can be done by placing the model in the `parameters::model_parameters()` function
-- same function to standardize parameter estimates, but three new arguments
+-   to test whether confidence intervals and significance tests are biased, we can estimate the model with standard errors designed for heteroscedastic residuals
 
-- we can obtain models based on robust standard errors by setting `vcov = "method"` and replacing `method` with the name of the method we want to use to compute robust standard errors.
-- `vcov = "HC3"` willuse HC3  method, though some think `HC4` is better
+-   if the sample is small, use a bootstrap
 
+-   both can be done by placing the model in the `parameters::model_parameters()` function
+
+-   same function to standardize parameter estimates, but three new arguments
+
+-   we can obtain models based on robust standard errors by setting `vcov = "method"` and replacing `method` with the name of the method we want to use to compute robust standard errors.
+
+-   `vcov = "HC3"` willuse HC3 method, though some think `HC4` is better
 
 ```{r}
 parameters::model_parameters(album_full_lm, vcov = "HC4") |> 
@@ -730,25 +715,24 @@ parameters::model_parameters(album_full_lm, vcov = "HC3") |>
   knitr::kable(digits = 3)
 ```
 
-- Values are not much different from the non-robust versions, mainly becasue the original model didn't violate its assumptions
-- if a robust model yields the same-ish values as a non-robust model, we know the non-robust model has not been unduly biased.
-- if the robust estimates are hugely different, then use and report the robust versions
-- fitting a robust model is a win-win
+-   Values are not much different from the non-robust versions, mainly becasue the original model didn't violate its assumptions
+-   if a robust model yields the same-ish values as a non-robust model, we know the non-robust model has not been unduly biased.
+-   if the robust estimates are hugely different, then use and report the robust versions
+-   fitting a robust model is a win-win
 
 ### Small samples
 
-- we might prefer to bootstrap confidence intervals by setting the bootstrap argument in `model_parameters()` to `TRUE`
-- by default, 1000 bootstrap samples are used
-
+-   we might prefer to bootstrap confidence intervals by setting the bootstrap argument in `model_parameters()` to `TRUE`
+-   by default, 1000 bootstrap samples are used
 
 ```{r}
 parameters::model_parameters(album_full_lm, bootstrap = TRUE) |> 
   knitr::kable(digits = 3)
 ```
 
-- these bootstrapped confidence intervals don't rely on assumptions of normality or homoscedasticity, so they give an accurate estimate of the population value of $b$ for each predictor (assuming our sample is one of the 95% with confidence intervals that contain the population value)
+-   these bootstrapped confidence intervals don't rely on assumptions of normality or homoscedasticity, so they give an accurate estimate of the population value of $b$ for each predictor (assuming our sample is one of the 95% with confidence intervals that contain the population value)
 
-::: {.callout-tip}
+::: callout-tip
 ## Bootstrapping
 
 Because bootstrapping relies on random sampling from the data, you will get a slightly different estimate each time you bootstrap a model. This is normal.
@@ -758,15 +742,12 @@ Because bootstrapping relies on random sampling from the data, you will get a sl
 ## Bootstrapping is a technique from which the sampling distribution of a statistic is estimated by …
 
 Taking repeated samples (with replacement) from the data set.
-
 :::
 
 ::: {.callout-warning collapse="true"}
 ## The bootstrap confidence interval for image ranges from 6.63 to 15.45 (the values might not exactly match these). What does this tell us?
 
-
 If this confidence interval is one of the 95% that contains the population value then the population value of b lies between 6.63 and 15.45.
-
 :::
 
 ## Unguided example
@@ -779,7 +760,6 @@ plot(soc_anx_obq_lm, which = c(1, 3))
 plot(soc_anx_obq_lm, which = c(4:6))
 ```
 
-
 ```{r}
 soc_anx_obq_rsd <- soc_anx_obq_lm |> 
   broom::augment(data = soc_anx_tib) |>
@@ -791,7 +771,6 @@ head(soc_anx_obq_rsd) |>
   tibble::glimpse() |>
     knitr::kable(digits = 2)
 ```
-
 
 ```{r}
 soc_anx_obq_rsd |> 
@@ -817,7 +796,6 @@ soc_anx_obq_rsd |>
 
 ```
 
-
 ```{r}
 soc_anx_obq_rsd |> 
   dplyr::arrange(desc(.cooksd)) |>
@@ -827,9 +805,7 @@ soc_anx_obq_rsd |>
 ::: {.callout-warning collapse="true"}
 ## How would you interpret the plot of ZPRED vs ZRESID?
 
-
 I can’t see any problems
-
 
 The dots look like a random, evenly-dispersed pattern. No funnel shapes, no banana shapes, so all is fine.
 :::
@@ -837,127 +813,104 @@ The dots look like a random, evenly-dispersed pattern. No funnel shapes, no bana
 ::: {.callout-warning collapse="true"}
 ## Can we assume normality of the residuals?
 
-
-Yes
-The distribution is fairly normal: the dots in the P-P plot lie close to the diagonal.
-
-
+Yes The distribution is fairly normal: the dots in the P-P plot lie close to the diagonal.
 :::
 
 ::: {.callout-warning collapse="true"}
 ## What percentage of cases have standardized residuals with absolute values greater than 1.96?
 
-
-4.55%
-6 cases from 132 have standardized residuals with absolute values greater than 1.96, and  $\frac{6}{132}×100=4.55$
-
+4.55% 6 cases from 132 have standardized residuals with absolute values greater than 1.96, and $\frac{6}{132}×100=4.55$
 :::
 
 ::: {.callout-warning collapse="true"}
 ## What percentage of cases have standardized residuals with absolute values greater than 2.5?
 
-
-1.51%
-2 cases from 132 have standardized residuals with absolute values greater than 2.5, and  $\frac{2}{132}×100=1.51$
-
+1.51% 2 cases from 132 have standardized residuals with absolute values greater than 2.5, and $\frac{2}{132}×100=1.51$
 :::
 
 ::: {.callout-warning collapse="true"}
 ## All things considered do you think there are outliers?
 
-
-No
-The appropriate proportion of cases have standardized residuals in the expected range and no case has a value exceeding 3.
-
+No The appropriate proportion of cases have standardized residuals in the expected range and no case has a value exceeding 3.
 :::
 
 ::: {.callout-warning collapse="true"}
 ## Are there any Cook’s distances greater than 1?
 
-
-No
-The fact there are no Cook’s distances greater than 1 suggests that no cases are having undue influence on the model as a whole.
-
+No The fact there are no Cook’s distances greater than 1 suggests that no cases are having undue influence on the model as a whole.
 :::
 
 ## Bayesian Approaches
 
-- 2 possible things to do
-  - compare models using Bayes factors
-  - estimate model parameters using Bayesian methods
+-   2 possible things to do
+    -   compare models using Bayes factors
+    -   estimate model parameters using Bayesian methods
 
 ### Bayes factors
 
-- compare models using a Bayes factor using `regressionBF()` funtion in the `BayesFactor` package
-- compare models against each other hierarchically to see which model has the largest Bayes factor, and to evaluate the strength of evidence that this Bayes factor suggests that a particular model predicts the outcome better than the intercept alone (i.e. a model with no predictors).
+-   compare models using a Bayes factor using `regressionBF()` funtion in the `BayesFactor` package
+-   compare models against each other hierarchically to see which model has the largest Bayes factor, and to evaluate the strength of evidence that this Bayes factor suggests that a particular model predicts the outcome better than the intercept alone (i.e. a model with no predictors).
 
 `model_bf <- BayesFactor::regressionBF(formula, rscaleCont = "medium", data = tibble)`
 
-- creates an object called `model_bf` based onthe same type of formula we put in the `lm()` function to specify the model
-- the argument `rscaleCont` sets the scale of the prior distribution for the distribution for the standardized $\hat{b}s$ in the model.
-- arguemnt can be set as a numeric value or one of three pre-defined values
-- default value is `medium`, corresponding to a value of about $\frac{\sqrt{2}}{4}$, or about 0.354
-- example uses the default to illustrate, but consider what value is appropriate for a given model
+-   creates an object called `model_bf` based onthe same type of formula we put in the `lm()` function to specify the model
+-   the argument `rscaleCont` sets the scale of the prior distribution for the distribution for the standardized $\hat{b}s$ in the model.
+-   arguemnt can be set as a numeric value or one of three pre-defined values
+-   default value is `medium`, corresponding to a value of about $\frac{\sqrt{2}}{4}$, or about 0.354
+-   example uses the default to illustrate, but consider what value is appropriate for a given model
 
 Fitting the model with Bayes factors
 
 ```{r}
 album_bf <- BayesFactor::regressionBF(sales ~ adverts + airplay + image, rscaleCont = "medium", data = album_tib)
 album_bf
-``` 
+```
 
-- Output shows Bayes factors for all potential models we can get from our predictor variables (7 in total)
-- each model is compared to a model that contains only the intercept
-- all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone
-- best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of $7.75×10^{42}$
+-   Output shows Bayes factors for all potential models we can get from our predictor variables (7 in total)
+-   each model is compared to a model that contains only the intercept
+-   all models have huge Bayes factors suggesting they all provide strong evidence for the hypothesis that the model predicts the outcome better than the intercept alone
+-   best model is the one with the largest Bayes factor, which is model 7, which includes all three predictors - it has a Bayes factor of $7.75×10^{42}$
 
 ## Bayesian parameter estimates
 
-- knowing model is best ( we know this from the nonBayesian model) we can estimate the parameters using the `lmBF()` function
-- same format as `regressionBF()`
-- `lmBF()` fits only the model we specify
-
+-   knowing model is best ( we know this from the nonBayesian model) we can estimate the parameters using the `lmBF()` function
+-   same format as `regressionBF()`
+-   `lmBF()` fits only the model we specify
 
 ```{r}
 album_full_bf <- BayesFactor::lmBF(sales ~ adverts + airplay + image, rscaleCont = "medium", data = album_tib)
 album_full_bf
 ```
 
-- same result in the previous output
-- but we can extract $\hat{b}$-values derived from Bayesian estimaten and their credible intervals using the `posterior()` function
-  - enter the name of the model we just created `album_full_bf` into 'posterior()` function in which we also set the number of iterations to 10000
-  - samples taken from the posterios distribution of the `album_full_bf` model and stored in an object called `album_full_post`
-  - place posterios samples into `summary()`
-
+-   same result in the previous output
+-   but we can extract $\hat{b}$-values derived from Bayesian estimaten and their credible intervals using the `posterior()` function
+    -   enter the name of the model we just created `album_full_bf` into 'posterior()\` function in which we also set the number of iterations to 10000
+    -   samples taken from the posterios distribution of the `album_full_bf` model and stored in an object called `album_full_post`
+    -   place posterios samples into `summary()`
 
 ```{r}
 album_full_post <- BayesFactor::posterior(album_full_bf, iterations = 10000)
 summary(album_full_post) 
 ```
 
-- Bayesian estimate of $\hat{b}$ can be found in the column labeled `Mean`
-  - 0.084 for adverts
-  - 3.34 for airplay
-  - 10.96 for image 
+-   Bayesian estimate of $\hat{b}$ can be found in the column labeled `Mean`
+    -   0.084 for adverts
+    -   3.34 for airplay
+    -   10.96 for image
 
-| Predictor |   Bayesian estimate of $\hat{b}$    |   non-Bayesian estimate of $\hat{b}$    |
-|  --- |  ---  |  ---  |
-| adverts |0.084      | 0.085      |
-| airplay     | 3.34 | 3.37      |
-| image |10.96     | 11.09      |
+| Predictor | Bayesian estimate of $\hat{b}$ | non-Bayesian estimate of $\hat{b}$ |
+|------------------------|------------------------|------------------------|
+| adverts   | 0.084                          | 0.085                              |
+| airplay   | 3.34                           | 3.37                               |
+| image     | 10.96                          | 11.09                              |
 
-- most useful are the `credible intervals` for these parameters
-  - if we want the 95% credible interval, then we read the values from columns labelled 2.5% and 97.5% in the table of quantiles
+-   most useful are the `credible intervals` for these parameters
+    -   if we want the 95% credible interval, then we read the values from columns labelled 2.5% and 97.5% in the table of quantiles
 
-::: {.callout-important}
+::: callout-important
 Unlike confidence intervals, credible intervals contain the population value with a probability of 0.95 (95%)
 :::
 
-- there is a 95% probability that the population value of $\hat{b}$ lies between
-| Predictor |   2.5%    |   97.5%    |
-|  --- |  ---  |  ---  |
-| adverts | 0.07      | 0.097      |
-| airplay     | 2.78 | 3.87      |
-| image |6.26     | 15.86    |
+-   there is a 95% probability that the population value of $\hat{b}$ lies between \| Predictor \| 2.5% \| 97.5% \| \| --- \| --- \| --- \| \| adverts \| 0.07 \| 0.097 \| \| airplay \| 2.78 \| 3.87 \| \| image \|6.26 \| 15.86 \|
 
-- these intervals are constructed assuming that an effect exists, so you cannot use them to test the hypothesis that the null is exactly 0, only to establish plausible population values of the $b$s in the model.
+-   these intervals are constructed assuming that an effect exists, so you cannot use them to test the hypothesis that the null is exactly 0, only to establish plausible population values of the $b$s in the model.

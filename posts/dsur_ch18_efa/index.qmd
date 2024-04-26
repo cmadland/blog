@@ -1,0 +1,52 @@
+---
+title: "dsus_18 - Exploratory Factor Analysis"
+author: "Colin Madland"
+date: "2024-04-23"
+categories: [EFA, dsur, R]
+editor: visual
+image: "ellie-snow.jpeg"
+--- 
+
+
+Notes here are from
+
+Field, A. P. (2018). *Discovering statistics using IBM SPSS statistics* (5th edition, North American edition). Sage Publications Inc.
+
+Code examples will be from:
+
+Field, A. (2023). discovr: Interactive tutorials and data for “Discovering Statistics Using R and RStudio” [Manual].
+
+R Core Team. (2023). R: A language and environment for statistical computing [Manual]. R Foundation for Statistical Computing. https://www.R-project.org/
+
+## When to use factor analysis (p. 571)
+
+- when attempting to measure latent variables
+- factor analysis and principal component analysis are used to identify clusters of variables
+- 3 main uses
+  - understand the structure of a set of variables
+  - to construct a questionnaire to measure an underlying variable
+  - reduce the size of a data set while retaining as much of the original information as possible
+    - (FA can be used to solve the problem of multicollinearity by combining factors that are collinear)
+
+::: {.callout}
+`multicollinearity`
+: exists when there is a strong correlation between two factors
+: multicollinearity makes it difficult or impossible to determine the amount of variance accounted for by one of two correlated factors
+: e.g., if a factor predicts the outcome variable with $R=0.80$ and a second variable accounts for *the same variance* (i.e., it is highly correlated to the first variable) then it is only contributing to a very small amount of the unique variance in outcome and we might see $R=0.82$. If the two predictor variables are uncorrelated, then the second variable is contributing more unique variance and we might see $R=0.95$
+: multicollinearity leads to interchangable predictors
+:::
+
+### Examples of factor analysis
+
+- extroversion, introversion, neuroticism traits
+- personality questionnaires
+- in economics to see whether productivity, profits, and workforce contribute to the underlying dimension of company growth
+
+### EFA and PCA
+
+- they are not the same thing
+- but they both are used to reduce a set of variables into a smaller set of dimensions (factors in EFA, and components in PCA)
+
+## Factors and Components
+
+![Example of a correlation matrix](cor-matrix.png)
