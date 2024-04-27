@@ -1,0 +1,14 @@
+---
+title: "discovr_18 - Exploratory Factor Analysis"
+author: "Colin Madland"
+date: "2024-02-27"
+categories: [efa, R, discovr]
+editor: visual
+image: "happy-rock.jpeg"
+---
+
+```{r}
+library(tidyverse)
+raq_tib <- here::here("data/raq.csv") |>
+  readr::read_csv()
+```

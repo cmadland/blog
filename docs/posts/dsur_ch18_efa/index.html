@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Colin Madland">
-<meta name="dcterms.date" content="2024-04-23">
+<meta name="dcterms.date" content="2024-04-26">
 
 <title>Stats Blog - dsus_18 - Exploratory Factor Analysis</title>
 <style>
@@ -22,7 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -153,6 +207,7 @@ window.Quarto = {
                                 <div class="quarto-categories">
                 <div class="quarto-category">EFA</div>
                 <div class="quarto-category">dsur</div>
+                <div class="quarto-category">dsus</div>
                 <div class="quarto-category">R</div>
               </div>
                   </div>
@@ -171,7 +226,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 23, 2024</p>
+        <p class="date">April 26, 2024</p>
       </div>
     </div>
     
@@ -190,10 +245,42 @@ window.Quarto = {
 
 
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, knittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, ggfortify, robust)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: viridisLite</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raq.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 2571 Columns: 24
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): id
+dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
 <p>Notes here are from</p>
-<p>Field, A. P. (2018). <em>Discovering statistics using IBM SPSS statistics</em> (5th edition, North American edition). Sage Publications Inc.</p>
+<p>Field, A. P. (2018). <em>Discovering statistics using IBM SPSS statistics</em> (5th edition, North American edition). Sage Publications Inc.&nbsp;-&gt; <code>DSuS</code></p>
 <p>Code examples will be from:</p>
-<p>Field, A. (2023). discovr: Interactive tutorials and data for “Discovering Statistics Using R and RStudio” [Manual].</p>
+<p>Field, A. (2023). discovr: Interactive tutorials and data for “Discovering Statistics Using R and RStudio” [Manual]. -&gt; <code>discovr</code></p>
 <p>R Core Team. (2023). R: A language and environment for statistical computing [Manual]. R Foundation for Statistical Computing. https://www.R-project.org/</p>
 <section id="when-to-use-factor-analysis-p.-571" class="level2">
 <h2 class="anchored" data-anchor-id="when-to-use-factor-analysis-p.-571">When to use factor analysis (p.&nbsp;571)</h2>
@@ -219,16 +306,16 @@ window.Quarto = {
 <dl>
 <dt><code>multicollinearity</code></dt>
 <dd>
-exists when there is a strong correlation between two factors
+<p>exists when there is a strong correlation between two factors</p>
 </dd>
 <dd>
-multicollinearity makes it difficult or impossible to determine the amount of variance accounted for by one of two correlated factors
+<p>multicollinearity makes it difficult or impossible to determine the amount of variance accounted for by one of two correlated factors</p>
 </dd>
 <dd>
-e.g., if a factor predicts the outcome variable with <span class="math inline">\(R=0.80\)</span> and a second variable accounts for <em>the same variance</em> (i.e., it is highly correlated to the first variable) then it is only contributing to a very small amount of the unique variance in outcome and we might see <span class="math inline">\(R=0.82\)</span>. If the two predictor variables are uncorrelated, then the second variable is contributing more unique variance and we might see <span class="math inline">\(R=0.95\)</span>
+<p>e.g., if a factor predicts the outcome variable with <span class="math inline">\(R=0.80\)</span> and a second variable accounts for <em>the same variance</em> (i.e., it is highly correlated to the first variable) then it is only contributing to a very small amount of the unique variance in outcome and we might see <span class="math inline">\(R=0.82\)</span>. If the two predictor variables are uncorrelated, then the second variable is contributing more unique variance and we might see <span class="math inline">\(R=0.95\)</span></p>
 </dd>
 <dd>
-multicollinearity leads to interchangable predictors
+<p>multicollinearity leads to interchangable predictors</p>
 </dd>
 </dl>
 </div>
@@ -252,17 +339,1086 @@ multicollinearity leads to interchangable predictors
 </section>
 <section id="factors-and-components" class="level2">
 <h2 class="anchored" data-anchor-id="factors-and-components">Factors and Components</h2>
-<div class="quarto-figure quarto-figure-center">
+<ul>
+<li><p>measuring several variables with several questions gives us data that can be arranged in a correlation matrix (R matrix) as below. <img src="cor-matrix.png" class="img-fluid" alt="Example of a correlation matrix"></p>
+<p><em>Note:</em> Created with the <code>ggplot2</code> R package <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham 2016</a>)</span> with data from the <code>discovr</code> package <span class="citation" data-cites="field2023">(<a href="#ref-field2023" role="doc-biblioref">Field 2023</a>.)</span></p></li>
+<li><p>factor analysis tries to explain the maximum amount of <em>common variance</em> in the matrix using the least number of explanatory constructs (latent variables), which represent clusters of variables that correlate highly with each other.</p></li>
+<li><p>PCA differs in that it tries to explain the maximum amount of <em>total variance</em> in a correlation matrix by transforming the original variables into linear components</p></li>
+</ul>
+</section>
+<section id="example---induced-anxiety-discovr_18-field2023" class="level2">
+<h2 class="anchored" data-anchor-id="example---induced-anxiety-discovr_18-field2023">Example - Induced Anxiety (<code>discovr_18</code> <span class="citation" data-cites="field2023">Field (<a href="#ref-field2023" role="doc-biblioref">2023</a>)</span>)</h2>
+<ul>
+<li>questionnaire developed to measure anxiety related to using R</li>
+<li>questions developed from interviews with anxious and non-anxious students</li>
+<li>23 questions; 5-point likert (strongly disagree -&gt; strongly agree)
+<ul>
+<li>raq_01: Statistics make me cry</li>
+<li>raq_02: My friends will think I’m stupid for not being able to cope with R</li>
+<li>raq_03: Standard deviations excite me</li>
+<li>raq_04: I dream that Pearson is attacking me with correlation coefficients</li>
+<li>raq_05: I don’t understand statistics</li>
+<li>raq_06: I have little experience of computers</li>
+<li>raq_07: All computers hate me</li>
+<li>raq_08: I have never been good at mathematics</li>
+<li>raq_09: My friends are better at statistics than me</li>
+<li>raq_10: Computers are useful only for playing games</li>
+<li>raq_11: I did badly at mathematics at school</li>
+<li>raq_12: People try to tell you that R makes statistics easier to understand but it doesn’t</li>
+<li>raq_13: I worry that I will cause irreparable damage because of my incompetence with computers</li>
+<li>raq_14: Computers have minds of their own and deliberately go wrong whenever I use them</li>
+<li>raq_15: Computers are out to get me</li>
+<li>raq_16: I weep openly at the mention of central tendency</li>
+<li>raq_17: I slip into a coma whenever I see an equation</li>
+<li>raq_18: R always crashes when I try to use it</li>
+<li>raq_19: Everybody looks at me when I use R</li>
+<li>raq_20: I can’t sleep for thoughts of eigenvectors</li>
+<li>raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution</li>
+<li>raq_22: My friends are better at R than I am</li>
+<li>raq_23: If I am good at statistics people will think I am a nerd</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>raq_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,571 × 24
+   id    raq_01 raq_02 raq_03 raq_04 raq_05 raq_06 raq_07 raq_08 raq_09 raq_10
+   &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 157lk      3      1      3      4      2      4      3      3      3      2
+ 2 k3xjh      2      5      3      3      4      4      5      4      4      3
+ 3 832x6      4      5      3      3      3      4      5      4      3      4
+ 4 6dyt5      4      4      4      3      4      4      4      3      2      2
+ 5 w4upu      4      2      5      4      2      3      2      5      4      5
+ 6 9432i      2      3      4      3      4      2      3      2      3      2
+ 7 x03sh      2      4      5      5      3      3      4      3      3      3
+ 8 12v15      4      3      4      3      5      4      5      4      3      5
+ 9 46y22      3      5      5      1      3      4      4      3      5      3
+10 1iqc4      2      5      3      2      4      5      5      5      4      4
+# ℹ 2,561 more rows
+# ℹ 13 more variables: raq_11 &lt;dbl&gt;, raq_12 &lt;dbl&gt;, raq_13 &lt;dbl&gt;, raq_14 &lt;dbl&gt;,
+#   raq_15 &lt;dbl&gt;, raq_16 &lt;dbl&gt;, raq_17 &lt;dbl&gt;, raq_18 &lt;dbl&gt;, raq_19 &lt;dbl&gt;,
+#   raq_20 &lt;dbl&gt;, raq_21 &lt;dbl&gt;, raq_22 &lt;dbl&gt;, raq_23 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<ul>
+<li>24 variables including the ID</li>
+<li>we don’t need the <code>id</code> in analyses so create a new tib without it</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>raq_items_tib <span class="ot">&lt;-</span> raq_tib <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>id)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>raq_items_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,571 × 23
+   raq_01 raq_02 raq_03 raq_04 raq_05 raq_06 raq_07 raq_08 raq_09 raq_10 raq_11
+    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1      3      1      3      4      2      4      3      3      3      2      2
+ 2      2      5      3      3      4      4      5      4      4      3      4
+ 3      4      5      3      3      3      4      5      4      3      4      4
+ 4      4      4      4      3      4      4      4      3      2      2      2
+ 5      4      2      5      4      2      3      2      5      4      5      4
+ 6      2      3      4      3      4      2      3      2      3      2      1
+ 7      2      4      5      5      3      3      4      3      3      3      3
+ 8      4      3      4      3      5      4      5      4      3      5      3
+ 9      3      5      5      1      3      4      4      3      5      3      3
+10      2      5      3      2      4      5      5      5      4      4      4
+# ℹ 2,561 more rows
+# ℹ 12 more variables: raq_12 &lt;dbl&gt;, raq_13 &lt;dbl&gt;, raq_14 &lt;dbl&gt;, raq_15 &lt;dbl&gt;,
+#   raq_16 &lt;dbl&gt;, raq_17 &lt;dbl&gt;, raq_18 &lt;dbl&gt;, raq_19 &lt;dbl&gt;, raq_20 &lt;dbl&gt;,
+#   raq_21 &lt;dbl&gt;, raq_22 &lt;dbl&gt;, raq_23 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<section id="correlation-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="correlation-matrix">Correlation matrix</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># feed the tibble with only the RAQ items into the correlation() function</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>correlation<span class="sc">::</span><span class="fu">correlation</span>(raq_items_tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Correlation Matrix (pearson-method)
+
+Parameter1 | Parameter2 |     r |         95% CI | t(2569) |         p
+----------------------------------------------------------------------
+raq_01     |     raq_02 |  0.11 | [ 0.07,  0.15] |    5.47 | &lt; .001***
+raq_01     |     raq_03 | -0.18 | [-0.22, -0.14] |   -9.21 | &lt; .001***
+raq_01     |     raq_04 |  0.22 | [ 0.18,  0.25] |   11.26 | &lt; .001***
+raq_01     |     raq_05 |  0.22 | [ 0.19,  0.26] |   11.60 | &lt; .001***
+raq_01     |     raq_06 |  0.16 | [ 0.12,  0.20] |    8.17 | &lt; .001***
+raq_01     |     raq_07 |  0.11 | [ 0.07,  0.14] |    5.41 | &lt; .001***
+raq_01     |     raq_08 |  0.22 | [ 0.18,  0.26] |   11.53 | &lt; .001***
+raq_01     |     raq_09 |  0.08 | [ 0.05,  0.12] |    4.26 | &lt; .001***
+raq_01     |     raq_10 |  0.11 | [ 0.07,  0.15] |    5.70 | &lt; .001***
+raq_01     |     raq_11 |  0.19 | [ 0.15,  0.23] |    9.76 | &lt; .001***
+raq_01     |     raq_12 |  0.15 | [ 0.11,  0.19] |    7.67 | &lt; .001***
+raq_01     |     raq_13 |  0.11 | [ 0.07,  0.15] |    5.55 | &lt; .001***
+raq_01     |     raq_14 |  0.12 | [ 0.08,  0.15] |    5.87 | &lt; .001***
+raq_01     |     raq_15 |  0.11 | [ 0.07,  0.15] |    5.61 | &lt; .001***
+raq_01     |     raq_16 |  0.18 | [ 0.14,  0.21] |    9.04 | &lt; .001***
+raq_01     |     raq_17 |  0.17 | [ 0.13,  0.20] |    8.52 | &lt; .001***
+raq_01     |     raq_18 |  0.12 | [ 0.08,  0.16] |    6.06 | &lt; .001***
+raq_01     |     raq_19 |  0.11 | [ 0.07,  0.14] |    5.45 | &lt; .001***
+raq_01     |     raq_20 |  0.21 | [ 0.17,  0.24] |   10.73 | &lt; .001***
+raq_01     |     raq_21 |  0.23 | [ 0.19,  0.26] |   11.81 | &lt; .001***
+raq_01     |     raq_22 |  0.12 | [ 0.09,  0.16] |    6.30 | &lt; .001***
+raq_01     |     raq_23 |  0.08 | [ 0.04,  0.12] |    3.93 | &lt; .001***
+raq_02     |     raq_03 | -0.12 | [-0.16, -0.08] |   -6.14 | &lt; .001***
+raq_02     |     raq_04 |  0.12 | [ 0.09,  0.16] |    6.31 | &lt; .001***
+raq_02     |     raq_05 |  0.28 | [ 0.24,  0.31] |   14.71 | &lt; .001***
+raq_02     |     raq_06 |  0.34 | [ 0.30,  0.37] |   18.19 | &lt; .001***
+raq_02     |     raq_07 |  0.26 | [ 0.22,  0.29] |   13.44 | &lt; .001***
+raq_02     |     raq_08 |  0.18 | [ 0.14,  0.22] |    9.16 | &lt; .001***
+raq_02     |     raq_09 |  0.39 | [ 0.36,  0.42] |   21.50 | &lt; .001***
+raq_02     |     raq_10 |  0.18 | [ 0.15,  0.22] |    9.48 | &lt; .001***
+raq_02     |     raq_11 |  0.15 | [ 0.11,  0.19] |    7.82 | &lt; .001***
+raq_02     |     raq_12 |  0.09 | [ 0.05,  0.13] |    4.58 | &lt; .001***
+raq_02     |     raq_13 |  0.23 | [ 0.19,  0.27] |   11.96 | &lt; .001***
+raq_02     |     raq_14 |  0.20 | [ 0.16,  0.23] |   10.21 | &lt; .001***
+raq_02     |     raq_15 |  0.19 | [ 0.15,  0.22] |    9.64 | &lt; .001***
+raq_02     |     raq_16 |  0.10 | [ 0.06,  0.13] |    4.92 | &lt; .001***
+raq_02     |     raq_17 |  0.17 | [ 0.14,  0.21] |    8.94 | &lt; .001***
+raq_02     |     raq_18 |  0.26 | [ 0.23,  0.30] |   13.87 | &lt; .001***
+raq_02     |     raq_19 |  0.39 | [ 0.36,  0.42] |   21.50 | &lt; .001***
+raq_02     |     raq_20 |  0.13 | [ 0.09,  0.17] |    6.55 | &lt; .001***
+raq_02     |     raq_21 |  0.16 | [ 0.12,  0.20] |    8.26 | &lt; .001***
+raq_02     |     raq_22 |  0.34 | [ 0.30,  0.37] |   18.28 | &lt; .001***
+raq_02     |     raq_23 |  0.39 | [ 0.36,  0.42] |   21.56 | &lt; .001***
+raq_03     |     raq_04 | -0.19 | [-0.23, -0.16] |  -10.01 | &lt; .001***
+raq_03     |     raq_05 | -0.25 | [-0.29, -0.22] |  -13.34 | &lt; .001***
+raq_03     |     raq_06 | -0.17 | [-0.20, -0.13] |   -8.51 | &lt; .001***
+raq_03     |     raq_07 | -0.13 | [-0.16, -0.09] |   -6.45 | &lt; .001***
+raq_03     |     raq_08 | -0.22 | [-0.25, -0.18] |  -11.33 | &lt; .001***
+raq_03     |     raq_09 | -0.08 | [-0.12, -0.04] |   -4.14 | &lt; .001***
+raq_03     |     raq_10 | -0.10 | [-0.14, -0.06] |   -5.18 | &lt; .001***
+raq_03     |     raq_11 | -0.19 | [-0.23, -0.15] |   -9.81 | &lt; .001***
+raq_03     |     raq_12 | -0.15 | [-0.19, -0.11] |   -7.58 | &lt; .001***
+raq_03     |     raq_13 | -0.13 | [-0.17, -0.09] |   -6.71 | &lt; .001***
+raq_03     |     raq_14 | -0.09 | [-0.13, -0.05] |   -4.45 | &lt; .001***
+raq_03     |     raq_15 | -0.15 | [-0.19, -0.11] |   -7.57 | &lt; .001***
+raq_03     |     raq_16 | -0.20 | [-0.24, -0.17] |  -10.56 | &lt; .001***
+raq_03     |     raq_17 | -0.18 | [-0.21, -0.14] |   -9.01 | &lt; .001***
+raq_03     |     raq_18 | -0.15 | [-0.19, -0.11] |   -7.78 | &lt; .001***
+raq_03     |     raq_19 | -0.12 | [-0.15, -0.08] |   -5.96 | &lt; .001***
+raq_03     |     raq_20 | -0.23 | [-0.27, -0.20] |  -12.20 | &lt; .001***
+raq_03     |     raq_21 | -0.26 | [-0.30, -0.22] |  -13.62 | &lt; .001***
+raq_03     |     raq_22 | -0.12 | [-0.16, -0.08] |   -6.00 | &lt; .001***
+raq_03     |     raq_23 | -0.05 | [-0.09, -0.01] |   -2.65 | 0.014*   
+raq_04     |     raq_05 |  0.32 | [ 0.28,  0.35] |   17.08 | &lt; .001***
+raq_04     |     raq_06 |  0.23 | [ 0.20,  0.27] |   12.21 | &lt; .001***
+raq_04     |     raq_07 |  0.17 | [ 0.13,  0.20] |    8.56 | &lt; .001***
+raq_04     |     raq_08 |  0.25 | [ 0.21,  0.28] |   12.96 | &lt; .001***
+raq_04     |     raq_09 |  0.10 | [ 0.06,  0.14] |    4.98 | &lt; .001***
+raq_04     |     raq_10 |  0.18 | [ 0.14,  0.21] |    9.11 | &lt; .001***
+raq_04     |     raq_11 |  0.22 | [ 0.18,  0.26] |   11.54 | &lt; .001***
+raq_04     |     raq_12 |  0.20 | [ 0.16,  0.23] |   10.12 | &lt; .001***
+raq_04     |     raq_13 |  0.16 | [ 0.13,  0.20] |    8.42 | &lt; .001***
+raq_04     |     raq_14 |  0.15 | [ 0.11,  0.18] |    7.55 | &lt; .001***
+raq_04     |     raq_15 |  0.18 | [ 0.15,  0.22] |    9.50 | &lt; .001***
+raq_04     |     raq_16 |  0.27 | [ 0.23,  0.31] |   14.25 | &lt; .001***
+raq_04     |     raq_17 |  0.24 | [ 0.20,  0.27] |   12.36 | &lt; .001***
+raq_04     |     raq_18 |  0.17 | [ 0.13,  0.21] |    8.81 | &lt; .001***
+raq_04     |     raq_19 |  0.14 | [ 0.10,  0.18] |    7.24 | &lt; .001***
+raq_04     |     raq_20 |  0.28 | [ 0.25,  0.32] |   15.00 | &lt; .001***
+raq_04     |     raq_21 |  0.32 | [ 0.28,  0.35] |   17.12 | &lt; .001***
+raq_04     |     raq_22 |  0.16 | [ 0.12,  0.19] |    8.07 | &lt; .001***
+raq_04     |     raq_23 |  0.08 | [ 0.04,  0.12] |    4.22 | &lt; .001***
+raq_05     |     raq_06 |  0.51 | [ 0.48,  0.54] |   30.26 | &lt; .001***
+raq_05     |     raq_07 |  0.36 | [ 0.33,  0.40] |   19.79 | &lt; .001***
+raq_05     |     raq_08 |  0.36 | [ 0.32,  0.39] |   19.39 | &lt; .001***
+raq_05     |     raq_09 |  0.16 | [ 0.12,  0.20] |    8.28 | &lt; .001***
+raq_05     |     raq_10 |  0.31 | [ 0.28,  0.35] |   16.67 | &lt; .001***
+raq_05     |     raq_11 |  0.31 | [ 0.28,  0.35] |   16.61 | &lt; .001***
+raq_05     |     raq_12 |  0.19 | [ 0.15,  0.22] |    9.66 | &lt; .001***
+raq_05     |     raq_13 |  0.35 | [ 0.32,  0.38] |   19.00 | &lt; .001***
+raq_05     |     raq_14 |  0.27 | [ 0.23,  0.30] |   14.05 | &lt; .001***
+raq_05     |     raq_15 |  0.33 | [ 0.29,  0.36] |   17.54 | &lt; .001***
+raq_05     |     raq_16 |  0.24 | [ 0.20,  0.28] |   12.53 | &lt; .001***
+raq_05     |     raq_17 |  0.30 | [ 0.27,  0.34] |   16.01 | &lt; .001***
+raq_05     |     raq_18 |  0.38 | [ 0.35,  0.41] |   20.97 | &lt; .001***
+raq_05     |     raq_19 |  0.29 | [ 0.26,  0.33] |   15.50 | &lt; .001***
+raq_05     |     raq_20 |  0.34 | [ 0.31,  0.37] |   18.36 | &lt; .001***
+raq_05     |     raq_21 |  0.37 | [ 0.34,  0.40] |   20.24 | &lt; .001***
+raq_05     |     raq_22 |  0.27 | [ 0.23,  0.31] |   14.26 | &lt; .001***
+raq_05     |     raq_23 |  0.17 | [ 0.13,  0.21] |    8.70 | &lt; .001***
+raq_06     |     raq_07 |  0.45 | [ 0.42,  0.48] |   25.68 | &lt; .001***
+raq_06     |     raq_08 |  0.34 | [ 0.31,  0.37] |   18.36 | &lt; .001***
+raq_06     |     raq_09 |  0.20 | [ 0.16,  0.24] |   10.40 | &lt; .001***
+raq_06     |     raq_10 |  0.40 | [ 0.36,  0.43] |   21.93 | &lt; .001***
+raq_06     |     raq_11 |  0.29 | [ 0.26,  0.33] |   15.55 | &lt; .001***
+raq_06     |     raq_12 |  0.11 | [ 0.07,  0.15] |    5.74 | &lt; .001***
+raq_06     |     raq_13 |  0.46 | [ 0.42,  0.49] |   25.90 | &lt; .001***
+raq_06     |     raq_14 |  0.36 | [ 0.32,  0.39] |   19.25 | &lt; .001***
+raq_06     |     raq_15 |  0.40 | [ 0.37,  0.43] |   22.20 | &lt; .001***
+raq_06     |     raq_16 |  0.16 | [ 0.12,  0.20] |    8.21 | &lt; .001***
+raq_06     |     raq_17 |  0.28 | [ 0.24,  0.32] |   14.83 | &lt; .001***
+raq_06     |     raq_18 |  0.51 | [ 0.48,  0.54] |   30.01 | &lt; .001***
+raq_06     |     raq_19 |  0.38 | [ 0.34,  0.41] |   20.64 | &lt; .001***
+raq_06     |     raq_20 |  0.23 | [ 0.19,  0.26] |   11.74 | &lt; .001***
+raq_06     |     raq_21 |  0.26 | [ 0.23,  0.30] |   13.86 | &lt; .001***
+raq_06     |     raq_22 |  0.33 | [ 0.29,  0.36] |   17.48 | &lt; .001***
+raq_06     |     raq_23 |  0.17 | [ 0.13,  0.21] |    8.85 | &lt; .001***
+raq_07     |     raq_08 |  0.25 | [ 0.21,  0.28] |   13.03 | &lt; .001***
+raq_07     |     raq_09 |  0.17 | [ 0.13,  0.20] |    8.48 | &lt; .001***
+raq_07     |     raq_10 |  0.28 | [ 0.25,  0.32] |   14.94 | &lt; .001***
+raq_07     |     raq_11 |  0.21 | [ 0.18,  0.25] |   11.02 | &lt; .001***
+raq_07     |     raq_12 |  0.10 | [ 0.06,  0.13] |    4.89 | &lt; .001***
+raq_07     |     raq_13 |  0.31 | [ 0.28,  0.35] |   16.58 | &lt; .001***
+raq_07     |     raq_14 |  0.25 | [ 0.21,  0.29] |   13.16 | &lt; .001***
+raq_07     |     raq_15 |  0.29 | [ 0.25,  0.32] |   15.28 | &lt; .001***
+raq_07     |     raq_16 |  0.12 | [ 0.08,  0.16] |    6.21 | &lt; .001***
+raq_07     |     raq_17 |  0.21 | [ 0.17,  0.25] |   10.94 | &lt; .001***
+raq_07     |     raq_18 |  0.35 | [ 0.32,  0.38] |   18.93 | &lt; .001***
+raq_07     |     raq_19 |  0.26 | [ 0.22,  0.29] |   13.41 | &lt; .001***
+raq_07     |     raq_20 |  0.14 | [ 0.10,  0.18] |    7.17 | &lt; .001***
+raq_07     |     raq_21 |  0.20 | [ 0.16,  0.23] |   10.19 | &lt; .001***
+raq_07     |     raq_22 |  0.22 | [ 0.19,  0.26] |   11.69 | &lt; .001***
+raq_07     |     raq_23 |  0.16 | [ 0.12,  0.20] |    8.24 | &lt; .001***
+raq_08     |     raq_09 |  0.16 | [ 0.13,  0.20] |    8.45 | &lt; .001***
+raq_08     |     raq_10 |  0.19 | [ 0.15,  0.22] |    9.58 | &lt; .001***
+raq_08     |     raq_11 |  0.58 | [ 0.56,  0.61] |   36.28 | &lt; .001***
+raq_08     |     raq_12 |  0.13 | [ 0.09,  0.17] |    6.58 | &lt; .001***
+raq_08     |     raq_13 |  0.20 | [ 0.16,  0.24] |   10.38 | &lt; .001***
+raq_08     |     raq_14 |  0.23 | [ 0.19,  0.27] |   12.01 | &lt; .001***
+raq_08     |     raq_15 |  0.23 | [ 0.19,  0.27] |   11.97 | &lt; .001***
+raq_08     |     raq_16 |  0.21 | [ 0.17,  0.24] |   10.69 | &lt; .001***
+raq_08     |     raq_17 |  0.55 | [ 0.52,  0.57] |   33.20 | &lt; .001***
+raq_08     |     raq_18 |  0.28 | [ 0.24,  0.31] |   14.68 | &lt; .001***
+raq_08     |     raq_19 |  0.21 | [ 0.17,  0.25] |   10.86 | &lt; .001***
+raq_08     |     raq_20 |  0.26 | [ 0.23,  0.30] |   13.76 | &lt; .001***
+raq_08     |     raq_21 |  0.30 | [ 0.27,  0.34] |   16.15 | &lt; .001***
+raq_08     |     raq_22 |  0.22 | [ 0.19,  0.26] |   11.68 | &lt; .001***
+raq_08     |     raq_23 |  0.14 | [ 0.10,  0.18] |    7.25 | &lt; .001***
+raq_09     |     raq_10 |  0.11 | [ 0.07,  0.14] |    5.38 | &lt; .001***
+raq_09     |     raq_11 |  0.17 | [ 0.14,  0.21] |    9.01 | &lt; .001***
+raq_09     |     raq_12 |  0.06 | [ 0.02,  0.10] |    3.07 | 0.007**  
+raq_09     |     raq_13 |  0.15 | [ 0.11,  0.19] |    7.84 | &lt; .001***
+raq_09     |     raq_14 |  0.12 | [ 0.09,  0.16] |    6.30 | &lt; .001***
+raq_09     |     raq_15 |  0.15 | [ 0.11,  0.19] |    7.60 | &lt; .001***
+raq_09     |     raq_16 |  0.08 | [ 0.04,  0.12] |    4.19 | &lt; .001***
+raq_09     |     raq_17 |  0.14 | [ 0.10,  0.18] |    7.32 | &lt; .001***
+raq_09     |     raq_18 |  0.15 | [ 0.11,  0.18] |    7.52 | &lt; .001***
+raq_09     |     raq_19 |  0.46 | [ 0.43,  0.49] |   26.59 | &lt; .001***
+raq_09     |     raq_20 |  0.10 | [ 0.06,  0.14] |    5.08 | &lt; .001***
+raq_09     |     raq_21 |  0.17 | [ 0.13,  0.20] |    8.61 | &lt; .001***
+raq_09     |     raq_22 |  0.43 | [ 0.40,  0.46] |   23.95 | &lt; .001***
+raq_09     |     raq_23 |  0.55 | [ 0.52,  0.57] |   33.09 | &lt; .001***
+raq_10     |     raq_11 |  0.17 | [ 0.13,  0.21] |    8.68 | &lt; .001***
+raq_10     |     raq_12 |  0.08 | [ 0.04,  0.11] |    3.85 | 0.001**  
+raq_10     |     raq_13 |  0.25 | [ 0.21,  0.28] |   12.99 | &lt; .001***
+raq_10     |     raq_14 |  0.22 | [ 0.18,  0.26] |   11.38 | &lt; .001***
+raq_10     |     raq_15 |  0.24 | [ 0.21,  0.28] |   12.68 | &lt; .001***
+raq_10     |     raq_16 |  0.13 | [ 0.09,  0.17] |    6.59 | &lt; .001***
+raq_10     |     raq_17 |  0.18 | [ 0.14,  0.21] |    9.12 | &lt; .001***
+raq_10     |     raq_18 |  0.29 | [ 0.26,  0.33] |   15.43 | &lt; .001***
+raq_10     |     raq_19 |  0.21 | [ 0.17,  0.25] |   10.97 | &lt; .001***
+raq_10     |     raq_20 |  0.18 | [ 0.14,  0.22] |    9.23 | &lt; .001***
+raq_10     |     raq_21 |  0.16 | [ 0.12,  0.20] |    8.34 | &lt; .001***
+raq_10     |     raq_22 |  0.16 | [ 0.12,  0.19] |    7.98 | &lt; .001***
+raq_10     |     raq_23 |  0.07 | [ 0.03,  0.11] |    3.53 | 0.003**  
+raq_11     |     raq_12 |  0.10 | [ 0.07,  0.14] |    5.27 | &lt; .001***
+raq_11     |     raq_13 |  0.20 | [ 0.16,  0.24] |   10.40 | &lt; .001***
+raq_11     |     raq_14 |  0.19 | [ 0.15,  0.22] |    9.59 | &lt; .001***
+raq_11     |     raq_15 |  0.20 | [ 0.16,  0.24] |   10.42 | &lt; .001***
+raq_11     |     raq_16 |  0.17 | [ 0.14,  0.21] |    9.00 | &lt; .001***
+raq_11     |     raq_17 |  0.47 | [ 0.43,  0.49] |   26.63 | &lt; .001***
+raq_11     |     raq_18 |  0.24 | [ 0.20,  0.28] |   12.48 | &lt; .001***
+raq_11     |     raq_19 |  0.19 | [ 0.16,  0.23] |   10.04 | &lt; .001***
+raq_11     |     raq_20 |  0.27 | [ 0.23,  0.31] |   14.19 | &lt; .001***
+raq_11     |     raq_21 |  0.29 | [ 0.25,  0.32] |   15.15 | &lt; .001***
+raq_11     |     raq_22 |  0.20 | [ 0.16,  0.24] |   10.44 | &lt; .001***
+raq_11     |     raq_23 |  0.13 | [ 0.09,  0.17] |    6.56 | &lt; .001***
+raq_12     |     raq_13 |  0.07 | [ 0.03,  0.11] |    3.48 | 0.003**  
+raq_12     |     raq_14 |  0.07 | [ 0.03,  0.11] |    3.50 | 0.003**  
+raq_12     |     raq_15 |  0.07 | [ 0.03,  0.11] |    3.63 | 0.002**  
+raq_12     |     raq_16 |  0.15 | [ 0.12,  0.19] |    7.87 | &lt; .001***
+raq_12     |     raq_17 |  0.07 | [ 0.03,  0.11] |    3.71 | 0.002**  
+raq_12     |     raq_18 |  0.10 | [ 0.06,  0.14] |    5.00 | &lt; .001***
+raq_12     |     raq_19 |  0.07 | [ 0.03,  0.11] |    3.40 | 0.003**  
+raq_12     |     raq_20 |  0.12 | [ 0.08,  0.16] |    6.27 | &lt; .001***
+raq_12     |     raq_21 |  0.16 | [ 0.13,  0.20] |    8.42 | &lt; .001***
+raq_12     |     raq_22 |  0.08 | [ 0.04,  0.12] |    4.05 | &lt; .001***
+raq_12     |     raq_23 |  0.05 | [ 0.01,  0.09] |    2.70 | 0.014*   
+raq_13     |     raq_14 |  0.27 | [ 0.24,  0.31] |   14.44 | &lt; .001***
+raq_13     |     raq_15 |  0.29 | [ 0.25,  0.32] |   15.31 | &lt; .001***
+raq_13     |     raq_16 |  0.15 | [ 0.11,  0.19] |    7.66 | &lt; .001***
+raq_13     |     raq_17 |  0.18 | [ 0.14,  0.21] |    9.12 | &lt; .001***
+raq_13     |     raq_18 |  0.34 | [ 0.31,  0.37] |   18.35 | &lt; .001***
+raq_13     |     raq_19 |  0.26 | [ 0.22,  0.30] |   13.64 | &lt; .001***
+raq_13     |     raq_20 |  0.16 | [ 0.12,  0.20] |    8.32 | &lt; .001***
+raq_13     |     raq_21 |  0.17 | [ 0.14,  0.21] |    8.98 | &lt; .001***
+raq_13     |     raq_22 |  0.23 | [ 0.19,  0.27] |   11.97 | &lt; .001***
+raq_13     |     raq_23 |  0.14 | [ 0.10,  0.18] |    7.15 | &lt; .001***
+raq_14     |     raq_15 |  0.23 | [ 0.20,  0.27] |   12.20 | &lt; .001***
+raq_14     |     raq_16 |  0.08 | [ 0.05,  0.12] |    4.29 | &lt; .001***
+raq_14     |     raq_17 |  0.17 | [ 0.13,  0.20] |    8.61 | &lt; .001***
+raq_14     |     raq_18 |  0.26 | [ 0.22,  0.29] |   13.40 | &lt; .001***
+raq_14     |     raq_19 |  0.22 | [ 0.18,  0.26] |   11.49 | &lt; .001***
+raq_14     |     raq_20 |  0.15 | [ 0.11,  0.19] |    7.60 | &lt; .001***
+raq_14     |     raq_21 |  0.17 | [ 0.13,  0.20] |    8.57 | &lt; .001***
+raq_14     |     raq_22 |  0.22 | [ 0.18,  0.26] |   11.43 | &lt; .001***
+raq_14     |     raq_23 |  0.13 | [ 0.09,  0.16] |    6.47 | &lt; .001***
+raq_15     |     raq_16 |  0.11 | [ 0.07,  0.15] |    5.59 | &lt; .001***
+raq_15     |     raq_17 |  0.21 | [ 0.18,  0.25] |   11.06 | &lt; .001***
+raq_15     |     raq_18 |  0.32 | [ 0.29,  0.35] |   17.13 | &lt; .001***
+raq_15     |     raq_19 |  0.23 | [ 0.19,  0.27] |   11.99 | &lt; .001***
+raq_15     |     raq_20 |  0.16 | [ 0.12,  0.20] |    8.12 | &lt; .001***
+raq_15     |     raq_21 |  0.17 | [ 0.13,  0.20] |    8.50 | &lt; .001***
+raq_15     |     raq_22 |  0.24 | [ 0.20,  0.27] |   12.38 | &lt; .001***
+raq_15     |     raq_23 |  0.15 | [ 0.11,  0.19] |    7.71 | &lt; .001***
+raq_16     |     raq_17 |  0.18 | [ 0.14,  0.21] |    9.10 | &lt; .001***
+raq_16     |     raq_18 |  0.12 | [ 0.09,  0.16] |    6.36 | &lt; .001***
+raq_16     |     raq_19 |  0.14 | [ 0.10,  0.17] |    6.93 | &lt; .001***
+raq_16     |     raq_20 |  0.23 | [ 0.20,  0.27] |   12.11 | &lt; .001***
+raq_16     |     raq_21 |  0.26 | [ 0.23,  0.30] |   13.87 | &lt; .001***
+raq_16     |     raq_22 |  0.11 | [ 0.07,  0.15] |    5.58 | &lt; .001***
+raq_16     |     raq_23 |  0.10 | [ 0.06,  0.14] |    5.10 | &lt; .001***
+raq_17     |     raq_18 |  0.25 | [ 0.22,  0.29] |   13.31 | &lt; .001***
+raq_17     |     raq_19 |  0.20 | [ 0.16,  0.23] |   10.17 | &lt; .001***
+raq_17     |     raq_20 |  0.22 | [ 0.18,  0.26] |   11.38 | &lt; .001***
+raq_17     |     raq_21 |  0.26 | [ 0.22,  0.29] |   13.54 | &lt; .001***
+raq_17     |     raq_22 |  0.21 | [ 0.17,  0.24] |   10.71 | &lt; .001***
+raq_17     |     raq_23 |  0.14 | [ 0.10,  0.17] |    7.01 | &lt; .001***
+raq_18     |     raq_19 |  0.30 | [ 0.26,  0.33] |   15.91 | &lt; .001***
+raq_18     |     raq_20 |  0.18 | [ 0.14,  0.22] |    9.24 | &lt; .001***
+raq_18     |     raq_21 |  0.19 | [ 0.16,  0.23] |    9.97 | &lt; .001***
+raq_18     |     raq_22 |  0.27 | [ 0.23,  0.30] |   14.08 | &lt; .001***
+raq_18     |     raq_23 |  0.13 | [ 0.09,  0.17] |    6.65 | &lt; .001***
+raq_19     |     raq_20 |  0.16 | [ 0.13,  0.20] |    8.43 | &lt; .001***
+raq_19     |     raq_21 |  0.18 | [ 0.15,  0.22] |    9.47 | &lt; .001***
+raq_19     |     raq_22 |  0.42 | [ 0.39,  0.45] |   23.34 | &lt; .001***
+raq_19     |     raq_23 |  0.44 | [ 0.41,  0.47] |   24.85 | &lt; .001***
+raq_20     |     raq_21 |  0.35 | [ 0.31,  0.38] |   18.85 | &lt; .001***
+raq_20     |     raq_22 |  0.17 | [ 0.13,  0.21] |    8.65 | &lt; .001***
+raq_20     |     raq_23 |  0.11 | [ 0.08,  0.15] |    5.82 | &lt; .001***
+raq_21     |     raq_22 |  0.18 | [ 0.14,  0.21] |    9.16 | &lt; .001***
+raq_21     |     raq_23 |  0.14 | [ 0.10,  0.18] |    7.28 | &lt; .001***
+raq_22     |     raq_23 |  0.40 | [ 0.37,  0.43] |   22.17 | &lt; .001***
+
+p-value adjustment method: Holm (1979)
+Observations: 2571</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe into summary() to get a condensed table of correlations:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>correlation<span class="sc">::</span><span class="fu">correlation</span>(raq_items_tib) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: right;">raq_23</th>
+<th style="text-align: right;">raq_22</th>
+<th style="text-align: right;">raq_21</th>
+<th style="text-align: right;">raq_20</th>
+<th style="text-align: right;">raq_19</th>
+<th style="text-align: right;">raq_18</th>
+<th style="text-align: right;">raq_17</th>
+<th style="text-align: right;">raq_16</th>
+<th style="text-align: right;">raq_15</th>
+<th style="text-align: right;">raq_14</th>
+<th style="text-align: right;">raq_13</th>
+<th style="text-align: right;">raq_12</th>
+<th style="text-align: right;">raq_11</th>
+<th style="text-align: right;">raq_10</th>
+<th style="text-align: right;">raq_09</th>
+<th style="text-align: right;">raq_08</th>
+<th style="text-align: right;">raq_07</th>
+<th style="text-align: right;">raq_06</th>
+<th style="text-align: right;">raq_05</th>
+<th style="text-align: right;">raq_04</th>
+<th style="text-align: right;">raq_03</th>
+<th style="text-align: right;">raq_02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">raq_01</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">-0.18</td>
+<td style="text-align: right;">0.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_02</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_03</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">-0.26</td>
+<td style="text-align: right;">-0.23</td>
+<td style="text-align: right;">-0.12</td>
+<td style="text-align: right;">-0.15</td>
+<td style="text-align: right;">-0.18</td>
+<td style="text-align: right;">-0.20</td>
+<td style="text-align: right;">-0.15</td>
+<td style="text-align: right;">-0.09</td>
+<td style="text-align: right;">-0.13</td>
+<td style="text-align: right;">-0.15</td>
+<td style="text-align: right;">-0.19</td>
+<td style="text-align: right;">-0.10</td>
+<td style="text-align: right;">-0.08</td>
+<td style="text-align: right;">-0.22</td>
+<td style="text-align: right;">-0.13</td>
+<td style="text-align: right;">-0.17</td>
+<td style="text-align: right;">-0.25</td>
+<td style="text-align: right;">-0.19</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_04</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_05</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.37</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_06</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_07</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_08</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_09</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">0.43</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.46</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.06</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_10</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_11</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_12</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_13</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_14</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_15</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_16</td>
+<td style="text-align: right;">0.10</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_17</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.21</td>
+<td style="text-align: right;">0.26</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.25</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_18</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">0.19</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_19</td>
+<td style="text-align: right;">0.44</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_20</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.17</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">raq_21</td>
+<td style="text-align: right;">0.14</td>
+<td style="text-align: right;">0.18</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">raq_22</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>because the items use Likert scales, should use <code>polychoric()</code> function from the <code>psych</code> package</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>raq_poly <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">polychoric</span>(raq_items_tib)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>raq_poly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: psych::polychoric(x = raq_items_tib)
+Polychoric correlations 
+       rq_01 rq_02 rq_03 rq_04 rq_05 rq_06 rq_07 rq_08 rq_09 rq_10 rq_11
+raq_01  1.00                                                            
+raq_02  0.12  1.00                                                      
+raq_03 -0.20 -0.13  1.00                                                
+raq_04  0.24  0.14 -0.22  1.00                                          
+raq_05  0.25  0.31 -0.28  0.35  1.00                                    
+raq_06  0.18  0.37 -0.18  0.26  0.57  1.00                              
+raq_07  0.12  0.28 -0.14  0.18  0.40  0.50  1.00                        
+raq_08  0.25  0.20 -0.24  0.28  0.40  0.38  0.28  1.00                  
+raq_09  0.09  0.43 -0.09  0.11  0.18  0.22  0.18  0.18  1.00            
+raq_10  0.12  0.20 -0.11  0.20  0.35  0.44  0.31  0.20  0.12  1.00      
+raq_11  0.21  0.17 -0.21  0.25  0.35  0.33  0.24  0.64  0.19  0.19  1.00
+raq_12  0.17  0.10 -0.16  0.21  0.21  0.13  0.10  0.14  0.07  0.08  0.11
+raq_13  0.12  0.25 -0.14  0.18  0.39  0.50  0.34  0.22  0.17  0.27  0.22
+raq_14  0.13  0.22 -0.10  0.16  0.30  0.39  0.28  0.25  0.14  0.24  0.20
+raq_15  0.12  0.21 -0.17  0.21  0.36  0.45  0.32  0.25  0.16  0.27  0.22
+raq_16  0.19  0.11 -0.22  0.30  0.27  0.18  0.13  0.23  0.09  0.14  0.19
+raq_17  0.18  0.19 -0.19  0.26  0.33  0.31  0.23  0.61  0.16  0.20  0.51
+raq_18  0.13  0.29 -0.17  0.19  0.42  0.56  0.39  0.31  0.16  0.32  0.27
+raq_19  0.12  0.43 -0.13  0.16  0.32  0.42  0.28  0.23  0.51  0.23  0.21
+raq_20  0.23  0.14 -0.26  0.32  0.38  0.25  0.16  0.29  0.11  0.20  0.30
+raq_21  0.25  0.18 -0.29  0.36  0.41  0.29  0.22  0.33  0.19  0.18  0.32
+raq_22  0.14  0.38 -0.13  0.17  0.30  0.36  0.25  0.25  0.48  0.17  0.22
+raq_23  0.09  0.43 -0.06  0.09  0.19  0.19  0.18  0.16  0.60  0.08  0.14
+       rq_12 rq_13 rq_14 rq_15 rq_16 rq_17 rq_18 rq_19 rq_20 rq_21 rq_22
+raq_12  1.00                                                            
+raq_13  0.08  1.00                                                      
+raq_14  0.08  0.30  1.00                                                
+raq_15  0.08  0.32  0.26  1.00                                          
+raq_16  0.17  0.17  0.09  0.12  1.00                                    
+raq_17  0.08  0.20  0.19  0.24  0.20  1.00                              
+raq_18  0.11  0.38  0.28  0.35  0.14  0.28  1.00                        
+raq_19  0.08  0.29  0.24  0.26  0.15  0.22  0.33  1.00                  
+raq_20  0.14  0.18  0.16  0.18  0.26  0.24  0.20  0.18  1.00            
+raq_21  0.18  0.19  0.18  0.18  0.29  0.29  0.21  0.20  0.39  1.00      
+raq_22  0.09  0.26  0.25  0.26  0.12  0.23  0.30  0.46  0.19  0.20  1.00
+raq_23  0.06  0.15  0.14  0.17  0.11  0.15  0.14  0.49  0.13  0.16  0.45
+[1]  1.00
+
+ with tau of 
+          1     2       3    4
+raq_01 -2.0 -0.99 -0.0229 1.01
+raq_02 -2.0 -1.03  0.0532 1.03
+raq_03 -2.0 -0.99 -0.0093 0.99
+raq_04 -2.0 -0.99  0.0044 1.00
+raq_05 -1.9 -1.00  0.0356 0.97
+raq_06 -2.0 -0.99  0.0132 0.97
+raq_07 -2.0 -1.01 -0.0278 0.95
+raq_08 -2.0 -1.00 -0.0239 1.01
+raq_09 -2.1 -1.02 -0.0288 0.97
+raq_10 -2.0 -0.98  0.0307 0.97
+raq_11 -2.0 -0.98 -0.0219 1.04
+raq_12 -2.0 -1.04 -0.0219 1.00
+raq_13 -2.0 -1.00 -0.0180 1.02
+raq_14 -2.0 -1.00 -0.0424 0.95
+raq_15 -2.0 -1.03 -0.0678 0.95
+raq_16 -2.0 -0.99  0.0063 1.01
+raq_17 -2.0 -1.02  0.0122 1.02
+raq_18 -2.0 -1.03  0.0015 1.02
+raq_19 -2.0 -0.98  0.0112 0.99
+raq_20 -2.0 -0.99 -0.0336 0.96
+raq_21 -2.1 -0.99 -0.0073 1.02
+raq_22 -2.1 -1.05  0.0210 1.03
+raq_23 -2.1 -1.01 -0.0015 1.01</code></pre>
+</div>
+</div>
+<ul>
+<li>matrix of correlations is stored in in a variable called <code>rho</code>, accessible with <code>raq_poly$rho</code> but we can store it in an object</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>raq_cor <span class="ot">&lt;-</span> raq_poly<span class="sc">$</span>rho</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">cor.plot</span>(raq_cor, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="cor-matrix.png" class="img-fluid figure-img"></p>
-<figcaption>Example of a correlation matrix</figcaption>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<ul>
+<li><p>note items close to 0 - no correlation</p></li>
+<li><p>note items between $+/-$0.3</p></li>
+<li><p>note items greater than <span class="math inline">\(+/-\)</span> 0.9 as those may be collinear or singular</p></li>
+<li><p>in this case, all questions correlate reasonably well and none are excessively large</p></li>
+</ul>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-field2023" class="csl-entry" role="listitem">
+Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
+</div>
+<div id="ref-wickham2016" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
