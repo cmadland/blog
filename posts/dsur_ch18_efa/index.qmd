@@ -149,3 +149,83 @@ psych::cor.plot(raq_cor, upper = FALSE)
 -   note items greater than $+/-$ 0.9 as those may be collinear or singular
 
 -   in this case, all questions correlate reasonably well and none are excessively large
+
+## Bartlett's test and KMO test
+
+### Bartlett's test of Sphericity
+
+-   tests whether the correlation matrix is significantly different from an identity matrix (whether the correlations are all 0
+
+    -   in FA, sample sizes are large, so the test will almost always be significant, but if it is not, then there is a problem
+
+```{r}
+
+psych::cortest.bartlett(raq_cor, n = 2571)
+```
+
+-   given large sample size, Bartlett's test is highly significant, indicating there is not a significant problem
+
+### Kaiser-Meyer-Olkin (KMO)
+
+-   check for sampling adequacy
+
+-   KMO varies between 0 and 1 with 0 indicating FA is not appropriate
+
+-   values closer to 1 indicate compact patterns of correlations and FA should reveal distinct and reliable factors
+
+    -   Marvellous: values in the 0.90s
+
+    -   Meritorious: values in the 0.80s
+
+    -   Middling: values in the 0.70s
+
+    -   Mediocre: values in the 0.60s
+
+    -   Miserable: values in the 0.50s
+
+```{r}
+psych::KMO(raq_cor)
+
+```
+
+-   KMO statistic (Overall MSA) is 0.92 - well above the threshold of 0.5
+
+-   MSA for each individual item ranges from 0.84 - 0.96
+
+::: callout-note
+If you find KMO values below 0.5, consider removing that variable, but be sure to run the KMO statistic again without the removed variable. Also run the analysis with and without the variable to compare
+:::
+
+## Parallel analysis
+
+-   to determine how many factors to extract, run `psych::fa.parallel()`
+
+-   most likely arguments
+
+    -   `` n.obs() - need to tell the function the sample size (`n.obs = 2571`) ``
+
+    -   `fm = “minres”` - `psych` packages uses minimum residual (minres) by default
+
+        -   other options include principal axes (`pa`), alpha factoring (`alpha`), weighted least squares `wls`, minimum rank (`minrank`), or maximum likelihood (`ml`). Match this option to the one you’re going to use in the main factor analysis
+
+    -   `fa = "both"` - by default the function will tell the number of factors to extract, but also the number of components for PCA.
+
+        -   can change to `fa = "fa`" to see only the number of factors to extract. It is useful to look at both methods
+
+    -   `use = “pairwise”` - by default, missing data are handled using all complete pairwise observations to calculate the correlation coefficients
+
+    -   `cor` - default is the function assumes you are providing Pearson correlation coefficients, however, with ordinal variables (likert), use `cor = "poly"` (polychoric) and for binary, use tetrachoric `cor = "tet"`; with a mix of variable types, use `cor ="mixed"`
+
+### Code example
+
+```{r}
+psych::fa.parallel(raq_items_tib, cor = "poly")
+
+```
+
+-   or since we already stored polychoric correlations in `raq_cor`, we can just apply the function to that correlation matrix and specify the sample size
+
+```{r}
+psych::fa.parallel(raq_cor, n.obs = 2571, fa = "fa")
+
+```

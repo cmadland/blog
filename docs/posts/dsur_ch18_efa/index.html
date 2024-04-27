@@ -1405,6 +1405,133 @@ raq_23 -2.1 -1.01 -0.0015 1.01</code></pre>
 <li><p>note items greater than <span class="math inline">\(+/-\)</span> 0.9 as those may be collinear or singular</p></li>
 <li><p>in this case, all questions correlate reasonably well and none are excessively large</p></li>
 </ul>
+</section>
+</section>
+<section id="bartletts-test-and-kmo-test" class="level2">
+<h2 class="anchored" data-anchor-id="bartletts-test-and-kmo-test">Bartlett’s test and KMO test</h2>
+<section id="bartletts-test-of-sphericity" class="level3">
+<h3 class="anchored" data-anchor-id="bartletts-test-of-sphericity">Bartlett’s test of Sphericity</h3>
+<ul>
+<li><p>tests whether the correlation matrix is significantly different from an identity matrix (whether the correlations are all 0</p>
+<ul>
+<li>in FA, sample sizes are large, so the test will almost always be significant, but if it is not, then there is a problem</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">cortest.bartlett</span>(raq_cor, <span class="at">n =</span> <span class="dv">2571</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$chisq
+[1] 17387.52
+
+$p.value
+[1] 0
+
+$df
+[1] 253</code></pre>
+</div>
+</div>
+<ul>
+<li>given large sample size, Bartlett’s test is highly significant, indicating there is not a significant problem</li>
+</ul>
+</section>
+<section id="kaiser-meyer-olkin-kmo" class="level3">
+<h3 class="anchored" data-anchor-id="kaiser-meyer-olkin-kmo">Kaiser-Meyer-Olkin (KMO)</h3>
+<ul>
+<li><p>check for sampling adequacy</p></li>
+<li><p>KMO varies between 0 and 1 with 0 indicating FA is not appropriate</p></li>
+<li><p>values closer to 1 indicate compact patterns of correlations and FA should reveal distinct and reliable factors</p>
+<ul>
+<li><p>Marvellous: values in the 0.90s</p></li>
+<li><p>Meritorious: values in the 0.80s</p></li>
+<li><p>Middling: values in the 0.70s</p></li>
+<li><p>Mediocre: values in the 0.60s</p></li>
+<li><p>Miserable: values in the 0.50s</p></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">KMO</span>(raq_cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Kaiser-Meyer-Olkin factor adequacy
+Call: psych::KMO(r = raq_cor)
+Overall MSA =  0.92
+MSA for each item = 
+raq_01 raq_02 raq_03 raq_04 raq_05 raq_06 raq_07 raq_08 raq_09 raq_10 raq_11 
+  0.95   0.94   0.93   0.93   0.95   0.91   0.96   0.86   0.84   0.95   0.89 
+raq_12 raq_13 raq_14 raq_15 raq_16 raq_17 raq_18 raq_19 raq_20 raq_21 raq_22 
+  0.90   0.95   0.96   0.96   0.92   0.90   0.95   0.93   0.93   0.93   0.94 
+raq_23 
+  0.84 </code></pre>
+</div>
+</div>
+<ul>
+<li><p>KMO statistic (Overall MSA) is 0.92 - well above the threshold of 0.5</p></li>
+<li><p>MSA for each individual item ranges from 0.84 - 0.96</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you find KMO values below 0.5, consider removing that variable, but be sure to run the KMO statistic again without the removed variable. Also run the analysis with and without the variable to compare</p>
+</div>
+</div>
+</section>
+</section>
+<section id="parallel-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="parallel-analysis">Parallel analysis</h2>
+<ul>
+<li><p>to determine how many factors to extract, run <code>psych::fa.parallel()</code></p></li>
+<li><p>most likely arguments</p>
+<ul>
+<li><p><code>n.obs() - need to tell the function the sample size (`n.obs = 2571`)</code></p></li>
+<li><p><code>fm = “minres”</code> - <code>psych</code> packages uses minimum residual (minres) by default</p>
+<ul>
+<li>other options include principal axes (<code>pa</code>), alpha factoring (<code>alpha</code>), weighted least squares <code>wls</code>, minimum rank (<code>minrank</code>), or maximum likelihood (<code>ml</code>). Match this option to the one you’re going to use in the main factor analysis</li>
+</ul></li>
+<li><p><code>fa = "both"</code> - by default the function will tell the number of factors to extract, but also the number of components for PCA.</p>
+<ul>
+<li>can change to <code>fa = "fa</code>” to see only the number of factors to extract. It is useful to look at both methods</li>
+</ul></li>
+<li><p><code>use = “pairwise”</code> - by default, missing data are handled using all complete pairwise observations to calculate the correlation coefficients</p></li>
+<li><p><code>cor</code> - default is the function assumes you are providing Pearson correlation coefficients, however, with ordinal variables (likert), use <code>cor = "poly"</code> (polychoric) and for binary, use tetrachoric <code>cor = "tet"</code>; with a mix of variable types, use <code>cor ="mixed"</code></p></li>
+</ul></li>
+</ul>
+<section id="code-example" class="level3">
+<h3 class="anchored" data-anchor-id="code-example">Code example</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">fa.parallel</span>(raq_items_tib, <span class="at">cor =</span> <span class="st">"poly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  4  and the number of components =  4 </code></pre>
+</div>
+</div>
+<ul>
+<li>or since we already stored polychoric correlations in <code>raq_cor</code>, we can just apply the function to that correlation matrix and specify the sample size</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">fa.parallel</span>(raq_cor, <span class="at">n.obs =</span> <span class="dv">2571</span>, <span class="at">fa =</span> <span class="st">"fa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parallel analysis suggests that the number of factors =  4  and the number of components =  NA </code></pre>
+</div>
+</div>
 
 
 
