@@ -12,6 +12,10 @@ bibliography: references.bib
 library(tidyverse, knittr)
 library(ggplot2, ggfortify, robust)
 library(viridis)
+library(GPArotation)
+```
+
+```{r}
 raq_tib <- here::here("data/raq.csv") |>
   readr::read_csv()
 ```
@@ -229,3 +233,71 @@ psych::fa.parallel(raq_items_tib, cor = "poly")
 psych::fa.parallel(raq_cor, n.obs = 2571, fa = "fa")
 
 ```
+
+-   eigenvalues represent the size of the factor
+
+-   factors are plotted on the x-axis with the eigenvalues on the y-axis
+
+-   each eigenvalue is compared to an eigenvalue from a simulated data set that has no underlying factors
+
+    -   essentially, we are asking if the factors are bigger than imaginary factor
+
+    -   factors that are bigger than their imaginary counterparts are retained
+
+-   eigenvalues for the observed factors are blue triangles connected by a blue line.
+
+-   the red line shows corresponding simulated data.
+
+-   we keep the number of factors that are above the red line, in this case, four
+
+### Quiz
+
+::: {.callout-important collapse="TRUE"}
+## **Based on the parallel analysis that used principal components to compute the eiegenvalues, how many factors should be extracted?**
+
+-   4
+
+Yes, fortunately this analysis agrees with the parallel analysis based on eigenvalues from factor analysis.
+:::
+
+## Factor Analysis
+
+-   we are now ready to run the FA, extracting four factors, using the `psych::fa()` function
+
+```         
+my_fa_object <- psych::fa(r,    # `r` -> the data being fed into the function (`raq_items_tib` or `raq_cor`)
+                          n.obs = 2571  # as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size
+                          nfactors = 1,  # the number of factors to extract (default is 1)
+                          fm = "minres", # method of factor analysis, typically leave the default
+                          rotate = "oblimin", # method of factor rotation
+                          scores = "regression", # method of computing factor scores. because we should use oblique rotation, change this argument to `scores = "tenBerge"`
+                          max.iter = 50, # number of iterations. If you get a n error message about convergence, increase this number
+                          use = "pairwise", # determines how missing values are treated, default is fine
+                          cor = "cor" # same as defined for `fa.parallel()`
+                          )
+```
+
+::: callout-tip
+## Factor rotation
+
+factor rotation requires `GPArotation` package loaded
+:::
+
+### Code Example
+
+- as with parallel analysis we can either feed the raw data into the function remembering to set `cor = "poly"` so the analysis is based on polychoric correlations
+- or we can feed in the correlation matrix and sample size
+
+```{r}
+raq_fa <- psych::fa(raq_items_tib, 
+  nfactors = 4, 
+  scores = "tenBerge", 
+  cor = "poly"
+  )
+  raq_fa 
+```
+
+```{r}
+parameters::model_parameters(raq_fa, sort = TRUE, threshold = "0.2") |>
+  knitr::kable(digits = 2)
+  ```
