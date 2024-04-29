@@ -1576,16 +1576,27 @@ Note
 <ul>
 <li>we are now ready to run the FA, extracting four factors, using the <code>psych::fa()</code> function</li>
 </ul>
-<pre><code>my_fa_object &lt;- psych::fa(r,    # `r` -&gt; the data being fed into the function (`raq_items_tib` or `raq_cor`)
-                          n.obs = 2571  # as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size
-                          nfactors = 1,  # the number of factors to extract (default is 1)
-                          fm = "minres", # method of factor analysis, typically leave the default
-                          rotate = "oblimin", # method of factor rotation
-                          scores = "regression", # method of computing factor scores. because we should use oblique rotation, change this argument to `scores = "tenBerge"`
-                          max.iter = 50, # number of iterations. If you get a n error message about convergence, increase this number
-                          use = "pairwise", # determines how missing values are treated, default is fine
-                          cor = "cor" # same as defined for `fa.parallel()`
+<pre><code>my_fa_object &lt;- psych::fa(r,    
+                          n.obs = 2571,  
+                          nfactors = 1,  
+                          fm = "minres", 
+                          rotate = "oblimin", 
+                          scores = "regression", 
+                          max.iter = 50, 
+                          use = "pairwise", 
+                          cor = "cor" 
                           )</code></pre>
+<ul>
+<li><code>r</code> -&gt; the data being fed into the function (<code>raq_items_tib</code> or <code>raq_cor</code>)</li>
+<li><code>n.obs = 2571</code> as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size</li>
+<li><code>nfactors = 1</code> the number of factors to extract (default is 1)</li>
+<li><code>fm = "minres"</code> method of factor analysis, typically leave the default</li>
+<li><code>rotate = "oblimin"</code> method of factor rotation</li>
+<li><code>scores = "regression"</code> method of computing factor scores. because we should use oblique rotation, change this argument to <code>scores = "tenBerge"</code></li>
+<li><code>max.iter = 50</code> number of iterations. If you get a n error message about convergence, increase this number</li>
+<li><code>use = "pairwise"</code> determines how missing values are treated, default is fine</li>
+<li><code>cor = "cor"</code> same as defined for <code>fa.parallel()</code></li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
