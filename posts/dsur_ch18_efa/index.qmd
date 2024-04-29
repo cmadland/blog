@@ -9,7 +9,7 @@ bibliography: references.bib
 ---
 
 ```{r}
-library(tidyverse, knittr)
+library(tidyverse, knitr)
 library(ggplot2, ggfortify, robust)
 library(viridis)
 library(GPArotation)
@@ -297,7 +297,87 @@ raq_fa <- psych::fa(raq_items_tib,
   raq_fa 
 ```
 
+- factors are labeled `MR1`, `MR2`, `MR3`, and `MR4`
+- below the pattern matrix is information about how much variance each factor accounts for
+  - `Proportion var` - `MR1` accounts for 0.13 of the overall variance (13%), etc
+  - `Cumulative var` is the proportion of the variance explained cumulatively by the factors - `MR1` accounts for 0.13 and `MR1` + `MR2` together account for 0.13 + 0.10 = 0.23 (23%)
+    - all four together account for 0.40 (40%)
+  - `Proportion explained` is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to `MR1`
+- next, correlations between factors are displayed
+  - all are non-zero, indicating the factors are correlated (and oblique rotation was appropriate)
+  - all factors are positively and fairly strongly correlated to teach other meaning the latent constructs represented by the factors are related.
+- several fit indices that tell us how the model fits the data
+  - chi-square statistic for the model is given as the `likelihood chi square`, $X^2=267.21, p<0.001$
+    - we want this to be non-significant but ours is highly significant. Our sample size is 2571 so small deviations from a good fit will be significant. This highlights the limitation of using significance to indicate model fit.
+    - the Tucker Lewis Index of factoring reliability (TLI) is given as 0.991
+    - RMSEA is 0.015 90% CI[0.012, 0.019]
+    - RMSR is 0.01
+
+::: {.callout-note}
+## Fit Indices
+Good fit is (probably) indicated by
+
+- combination of TLI > 0.96, and SRMR (RMSR in the output) < 0.06
+- combination of RMSEA < 0.05 and SRMR < 0.09
+
+The TLI is 0.99, which is greater than 0.96, and RMSR is 0.01 which is smaller than both 0.09 and 0.06. Furthermore, RMSEA is 0.015, which is less than 0.05. With the caveat that universal cut-offs need to be taken with a pinch of salt, it’s reasonable to conclude that the model has excellent fit.
+:::
+
+### Interpreting FA
+
+- look at factor loadings (top of output in the pattern matrix) for each question on each factor to see which items load most heavily onto which factors
+- this is difficult to interpret in the raw form, so use `parameters::model_parameters()` to sort items by their factor loadings and suppress factor loading sbelow a certain value
+
+General form
+```
+parameters::model_parameters(my_fa_object, sort = TRUE, threshold = "max")
+```
+
+- `my_fa_object` is the factor analysis object containing the factor loadings.
+- `sort = "TRUE"` sorts items by their factor loadings
+- set `threshold` to a value above which we will show values. Default is  maximum loading. To see all factor loadings, set `threshold = NULL`
+
+
 ```{r}
 parameters::model_parameters(raq_fa, sort = TRUE, threshold = "0.2") |>
   knitr::kable(digits = 2)
-  ```
+```
+
+- Now we can see patterns in the questions that load onto the same factors
+- Items that load highly on `MR1` seem to be items that relate to fear of computers
+  - raq_05: I don’t understand statistics (also loads highly onto `MR4`)
+  - raq_06: I have little experience of computers
+  - raq_07: All computers hate me
+  - raq_10: Computers are useful only for playing games
+  - raq_13: I worry that I will cause irreparable damage because of my incompetence with computers
+  - raq_14: Computers have minds of their own and deliberately go wrong whenever I use them
+  - raq_15: Computers are out to get me
+  - raq_18: R always crashes when I try to use it
+- Items that load onto `MR2` relate to fear of peer/social evaluation
+  - raq_02: My friends will think I’m stupid for not being able to cope with R
+  - raq_09: My friends are better at statistics than me
+  - raq_19: Everybody looks at me when I use R
+  - raq_22: My friends are better at R than I am
+  - raq_23: If I am good at statistics people will think I am a nerd
+- Questions that load onto `MR4` relate to fear of statistics
+  - raq_01: Statistics make me cry
+  - raq_03: Standard deviations excite me
+  - raq_04: I dream that Pearson is attacking me with correlation coefficients
+  - raq_05: I don’t understand statistics
+  - raq_12: People try to tell you that R makes statistics easier to understand but it doesn’t
+  - raq_16: I weep openly at the mention of central tendency
+  - raq_20: I can’t sleep for thoughts of eigenvectors
+  - raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution
+- questions that load onto `MR3` relate to fear of math
+  - raq_08: I have never been good at mathematics
+  - raq_11: I did badly at mathematics at school
+  - raq_17: I slip into a coma whenever I see an equation
+
+Analysis seems to reveal that the questionnaire is composed of four subscales: fear of statistics, fear of computers, fear of maths, fear of negative peer evaluation.
+
+- two possibilities:
+  - the RAQ failed to measure what it set out to measure -> R anxiety but instead measures related constructs
+  - these four constructs are subcomponents of R anxiety
+- However, the factor analysis does not indicate which of these is true.
+
+## Reliability Analysis

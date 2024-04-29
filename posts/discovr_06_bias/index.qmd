@@ -88,7 +88,7 @@ download_tidy_tib <- download_tidy_tib |>   # recreates `download_tidy_tib` from
    dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
     day = stringr::str_to_sentence(day) |> stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
   )
-  ```
+ ```
 
 ```{r}
 download_tidy_tib <- download_tidy_tib |> 

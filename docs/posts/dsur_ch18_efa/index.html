@@ -246,7 +246,7 @@ window.Quarto = {
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, knittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -1679,9 +1679,68 @@ Multiple R square of scores with factors          0.87 0.83 0.77 0.85
 Minimum correlation of possible factor scores     0.73 0.66 0.54 0.70</code></pre>
 </div>
 </div>
+<ul>
+<li>factors are labeled <code>MR1</code>, <code>MR2</code>, <code>MR3</code>, and <code>MR4</code></li>
+<li>below the pattern matrix is information about how much variance each factor accounts for
+<ul>
+<li><code>Proportion var</code> - <code>MR1</code> accounts for 0.13 of the overall variance (13%), etc</li>
+<li><code>Cumulative var</code> is the proportion of the variance explained cumulatively by the factors - <code>MR1</code> accounts for 0.13 and <code>MR1</code> + <code>MR2</code> together account for 0.13 + 0.10 = 0.23 (23%)
+<ul>
+<li>all four together account for 0.40 (40%)</li>
+</ul></li>
+<li><code>Proportion explained</code> is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to <code>MR1</code></li>
+</ul></li>
+<li>next, correlations between factors are displayed
+<ul>
+<li>all are non-zero, indicating the factors are correlated (and oblique rotation was appropriate)</li>
+<li>all factors are positively and fairly strongly correlated to teach other meaning the latent constructs represented by the factors are related.</li>
+</ul></li>
+<li>several fit indices that tell us how the model fits the data
+<ul>
+<li>chi-square statistic for the model is given as the <code>likelihood chi square</code>, <span class="math inline">\(X^2=267.21, p&lt;0.001\)</span>
+<ul>
+<li>we want this to be non-significant but ours is highly significant. Our sample size is 2571 so small deviations from a good fit will be significant. This highlights the limitation of using significance to indicate model fit.</li>
+<li>the Tucker Lewis Index of factoring reliability (TLI) is given as 0.991</li>
+<li>RMSEA is 0.015 90% CI[0.012, 0.019]</li>
+<li>RMSR is 0.01</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fit Indices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Good fit is (probably) indicated by</p>
+<ul>
+<li>combination of TLI &gt; 0.96, and SRMR (RMSR in the output) &lt; 0.06</li>
+<li>combination of RMSEA &lt; 0.05 and SRMR &lt; 0.09</li>
+</ul>
+<p>The TLI is 0.99, which is greater than 0.96, and RMSR is 0.01 which is smaller than both 0.09 and 0.06. Furthermore, RMSEA is 0.015, which is less than 0.05. With the caveat that universal cut-offs need to be taken with a pinch of salt, it’s reasonable to conclude that the model has excellent fit.</p>
+</div>
+</div>
+</section>
+<section id="interpreting-fa" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-fa">Interpreting FA</h3>
+<ul>
+<li>look at factor loadings (top of output in the pattern matrix) for each question on each factor to see which items load most heavily onto which factors</li>
+<li>this is difficult to interpret in the raw form, so use <code>parameters::model_parameters()</code> to sort items by their factor loadings and suppress factor loading sbelow a certain value</li>
+</ul>
+<p>General form</p>
+<pre><code>parameters::model_parameters(my_fa_object, sort = TRUE, threshold = "max")</code></pre>
+<ul>
+<li><code>my_fa_object</code> is the factor analysis object containing the factor loadings.</li>
+<li><code>sort = "TRUE"</code> sorts items by their factor loadings</li>
+<li>set <code>threshold</code> to a value above which we will show values. Default is maximum loading. To see all factor loadings, set <code>threshold = NULL</code></li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(raq_fa, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">threshold =</span> <span class="st">"0.2"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(raq_fa, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">threshold =</span> <span class="st">"0.2"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
@@ -1907,13 +1966,64 @@ Minimum correlation of possible factor scores     0.73 0.66 0.54 0.70</code></pr
 </table>
 </div>
 </div>
+<ul>
+<li>Now we can see patterns in the questions that load onto the same factors</li>
+<li>Items that load highly on <code>MR1</code> seem to be items that relate to fear of computers
+<ul>
+<li>raq_05: I don’t understand statistics (also loads highly onto <code>MR4</code>)</li>
+<li>raq_06: I have little experience of computers</li>
+<li>raq_07: All computers hate me</li>
+<li>raq_10: Computers are useful only for playing games</li>
+<li>raq_13: I worry that I will cause irreparable damage because of my incompetence with computers</li>
+<li>raq_14: Computers have minds of their own and deliberately go wrong whenever I use them</li>
+<li>raq_15: Computers are out to get me</li>
+<li>raq_18: R always crashes when I try to use it</li>
+</ul></li>
+<li>Items that load onto <code>MR2</code> relate to fear of peer/social evaluation
+<ul>
+<li>raq_02: My friends will think I’m stupid for not being able to cope with R</li>
+<li>raq_09: My friends are better at statistics than me</li>
+<li>raq_19: Everybody looks at me when I use R</li>
+<li>raq_22: My friends are better at R than I am</li>
+<li>raq_23: If I am good at statistics people will think I am a nerd</li>
+</ul></li>
+<li>Questions that load onto <code>MR4</code> relate to fear of statistics
+<ul>
+<li>raq_01: Statistics make me cry</li>
+<li>raq_03: Standard deviations excite me</li>
+<li>raq_04: I dream that Pearson is attacking me with correlation coefficients</li>
+<li>raq_05: I don’t understand statistics</li>
+<li>raq_12: People try to tell you that R makes statistics easier to understand but it doesn’t</li>
+<li>raq_16: I weep openly at the mention of central tendency</li>
+<li>raq_20: I can’t sleep for thoughts of eigenvectors</li>
+<li>raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution</li>
+</ul></li>
+<li>questions that load onto <code>MR3</code> relate to fear of math
+<ul>
+<li>raq_08: I have never been good at mathematics</li>
+<li>raq_11: I did badly at mathematics at school</li>
+<li>raq_17: I slip into a coma whenever I see an equation</li>
+</ul></li>
+</ul>
+<p>Analysis seems to reveal that the questionnaire is composed of four subscales: fear of statistics, fear of computers, fear of maths, fear of negative peer evaluation.</p>
+<ul>
+<li>two possibilities:
+<ul>
+<li>the RAQ failed to measure what it set out to measure -&gt; R anxiety but instead measures related constructs</li>
+<li>these four constructs are subcomponents of R anxiety</li>
+</ul></li>
+<li>However, the factor analysis does not indicate which of these is true.</li>
+</ul>
+</section>
+</section>
+<section id="reliability-analysis" class="level2">
+
 
 
 
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reliability Analysis</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-field2023" class="csl-entry" role="listitem">
 Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
 </div>
