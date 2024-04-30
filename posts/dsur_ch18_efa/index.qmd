@@ -490,7 +490,7 @@ raq_omg
 - pipe the variables for each subscale into `psych::alpha()` function
 
 ### Code example for `fear of computers`
-- example excludes `raq_05`, which makes more sense on the fear of statistics factor
+- example excludes `raq_05`, which makes more sense on the fear of statistics factor [[See github issue](https://github.com/profandyfield/discovr/issues/19)]
 
 ```{r}
 raq_tib |> 
