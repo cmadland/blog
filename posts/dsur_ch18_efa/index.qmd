@@ -457,3 +457,52 @@ raq_omg
 - $\omega_h$ is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor
 - further down in the output, we see that  only 48% of the variance in the common factor is explained by the items
 - $\omega_t$ is the total reliability and 0.90 is high, suggesting scores are reliable
+
+- next are two sets of model fit stats
+- the first set are for the model that has four factors and repeat the nformation from the original EFA
+  - `chi-square` is significant, $X^2= 267.21, p<0.001$, which is a bad thing but unsurprising given the sample size
+  - `RMSR = 0.01`
+  - `RMSEA = 0.02 90% CI[0.01-0.02]`
+- Next is the same information but for the model that contains only the general factor and not the four sub-factors
+  - the fit gets worse as shown by 
+    - larger and more significant `chi-square, $X^2=6122.42, p<0.001$`
+    - larger `RMSR=0.10`
+    - larger `RMSEA=0.1090% CI[0.10, 0.10]`
+- all this tells us that the model that characterizes the RAQ in terms of four factors is a better fit of the data than a model that characterises it as a single factor
+
+- finally, under the Total, General, and Subset omega for each subset, we get the $\omega_t$ (labeled omega total) and $\omega_h$ (labeled omega general) for the general factor (column `g`) and for the subfactors.
+- values for the general factor repeat the information at tht e start of the output
+- the values for the subfactors are particularly relvant for $\omega_t$ because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales
+  - for anxiety related to computers (F1) we have $\omega_t=0.83$
+  - anxiety around peer or social evaluation (F2) $\omega_t=0.80
+  - anxiety around statistics (F3) $\omega_t=0.69$
+  - anxiety around maths (F4) $\omega_t=0.81$
+- scores from ach subscale are reliable, although somewhat less so for anxiety around statistics
+
+## Cronbach's $\alpha$
+
+- Lots of reasons not to use Cronbach's $\alpha$ (see the book for details)
+- if Cronbach's $\alpha$ is needed, it must be computed on the individual subscales
+  - Anxiety related to computers: raq_06, raq_07, raq_10, raq_13, raq_14, raq_15 and raq_18
+  - Anxiety around peer or social evaluation: raq_02, raq_09, raq_19, raq_22, and raq_2
+  - Anxiety around statistics: raq_01, raq_03 (reverse scored), raq_04, raq_05, raq_12, raq_16, raq_20, and raq_21
+  - Anxiety around maths: raq_08, raq_11 and raq_17
+- pipe the variables for each subscale into `psych::alpha()` function
+
+### Code example for `fear of computers`
+- example excludes `raq_05`, which makes more sense on the fear of statistics factor
+
+```{r}
+raq_tib |> 
+  dplyr::select(raq_06, raq_07, raq_10, raq_13, raq_14, raq_15, raq_18) |> 
+  psych::alpha()
+```
+
+- value at the top is Cronbach's $\alpha$, with the 95% CI below.
+- looking for between 0.70 and 0.80, in this case Cronbach's $\alpha$=0.77 [0.75, 0.78] indicating good reliability
+
+- next is a table of statistics for the scale if we deleted each item in turn
+- the values in the column `raw_alpha` are the values of the overall $\alpha$ 
+- we are looking for a change in Cronbach's $\alpha$ (0.77)
+  - if values are greater than 0.77, then reliability would have improved if the item were removed -  not the case here
+- 

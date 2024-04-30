@@ -2117,26 +2117,145 @@ Omega group for total scores and subscales    0.18 0.35 0.56 0.31 0.38</code></p
 </div>
 </div>
 <ul>
-<li>note the table of factor loadings and that <code>raq_03-</code> is labeled with a minus to indicate it is reverse coded</li>
-<li>column labeled <code>g</code>shows the loading of each item on the general factor
+<li><p>note the table of factor loadings and that <code>raq_03-</code> is labeled with a minus to indicate it is reverse coded</p></li>
+<li><p>column labeled <code>g</code>shows the loading of each item on the general factor</p>
 <ul>
 <li>if any items load poorly, then a common factor model isn’t appropriate</li>
 <li>all items here have a factor loading far enough from zero that a general factor model is appropriate</li>
 </ul></li>
-<li>Columns F1-F4 show the loadings of each item on the four factors we extracted
+<li><p>Columns F1-F4 show the loadings of each item on the four factors we extracted</p>
 <ul>
 <li>these values differ from the original factor analysis because this one includes a general factor</li>
 <li>the patterns of item loadings to factors follow the same pattern as the original FA</li>
 </ul></li>
-<li>at the top of the text output are reliability estimates for the general factor, including
+<li><p>at the top of the text output are reliability estimates for the general factor, including</p>
 <ul>
 <li>Chronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha=0.88"></li>
 <li><img src="https://latex.codecogs.com/png.latex?%5Comega_h=0.68"></li>
 <li><img src="https://latex.codecogs.com/png.latex?%5Comega_t=0.9"></li>
 </ul></li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Comega_h"> is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor</li>
-<li>further down in the output, we see that only 48% of the variance in the common factor is explained by the items</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Comega_t"> is the total reliability and 0.90 is high, suggesting scores are reliable</li>
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Comega_h"> is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor</p></li>
+<li><p>further down in the output, we see that only 48% of the variance in the common factor is explained by the items</p></li>
+<li><p><img src="https://latex.codecogs.com/png.latex?%5Comega_t"> is the total reliability and 0.90 is high, suggesting scores are reliable</p></li>
+<li><p>next are two sets of model fit stats</p></li>
+<li><p>the first set are for the model that has four factors and repeat the nformation from the original EFA</p>
+<ul>
+<li><code>chi-square</code> is significant, <img src="https://latex.codecogs.com/png.latex?X%5E2=%20267.21,%20p%3C0.001">, which is a bad thing but unsurprising given the sample size</li>
+<li><code>RMSR = 0.01</code></li>
+<li><code>RMSEA = 0.02 90% CI[0.01-0.02]</code></li>
+</ul></li>
+<li><p>Next is the same information but for the model that contains only the general factor and not the four sub-factors</p>
+<ul>
+<li>the fit gets worse as shown by
+<ul>
+<li>larger and more significant <code>chi-square, $X^2=6122.42, p&lt;0.001$</code></li>
+<li>larger <code>RMSR=0.10</code></li>
+<li>larger <code>RMSEA=0.1090% CI[0.10, 0.10]</code></li>
+</ul></li>
+</ul></li>
+<li><p>all this tells us that the model that characterizes the RAQ in terms of four factors is a better fit of the data than a model that characterises it as a single factor</p></li>
+<li><p>finally, under the Total, General, and Subset omega for each subset, we get the <img src="https://latex.codecogs.com/png.latex?%5Comega_t"> (labeled omega total) and <img src="https://latex.codecogs.com/png.latex?%5Comega_h"> (labeled omega general) for the general factor (column <code>g</code>) and for the subfactors.</p></li>
+<li><p>values for the general factor repeat the information at tht e start of the output</p></li>
+<li><p>the values for the subfactors are particularly relvant for <img src="https://latex.codecogs.com/png.latex?%5Comega_t"> because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales</p>
+<ul>
+<li>for anxiety related to computers (F1) we have <img src="https://latex.codecogs.com/png.latex?%5Comega_t=0.83"></li>
+<li>anxiety around peer or social evaluation (F2) $_t=0.80</li>
+<li>anxiety around statistics (F3) <img src="https://latex.codecogs.com/png.latex?%5Comega_t=0.69"></li>
+<li>anxiety around maths (F4) <img src="https://latex.codecogs.com/png.latex?%5Comega_t=0.81"></li>
+</ul></li>
+<li><p>scores from ach subscale are reliable, although somewhat less so for anxiety around statistics</p></li>
+</ul>
+</section>
+</section>
+<section id="cronbachs-alpha" class="level2">
+<h2 class="anchored" data-anchor-id="cronbachs-alpha">Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha"></h2>
+<ul>
+<li>Lots of reasons not to use Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha"> (see the book for details)</li>
+<li>if Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha"> is needed, it must be computed on the individual subscales
+<ul>
+<li>Anxiety related to computers: raq_06, raq_07, raq_10, raq_13, raq_14, raq_15 and raq_18</li>
+<li>Anxiety around peer or social evaluation: raq_02, raq_09, raq_19, raq_22, and raq_2</li>
+<li>Anxiety around statistics: raq_01, raq_03 (reverse scored), raq_04, raq_05, raq_12, raq_16, raq_20, and raq_21</li>
+<li>Anxiety around maths: raq_08, raq_11 and raq_17</li>
+</ul></li>
+<li>pipe the variables for each subscale into <code>psych::alpha()</code> function</li>
+</ul>
+<section id="code-example-for-fear-of-computers" class="level3">
+<h3 class="anchored" data-anchor-id="code-example-for-fear-of-computers">Code example for <code>fear of computers</code></h3>
+<ul>
+<li>example excludes <code>raq_05</code>, which makes more sense on the fear of statistics factor</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1">raq_tib <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb38-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(raq_06, raq_07, raq_10, raq_13, raq_14, raq_15, raq_18) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb38-3">  psych<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">alpha</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Reliability analysis   
+Call: psych::alpha(x = dplyr::select(raq_tib, raq_06, raq_07, raq_10, 
+    raq_13, raq_14, raq_15, raq_18))
+
+  raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd median_r
+      0.77      0.77    0.75      0.32 3.3 0.0069  3.5 0.64     0.29
+
+    95% confidence boundaries 
+         lower alpha upper
+Feldt     0.75  0.77  0.78
+Duhachek  0.76  0.77  0.78
+
+ Reliability if an item is dropped:
+       raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+raq_06      0.70      0.70    0.66      0.28 2.3   0.0092 0.0015  0.28
+raq_07      0.74      0.74    0.71      0.32 2.9   0.0079 0.0075  0.29
+raq_10      0.75      0.75    0.73      0.34 3.1   0.0075 0.0068  0.32
+raq_13      0.74      0.74    0.71      0.32 2.9   0.0079 0.0074  0.29
+raq_14      0.76      0.76    0.73      0.35 3.2   0.0073 0.0065  0.32
+raq_15      0.75      0.75    0.72      0.33 3.0   0.0076 0.0076  0.31
+raq_18      0.73      0.73    0.70      0.31 2.7   0.0082 0.0063  0.29
+
+ Item statistics 
+          n raw.r std.r r.cor r.drop mean   sd
+raq_06 2571  0.79  0.79  0.77   0.68  3.5 0.99
+raq_07 2571  0.65  0.65  0.56   0.49  3.5 1.00
+raq_10 2571  0.59  0.59  0.48   0.42  3.5 1.00
+raq_13 2571  0.64  0.64  0.55   0.48  3.5 0.98
+raq_14 2571  0.57  0.57  0.45   0.39  3.5 1.00
+raq_15 2571  0.61  0.61  0.51   0.44  3.5 0.99
+raq_18 2571  0.67  0.68  0.60   0.53  3.5 0.97
+
+Non missing response frequency for each item
+          1    2    3    4    5 miss
+raq_06 0.02 0.14 0.35 0.33 0.17    0
+raq_07 0.02 0.13 0.33 0.34 0.17    0
+raq_10 0.02 0.14 0.35 0.32 0.17    0
+raq_13 0.02 0.14 0.33 0.35 0.15    0
+raq_14 0.02 0.13 0.33 0.35 0.17    0
+raq_15 0.02 0.13 0.32 0.35 0.17    0
+raq_18 0.02 0.13 0.35 0.35 0.15    0</code></pre>
+</div>
+</div>
+<ul>
+<li><p>value at the top is Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha">, with the 95% CI below.</p></li>
+<li><p>looking for between 0.70 and 0.80, in this case Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha">=0.77 [0.75, 0.78] indicating good reliability</p></li>
+<li><p>next is a table of statistics for the scale if we deleted each item in turn</p></li>
+<li><p>the values in the column <code>raw_alpha</code> are the values of the overall <img src="https://latex.codecogs.com/png.latex?%5Calpha"></p></li>
+<li><p>we are looking for a change in Cronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha"> (0.77)</p>
+<ul>
+<li>if values are greater than 0.77, then reliability would have improved if the item were removed - not the case here</li>
+</ul></li>
+<li></li>
 </ul>
 
 
@@ -7993,35 +8112,35 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-27.495</td>
+<td style="text-align: right;">-27.816</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-58.058</td>
-<td style="text-align: right;">6.806</td>
-<td style="text-align: right;">0.082</td>
+<td style="text-align: right;">-55.348</td>
+<td style="text-align: right;">4.440</td>
+<td style="text-align: right;">0.1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.072</td>
 <td style="text-align: right;">0.098</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.373</td>
+<td style="text-align: right;">3.359</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.805</td>
-<td style="text-align: right;">3.975</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">2.774</td>
+<td style="text-align: right;">3.969</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.245</td>
+<td style="text-align: right;">11.321</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.718</td>
-<td style="text-align: right;">15.401</td>
-<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">6.535</td>
+<td style="text-align: right;">15.348</td>
+<td style="text-align: right;">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -8712,22 +8831,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.365e+00 3.365e-02      3.365e-02
-adverts 8.422e-02 7.008e-03 7.008e-05      7.008e-05
-airplay 3.335e+00 2.810e-01 2.810e-03      2.810e-03
-image   1.096e+01 2.469e+00 2.469e-02      2.522e-02
-sig2    2.248e+03 2.302e+02 2.302e+00      2.362e+00
-g       9.895e-01 1.604e+00 1.604e-02      1.637e-02
+mu      1.932e+02 3.348e+00 3.348e-02      3.348e-02
+adverts 8.391e-02 6.979e-03 6.979e-05      6.979e-05
+airplay 3.340e+00 2.784e-01 2.784e-03      2.887e-03
+image   1.099e+01 2.422e+00 2.422e-02      2.422e-02
+sig2    2.252e+03 2.276e+02 2.276e+00      2.342e+00
+g       9.940e-01 1.735e+00 1.735e-02      1.818e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.954e+02 1.998e+02
-adverts 7.032e-02 7.952e-02 8.424e-02 8.902e-02 9.764e-02
-airplay 2.791e+00 3.147e+00 3.337e+00 3.528e+00 3.876e+00
-image   6.121e+00 9.299e+00 1.096e+01 1.257e+01 1.577e+01
-sig2    1.845e+03 2.085e+03 2.233e+03 2.395e+03 2.732e+03
-g       1.734e-01 3.750e-01 6.083e-01 1.060e+00 4.110e+00</code></pre>
+mu      1.866e+02 1.909e+02 1.932e+02  195.4524 1.998e+02
+adverts 7.018e-02 7.925e-02 8.391e-02    0.0886 9.774e-02
+airplay 2.790e+00 3.153e+00 3.342e+00    3.5253 3.882e+00
+image   6.300e+00 9.339e+00 1.099e+01   12.6091 1.566e+01
+sig2    1.848e+03 2.093e+03 2.239e+03 2392.5672 2.743e+03
+g       1.734e-01 3.659e-01 5.996e-01    1.0628 4.211e+00</code></pre>
 </div>
 </div>
 <ul>
