@@ -1952,13 +1952,199 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 </section>
 </section>
 <section id="reliability-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-analysis">Reliability Analysis</h2>
+<section id="mcdonalds-omega_t-and-omega_h" class="level3">
+<h3 class="anchored" data-anchor-id="mcdonalds-omega_t-and-omega_h">McDonald’s <img src="https://latex.codecogs.com/png.latex?%5Comega_t"> and <img src="https://latex.codecogs.com/png.latex?%5Comega_h"></h3>
+<ul>
+<li>if items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into <code>omega()</code> functions in the <code>psych</code> package</li>
+</ul>
+<pre><code>my_omg &lt;- psych::omega(
+    my_tibble
+    nfactors = 1,
+    fm = "minres",
+    key = c(1, 1, -1, 1, 1 … 1),
+    rotate = "oblimin",
+    poly = FALSE
+  )</code></pre>
+<dl>
+<dt><code>my_omg</code></dt>
+<dd>
+name to give the object that stores the results
+</dd>
+<dt><code>my_tibble</code></dt>
+<dd>
+name of the tibble containing your data
+</dd>
+</dl>
+</section>
+<section id="code-example-2" class="level3">
+<h3 class="anchored" data-anchor-id="code-example-2">Code Example</h3>
+<ul>
+<li>need to recreate the original FA</li>
+<li>arguments will be the same as they were set for the fa</li>
+<li>the <code>key</code> argument allows us to reverse item scoring on the fly</li>
+<li>supply the key argument with a vector of 1s and -1s that is the same length as the number of variables being fed into the <code>omega()</code> function</li>
+<li>for RAQ, we have 23 items with the third being reverse coded</li>
+<li>entering the items in order into <code>omega()</code> gives</li>
+</ul>
+<pre><code>key = c(1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)</code></pre>
+<p>or</p>
+<pre><code>key = c(1, 1, -1, rep(1, 20))</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">raq_omg <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> psych<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">omega</span>(raq_items_tib,</span>
+<span id="cb35-2">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nfactors =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>,</span>
+<span id="cb35-3">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fm =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"minres"</span>,</span>
+<span id="cb35-4">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">key =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>)),</span>
+<span id="cb35-5">                        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">poly =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb35-6">                        )</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dsur_ch18_efa/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1">raq_omg</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Omega 
+Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
+    digits = digits, title = title, sl = sl, labels = labels, 
+    plot = plot, n.obs = n.obs, rotate = rotate, Phi = Phi, option = option, 
+    covar = covar)
+Alpha:                 0.88 
+G.6:                   0.89 
+Omega Hierarchical:    0.68 
+Omega H asymptotic:    0.75 
+Omega Total            0.9 
 
+Schmid Leiman Factor loadings greater than  0.2 
+           g   F1*   F2*   F3*   F4*   h2   u2   p2
+raq_01  0.32              0.26       0.17 0.83 0.57
+raq_02  0.37        0.43             0.38 0.62 0.37
+raq_03- 0.34              0.29       0.20 0.80 0.56
+raq_04  0.43              0.38       0.33 0.67 0.56
+raq_05  0.62  0.32        0.27       0.54 0.46 0.70
+raq_06  0.61  0.60                   0.73 0.27 0.51
+raq_07  0.44  0.39                   0.35 0.65 0.54
+raq_08  0.62                    0.61 0.75 0.25 0.51
+raq_09  0.32        0.73             0.62 0.38 0.17
+raq_10  0.37  0.35                   0.26 0.74 0.53
+raq_11  0.54                    0.50 0.55 0.45 0.54
+raq_12  0.22              0.25       0.11 0.89 0.44
+raq_13  0.42  0.40                   0.34 0.66 0.51
+raq_14  0.36  0.30                   0.22 0.78 0.59
+raq_15  0.41  0.34                   0.29 0.71 0.59
+raq_16  0.34              0.34       0.23 0.77 0.49
+raq_17  0.52                    0.47 0.49 0.51 0.55
+raq_18  0.48  0.44                   0.43 0.57 0.54
+raq_19  0.43        0.51             0.50 0.50 0.37
+raq_20  0.43              0.36       0.32 0.68 0.58
+raq_21  0.49              0.40       0.40 0.60 0.59
+raq_22  0.41        0.46             0.41 0.59 0.41
+raq_23  0.30        0.71             0.59 0.41 0.15
+
+With Sums of squares  of:
+   g  F1*  F2*  F3*  F4* 
+4.40 1.39 1.71 0.85 0.86 
+
+general/max  2.58   max/min =   2.01
+mean percent general =  0.49    with sd =  0.13 and cv of  0.26 
+Explained Common Variance of the general factor =  0.48 
+
+The degrees of freedom are 167  and the fit is  0.1 
+The number of observations was  2571  with Chi Square =  267.21  with prob &lt;  1.3e-06
+The root mean square of the residuals is  0.01 
+The df corrected root mean square of the residuals is  0.02
+RMSEA index =  0.015  and the 10 % confidence intervals are  0.012 0.019
+BIC =  -1044.08
+
+Compare this with the adequacy of just a general factor and no group factors
+The degrees of freedom for just the general factor are 230  and the fit is  2.39 
+The number of observations was  2571  with Chi Square =  6122.42  with prob &lt;  0
+The root mean square of the residuals is  0.1 
+The df corrected root mean square of the residuals is  0.11 
+
+RMSEA index =  0.1  and the 10 % confidence intervals are  0.098 0.102
+BIC =  4316.45 
+
+Measures of factor score adequacy             
+                                                 g  F1*  F2*   F3*  F4*
+Correlation of scores with factors            0.84 0.76 0.87  0.67 0.74
+Multiple R square of scores with factors      0.71 0.57 0.75  0.44 0.55
+Minimum correlation of factor score estimates 0.42 0.14 0.51 -0.11 0.10
+
+ Total, General and Subset omega for each subset
+                                                 g  F1*  F2*  F3*  F4*
+Omega total for total scores and subscales    0.90 0.83 0.80 0.69 0.81
+Omega general for total scores and subscales  0.68 0.48 0.23 0.38 0.43
+Omega group for total scores and subscales    0.18 0.35 0.56 0.31 0.38</code></pre>
+</div>
+</div>
+<ul>
+<li>note the table of factor loadings and that <code>raq_03-</code> is labeled with a minus to indicate it is reverse coded</li>
+<li>column labeled <code>g</code>shows the loading of each item on the general factor
+<ul>
+<li>if any items load poorly, then a common factor model isn’t appropriate</li>
+<li>all items here have a factor loading far enough from zero that a general factor model is appropriate</li>
+</ul></li>
+<li>Columns F1-F4 show the loadings of each item on the four factors we extracted
+<ul>
+<li>these values differ from the original factor analysis because this one includes a general factor</li>
+<li>the patterns of item loadings to factors follow the same pattern as the original FA</li>
+</ul></li>
+<li>at the top of the text output are reliability estimates for the general factor, including
+<ul>
+<li>Chronbach’s <img src="https://latex.codecogs.com/png.latex?%5Calpha=0.88"></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Comega_h=0.68"></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Comega_t=0.9"></li>
+</ul></li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Comega_h"> is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor</li>
+<li>further down in the output, we see that only 48% of the variance in the common factor is explained by the items</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Comega_t"> is the total reliability and 0.90 is high, suggesting scores are reliable</li>
+</ul>
 
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reliability Analysis</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-field2023" class="csl-entry">
 Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
 </div>
@@ -7807,34 +7993,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.588</td>
+<td style="text-align: right;">-27.495</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-55.997</td>
-<td style="text-align: right;">7.727</td>
-<td style="text-align: right;">0.126</td>
+<td style="text-align: right;">-58.058</td>
+<td style="text-align: right;">6.806</td>
+<td style="text-align: right;">0.082</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
-<td style="text-align: right;">0.086</td>
+<td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
-<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.098</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.365</td>
+<td style="text-align: right;">3.373</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.755</td>
-<td style="text-align: right;">3.990</td>
+<td style="text-align: right;">2.805</td>
+<td style="text-align: right;">3.975</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.156</td>
+<td style="text-align: right;">11.245</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.431</td>
-<td style="text-align: right;">15.157</td>
+<td style="text-align: right;">6.718</td>
+<td style="text-align: right;">15.401</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -8526,22 +8712,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.376e+00 3.376e-02      3.376e-02
-adverts 8.411e-02 6.898e-03 6.898e-05      6.898e-05
-airplay 3.330e+00 2.776e-01 2.776e-03      2.776e-03
-image   1.100e+01 2.414e+00 2.414e-02      2.377e-02
-sig2    2.251e+03 2.303e+02 2.303e+00      2.359e+00
-g       1.008e+00 2.016e+00 2.016e-02      2.048e-02
+mu      1.932e+02 3.365e+00 3.365e-02      3.365e-02
+adverts 8.422e-02 7.008e-03 7.008e-05      7.008e-05
+airplay 3.335e+00 2.810e-01 2.810e-03      2.810e-03
+image   1.096e+01 2.469e+00 2.469e-02      2.522e-02
+sig2    2.248e+03 2.302e+02 2.302e+00      2.362e+00
+g       9.895e-01 1.604e+00 1.604e-02      1.637e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.865e+02 1.909e+02 1.931e+02 1.954e+02 1.998e+02
-adverts 7.075e-02 7.946e-02 8.411e-02 8.876e-02 9.749e-02
-airplay 2.786e+00 3.145e+00 3.335e+00 3.518e+00 3.869e+00
-image   6.222e+00 9.414e+00 1.100e+01 1.266e+01 1.572e+01
-sig2    1.852e+03 2.088e+03 2.235e+03 2.397e+03 2.752e+03
-g       1.729e-01 3.782e-01 6.018e-01 1.070e+00 4.068e+00</code></pre>
+mu      1.866e+02 1.909e+02 1.932e+02 1.954e+02 1.998e+02
+adverts 7.032e-02 7.952e-02 8.424e-02 8.902e-02 9.764e-02
+airplay 2.791e+00 3.147e+00 3.337e+00 3.528e+00 3.876e+00
+image   6.121e+00 9.299e+00 1.096e+01 1.257e+01 1.577e+01
+sig2    1.845e+03 2.085e+03 2.233e+03 2.395e+03 2.732e+03
+g       1.734e-01 3.750e-01 6.083e-01 1.060e+00 4.110e+00</code></pre>
 </div>
 </div>
 <ul>

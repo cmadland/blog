@@ -2028,13 +2028,163 @@ Fit Indices
 </section>
 </section>
 <section id="reliability-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="reliability-analysis">Reliability Analysis</h2>
+<section id="mcdonalds-omega_t-and-omega_h" class="level3">
+<h3 class="anchored" data-anchor-id="mcdonalds-omega_t-and-omega_h">McDonald’s <span class="math inline">\(\omega_t\)</span> and <span class="math inline">\(\omega_h\)</span></h3>
+<ul>
+<li>if items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into <code>omega()</code> functions in the <code>psych</code> package</li>
+</ul>
+<pre><code>my_omg &lt;- psych::omega(
+    my_tibble
+    nfactors = 1,
+    fm = "minres",
+    key = c(1, 1, -1, 1, 1 … 1),
+    rotate = "oblimin",
+    poly = FALSE
+  )</code></pre>
+<dl>
+<dt><code>my_omg</code></dt>
+<dd>
+name to give the object that stores the results
+</dd>
+<dt><code>my_tibble</code></dt>
+<dd>
+name of the tibble containing your data
+</dd>
+</dl>
+</section>
+<section id="code-example-2" class="level3">
+<h3 class="anchored" data-anchor-id="code-example-2">Code Example</h3>
+<ul>
+<li>need to recreate the original FA</li>
+<li>arguments will be the same as they were set for the fa</li>
+<li>the <code>key</code> argument allows us to reverse item scoring on the fly</li>
+<li>supply the key argument with a vector of 1s and -1s that is the same length as the number of variables being fed into the <code>omega()</code> function</li>
+<li>for RAQ, we have 23 items with the third being reverse coded</li>
+<li>entering the items in order into <code>omega()</code> gives</li>
+</ul>
+<pre><code>key = c(1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)</code></pre>
+<p>or</p>
+<pre><code>key = c(1, 1, -1, rep(1, 20))</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>raq_omg <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">omega</span>(raq_items_tib,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fm =</span> <span class="st">"minres"</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">key =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>)),</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">poly =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>raq_omg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Omega 
+Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
+    digits = digits, title = title, sl = sl, labels = labels, 
+    plot = plot, n.obs = n.obs, rotate = rotate, Phi = Phi, option = option, 
+    covar = covar)
+Alpha:                 0.88 
+G.6:                   0.89 
+Omega Hierarchical:    0.68 
+Omega H asymptotic:    0.75 
+Omega Total            0.9 
 
+Schmid Leiman Factor loadings greater than  0.2 
+           g   F1*   F2*   F3*   F4*   h2   u2   p2
+raq_01  0.32              0.26       0.17 0.83 0.57
+raq_02  0.37        0.43             0.38 0.62 0.37
+raq_03- 0.34              0.29       0.20 0.80 0.56
+raq_04  0.43              0.38       0.33 0.67 0.56
+raq_05  0.62  0.32        0.27       0.54 0.46 0.70
+raq_06  0.61  0.60                   0.73 0.27 0.51
+raq_07  0.44  0.39                   0.35 0.65 0.54
+raq_08  0.62                    0.61 0.75 0.25 0.51
+raq_09  0.32        0.73             0.62 0.38 0.17
+raq_10  0.37  0.35                   0.26 0.74 0.53
+raq_11  0.54                    0.50 0.55 0.45 0.54
+raq_12  0.22              0.25       0.11 0.89 0.44
+raq_13  0.42  0.40                   0.34 0.66 0.51
+raq_14  0.36  0.30                   0.22 0.78 0.59
+raq_15  0.41  0.34                   0.29 0.71 0.59
+raq_16  0.34              0.34       0.23 0.77 0.49
+raq_17  0.52                    0.47 0.49 0.51 0.55
+raq_18  0.48  0.44                   0.43 0.57 0.54
+raq_19  0.43        0.51             0.50 0.50 0.37
+raq_20  0.43              0.36       0.32 0.68 0.58
+raq_21  0.49              0.40       0.40 0.60 0.59
+raq_22  0.41        0.46             0.41 0.59 0.41
+raq_23  0.30        0.71             0.59 0.41 0.15
+
+With Sums of squares  of:
+   g  F1*  F2*  F3*  F4* 
+4.40 1.39 1.71 0.85 0.86 
+
+general/max  2.58   max/min =   2.01
+mean percent general =  0.49    with sd =  0.13 and cv of  0.26 
+Explained Common Variance of the general factor =  0.48 
+
+The degrees of freedom are 167  and the fit is  0.1 
+The number of observations was  2571  with Chi Square =  267.21  with prob &lt;  1.3e-06
+The root mean square of the residuals is  0.01 
+The df corrected root mean square of the residuals is  0.02
+RMSEA index =  0.015  and the 10 % confidence intervals are  0.012 0.019
+BIC =  -1044.08
+
+Compare this with the adequacy of just a general factor and no group factors
+The degrees of freedom for just the general factor are 230  and the fit is  2.39 
+The number of observations was  2571  with Chi Square =  6122.42  with prob &lt;  0
+The root mean square of the residuals is  0.1 
+The df corrected root mean square of the residuals is  0.11 
+
+RMSEA index =  0.1  and the 10 % confidence intervals are  0.098 0.102
+BIC =  4316.45 
+
+Measures of factor score adequacy             
+                                                 g  F1*  F2*   F3*  F4*
+Correlation of scores with factors            0.84 0.76 0.87  0.67 0.74
+Multiple R square of scores with factors      0.71 0.57 0.75  0.44 0.55
+Minimum correlation of factor score estimates 0.42 0.14 0.51 -0.11 0.10
+
+ Total, General and Subset omega for each subset
+                                                 g  F1*  F2*  F3*  F4*
+Omega total for total scores and subscales    0.90 0.83 0.80 0.69 0.81
+Omega general for total scores and subscales  0.68 0.48 0.23 0.38 0.43
+Omega group for total scores and subscales    0.18 0.35 0.56 0.31 0.38</code></pre>
+</div>
+</div>
+<ul>
+<li>note the table of factor loadings and that <code>raq_03-</code> is labeled with a minus to indicate it is reverse coded</li>
+<li>column labeled <code>g</code>shows the loading of each item on the general factor
+<ul>
+<li>if any items load poorly, then a common factor model isn’t appropriate</li>
+<li>all items here have a factor loading far enough from zero that a general factor model is appropriate</li>
+</ul></li>
+<li>Columns F1-F4 show the loadings of each item on the four factors we extracted
+<ul>
+<li>these values differ from the original factor analysis because this one includes a general factor</li>
+<li>the patterns of item loadings to factors follow the same pattern as the original FA</li>
+</ul></li>
+<li>at the top of the text output are reliability estimates for the general factor, including
+<ul>
+<li>Chronbach’s <span class="math inline">\(\alpha=0.88\)</span></li>
+<li><span class="math inline">\(\omega_h=0.68\)</span></li>
+<li><span class="math inline">\(\omega_t=0.9\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\omega_h\)</span> is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor</li>
+<li>further down in the output, we see that only 48% of the variance in the common factor is explained by the items</li>
+<li><span class="math inline">\(\omega_t\)</span> is the total reliability and 0.90 is high, suggesting scores are reliable</li>
+</ul>
 
 
 
 </section>
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Reliability Analysis</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-field2023" class="csl-entry" role="listitem">
 Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
 </div>

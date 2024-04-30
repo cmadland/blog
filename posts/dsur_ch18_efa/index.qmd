@@ -391,3 +391,69 @@ Analysis seems to reveal that the questionnaire is composed of four subscales: f
 - However, the factor analysis does not indicate which of these is true.
 
 ## Reliability Analysis
+
+### McDonald's $\omega_t$ and $\omega_h$
+
+- if  items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into `omega()` functions in the `psych` package
+
+```
+my_omg <- psych::omega(
+    my_tibble
+    nfactors = 1,
+    fm = "minres",
+    key = c(1, 1, -1, 1, 1 … 1),
+    rotate = "oblimin",
+    poly = FALSE
+  )
+  ```
+
+  `my_omg`
+  : name to give the object that stores the results
+
+  `my_tibble`
+  : name of the tibble containing your data
+
+### Code Example
+
+  - need to recreate the original FA
+  - arguments will be the same as they were set for the fa
+  - the `key ` argument allows us to reverse item scoring on the fly
+  - supply the key argument with a vector of 1s and -1s that is the same length as the number of variables being fed into the `omega()` function
+  - for RAQ, we have 23 items with the third being reverse coded
+  - entering the items in order into `omega()` gives
+```
+key = c(1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+```
+
+or
+
+```
+key = c(1, 1, -1, rep(1, 20))
+```
+
+```{r}
+raq_omg <- psych::omega(raq_items_tib,
+                        nfactors = 4,
+                        fm = "minres",
+                        key = c(1, 1, -1, rep(1, 20)),
+                        poly = TRUE
+                        )
+raq_omg
+```
+
+- note the table of factor loadings and that `raq_03-` is labeled with a minus to indicate it is reverse coded
+- column labeled `g`shows the loading of each item on the general factor
+  - if any items load poorly, then a common factor model isn't appropriate
+  - all items here have a factor loading far enough from zero that a general factor model is appropriate
+- Columns F1-F4 show the loadings of each item on the four factors we extracted
+  - these values differ from the original factor analysis because this one includes a general factor
+  - the patterns of item loadings to factors follow the same pattern as the original FA
+
+- at the top of the text output are reliability estimates for the general factor, including
+  - Chronbach's $\alpha=0.88$
+  - $\omega_h=0.68$
+  - $\omega_t=0.9$
+
+- $\omega_h$ is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor
+- further down in the output, we see that  only 48% of the variance in the common factor is explained by the items
+- $\omega_t$ is the total reliability and 0.90 is high, suggesting scores are reliable
