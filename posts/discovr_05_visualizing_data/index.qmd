@@ -107,7 +107,7 @@ wish_plot <- ggplot2::ggplot(wish_tib, aes(time, success))  # creates an object 
 # ggplot() function specifies the plot will use `wish_tib` and plots time on *x* and success on *y*
 wish_plot +
   geom_boxplot() # adds boxplot geom to wish_plot
- ```
+```
 
 ```{r}
 wish_plot <- ggplot2::ggplot(wish_tib, aes(time, success))
