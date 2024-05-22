@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/fellowship/index.html",
       "/posts/dsur_ch18_efa/index.html",
       "/posts/discovr_05_visualizing_data/index.html",
       "/posts/discovr_02_summarizing_data/index.html",

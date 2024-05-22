@@ -1,0 +1,59 @@
+---
+title: "Technology-Integrated Assessment in BC Higher Education"
+author: "Colin Madland"
+date: "2024-05-02"
+categories: [BCcampus, fellowship]
+editor: visual
+image: "lake.jpeg"
+bibliography: references.bib
+csl: apa.csl
+format:
+  html:
+    theme: flatly
+    css: styles.css
+  pdf: default
+  docx: default
+---
+
+
+In the fall of 2021, I embarked on the BCcampus Student Research Fellowship, an 18-month project funded by BCcampus intended to promote research on teaching and learning in BC. My project aimed at technology-integrated assessment practices in higher education. Assessment is already a contentious and high-stakes topic in higher education; however, concern around assessment escalated due to the COVID-19 pandemic, and also in light of generative AI models. The fellowship provided funding and support for a component of my PhD dissertation research at the University of Victoria, where I am supervised by Dr. Valerie Irvine. 
+
+My research is ongoing, and I am pleased to report that I have hit a milestone in completing and publishing the first two of three papers that will form my dissertation. [The first paper is a literature review](https://doi.org/10.18357/otessaj.2024.4.1.57) exploring how higher education instructors integrate technology and assessment [@madlandTechnologyIntegratedAssessmentLiterature2024]. We purposely explored papers written by those who do not study assessment as a disciplinary area, but who are instructors in a wide variety of disciplines and who are compelled for one reason or another to use technology when they assess learning. We explored these articles through the lens of the assessment design in a digital world framework published by @bearman2022. While there were areas of overlap between the literature and the Bearman et al. framework (primarily the importance of understanding the different purposes of assessment), there were also themes that emerged in the [[==link citations++}}]]literature that are not modeled in the framework (e.g., instructor workload, academic integrity), and there were components of the framework that were not evident in the literature (e.g., digital literacies). These points of incongruity suggested a need for revisions to the model which led to a process of envisioning what a model of technology-integrated assessment might look like.
+
+
+The development of the [technology-integrated assessment framework, described in the second paper](https://doi.org/10.18357/otessaj.2024.4.1.63) [@madlandDevelopingTechnologyIntegratedAssessment2024], is the result of this envisioning process and serves as a good anchor point in beginning to understand how to improve technology-integrated assessment practices in higher education in British Columbia and beyond. The technology-integrated assessment framework consists of four components, which might be considered to be four factors that instructors consider when planning assessment. The four factors and their sub-factors are:
+
+1.  The purposes of assessment
+    1.  Assessment *of* Learning
+    2.  Assessment *for* Learning
+    3.  Assessment *as* Learning
+2.  Duty of Care
+    1.  Bias
+    2.  Inclusion
+    3.  Relationships
+    4.  Ethical EdTech
+3.  Technology Acceptance
+    1.  Performance Expectancy
+    2.  Effort Expectancy
+    3.  Social Influences
+    4.  Facilitating Conditions
+4.  Assessment Design
+    1.  Measurement Theory
+    2.  Academic Integrity
+    3.  Relevance
+    4.  Reciprocity
+
+Figure 1 is a theoretical conceptualization of the model and its sub-components.
+
+![A diagram of concentric circles showing the components of the technology-integrated assessment framework. Starting from the inside, the circles are labeled 'assessment purpose,' 'duty of care,' 'technology acceptance,' and 'assessment design.'](tiaf-q-full.png)
+
+*Note:* Licensed [(CC-BY)](https://creativecommons.org/licenses/by/4.0/), from Madland, C., Irvine, V., DeLuca, C., & Bulut, O. (2024). Developing the Technology-Integrated Assessment Framework. *The Open/Technology in Education, Society, and Scholarship Association Journal, 4*(1), 1–19. <https://doi.org/10.18357/otessaj.2024.4.1.63>.  
+
+We were intentional about considering the framework in light of the 5Rs of Indigenous education: respect, relevance, reciprocity, responsibility, and relationships [@tessaro2018; @kirkness1991]. Respect and responsibility are embedded in the 'Duty of Care' component while relationships, reciprocity, and relevance are explicit in the framework. Further work is coming and will focus on exploring the relationships between the factors and sub-factors in the framework.
+
+I am grateful to my supervisor, Dr. Valerie Irvine, for her keen insight and expert contributions, as well as my committee members, Dr. Chris DeLuca (Queen's University), and Dr. Okan Bulut (University of Alberta) whose diverse wisdom around assessment were invaluable. 
+
+I am also appreciative to BCcampus, especially Leva Lee, Britt Dzioba, Rebecca Shortt, and Gwen Nguyen for their support through the BCcampus Student Fellowship program, which provides B.C. post-secondary educators and students with funding to conduct research on teaching and learning, as well as explore evidence-based teaching practices that focus on student success and learning.
+
+I am grateful to BCcampus, especially Leva Lee, Britt Dzioba, Rebecca Shortt, and Gwen Nguyen, who each provided opportunities for this cohort of fellows to meet, share challenges and successes, connect along the journey, and sometimes, just 'Shut up and Write.' Grad school can be an isolating time, and this was one of the things magnified by COVID-19 restrictions. I am fortunate that I and my fellow grad students and faculty in Educational Technology at UVic have enjoyed strong collaborative relationships, and it was also good to connect with others from other BC institutions through the fellowship. The fellowship process and journey also provided welcome additional  funding for my project. 
+## References
