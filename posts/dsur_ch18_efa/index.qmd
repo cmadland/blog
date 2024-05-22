@@ -405,7 +405,7 @@ my_omg <- psych::omega(
     rotate = "oblimin",
     poly = FALSE
   )
-  ```
+```
 
   `my_omg`
   : name to give the object that stores the results
@@ -505,4 +505,56 @@ raq_tib |>
 - the values in the column `raw_alpha` are the values of the overall $\alpha$ 
 - we are looking for a change in Cronbach's $\alpha$ (0.77)
   - if values are greater than 0.77, then reliability would have improved if the item were removed -  not the case here
-- 
+
+- the table labeled `item statistics` shows, in `raw.r`, the correlations between each item and the total score from the scale - `item-total correlations`
+  - there is a problem with this statistic in that the item is included in the scale total, which inflates the overall correlation.
+  - we want these correlations to be computed without the item in question, and these values are in `r.drop`
+  - in a reliable scale all items should correlate with the total, so we're looking for items that don't correlate with the overall score from the subscale. If any values of `r.drop` are elss than 0.3, we have problems becasuse that means an item does not correlate well with the subscale
+    - 0.3 is 'reasonable' -  use your judgement
+
+- the final table tells us what percentage of people gave each response to each of the items, which is useful to make sure everyone in the sample is not giving the same response.
+  - usually, if everyone gives the same response, the item will have poor reliability statistics
+  - for this subscale, few people responded with a 1 on any of the items suggesting that no one is feeling the love for computers or that the items are doing a poor job of eliciting those extreme responses
+
+### Code example for `fear of peer/social evaluation`
+
+```{r}
+raq_tib |> 
+  dplyr::select(raq_02, raq_09, raq_19, raq_22, raq_23)  |> 
+  psych::alpha()
+```
+
+- good overall reliability ($\alpha=0.78 [o.77, 0.80]$)
+- no items improve the value if they are dropped
+- item correlations with the total are all good
+- again we have issues with the items not eliciting extremely low responses
+
+### Code example for `fear of maths`
+
+```{r}
+raq_tib |> 
+  dplyr::select(raq_08, raq_11, raq_17)  |> 
+  psych::alpha()
+```
+
+- fairly high reliability ($\alpha=0.77 [0.76, 0.79]$)
+- no items improve value if they are dropped
+- item correlations with the total subscale are all good
+- still issues with items not eliciting low responses
+
+### Code example for `fear of statistics`
+
+- the `fear of statistics` subscale contains `raq_3`, which is reverse scored so we need to include the `keys` argument within the function
+- note that in the `omega()` function, the argument is `key`, but in the `alpha()` function, the argument is `keys`
+-  
+```{r}
+raq_tib |> 
+  dplyr::select(raq_01, raq_03, raq_04, raq_05, raq_12, raq_16, raq_20, raq_21)  |> 
+  psych::alpha(keys = c(1, -1, 1, 1, 1, 1, 1, 1))
+```
+
+- note that `raq_03-` has a minus to indicate reverse scoring
+- acceptable overall reliability ($\alpha=0.71 [0.69, 0.72]$)
+- no items improve the value if they are dropped
+- item correlations with the total subscale are ok (0.27-0.49)
+- issue with items not eliciting extreme responses
