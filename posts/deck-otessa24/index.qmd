@@ -4,10 +4,86 @@ author: "Colin Madland, Valerie Irvine, Christopher DeLuca, and Okan Bulut"
 format: revealjs
 ---
 
-# Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
+## Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
 
 ## Acknowledgements
 
-Our team is spread across most of the country and we each live and work on land that has been cared for by Indigenous people for millenia
+Our team is spread across most of the country and we each live and work on land that has been cared for by Indigenous people for millenia. We each acknowledge that our abundant lives were made possible because of the displacement of the original stewards of the land.
 
-## The Project
+# Background
+
+## Fall 2019
+
+2 years into a different dissertation project
+
+## Spring 2020
+
+![Screenshot of Ross yelling 'Pivot' while trying to move a couch around a tight corner and up some stairs.](pivot.png)
+
+## Summer 2021
+
+Candidacy
+
+# The Project
+
+- Technology
+- Assessment
+
+## What are your most important concerns related to technology-integrated assessment?
+
+. . . 
+
+![QR Code](qr.png)
+
+
+## ...
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+
+# Process
+
+
+
+# Model
+
+
+## {auto-animate=true auto-animate-easing="ease-in-out"}
+
+::: {.r-hstack}
+
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; margin: 10px;"}
+
+:::
+
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+:::
+
+## {auto-animate=true auto-animate-easing="ease-in-out"}
+
+::: {.r-stack}
+::: {data-id="box1" style="background: #5EC962; width: 600px; height: 600px; border-radius: 300px;"}
+:::
+
+::: {data-id="box2" style="background: #21918C; width: 450px; height: 450px; border-radius: 300px;"}
+:::
+
+::: {data-id="box3" style="background: #3B528B; width: 300px; height: 300px; border-radius: 300px;"}
+:::
+
+::: {data-id="box4" style="background: #440154; width: 150px; height: 150px; border-radius: 300px;"}
+:::
+:::
+
+##
+
+![Full Model](tiaf-q-full.drawio.png)
