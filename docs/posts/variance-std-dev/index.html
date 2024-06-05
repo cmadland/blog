@@ -9,7 +9,7 @@
 <meta name="author" content="Colin Madland">
 <meta name="dcterms.date" content="2024-02-18">
 
-<title>Stats Blog - Variance and Standard Deviation</title>
+<title>Learning | Assessment | Technology - Variance and Standard Deviation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,7 +144,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Stats Blog</span>
+    <span class="navbar-title">Learning | Assessment | Technology</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -230,31 +230,24 @@ window.Quarto = {
 <pre><code>Loading required package: UsingR</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: MASS</code></pre>
+<pre><code>Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
+logical.return = TRUE, : there is no package called 'UsingR'</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(HistData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: HistData</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: Hmisc</code></pre>
+<pre><code>Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
+logical.return = TRUE, : there is no package called 'HistData'</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'Hmisc'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    format.pval, units</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(HistData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math inline">\(sample variance=s^2=\frac{1}{n-1}‎‎\sum_i(x_i - \bar{x})^2\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">43</span>, <span class="dv">48</span>, <span class="dv">61</span>, <span class="dv">47</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">48</span>, <span class="dv">59</span>, <span class="dv">24</span>, <span class="dv">40</span>, <span class="dv">27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wts <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">43</span>, <span class="dv">48</span>, <span class="dv">61</span>, <span class="dv">47</span>, <span class="dv">24</span>, <span class="dv">29</span>, <span class="dv">48</span>, <span class="dv">59</span>, <span class="dv">24</span>, <span class="dv">40</span>, <span class="dv">27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(wts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(wts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 24 24 27 29 38 40 43 47 48 48 59 61</code></pre>
 </div>

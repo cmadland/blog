@@ -6,9 +6,9 @@ execute:
     freeze: auto  # re-render only when source changes
 
 website:
-  title: "Stats Blog"
+  title: "Learning | Assessment | Technology"
   site-url: https://cmadland.github.io/blog
-  description: "Colins Stats Blog"
+  description: "Colin Madland thinks in public."
   navbar:
     right:
       - about.qmd

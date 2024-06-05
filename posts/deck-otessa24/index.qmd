@@ -1,0 +1,13 @@
+---
+title: "OTESSA24"
+author: "Colin Madland, Valerie Irvine, Christopher DeLuca, and Okan Bulut"
+format: revealjs
+---
+
+# Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
+
+## Acknowledgements
+
+Our team is spread across most of the country and we each live and work on land that has been cared for by Indigenous people for millenia
+
+## The Project

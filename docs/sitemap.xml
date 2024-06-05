@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cmadland.github.io/blog/about.html</loc>
-    <lastmod>2024-02-15T13:54:52.817Z</lastmod>
+    <lastmod>2024-02-15T18:01:46.280Z</lastmod>
   </url>
   <url>
     <loc>https://cmadland.github.io/blog/posts/discovr_06_bias/index.html</loc>
-    <lastmod>2024-04-29T13:09:27.229Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/discovr_07_associations/index.html</loc>
-    <lastmod>2024-04-17T12:44:48.451Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/discovr_18_efa/index.html</loc>
-    <lastmod>2024-04-27T14:46:31.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/index.html</loc>
-    <lastmod>2024-04-29T13:09:27.229Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index.html</loc>
-    <lastmod>2024-04-23T04:01:06.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/simple-regression/index.html</loc>
-    <lastmod>2024-02-26T14:11:42.697Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/variance-std-dev/index.html</loc>
-    <lastmod>2024-02-28T04:57:44.496Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/welcome/index.html</loc>
-    <lastmod>2024-02-15T13:54:52.856Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/dsur_ch18_efa/index.html</loc>
-    <lastmod>2024-05-01T15:35:25.508Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/posts/discovr_08_the_glm/index.html</loc>
-    <lastmod>2024-04-26T15:39:52.736Z</lastmod>
-  </url>
-  <url>
-    <loc>https://cmadland.github.io/blog/index.html</loc>
-    <lastmod>2024-02-26T18:42:26.303Z</lastmod>
+    <lastmod>2024-05-22T16:51:58.608Z</lastmod>
   </url>
   <url>
     <loc>https://cmadland.github.io/blog/posts/fellowship/index.html</loc>
     <lastmod>2024-05-22T17:44:16.946Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/dsur_ch18_efa/index.html</loc>
+    <lastmod>2024-05-22T16:51:58.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/welcome/index.html</loc>
+    <lastmod>2024-02-15T18:01:46.281Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/variance-std-dev/index.html</loc>
+    <lastmod>2024-03-04T17:28:25.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/deck-otessa24/index.html</loc>
+    <lastmod>2024-05-31T16:33:46.539Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/simple-regression/index.html</loc>
+    <lastmod>2024-02-26T14:21:36.034Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index.html</loc>
+    <lastmod>2024-04-30T16:26:01.955Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/index.html</loc>
+    <lastmod>2024-05-22T16:51:58.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/discovr_18_efa/index.html</loc>
+    <lastmod>2024-04-30T16:26:01.985Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/discovr_07_associations/index.html</loc>
+    <lastmod>2024-04-30T16:26:01.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/posts/discovr_08_the_glm/index.html</loc>
+    <lastmod>2024-04-30T16:26:01.977Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cmadland.github.io/blog/index.html</loc>
+    <lastmod>2024-02-26T18:42:26.303Z</lastmod>
   </url>
 </urlset>
