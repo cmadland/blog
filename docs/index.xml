@@ -8431,11 +8431,11 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-27.209</td>
+<td style="text-align: right;">-26.241</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.873</td>
-<td style="text-align: right;">10.643</td>
-<td style="text-align: right;">0.124</td>
+<td style="text-align: right;">-54.736</td>
+<td style="text-align: right;">5.396</td>
+<td style="text-align: right;">0.108</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
@@ -8447,18 +8447,18 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.387</td>
+<td style="text-align: right;">3.351</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.816</td>
-<td style="text-align: right;">3.965</td>
+<td style="text-align: right;">2.807</td>
+<td style="text-align: right;">3.943</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.927</td>
+<td style="text-align: right;">11.120</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.326</td>
-<td style="text-align: right;">15.162</td>
+<td style="text-align: right;">6.632</td>
+<td style="text-align: right;">15.272</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -9149,23 +9149,23 @@ Sample size per chain = 10000
 1. Empirical mean and standard deviation for each variable,
    plus standard error of the mean:
 
-             Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.356e+00 3.356e-02      3.406e-02
-adverts 8.398e-02 6.888e-03 6.888e-05      7.009e-05
-airplay 3.331e+00 2.778e-01 2.778e-03      2.778e-03
-image   1.099e+01 2.435e+00 2.435e-02      2.435e-02
-sig2    2.251e+03 2.280e+02 2.280e+00      2.359e+00
-g       1.137e+00 1.429e+01 1.429e-01      1.429e-01
+            Mean        SD  Naive SE Time-series SE
+mu       193.209 3.370e+00 3.370e-02      3.370e-02
+adverts    0.084 6.829e-03 6.829e-05      6.829e-05
+airplay    3.335 2.780e-01 2.780e-03      2.690e-03
+image     10.945 2.465e+00 2.465e-02      2.465e-02
+sig2    2250.115 2.281e+02 2.281e+00      2.343e+00
+g          1.005 1.762e+00 1.762e-02      1.762e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.955e+02 1.998e+02
-adverts 7.044e-02 7.936e-02 8.393e-02 8.867e-02 9.739e-02
-airplay 2.789e+00 3.147e+00 3.331e+00 3.518e+00 3.879e+00
-image   6.160e+00 9.353e+00 1.097e+01 1.261e+01 1.574e+01
-sig2    1.841e+03 2.092e+03 2.234e+03 2.396e+03 2.732e+03
-g       1.779e-01 3.729e-01 5.987e-01 1.056e+00 4.082e+00</code></pre>
+mu      1.866e+02 1.910e+02  193.1880 1.955e+02 1.998e+02
+adverts 7.068e-02 7.939e-02    0.0839 8.859e-02 9.743e-02
+airplay 2.797e+00 3.150e+00    3.3363 3.522e+00 3.881e+00
+image   6.225e+00 9.278e+00   10.9286 1.259e+01 1.581e+01
+sig2    1.845e+03 2.090e+03 2236.6918 2.396e+03 2.734e+03
+g       1.722e-01 3.759e-01    0.6027 1.049e+00 4.297e+00</code></pre>
 </div>
 </div>
 <ul>
@@ -9627,7 +9627,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <link>https://cmadland.github.io/blog/posts/deck-otessa24/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://cmadland.github.io/blog/posts/deck-otessa24/</guid>
-  <pubDate>Wed, 05 Jun 2024 15:17:52 GMT</pubDate>
+  <pubDate>Wed, 05 Jun 2024 21:14:12 GMT</pubDate>
 </item>
 </channel>
 </rss>

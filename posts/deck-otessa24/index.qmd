@@ -1,7 +1,9 @@
 ---
 title: "OTESSA24"
 author: "Colin Madland, Valerie Irvine, Christopher DeLuca, and Okan Bulut"
-format: revealjs
+format:
+  revealjs:
+    multiplex: true
 ---
 
 ## Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
