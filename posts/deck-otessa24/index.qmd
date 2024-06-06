@@ -1,9 +1,13 @@
 ---
 title: "OTESSA24"
-author: "Colin Madland, Valerie Irvine, Christopher DeLuca, and Okan Bulut"
+author: "Colin Madland<sup>1</sup>, Valerie Irvine<sup>1</sup>, Christopher DeLuca<sup>2</sup>, and Okan Bulut<sup>3</sup>"
+institute: "<sup>1</sup>University of Victoria, <sup>2</sup>Queens University, <sup>3</sup>University of Alberta"
 format:
   revealjs:
     multiplex: true
+bibliography: ../../references.bib
+csl: ../../apa.csl
+logo: otessa-logo-CS6.png
 ---
 
 ## Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
@@ -28,36 +32,66 @@ Candidacy
 
 # The Project
 
-- Technology
-- Assessment
+-   Technology
+-   Assessment
 
 ## What are your most important concerns related to technology-integrated assessment?
 
-. . . 
+. . .
 
 ![QR Code](qr.png)
 
+## ...
+
+::: {style="position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;"}
+<iframe sandbox="allow-scripts allow-same-origin allow-presentation" allowfullscreen="true" allowtransparency="true" frameborder="0" height="315" src="https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" width="420">
+
+</iframe>
+:::
+
+# Process
+
+## Literature Review
+
+![Designing assessment in a digital world from @bearman2022](fig1-bearman-framework.drawio.png)
+
+- Digital Tools
+- Digital Literacies
+- Human Capabilities
+
+## Search
+
+![PRISMA Diagram of Search Results](fig2-prisma3.drawio.png)
+
+## Global Distribution
+
+![Map of most common countries of publication.](fig4-pubmap.png)
+
+## Predict the Ranking of these Themes
+
+![QR Code](qr.png)
 
 ## ...
 
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 
+## Actual Ranking
 
-# Process
+![Number of Citations by Theme in the Literature.](fig7-citations-by-theme.png)
+
+## Comparing Themes to @bearman2022
+
+![Colours show different levels of alignment between @bearman2022 and the themes in the literature.](fig8-bearman-x-lit.drawio.png)
 
 
 
 # Model
 
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-## {auto-animate=true auto-animate-easing="ease-in-out"}
-
-::: {.r-hstack}
-
+::: r-hstack
 ::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; margin: 10px;"}
-
 :::
-
 
 ::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; margin: 10px;"}
 :::
@@ -67,12 +101,11 @@ Candidacy
 
 ::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 200px; height: 150px; margin: 10px;"}
 :::
-
 :::
 
-## {auto-animate=true auto-animate-easing="ease-in-out"}
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
 
-::: {.r-stack}
+::: r-stack
 ::: {data-id="box1" style="background: #5EC962; width: 600px; height: 600px; border-radius: 300px;"}
 :::
 
@@ -86,6 +119,13 @@ Candidacy
 :::
 :::
 
-##
+## 
 
 ![Full Model](tiaf-q-full.drawio.png)
+
+
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
