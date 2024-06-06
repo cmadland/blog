@@ -16,6 +16,10 @@ logo: otessa-logo-CS6.png
 
 Our team is spread across most of the country and we each live and work on land that has been cared for by Indigenous people for millenia. We each acknowledge that our abundant lives were made possible because of the displacement of the original stewards of the land.
 
+::: {.notes}
+
+:::
+
 # Background
 
 ## Fall 2019
@@ -35,6 +39,10 @@ Candidacy
 -   Technology
 -   Assessment
 
+::: {.notes}
+
+:::
+
 ## What are your most important concerns related to technology-integrated assessment?
 
 . . .
@@ -49,6 +57,10 @@ Candidacy
 </iframe>
 :::
 
+::: {.notes}
+
+:::
+
 # Process
 
 ## Literature Review
@@ -59,13 +71,25 @@ Candidacy
 - Digital Literacies
 - Human Capabilities
 
+::: {.notes}
+
+:::
+
 ## Search
 
 ![PRISMA Diagram of Search Results](fig2-prisma3.drawio.png)
 
+::: {.notes}
+
+:::
+
 ## Global Distribution
 
 ![Map of most common countries of publication.](fig4-pubmap.png)
+
+::: {.notes}
+
+:::
 
 ## Predict the Ranking of these Themes
 
@@ -75,31 +99,73 @@ Candidacy
 
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 
+::: {.notes}
+
+:::
+
 ## Actual Ranking
 
 ![Number of Citations by Theme in the Literature.](fig7-citations-by-theme.png)
+
+::: {.notes}
+
+:::
 
 ## Comparing Themes to @bearman2022
 
 ![Colours show different levels of alignment between @bearman2022 and the themes in the literature.](fig8-bearman-x-lit.drawio.png)
 
+::: {.notes}
 
+:::
 
-# Model
+## What do you notice? What do you wonder?
+
+![QR Code](qr.png)
+
+## ...
+
+<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
+
+# Model Building
+
+<!--
+## Consolidating {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
+Workload
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
+Efficiency
+:::
+:::
 
 ##  {auto-animate="true" auto-animate-easing="ease-in-out"}
 
+::: r-stack
+::: {data-id="box1" style="background: #5EC962; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3B528B; width: 300px; height: 300px; border-radius: 30px; margin: 10px; font-color: #000000;"}
+Acceptance
+:::
+:::
+-->
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
+
 ::: r-hstack
-::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; margin: 10px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
 :::
 
-::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; margin: 10px;"}
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
 :::
 
-::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 200px; height: 150px; margin: 10px;"}
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
 :::
 
-::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 200px; height: 150px; margin: 10px;"}
+::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
 :::
 :::
 
