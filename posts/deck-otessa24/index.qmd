@@ -8,6 +8,7 @@ format:
 bibliography: ../../references.bib
 csl: ../../apa.csl
 logo: otessa-logo-CS6.png
+footer: "Special thanks to BCcampus" 
 ---
 
 ## Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework
@@ -129,59 +130,108 @@ Candidacy
 
 # Model Building
 
-<!--
-## Consolidating {auto-animate="true" auto-animate-easing="ease-in-out"}
+## Missing from the Literature
 
-::: r-hstack
-::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
-Workload
+- Level of Digital Enhancement (SAMR)
+- Evaluation and Critique of Digital Tools (Digital Literacies)
+- Human Capabilities
+
+Dropped
+
+## Missing from the @bearman2022 Framework
+
+- Efficiency and Workload
+- Academic Integrity
+- Community
+
+## Missing from both Literature and Framework
+
+- Indigenous approaches
+  - Respect
+  - Relevance
+  - Reciprocity
+  - Responsibility
+  - Relationship
+
+## Maintaining
+
+Purposes of Assessment
+
+- ...OF Learning
+- ...FOR Learning
+- ...AS Learning
+
+## Modifying
+
+- Assessment Design
+
+## Consolidating
+
+- Workload + Efficiency = Technology Acceptance
+- Human Capabilities + Potential Harms = Duty of Care
+
+## UTAUT
+
+![Simplified Diagram of the Unified Theory of Acceptance and Use of Technology](fig2-utaut.drawio.png)
+
+## Extending
+
+- @delucaApproachesClassroomAssessment2016 - Measurement Theory
+
+## Indigenizing
+
+- Community/Relationships & Respect & Responsibility --> Duty of Care
+- Relevance & Reciprocity --> Assessment Design
+
+## 4 Components
+
+::: r-vstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Assessment Design"}
+:::
+Assessment Design
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Technology Acceptance"}
+:::
+Technology Acceptance
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Duty of Care"}
+:::
+Duty of Care
+
+::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Purposes of Assessment"}
+:::
+Purposes of Assessment
 :::
 
-::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
-Efficiency
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Assessment Design"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Technology Acceptance"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Duty of Care"}
+:::
+
+::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 50px; height: 50px; border-radius: 30px; margin: 10px;" title="Purposes of Assessment"}
 :::
 :::
 
 ##  {auto-animate="true" auto-animate-easing="ease-in-out"}
 
 ::: r-stack
-::: {data-id="box1" style="background: #5EC962; width: 300px; height: 300px; border-radius: 30px; margin: 10px;"}
+::: {data-id="box1" style="background: #5EC962; width: 600px; height: 600px; border-radius: 300px;" title="Assessment Design"}
 :::
 
-::: {data-id="box2" auto-animate-delay="0.1" style="background: #3B528B; width: 300px; height: 300px; border-radius: 30px; margin: 10px; font-color: #000000;"}
-Acceptance
-:::
-:::
--->
-##  {auto-animate="true" auto-animate-easing="ease-in-out"}
-
-::: r-hstack
-::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
+::: {data-id="box2" style="background: #21918C; width: 450px; height: 450px; border-radius: 300px;" title="Technology Acceptance"}
 :::
 
-::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
+::: {data-id="box3" style="background: #3B528B; width: 300px; height: 300px; border-radius: 300px;" title="Duty of Care"}
 :::
 
-::: {data-id="box3" auto-animate-delay="0.2" style="background: #3B528B; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
-:::
-
-::: {data-id="box4" auto-animate-delay="0.3" style="background: #440154; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
-:::
-:::
-
-##  {auto-animate="true" auto-animate-easing="ease-in-out"}
-
-::: r-stack
-::: {data-id="box1" style="background: #5EC962; width: 600px; height: 600px; border-radius: 300px;"}
-:::
-
-::: {data-id="box2" style="background: #21918C; width: 450px; height: 450px; border-radius: 300px;"}
-:::
-
-::: {data-id="box3" style="background: #3B528B; width: 300px; height: 300px; border-radius: 300px;"}
-:::
-
-::: {data-id="box4" style="background: #440154; width: 150px; height: 150px; border-radius: 300px;"}
+::: {data-id="box4" style="background: #440154; width: 150px; height: 150px; border-radius: 300px;" title="Purposes of Assessment"}
 :::
 :::
 
@@ -189,9 +239,80 @@ Acceptance
 
 ![Full Model](tiaf-q-full.drawio.png)
 
+## Alt-View
+```{mermaid}
+flowchart TD
+classDef purpose fill:#440154,color:#fff,stroke:#440154,stroke-width:4px
+classDef duty fill:#3B528B,color:#fff,stroke:#3B528B,stroke-width:4px
+classDef accept fill:#21918c,color:#fff,stroke:#21918c,stroke-width:4px
+classDef design fill:#5EC962,color:#000,stroke:#5EC962,stroke-width:4px
+  A[Technology-Integrated Assessment] --- B(Assessment Purpose)
+  A(Technology-Integrated Assessment) --- C(Duty of Care)
+  A(Technology-Integrated Assessment) --- D(Technology Acceptance)
+  A(Technology-Integrated Assessment) --- E(Assessment Design)
+  B --- F([Assessment of Learning]) --- G([Assessment for Learning]) --- H([Assessment as Learning])
+  C --- I([Bias]) --- J([Inclusion]) --- K([Relationships]) --- L([Ethical EdTech])
+  D --- M([Performance Expectancy]) --- N([Effort Expectancy]) --- O([Social Influence]) --- P([Facilitating Conditions])
+  E --- Q([Measurement Theory]) --- R([Academic Integrity]) --- S([Relevance]) --- T([Reciprocity])
+  class B,F,G,H purpose
+  class C,I,J,K,L duty
+  class D,M,N,O,P accept
+  class E,Q,R,S,T design
 
+```
+
+## Funding and Support
+
+This  research  was supported by the  BCcampus  Research  Fellows  Program, which provides B.C. post-secondary educators and students with funding to conduct small-scale research on teaching and learning, as well as explore evidence-based teaching practices that focus on student success and learning.
 
 ## References {.unnumbered}
 
 ::: {#refs}
 :::
+
+
+
+<!--
+## Consolidating
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; border-radius: 30px; margin: 10px; font-color: #ffffff;" title="Workload;"}
+:::
+Workload
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px;" title="Efficiency;"}
+:::
+Efficiency
+:::
+
+## Consolidating {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #5EC962; width: 200px; height: 150px; border-radius: 30px; margin: 10px; font-color: #ffffff;" title="Technology Acceptance;"}
+
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
+
+:::
+:::
+
+
+##  {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+::: r-stack
+::: {data-id="box1" style="background: #ffffff; width: 200px; height: 150px; border-radius: 30px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px;" title="Technology Acceptance"}
+
+:::
+:::
+
+## test
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #21918C; width: 200px; height: 150px; border-radius: 30px; margin: 10px; font-color: #ffffff;" title="Technology Acceptance"}
+:::
+:::
+Technology Acceptance
+
+-->
