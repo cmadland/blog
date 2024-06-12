@@ -5,6 +5,7 @@ institute: "<sup>1</sup>University of Victoria, <sup>2</sup>Queens University, <
 format:
   revealjs:
     multiplex: true
+    incremental: true
 bibliography: ../../references.bib
 csl: ../../apa.csl
 logo: otessa-logo-CS6.png
@@ -44,6 +45,15 @@ Candidacy
 
 :::
 
+## Two Papers
+
+Madland, C., Irvine, V., DeLuca, C., & Bulut, O. (2024b). Technology-Integrated Assessment: A Literature Review. The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–48. <https://doi.org/10.18357/otessaj.2024.4.1.57>
+
+Madland, C., Irvine, V., DeLuca, C., & Bulut, O. (2024a). Developing the Technology-Integrated Assessment Framework. The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–19. <https://doi.org/10.18357/otessaj.2024.4.1.63>
+
+
+
+
 ## What are your most important concerns related to technology-integrated assessment?
 
 . . .
@@ -64,18 +74,41 @@ Candidacy
 
 # Process
 
-## Literature Review
+## Literature Review [@madlandTechnologyIntegratedAssessmentLiterature2024]
 
 ![Designing assessment in a digital world from @bearman2022](fig1-bearman-framework.drawio.png)
 
-- Digital Tools
-- Digital Literacies
-- Human Capabilities
 
 ::: {.notes}
 
 :::
 
+## Assessment Design in a Digital World [@bearman2022] 
+
+::: {.columns}
+::: {.column}
+#### Digital Tools
+
+- Assessment Rationales
+- Level of Digital Enhancement [@puenteduraBuildingTransformationIntroduction2009]
+- Potential Harms
+:::
+::: {.column}
+#### Digital Literacies
+
+- Mastery or Proficiency
+- Evaluation and Critique
+
+#### Human Capabilities
+
+- Future Activities
+- Future Self
+:::
+::: 
+
+<!-- end columns -->
+ 
+  
 ## Search
 
 ![PRISMA Diagram of Search Results](fig2-prisma3.drawio.png)
@@ -128,7 +161,7 @@ Candidacy
 
 <div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'><iframe sandbox='allow-scripts allow-same-origin allow-presentation' allowfullscreen='true' allowtransparency='true' frameborder='0' height='315' src='https://www.mentimeter.com/app/presentation/albxhuhjazekedyahzzmdcg3nwvoa9r6/embed' style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' width='420'></iframe></div>
 
-# Model Building
+# Model Building [@madlandDevelopingTechnologyIntegratedAssessment2024]
 
 ## Missing from the Literature
 
