@@ -10,7 +10,7 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.4.545</generator>
-<lastBuildDate>Thu, 02 May 2024 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 02 May 2024 07:00:00 GMT</lastBuildDate>
 <item>
   <title>Technology-Integrated Assessment in BC Higher Education</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -91,7 +91,7 @@ Tessaro, D., Restoule, J.-P., Gaviria, P., Flessa, J., Lindeman, C., &amp; Scull
   <category>BCcampus</category>
   <category>fellowship</category>
   <guid>https://cmadland.github.io/blog/posts/fellowship/</guid>
-  <pubDate>Thu, 02 May 2024 04:00:00 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/fellowship/lake.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2595,7 +2595,7 @@ Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Spr
   <category>dsus</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/dsur_ch18_efa/</guid>
-  <pubDate>Fri, 26 Apr 2024 04:00:00 GMT</pubDate>
+  <pubDate>Fri, 26 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/dsur_ch18_efa/ellie-snow.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2983,7 +2983,7 @@ font-style: inherit;"># add minimal theme layer</span></span></code></pre></div>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/</guid>
-  <pubDate>Tue, 23 Apr 2024 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 23 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/raft-canyon.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4055,7 +4055,7 @@ upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
-  <pubDate>Thu, 18 Apr 2024 04:00:00 GMT</pubDate>
+  <pubDate>Thu, 18 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4509,7 +4509,7 @@ What are the model residuals?
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_06_bias/</guid>
-  <pubDate>Tue, 16 Apr 2024 04:00:00 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5465,7 +5465,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_07_associations/</guid>
-  <pubDate>Sun, 10 Mar 2024 05:00:00 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_07_associations/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5529,7 +5529,7 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_18_efa/</guid>
-  <pubDate>Tue, 27 Feb 2024 05:00:00 GMT</pubDate>
+  <pubDate>Tue, 27 Feb 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_18_efa/happy-rock.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -8431,34 +8431,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.734</td>
+<td style="text-align: right;">-26.637</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-54.974</td>
-<td style="text-align: right;">9.069</td>
-<td style="text-align: right;">0.134</td>
+<td style="text-align: right;">-57.527</td>
+<td style="text-align: right;">10.129</td>
+<td style="text-align: right;">0.122</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.071</td>
 <td style="text-align: right;">0.098</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.361</td>
+<td style="text-align: right;">3.371</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.769</td>
-<td style="text-align: right;">3.987</td>
+<td style="text-align: right;">2.773</td>
+<td style="text-align: right;">4.013</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.984</td>
+<td style="text-align: right;">11.077</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">5.788</td>
-<td style="text-align: right;">14.960</td>
+<td style="text-align: right;">5.862</td>
+<td style="text-align: right;">15.137</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -9150,22 +9150,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.345e+00 3.345e-02      3.345e-02
-adverts 8.412e-02 7.005e-03 7.005e-05      7.005e-05
-airplay 3.341e+00 2.798e-01 2.798e-03      2.876e-03
-image   1.098e+01 2.440e+00 2.440e-02      2.523e-02
-sig2    2.246e+03 2.310e+02 2.310e+00      2.383e+00
-g       1.328e+00 3.323e+01 3.323e-01      3.323e-01
+mu      1.932e+02 3.310e+00 3.310e-02      0.0313007
+adverts 8.414e-02 6.856e-03 6.856e-05      0.0000697
+airplay 3.334e+00 2.814e-01 2.814e-03      0.0029431
+image   1.099e+01 2.436e+00 2.436e-02      0.0243650
+sig2    2.245e+03 2.306e+02 2.306e+00      2.3709128
+g       1.040e+00 2.808e+00 2.808e-02      0.0280814
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.910e+02 1.932e+02  195.4433 1.997e+02
-adverts 7.051e-02 7.945e-02 8.405e-02    0.0889 9.785e-02
-airplay 2.789e+00 3.153e+00 3.338e+00    3.5295 3.890e+00
-image   6.116e+00 9.364e+00 1.101e+01   12.6003 1.573e+01
-sig2    1.834e+03 2.086e+03 2.232e+03 2389.0211 2.735e+03
-g       1.793e-01 3.743e-01 6.126e-01    1.0647 4.101e+00</code></pre>
+mu      1.866e+02  190.9891 1.932e+02 1.954e+02 1.997e+02
+adverts 7.075e-02    0.0795 8.418e-02 8.869e-02 9.748e-02
+airplay 2.773e+00    3.1452 3.335e+00 3.522e+00 3.887e+00
+image   6.301e+00    9.3532 1.096e+01 1.262e+01 1.584e+01
+sig2    1.845e+03 2081.9114 2.228e+03 2.395e+03 2.731e+03
+g       1.717e-01    0.3799 6.064e-01 1.070e+00 4.242e+00</code></pre>
 </div>
 </div>
 <ul>
@@ -9240,7 +9240,7 @@ Important
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</guid>
-  <pubDate>Mon, 26 Feb 2024 05:00:00 GMT</pubDate>
+  <pubDate>Mon, 26 Feb 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_08_the_glm/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -9512,7 +9512,7 @@ a. Calculates the values of <img src="https://latex.codecogs.com/png.latex?b_0">
  ]]></description>
   <category>505</category>
   <guid>https://cmadland.github.io/blog/posts/simple-regression/</guid>
-  <pubDate>Sun, 18 Feb 2024 05:00:00 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Variance and Standard Deviation</title>
@@ -9594,7 +9594,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <category>variance</category>
   <category>standard-deviation</category>
   <guid>https://cmadland.github.io/blog/posts/variance-std-dev/</guid>
-  <pubDate>Sun, 18 Feb 2024 05:00:00 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Welcome To My Blog</title>
@@ -9619,7 +9619,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
  ]]></description>
   <category>news</category>
   <guid>https://cmadland.github.io/blog/posts/welcome/</guid>
-  <pubDate>Wed, 14 Feb 2024 05:00:00 GMT</pubDate>
+  <pubDate>Wed, 14 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -9627,7 +9627,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <link>https://cmadland.github.io/blog/posts/deck-otessa24/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://cmadland.github.io/blog/posts/deck-otessa24/</guid>
-  <pubDate>Wed, 12 Jun 2024 11:05:11 GMT</pubDate>
+  <pubDate>Tue, 06 Aug 2024 03:15:12 GMT</pubDate>
 </item>
 </channel>
 </rss>
