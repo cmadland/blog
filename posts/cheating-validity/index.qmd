@@ -1,0 +1,23 @@
+---
+title: "Validity is more important than cheating"
+author: "Colin Madland"
+date: "2024-10-19"
+categories: [cheating, acadmic integrity, validity, standards-based-grading ]
+# editor: visual
+image: "japanese-garden.jpeg"
+bibliography: references.bib
+csl: apa.csl
+format:
+  html:
+    theme: flatly
+    css: styles.css
+  # pdf: default
+  # docx: default
+---
+
+Philip Dawson, Margaret Bearman, Mollie Dollinger, and David Boud [@dawsonValidityMattersMore2024] recently published an excellent article addressing cheating in higher education assessment. The main premiss is that modern conceptualizations of cheating, namely that cheating is unfair and that it harms learning, are inadequate to justify the measures we take to prevent cheating. The 'unfairness' argument is essentially that cheating is wrong because the cheater gains an unfair advantag over their peers. This argument doesn't add up to much because most HEI don't use norm-referenced grading where learners are compared to each other, so grades are not a zero-sum game. One learner's achievement does not affect another's. The other argument, that cheating harms the cheater's learning is inadequate because cheating is only one of myriad actions learners take that harm their learning without the threat of significant sanction from the university or instructor. For example, we don't assign failing grades to learners who are not adequately rested, fed, and hydrated, all of which can harm a learner's ability to learn.
+
+Further, the authors argue that modern approaches to responding to cheating 
+(cop shit) inappropriately centre the locus of the problem on learners and impugn their character, rather than seeking to frame cheating as an issue with multiple sources of control.
+
+Instead of the typical approach and framing, the authors argue that cheating is problematic primarily because it harms assessment validity. In the common understanding of validity, that the assessment task measures what it is intended to measure, cheating results in the loss of confidence that an assessment task has measured, or says anything at all, about a learner's ability in relation to an outcome.
