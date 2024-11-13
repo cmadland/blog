@@ -18,6 +18,7 @@ website:
         href: https://twitter.com/colinmadland
       - icon: rss
         href: index.xml
+  draft-mode: unlinked
 format:
   html:
     theme: flatly

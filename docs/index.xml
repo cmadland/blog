@@ -10,37 +10,7 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.6.8</generator>
-<lastBuildDate>Sat, 19 Oct 2024 07:00:00 GMT</lastBuildDate>
-<item>
-  <title>Validity is more important than cheating</title>
-  <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/cheating-validity/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Philip Dawson, Margaret Bearman, Mollie Dollinger, and David Boud <span class="citation" data-cites="dawsonValidityMattersMore2024">(Dawson et al., 2024)</span> recently published an excellent article addressing cheating in higher education assessment. The main premiss is that modern conceptualizations of cheating, namely that cheating is unfair and that it harms learning, are inadequate to justify the measures we take to prevent cheating. The ‘unfairness’ argument is essentially that cheating is wrong because the cheater gains an unfair advantag over their peers. This argument doesn’t add up to much because most HEI don’t use norm-referenced grading where learners are compared to each other, so grades are not a zero-sum game. One learner’s achievement does not affect another’s. The other argument, that cheating harms the cheater’s learning is inadequate because cheating is only one of myriad actions learners take that harm their learning without the threat of significant sanction from the university or instructor. For example, we don’t assign failing grades to learners who are not adequately rested, fed, and hydrated, all of which can harm a learner’s ability to learn.</p>
-<p>Further, the authors argue that modern approaches to responding to cheating (cop shit) inappropriately centre the locus of the problem on learners and impugn their character, rather than seeking to frame cheating as an issue with multiple sources of control.</p>
-<p>Instead of the typical approach and framing, the authors argue that cheating is problematic primarily because it harms assessment validity. In the common understanding of validity, that the assessment task measures what it is intended to measure, cheating results in the loss of confidence that an assessment task has measured, or says anything at all, about a learner’s ability in relation to an outcome.</p>
-
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
-<div id="ref-dawsonValidityMattersMore2024" class="csl-entry">
-Dawson, P., Bearman, M., Dollinger, M., &amp; Boud, D. (2024). Validity matters more than cheating. <em>Assessment &amp; Evaluation in Higher Education</em>, 1–12. <a href="https://doi.org/10.1080/02602938.2024.2386662">https://doi.org/10.1080/02602938.2024.2386662</a>
-</div>
-</div></section></div> ]]></description>
-  <category>cheating</category>
-  <category>acadmic integrity</category>
-  <category>validity</category>
-  <category>standards-based-grading</category>
-  <guid>https://cmadland.github.io/blog/posts/cheating-validity/</guid>
-  <pubDate>Sat, 19 Oct 2024 07:00:00 GMT</pubDate>
-  <media:content url="https://cmadland.github.io/blog/posts/cheating-validity/japanese-garden.jpeg" medium="image" type="image/jpeg"/>
-</item>
+<lastBuildDate>Wed, 01 May 2024 22:00:00 GMT</lastBuildDate>
 <item>
   <title>Technology-Integrated Assessment in BC Higher Education</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -121,7 +91,7 @@ Tessaro, D., Restoule, J.-P., Gaviria, P., Flessa, J., Lindeman, C., &amp; Scull
   <category>BCcampus</category>
   <category>fellowship</category>
   <guid>https://cmadland.github.io/blog/posts/fellowship/</guid>
-  <pubDate>Thu, 02 May 2024 07:00:00 GMT</pubDate>
+  <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/fellowship/lake.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2625,7 +2595,7 @@ Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Spr
   <category>dsus</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/dsur_ch18_efa/</guid>
-  <pubDate>Fri, 26 Apr 2024 07:00:00 GMT</pubDate>
+  <pubDate>Thu, 25 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/dsur_ch18_efa/ellie-snow.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -3013,7 +2983,7 @@ font-style: inherit;"># add minimal theme layer</span></span></code></pre></div>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/</guid>
-  <pubDate>Tue, 23 Apr 2024 07:00:00 GMT</pubDate>
+  <pubDate>Mon, 22 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/raft-canyon.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4085,7 +4055,7 @@ upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
-  <pubDate>Thu, 18 Apr 2024 07:00:00 GMT</pubDate>
+  <pubDate>Wed, 17 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4539,7 +4509,7 @@ What are the model residuals?
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_06_bias/</guid>
-  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
+  <pubDate>Mon, 15 Apr 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5495,7 +5465,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_07_associations/</guid>
-  <pubDate>Sun, 10 Mar 2024 08:00:00 GMT</pubDate>
+  <pubDate>Sat, 09 Mar 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_07_associations/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5559,7 +5529,7 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_18_efa/</guid>
-  <pubDate>Tue, 27 Feb 2024 08:00:00 GMT</pubDate>
+  <pubDate>Mon, 26 Feb 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_18_efa/happy-rock.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -8461,34 +8431,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.973</td>
+<td style="text-align: right;">-26.907</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-59.111</td>
-<td style="text-align: right;">7.946</td>
-<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">-56.300</td>
+<td style="text-align: right;">6.339</td>
+<td style="text-align: right;">0.102</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
-<td style="text-align: right;">0.085</td>
+<td style="text-align: right;">0.084</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.070</td>
-<td style="text-align: right;">0.098</td>
+<td style="text-align: right;">0.072</td>
+<td style="text-align: right;">0.099</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.355</td>
+<td style="text-align: right;">3.368</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.745</td>
-<td style="text-align: right;">4.043</td>
+<td style="text-align: right;">2.737</td>
+<td style="text-align: right;">4.005</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.988</td>
+<td style="text-align: right;">11.108</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.141</td>
-<td style="text-align: right;">15.203</td>
+<td style="text-align: right;">6.224</td>
+<td style="text-align: right;">15.191</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -9180,22 +9150,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.933e+02   3.34467 0.0334467      3.345e-02
-adverts 8.401e-02   0.00695 0.0000695      7.053e-05
-airplay 3.337e+00   0.27926 0.0027926      2.801e-03
-image   1.099e+01   2.44095 0.0244095      2.441e-02
-sig2    2.246e+03 233.28938 2.3328938      2.386e+00
-g       1.000e+00   1.72472 0.0172472      1.725e-02
+mu      1.932e+02 3.382e+00 3.382e-02      3.382e-02
+adverts 8.414e-02 7.006e-03 7.006e-05      7.183e-05
+airplay 3.337e+00 2.788e-01 2.788e-03      2.788e-03
+image   1.099e+01 2.485e+00 2.485e-02      2.442e-02
+sig2    2.255e+03 2.342e+02 2.342e+00      2.419e+00
+g       1.003e+00 1.715e+00 1.715e-02      1.715e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.868e+02 1.910e+02 1.933e+02 1.956e+02 1.998e+02
-adverts 7.031e-02 7.937e-02 8.411e-02 8.866e-02 9.769e-02
-airplay 2.799e+00 3.145e+00 3.335e+00 3.521e+00 3.890e+00
-image   6.203e+00 9.359e+00 1.097e+01 1.262e+01 1.581e+01
-sig2    1.846e+03 2.080e+03 2.228e+03 2.393e+03 2.742e+03
-g       1.763e-01 3.727e-01 6.090e-01 1.066e+00 4.156e+00</code></pre>
+mu      1.865e+02 1.909e+02 1.932e+02 1.954e+02 1.996e+02
+adverts 7.051e-02 7.937e-02 8.404e-02 8.882e-02 9.805e-02
+airplay 2.791e+00 3.152e+00 3.335e+00 3.521e+00 3.896e+00
+image   6.124e+00 9.303e+00 1.101e+01 1.268e+01 1.584e+01
+sig2    1.835e+03 2.091e+03 2.238e+03 2.401e+03 2.751e+03
+g       1.737e-01 3.729e-01 5.973e-01 1.059e+00 4.169e+00</code></pre>
 </div>
 </div>
 <ul>
@@ -9270,7 +9240,7 @@ Important
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</guid>
-  <pubDate>Mon, 26 Feb 2024 08:00:00 GMT</pubDate>
+  <pubDate>Sun, 25 Feb 2024 22:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_08_the_glm/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -9542,7 +9512,7 @@ a. Calculates the values of <img src="https://latex.codecogs.com/png.latex?b_0">
  ]]></description>
   <category>505</category>
   <guid>https://cmadland.github.io/blog/posts/simple-regression/</guid>
-  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
+  <pubDate>Sat, 17 Feb 2024 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Variance and Standard Deviation</title>
@@ -9624,7 +9594,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <category>variance</category>
   <category>standard-deviation</category>
   <guid>https://cmadland.github.io/blog/posts/variance-std-dev/</guid>
-  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
+  <pubDate>Sat, 17 Feb 2024 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Welcome To My Blog</title>
@@ -9649,7 +9619,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
  ]]></description>
   <category>news</category>
   <guid>https://cmadland.github.io/blog/posts/welcome/</guid>
-  <pubDate>Wed, 14 Feb 2024 08:00:00 GMT</pubDate>
+  <pubDate>Tue, 13 Feb 2024 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title></title>
@@ -9657,7 +9627,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <link>https://cmadland.github.io/blog/posts/deck-otessa24/</link>
   <description><![CDATA[ undefined ]]></description>
   <guid>https://cmadland.github.io/blog/posts/deck-otessa24/</guid>
-  <pubDate>Mon, 21 Oct 2024 16:35:42 GMT</pubDate>
+  <pubDate>Wed, 13 Nov 2024 12:42:35 GMT</pubDate>
 </item>
 </channel>
 </rss>
