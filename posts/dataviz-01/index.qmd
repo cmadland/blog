@@ -1,0 +1,64 @@
+---
+title: "ggplot & the tidyverse"
+author: "Colin Madland"
+date: "2024-12-20"
+categories: [ggplot2, tidyverse, statsglobe]
+image: "rainbow-yeti.jpg"
+---
+
+```{r}
+library(tidyverse)
+data(PlantGrowth) 
+str(PlantGrowth)
+view(PlantGrowth)
+```
+
+```{r}
+plot(density(PlantGrowth$weight))                         # Density plot using base R
+```
+
+```{r}
+ggplot(data = PlantGrowth,
+    aes(x = weight,
+    color = group)) +
+    geom_density()
+```
+
+```{r}
+ggplot(data = PlantGrowth,
+    aes(x = weight,
+    fill = group)) +
+    geom_density()
+```
+
+```{r}
+ggplot(data = PlantGrowth,
+    aes(x = weight,
+    fill = group)) +
+    geom_density(alpha = 0.3)
+```
+
+```{r}
+  PlantGrowth_grouped <- PlantGrowth %>%                    # Group data using dplyr
+  group_by(group) %>% 
+  summarize(mean_weight = mean(weight))
+PlantGrowth_grouped
+```
+
+```{r}
+ggplot(data = PlantGrowth_grouped,                        # ggplot2 bar chart
+       aes(x = group,
+           y = mean_weight)) +
+  geom_col()
+```
+
+```{r}
+PlantGrowth %>%                                           # Manipulation & visualization
+  group_by(group) %>% 
+  summarize(mean_weight = mean(weight)) %>% 
+  ggplot(aes(x = group,
+             y = mean_weight)) +
+  geom_col()
+```
+
+ 

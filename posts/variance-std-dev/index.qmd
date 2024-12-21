@@ -2,7 +2,7 @@
 title: "Variance and Standard Deviation"
 author: "Colin Madland"
 date: "2024-02-18"
-categories: [intro-stats, variance, standard-deviation]
+categories: [intro stats, variance, standard deviation]
 ---
 
 

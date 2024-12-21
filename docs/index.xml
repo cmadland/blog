@@ -10,7 +10,272 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.6.8</generator>
-<lastBuildDate>Wed, 01 May 2024 22:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 20 Dec 2024 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>ggplot &amp; the tidyverse</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/dataviz-01/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(PlantGrowth) </span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str</span>(PlantGrowth)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   30 obs. of  2 variables:
+ $ weight: num  4.17 5.58 5.18 6.11 4.5 4.61 5.17 4.53 5.33 5.14 ...
+ $ group : Factor w/ 3 levels "ctrl","trt1",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">view</span>(PlantGrowth)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">density</span>(PlantGrowth<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>weight))                         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Density plot using base R</span></span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> PlantGrowth,</span>
+<span id="cb7-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> weight,</span>
+<span id="cb7-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> group)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_density</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> PlantGrowth,</span>
+<span id="cb8-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> weight,</span>
+<span id="cb8-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> group)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_density</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> PlantGrowth,</span>
+<span id="cb9-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> weight,</span>
+<span id="cb9-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> group)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_density</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">  PlantGrowth_grouped <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> PlantGrowth <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span>                    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Group data using dplyr</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean_weight =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(weight))</span>
+<span id="cb10-4">PlantGrowth_grouped</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  group mean_weight
+  &lt;fct&gt;       &lt;dbl&gt;
+1 ctrl         5.03
+2 trt1         4.66
+3 trt2         5.53</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> PlantGrowth_grouped,                        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ggplot2 bar chart</span></span>
+<span id="cb12-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> group,</span>
+<span id="cb12-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mean_weight)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">PlantGrowth <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span>                                           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Manipulation &amp; visualization</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">group_by</span>(group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarize</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean_weight =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(weight)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span> </span>
+<span id="cb13-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> group,</span>
+<span id="cb13-5">             <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> mean_weight)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-01/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>tidyverse</category>
+  <category>statsglobe</category>
+  <guid>https://cmadland.github.io/blog/posts/dataviz-01/</guid>
+  <pubDate>Fri, 20 Dec 2024 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/dataviz-01/rainbow-yeti.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title></title>
+  <dc:creator>Colin Madland&lt;sup&gt;1&lt;/sup&gt;, Valerie Irvine&lt;sup&gt;1&lt;/sup&gt;, Christopher DeLuca&lt;sup&gt;2&lt;/sup&gt;, and Okan Bulut&lt;sup&gt;3&lt;/sup&gt;</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/deck-otessa24/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://cmadland.github.io/blog/posts/deck-otessa24/</guid>
+  <pubDate>Thu, 20 Jun 2024 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Technology-Integrated Assessment in BC Higher Education</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -91,7 +356,7 @@ Tessaro, D., Restoule, J.-P., Gaviria, P., Flessa, J., Lindeman, C., &amp; Scull
   <category>BCcampus</category>
   <category>fellowship</category>
   <guid>https://cmadland.github.io/blog/posts/fellowship/</guid>
-  <pubDate>Wed, 01 May 2024 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 02 May 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/fellowship/lake.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2595,7 +2860,7 @@ Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Spr
   <category>dsus</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/dsur_ch18_efa/</guid>
-  <pubDate>Thu, 25 Apr 2024 22:00:00 GMT</pubDate>
+  <pubDate>Fri, 26 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/dsur_ch18_efa/ellie-snow.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -2800,7 +3065,7 @@ font-style: inherit;">as_factor</span>(sex)</span>
 <dl>
 <dt><code>aes()</code></dt>
 <dd>
-controls aesthetics of the plot
+<p>controls aesthetics of the plot</p>
 </dd>
 </dl>
 <section id="geometric-objects" class="level3">
@@ -2811,23 +3076,23 @@ controls aesthetics of the plot
 <dl>
 <dt><code>geom_point()</code></dt>
 <dd>
-plots data by points/dots
+<p>plots data by points/dots</p>
 </dd>
 <dt><code>geom_boxplot()</code></dt>
 <dd>
-plots boxplots
+<p>plots boxplots</p>
 </dd>
 <dt><code>geom_histogram()</code></dt>
 <dd>
-plots histograms
+<p>plots histograms</p>
 </dd>
 <dt><code>geom_errorbar()</code></dt>
 <dd>
-plots error bars
+<p>plots error bars</p>
 </dd>
 <dt><code>geom_smooth()</code></dt>
 <dd>
-plots summary lines
+<p>plots summary lines</p>
 </dd>
 </dl>
 </section>
@@ -2890,7 +3155,7 @@ plots summary lines
 <dl>
 <dt><code>geom_boxplot()</code></dt>
 <dd>
-<code>ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))</code>
+<p><code>ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))</code></p>
 </dd>
 </dl>
 <div class="cell">
@@ -2979,11 +3244,11 @@ font-style: inherit;"># add minimal theme layer</span></span></code></pre></div>
 
  ]]></description>
   <category>ggplot2</category>
-  <category>visualizing-data</category>
+  <category>visualizing data</category>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/</guid>
-  <pubDate>Mon, 22 Apr 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 23 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/raft-canyon.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -3674,17 +3939,17 @@ font-style: inherit;">$</span>upload_day)</span></code></pre></div>
 <dl>
 <dt><code>var()</code></dt>
 <dd>
-variance
+<p>variance</p>
 </dd>
 <dd>
-<code>var(variable_name, na.rm = FALSE)</code>
+<p><code>var(variable_name, na.rm = FALSE)</code></p>
 </dd>
 <dt><code>sd()</code></dt>
 <dd>
-standard deviation
+<p>standard deviation</p>
 </dd>
 <dd>
-<code>sd(variable_name, na.rm = FALSE)</code>
+<p><code>sd(variable_name, na.rm = FALSE)</code></p>
 </dd>
 </dl>
 <p><code>var()</code> and <code>sd()</code> take the same syntax as <code>mean()</code></p>
@@ -3716,7 +3981,7 @@ font-style: inherit;">$</span>upload_day)</span></code></pre></div>
 <dl>
 <dt><code>IQR()</code></dt>
 <dd>
-<code>IQR(variable_name, na.rm = FALSE, type = 7)</code>
+<p><code>IQR(variable_name, na.rm = FALSE, type = 7)</code></p>
 </dd>
 </dl>
 <div class="cell">
@@ -3864,10 +4129,10 @@ font-style: inherit;">sd</span>(upload_day)</span>
 <dl>
 <dt><code>round()</code></dt>
 <dd>
-round(x, digits = 0)
+<p>round(x, digits = 0)</p>
 </dd>
 <dd>
-default is 0
+<p>default is 0</p>
 </dd>
 </dl>
 <div class="cell">
@@ -4055,7 +4320,7 @@ upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
-  <pubDate>Wed, 17 Apr 2024 22:00:00 GMT</pubDate>
+  <pubDate>Thu, 18 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -4509,7 +4774,7 @@ What are the model residuals?
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_06_bias/</guid>
-  <pubDate>Mon, 15 Apr 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5465,7 +5730,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_07_associations/</guid>
-  <pubDate>Sat, 09 Mar 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 10 Mar 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_07_associations/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -5529,7 +5794,7 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_18_efa/</guid>
-  <pubDate>Mon, 26 Feb 2024 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 27 Feb 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_18_efa/happy-rock.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -8431,34 +8696,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.907</td>
+<td style="text-align: right;">-27.098</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.300</td>
-<td style="text-align: right;">6.339</td>
-<td style="text-align: right;">0.102</td>
+<td style="text-align: right;">-56.616</td>
+<td style="text-align: right;">6.228</td>
+<td style="text-align: right;">0.124</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
-<td style="text-align: right;">0.084</td>
+<td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.072</td>
-<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">0.098</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.368</td>
+<td style="text-align: right;">3.389</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.737</td>
-<td style="text-align: right;">4.005</td>
+<td style="text-align: right;">2.747</td>
+<td style="text-align: right;">3.961</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.108</td>
+<td style="text-align: right;">11.154</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.224</td>
-<td style="text-align: right;">15.191</td>
+<td style="text-align: right;">6.055</td>
+<td style="text-align: right;">15.207</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -9150,22 +9415,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.382e+00 3.382e-02      3.382e-02
-adverts 8.414e-02 7.006e-03 7.006e-05      7.183e-05
-airplay 3.337e+00 2.788e-01 2.788e-03      2.788e-03
-image   1.099e+01 2.485e+00 2.485e-02      2.442e-02
-sig2    2.255e+03 2.342e+02 2.342e+00      2.419e+00
-g       1.003e+00 1.715e+00 1.715e-02      1.715e-02
+mu       193.2197 3.366e+00 3.366e-02      3.366e-02
+adverts    0.0840 6.874e-03 6.874e-05      6.874e-05
+airplay    3.3346 2.787e-01 2.787e-03      2.787e-03
+image     10.9962 2.456e+00 2.456e-02      2.456e-02
+sig2    2251.0179 2.290e+02 2.290e+00      2.397e+00
+g          0.9845 1.501e+00 1.501e-02      1.501e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.865e+02 1.909e+02 1.932e+02 1.954e+02 1.996e+02
-adverts 7.051e-02 7.937e-02 8.404e-02 8.882e-02 9.805e-02
-airplay 2.791e+00 3.152e+00 3.335e+00 3.521e+00 3.896e+00
-image   6.124e+00 9.303e+00 1.101e+01 1.268e+01 1.584e+01
-sig2    1.835e+03 2.091e+03 2.238e+03 2.401e+03 2.751e+03
-g       1.737e-01 3.729e-01 5.973e-01 1.059e+00 4.169e+00</code></pre>
+mu      1.866e+02 1.910e+02 1.932e+02 1.955e+02 1.998e+02
+adverts 7.061e-02 7.928e-02 8.402e-02 8.874e-02 9.732e-02
+airplay 2.792e+00 3.145e+00 3.335e+00 3.522e+00 3.877e+00
+image   6.183e+00 9.346e+00 1.098e+01 1.267e+01 1.582e+01
+sig2    1.839e+03 2.092e+03 2.238e+03 2.397e+03 2.744e+03
+g       1.780e-01 3.755e-01 6.072e-01 1.064e+00 3.982e+00</code></pre>
 </div>
 </div>
 <ul>
@@ -9240,7 +9505,7 @@ Important
   <category>R</category>
   <category>discovr</category>
   <guid>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</guid>
-  <pubDate>Sun, 25 Feb 2024 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 26 Feb 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_08_the_glm/image.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
@@ -9512,7 +9777,7 @@ a. Calculates the values of <img src="https://latex.codecogs.com/png.latex?b_0">
  ]]></description>
   <category>505</category>
   <guid>https://cmadland.github.io/blog/posts/simple-regression/</guid>
-  <pubDate>Sat, 17 Feb 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Variance and Standard Deviation</title>
@@ -9590,11 +9855,11 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
 
 
  ]]></description>
-  <category>intro-stats</category>
+  <category>intro stats</category>
   <category>variance</category>
-  <category>standard-deviation</category>
+  <category>standard deviation</category>
   <guid>https://cmadland.github.io/blog/posts/variance-std-dev/</guid>
-  <pubDate>Sat, 17 Feb 2024 22:00:00 GMT</pubDate>
+  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Welcome To My Blog</title>
@@ -9619,15 +9884,7 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
  ]]></description>
   <category>news</category>
   <guid>https://cmadland.github.io/blog/posts/welcome/</guid>
-  <pubDate>Tue, 13 Feb 2024 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title></title>
-  <dc:creator>Colin Madland&lt;sup&gt;1&lt;/sup&gt;, Valerie Irvine&lt;sup&gt;1&lt;/sup&gt;, Christopher DeLuca&lt;sup&gt;2&lt;/sup&gt;, and Okan Bulut&lt;sup&gt;3&lt;/sup&gt;</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/deck-otessa24/</link>
-  <description><![CDATA[ undefined ]]></description>
-  <guid>https://cmadland.github.io/blog/posts/deck-otessa24/</guid>
-  <pubDate>Wed, 13 Nov 2024 12:42:35 GMT</pubDate>
+  <pubDate>Wed, 14 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -244,16 +244,21 @@ median(ice_tib$upload_day)
 ## Quantifying the 'fit' of the mean
 
 `var()`
+
 :   variance
+
 :   `var(variable_name, na.rm = FALSE)`
 
 `sd()`
-: standard deviation
-: `sd(variable_name, na.rm = FALSE)`
+
+:   standard deviation
+
+:   `sd(variable_name, na.rm = FALSE)`
 
 `var()` and `sd()` take the same syntax as `mean()`
 
 ### coding challenge
+
 Use what you learned in the previous section and the code example above to get the variance and standard deviation of the days since the original ice bucket video that other videos were uploaded.
 
 ```{r}
@@ -264,7 +269,8 @@ sd(ice_tib$upload_day)
 ## Inter-quartile range
 
 `IQR()`
-: `IQR(variable_name, na.rm = FALSE, type = 7)`
+
+:   `IQR(variable_name, na.rm = FALSE, type = 7)`
 
 ```{r}
 IQR(ice_tib$upload_day, type = 7)
@@ -273,10 +279,11 @@ IQR(ice_tib$upload_day, type = 8)
 
 ## Creating a summary table
 
-- used to comine all the above into one table
+-   used to comine all the above into one table
 
 `summarise()`
-```
+
+```         
 ice_tib |>
   dplyr::summarise(
     median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
@@ -286,6 +293,7 @@ ice_tib |>
 ```
 
 ### coding challenge
+
 Create a summary table containing the mean, median, IQR, variance and SD of the number of days since the original ice bucket video.
 
 ```{r}
@@ -320,14 +328,16 @@ upload_summary <- ice_tib |>
 use `round()` function to round values and use `kable()` from `knitr` to round an entire table of values
 
 `round()`
-: round(x, digits = 0)
-: default is 0
+
+:   round(x, digits = 0)
+
+:   default is 0
 
 ```{r}
 round(3.211420)
 ```
 
- also use a pipe to feed a mean, median, or variance into the round function
+also use a pipe to feed a mean, median, or variance into the round function
 
 ```{r}
 var(ice_tib$upload_day) |>
