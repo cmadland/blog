@@ -7,6 +7,7 @@ image: "rainbow-yeti.jpg"
 freeze: auto
 ---
 
+[Data Visualization in R Using ggplot2 - Module 1](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
 ```{r}
 library(tidyverse)
 data(PlantGrowth) 

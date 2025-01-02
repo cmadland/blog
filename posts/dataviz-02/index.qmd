@@ -7,6 +7,8 @@ image: "bouganvillea.jpg"
 freeze: auto
 ---
 
+[Data Visualization in R Using ggplot2 - Module 2](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
+
 ```{r}
 library(ggplot2)
 data(PlantGrowth) 
