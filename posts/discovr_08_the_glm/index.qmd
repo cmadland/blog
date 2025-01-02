@@ -5,6 +5,7 @@ date: "2024-02-26"
 categories: [regression, R, discovr]
 editor: visual
 image: "image.jpg"
+freeze: auto
 ---
 
 ```{r}
@@ -900,9 +901,9 @@ summary(album_full_post)
 
 | Predictor | Bayesian estimate of $\hat{b}$ | non-Bayesian estimate of $\hat{b}$ |
 |------------------------|------------------------|------------------------|
-| adverts   | 0.084                          | 0.085                              |
-| airplay   | 3.34                           | 3.37                               |
-| image     | 10.96                          | 11.09                              |
+| adverts | 0.084 | 0.085 |
+| airplay | 3.34 | 3.37 |
+| image | 10.96 | 11.09 |
 
 -   most useful are the `credible intervals` for these parameters
     -   if we want the 95% credible interval, then we read the values from columns labelled 2.5% and 97.5% in the table of quantiles

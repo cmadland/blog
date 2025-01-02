@@ -5,6 +5,7 @@ date: "2024-04-16"
 categories: [bias, R, discovr]
 editor: visual
 image: "ellie.jpeg"
+freeze: auto
 ---
 
 ```{r}
@@ -17,6 +18,7 @@ dplyr::mutate(
       forcats::fct_relevel("Male", "Female", "Non-binary")
   )
 ```
+
 ```{r}
 download_tib
 ```
@@ -29,18 +31,17 @@ Data that are arranged such that scores on a variable appear in a single column 
 
 ::: {.callout-important collapse="true"}
 ## Are the download data in tidy or messy format?
+
 Messy
 
 Correct - well done! The download data are messy because the hygiene scores on different days are spread across different columns rather than being in a single colum with an additional column to indicate the day of the festival that the hygiene score was measured.
 :::
 
-`tidyr` has two functions for converting data from messy to tidy.
-- `pivot_longer()` takes columns and puts them into rosw to make messy data tidy
-- `pivot_wider()` takes rows and puts them in columns to make tidy data messy
+`tidyr` has two functions for converting data from messy to tidy. - `pivot_longer()` takes columns and puts them into rosw to make messy data tidy - `pivot_wider()` takes rows and puts them in columns to make tidy data messy
 
 ## Making messy data tidy
 
-```
+```         
 tidyr::pivot_longer(
   data = tibble,
   cols = column_names,
@@ -50,23 +51,27 @@ tidyr::pivot_longer(
 ```
 
 `tibble`
-:  Name of the messy tibble
+
+:   Name of the messy tibble
 
 `column_names`
-:  list of columns to be restructured into rows
+
+:   list of columns to be restructured into rows
 
 `names_to`
-:  name for the new variable that contains names of the original columns
+
+:   name for the new variable that contains names of the original columns
 
 `value_to`
-: name for the new variable that will contain the values.
+
+:   name for the new variable that will contain the values.
 
 ## Code example
 
-- in `download_tib`, there are three columns/variables that need to be restructured into rows
-- specify the variables using `day_1:day_3`
-- scores in these columns represent hygiene scores, so we could use `hygiene` as the variable to contain values after restructuring
-- columns we are transforming represent different days at the festival, so we can use `day` as the name of the variable created to contain column names
+-   in `download_tib`, there are three columns/variables that need to be restructured into rows
+-   specify the variables using `day_1:day_3`
+-   scores in these columns represent hygiene scores, so we could use `hygiene` as the variable to contain values after restructuring
+-   columns we are transforming represent different days at the festival, so we can use `day` as the name of the variable created to contain column names
 
 ```{r}
 download_tidy_tib <- download_tib |>  # create a new object called `download_tidy_tib`
@@ -80,10 +85,11 @@ download_tidy_tib                               # display the new object
 
 ## Tidying labels
 
-- the values in `day` match the original column names exactly (`day_1`)
-- we want sentence case (`Day 1`)
-- use `stringr`
-```
+-   the values in `day` match the original column names exactly (`day_1`)
+-   we want sentence case (`Day 1`)
+-   use `stringr`
+
+```         
 download_tidy_tib <- download_tidy_tib |>   # recreates `download_tidy_tib` from itself
    dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
     day = stringr::str_to_sentence(day) |> stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
@@ -98,11 +104,11 @@ download_tidy_tib <- download_tidy_tib |>
   download_tidy_tib
 ```
 
-  ## Making tidy data messy
+\## Making tidy data messy
 
-- `pivot_wider()` reverses the process above
+-   `pivot_wider()` reverses the process above
 
-```
+```         
 tidyr::pivot_wider(
   data = tibble,  # tibble to be restructured
   id_cols = variables_that_you_do_not_want_to_restructure,
@@ -121,8 +127,8 @@ download_tib <- download_tidy_tib |>
 download_tib
 ```
 
-- in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks
-- rename using `dplyr::rename_with`
+-   in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks
+-   rename using `dplyr::rename_with`
 
 ```{r}
 download_tib <- download_tib |> 
@@ -139,14 +145,13 @@ download_tib
 
 Two ways:
 
-- visualize the data and look for unusual cases
-- look for values that are poorly predicted by the model, using model residuals as described in DSUR
+-   visualize the data and look for unusual cases
+-   look for values that are poorly predicted by the model, using model residuals as described in DSUR
 
 ::: {.callout-important collapse="true"}
 ## What are the model residuals?
 
-- The differences between the values a model predicts and the values observed in the data on which the model is based
-
+-   The differences between the values a model predicts and the values observed in the data on which the model is based
 :::
 
 ## Histograms and Boxplots

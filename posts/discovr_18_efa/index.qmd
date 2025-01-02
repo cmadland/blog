@@ -5,6 +5,7 @@ date: "2024-02-27"
 categories: [efa, R, discovr]
 editor: visual
 image: "happy-rock.jpeg"
+freeze: auto
 ---
 
 ```{r}

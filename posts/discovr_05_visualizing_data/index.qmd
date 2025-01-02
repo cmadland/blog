@@ -5,6 +5,7 @@ date: "2024-04-23"
 categories: [ggplot2, visualizing data, R, discovr]
 editor: visual
 image: "raft-canyon.jpeg"
+freeze: auto
 ---
 
 ```{r}

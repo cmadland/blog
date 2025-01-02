@@ -345,25 +345,25 @@ dbl (4): id, revise, exam_grade, anxiety
 <dl>
 <dt><code>tibble</code></dt>
 <dd>
-should be replaced with the name of tibble containing any variables to correlate
+<p>should be replaced with the name of tibble containing any variables to correlate</p>
 </dd>
 <dt><code>method</code></dt>
 <dd>
-method of correlation coefficient, default is <code>pearson</code>, but can also accept <code>spearman, kendall, biserial, polychoric, tetrachoric, and percentage</code>
+<p>method of correlation coefficient, default is <code>pearson</code>, but can also accept <code>spearman, kendall, biserial, polychoric, tetrachoric, and percentage</code></p>
 </dd>
 <dt><code>p_adjust</code></dt>
 <dd>
-corrects the <span class="math inline">\(p\)</span>-value for the number of tests you have performed using the Holm-Bonferroni method
+<p>corrects the <span class="math inline">\(p\)</span>-value for the number of tests you have performed using the Holm-Bonferroni method</p>
 </dd>
 <dd>
-applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error
+<p>applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error</p>
 </dd>
 <dd>
-can change to <code>none</code> (bad idea), <code>bonferroni</code> (to apply the standard Bonferroni method) or several other methods.
+<p>can change to <code>none</code> (bad idea), <code>bonferroni</code> (to apply the standard Bonferroni method) or several other methods.</p>
 </dd>
 <dt><code>ci</code></dt>
 <dd>
-set the confidence interval width; default is 0.95 for general use
+<p>set the confidence interval width; default is 0.95 for general use</p>
 </dd>
 </dl>
 <p>To use the function, - pipe tibble into the <code>select()</code> function from <code>dplyr</code> to select variables to correlate, then pipe that into the correlation function - use the same syntax whether you want to correlate two variables or produce all correlations between pairs of multiple variables]</p>

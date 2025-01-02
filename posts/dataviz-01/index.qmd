@@ -2,8 +2,9 @@
 title: "ggplot & the tidyverse"
 author: "Colin Madland"
 date: "2024-12-20"
-categories: [ggplot2, tidyverse, statsglobe]
+categories: [ggplot2, tidyverse, statsglobe, R]
 image: "rainbow-yeti.jpg"
+freeze: auto
 ---
 
 ```{r}

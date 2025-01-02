@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/dataviz-02/index.html",
+      "/posts/dataviz-03/index.html",
       "/posts/dataviz-01/index.html",
       "/posts/deck-otessa24/index.html",
       "/posts/fellowship/index.html",

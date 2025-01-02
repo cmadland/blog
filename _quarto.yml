@@ -1,9 +1,9 @@
 project:
   type: website
   output-dir: docs
-
+  
 execute:
-    freeze: true  # re-render only when source changes
+    freeze: true
 
 website:
   title: "Learning | Assessment | Technology"

@@ -10,7 +10,629 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.6.8</generator>
-<lastBuildDate>Fri, 20 Dec 2024 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 02 Jan 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>grammar of graphics</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/dataviz-02/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(PlantGrowth) </span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(airquality)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> PlantGrowth,                  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data              </span></span>
+<span id="cb2-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> weight)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># aesthetics</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                               <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># geometry</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> group) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># facets</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stat_summary</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>),                  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># statistics</span></span>
+<span id="cb2-6">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fun =</span> mean,</span>
+<span id="cb2-7">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geom =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"point"</span>,</span>
+<span id="cb2-8">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>,</span>
+<span id="cb2-9">               <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                                      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># coordinates</span></span>
+<span id="cb2-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>()                                        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># theme</span></span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-02/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>Below are the exercises for this module.</p>
+<ul>
+<li>Install and load the ggplot2 package.</li>
+<li>Load the airquality data set using the data() function.</li>
+<li>Draw an empty plot using the ggplot() function, only specifying the data argument with the airquality data set.</li>
+<li>Specify the aes() function within the ggplot() function so that y = Temp, and add a geom_boxplot() layer to draw a boxplot.</li>
+<li>Create a facet boxplot for the Temp column, grouped by the Month column using the facet_wrap() function. How does the temperature distribution vary by month?</li>
+<li>Apply the theme_light() to the facet boxplot you created in the previous exercise.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> airquality,</span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Temp)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> Month) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_light</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-02/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>tidyverse</category>
+  <category>statsglobe</category>
+  <category>R</category>
+  <category>grammar</category>
+  <guid>https://cmadland.github.io/blog/posts/dataviz-02/</guid>
+  <pubDate>Thu, 02 Jan 2025 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/dataviz-02/bouganvillea.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>aesthetic mapping</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/dataviz-03/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(ToothGrowth) </span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str</span>(ToothGrowth)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   60 obs. of  3 variables:
+ $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+ $ supp: Factor w/ 2 levels "OJ","VC": 2 2 2 2 2 2 2 2 2 2 ...
+ $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(airquality)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(ToothGrowth,</span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> supp, </span>
+<span id="cb4-3">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> len, </span>
+<span id="cb4-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> supp)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">54698</span>)                                           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Seed for reproducibility</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> ToothGrowth,                                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Mapping supp to color</span></span>
+<span id="cb6-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> supp, </span>
+<span id="cb6-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> len, </span>
+<span id="cb6-4">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> supp)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, </span>
+<span id="cb6-6">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can move the <code>size</code> argument to be within the <code>aes()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> ToothGrowth,                                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Mapping dose to size</span></span>
+<span id="cb7-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> supp, </span>
+<span id="cb7-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> len, </span>
+<span id="cb7-4">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> dose)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Also possible to combine <code>aes()</code> mapping…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> ToothGrowth,                                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Combined aesthetic mapping</span></span>
+<span id="cb8-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> supp, </span>
+<span id="cb8-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> len, </span>
+<span id="cb8-4">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> supp, </span>
+<span id="cb8-5">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> supp, </span>
+<span id="cb8-6">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> dose)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb8-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Or, map the <code>aes()</code> within the <code>geom()</code> function…note the second call to <code>aes()</code> within <code>geom_jitter()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> ToothGrowth,                                <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Mapping inside geom</span></span>
+<span id="cb9-2">       <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> supp, </span>
+<span id="cb9-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> len)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> supp, </span>
+<span id="cb9-5">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> supp, </span>
+<span id="cb9-6">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> dose), </span>
+<span id="cb9-7">              <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>In this module, we continue working with the ggplot2 package and the airquality data set used in the previous module. To ensure accurate visualization, we first need to install and load the ggplot2 package. Additionally, we will convert the Month column in the airquality data set to a factor class to treat it as a categorical variable for visualizations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages()("ggplot2")                             Install &amp; load ggplot2</span></span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb10-4"> </span>
+<span id="cb10-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(airquality)                                          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load example data</span></span>
+<span id="cb10-6"> </span>
+<span id="cb10-7">airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month)           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Convert Month to factor</span></span></code></pre></div>
+</div>
+<p>Now, we can move on to the exercises of this module:</p>
+<ul>
+<li>Set a random seed using set.seed(75188) for reproducibility.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str</span>(airquality)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   153 obs. of  6 variables:
+ $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
+ $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
+ $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+ $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
+ $ Month  : Factor w/ 5 levels "5","6","7","8",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
+</div>
+</div>
+<section id="exercise-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<ul>
+<li>Map the Month column to the x-axis and the Temp column to the y-axis. Use a geom_boxplot() layer to create a boxplot.</li>
+<li>Add the fill aesthetic mapping to the Month column in the boxplot created in the previous exercise.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month)    </span>
+<span id="cb13-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> airquality,</span>
+<span id="cb13-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Month,</span>
+<span id="cb13-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Temp,</span>
+<span id="cb13-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> Month)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<ul>
+<li>Map the Month column to the color aesthetic, and use geom_jitter() to create a jitter plot. Adjust the width to 0.2 and the size to 3.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month)    </span>
+<span id="cb14-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> airquality,</span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Month,</span>
+<span id="cb14-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Temp,</span>
+<span id="cb14-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Month)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb14-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>,</span>
+<span id="cb14-7">                    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<ul>
+<li>Combine multiple aesthetic mappings: map Month to color and shape, and map Day to size. Use geom_jitter() with a width of 0.2.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(airquality<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>Month)    </span>
+<span id="cb15-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> airquality,</span>
+<span id="cb15-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Month,</span>
+<span id="cb15-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Temp,</span>
+<span id="cb15-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Month,</span>
+<span id="cb15-6">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> Month,</span>
+<span id="cb15-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> Day)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb15-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_light</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/dataviz-03/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>tidyverse</category>
+  <category>statsglobe</category>
+  <category>R</category>
+  <category>aes</category>
+  <guid>https://cmadland.github.io/blog/posts/dataviz-03/</guid>
+  <pubDate>Thu, 02 Jan 2025 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/dataviz-03/giraffe.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>ggplot &amp; the tidyverse</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -264,6 +886,7 @@ font-style: inherit;">geom_col</span>()</span></code></pre></div>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
+  <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/dataviz-01/</guid>
   <pubDate>Fri, 20 Dec 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/dataviz-01/rainbow-yeti.jpg" medium="image" type="image/jpeg"/>
@@ -2317,11 +2940,11 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 <dl>
 <dt><code>my_omg</code></dt>
 <dd>
-name to give the object that stores the results
+<p>name to give the object that stores the results</p>
 </dd>
 <dt><code>my_tibble</code></dt>
 <dd>
-name of the tibble containing your data
+<p>name of the tibble containing your data</p>
 </dd>
 </dl>
 </section>
@@ -4475,19 +5098,19 @@ Are the download data in tidy or messy format?
 <dl>
 <dt><code>tibble</code></dt>
 <dd>
-Name of the messy tibble
+<p>Name of the messy tibble</p>
 </dd>
 <dt><code>column_names</code></dt>
 <dd>
-list of columns to be restructured into rows
+<p>list of columns to be restructured into rows</p>
 </dd>
 <dt><code>names_to</code></dt>
 <dd>
-name for the new variable that contains names of the original columns
+<p>name for the new variable that contains names of the original columns</p>
 </dd>
 <dt><code>value_to</code></dt>
 <dd>
-name for the new variable that will contain the values.
+<p>name for the new variable that will contain the values.</p>
 </dd>
 </dl>
 </section>
@@ -4990,25 +5613,25 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <dl>
 <dt><code>tibble</code></dt>
 <dd>
-should be replaced with the name of tibble containing any variables to correlate
+<p>should be replaced with the name of tibble containing any variables to correlate</p>
 </dd>
 <dt><code>method</code></dt>
 <dd>
-method of correlation coefficient, default is <code>pearson</code>, but can also accept <code>spearman, kendall, biserial, polychoric, tetrachoric, and percentage</code>
+<p>method of correlation coefficient, default is <code>pearson</code>, but can also accept <code>spearman, kendall, biserial, polychoric, tetrachoric, and percentage</code></p>
 </dd>
 <dt><code>p_adjust</code></dt>
 <dd>
-corrects the <img src="https://latex.codecogs.com/png.latex?p">-value for the number of tests you have performed using the Holm-Bonferroni method
+<p>corrects the <img src="https://latex.codecogs.com/png.latex?p">-value for the number of tests you have performed using the Holm-Bonferroni method</p>
 </dd>
 <dd>
-applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error
+<p>applies the Bonferroni criterion in a slightly less strict way that controls the type I error, but with less risk of a type II error</p>
 </dd>
 <dd>
-can change to <code>none</code> (bad idea), <code>bonferroni</code> (to apply the standard Bonferroni method) or several other methods.
+<p>can change to <code>none</code> (bad idea), <code>bonferroni</code> (to apply the standard Bonferroni method) or several other methods.</p>
 </dd>
 <dt><code>ci</code></dt>
 <dd>
-set the confidence interval width; default is 0.95 for general use
+<p>set the confidence interval width; default is 0.95 for general use</p>
 </dd>
 </dl>
 <p>To use the function, - pipe tibble into the <code>select()</code> function from <code>dplyr</code> to select variables to correlate, then pipe that into the correlation function - use the same syntax whether you want to correlate two variables or produce all correlations between pairs of multiple variables]</p>
@@ -8696,11 +9319,11 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-27.098</td>
+<td style="text-align: right;">-26.953</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.616</td>
-<td style="text-align: right;">6.228</td>
-<td style="text-align: right;">0.124</td>
+<td style="text-align: right;">-57.971</td>
+<td style="text-align: right;">6.608</td>
+<td style="text-align: right;">0.132</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
@@ -8712,18 +9335,18 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.389</td>
+<td style="text-align: right;">3.364</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.747</td>
-<td style="text-align: right;">3.961</td>
+<td style="text-align: right;">2.766</td>
+<td style="text-align: right;">3.963</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.154</td>
+<td style="text-align: right;">11.161</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.055</td>
-<td style="text-align: right;">15.207</td>
+<td style="text-align: right;">6.322</td>
+<td style="text-align: right;">15.128</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -9415,22 +10038,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu       193.2197 3.366e+00 3.366e-02      3.366e-02
-adverts    0.0840 6.874e-03 6.874e-05      6.874e-05
-airplay    3.3346 2.787e-01 2.787e-03      2.787e-03
-image     10.9962 2.456e+00 2.456e-02      2.456e-02
-sig2    2251.0179 2.290e+02 2.290e+00      2.397e+00
-g          0.9845 1.501e+00 1.501e-02      1.501e-02
+mu       193.1501 3.393e+00 3.393e-02      3.393e-02
+adverts    0.0840 6.958e-03 6.958e-05      7.112e-05
+airplay    3.3278 2.784e-01 2.784e-03      2.784e-03
+image     10.9894 2.466e+00 2.466e-02      2.466e-02
+sig2    2249.5995 2.308e+02 2.308e+00      2.400e+00
+g          0.9759 1.703e+00 1.703e-02      1.779e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.910e+02 1.932e+02 1.955e+02 1.998e+02
-adverts 7.061e-02 7.928e-02 8.402e-02 8.874e-02 9.732e-02
-airplay 2.792e+00 3.145e+00 3.335e+00 3.522e+00 3.877e+00
-image   6.183e+00 9.346e+00 1.098e+01 1.267e+01 1.582e+01
-sig2    1.839e+03 2.092e+03 2.238e+03 2.397e+03 2.744e+03
-g       1.780e-01 3.755e-01 6.072e-01 1.064e+00 3.982e+00</code></pre>
+mu      1.865e+02 1.909e+02 1.932e+02  195.3937 1.998e+02
+adverts 7.034e-02 7.935e-02 8.389e-02    0.0886 9.784e-02
+airplay 2.771e+00 3.144e+00 3.326e+00    3.5137 3.880e+00
+image   6.114e+00 9.350e+00 1.101e+01   12.6412 1.575e+01
+sig2    1.841e+03 2.085e+03 2.233e+03 2395.2931 2.742e+03
+g       1.758e-01 3.771e-01 5.928e-01    1.0318 3.925e+00</code></pre>
 </div>
 </div>
 <ul>

@@ -5,6 +5,7 @@ date: "2024-04-18"
 categories: [frequency, histograms, variance, standard deviation, IQR, R, discovr]
 editor: visual
 image: "raft-falls.jpeg"
+freeze: auto
 ---
 
 ```{r}

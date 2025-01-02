@@ -1,0 +1,135 @@
+---
+title: "aesthetic mapping"
+author: "Colin Madland"
+date: "2025-01-02"
+categories: [ggplot2, tidyverse, statsglobe, R, aes]
+image: "giraffe.jpg"
+freeze: auto
+---
+
+```{r}
+library(ggplot2)
+data(ToothGrowth) 
+str(ToothGrowth)
+data(airquality)
+```
+
+```{r}
+ggplot(ToothGrowth,
+  aes(x = supp, 
+        y = len, 
+        fill = supp)) +
+  geom_boxplot()
+  set.seed(54698)                                           # Seed for reproducibility
+```
+
+```{r}
+ggplot(data = ToothGrowth,                                # Mapping supp to color
+       aes(x = supp, 
+           y = len, 
+           color = supp)) +
+  geom_jitter(width = 0.2, 
+              size = 3)
+```
+
+We can move the `size` argument to be within the `aes()` function.
+
+```{r}
+ggplot(data = ToothGrowth,                                # Mapping dose to size
+       aes(x = supp, 
+           y = len, 
+           size = dose)) +
+  geom_jitter(width = 0.2)
+```
+
+Also possible to combine `aes()` mapping...
+
+```{r}
+ggplot(data = ToothGrowth,                                # Combined aesthetic mapping
+       aes(x = supp, 
+           y = len, 
+           color = supp, 
+           shape = supp, 
+           size = dose)) +
+  geom_jitter(width = 0.2)
+```
+
+Or, map the `aes()` within the `geom()` function...note the second call to `aes()` within `geom_jitter()`
+
+```{r}
+ggplot(data = ToothGrowth,                                # Mapping inside geom
+       aes(x = supp, 
+           y = len)) +
+  geom_jitter(aes(color = supp, 
+                  shape = supp, 
+                  size = dose), 
+              width = 0.2)
+```              
+
+## Exercises
+In this module, we continue working with the ggplot2 package and the airquality data set used in the previous module. To ensure accurate visualization, we first need to install and load the ggplot2 package. Additionally, we will convert the Month column in the airquality data set to a factor class to treat it as a categorical variable for visualizations.
+
+```{r}
+# install.packages()("ggplot2")                             Install & load ggplot2
+
+library(ggplot2)
+ 
+data(airquality)                                          # Load example data
+ 
+airquality$Month <- as.factor(airquality$Month)           # Convert Month to factor
+```
+
+Now, we can move on to the exercises of this module:
+
+
+- Set a random seed using set.seed(75188) for reproducibility.
+
+
+
+```{r}
+str(airquality)
+```
+
+### Exercise 2
+
+- Map the Month column to the x-axis and the Temp column to the y-axis. Use a geom_boxplot() layer to create a boxplot.
+- Add the fill aesthetic mapping to the Month column in the boxplot created in the previous exercise.
+
+```{r}
+airquality$Month <- as.factor(airquality$Month)    
+ggplot(data = airquality,
+  aes(x = Month,
+        y = Temp,
+        fill = Month)) +
+  geom_boxplot()
+```
+
+### Exercise 4
+
+- Map the Month column to the color aesthetic, and use geom_jitter() to create a jitter plot. Adjust the width to 0.2 and the size to 3.
+  
+```{r}
+airquality$Month <- as.factor(airquality$Month)    
+ggplot(data = airquality,
+  aes(x = Month,
+        y = Temp,
+        color = Month)) +
+  geom_jitter(width = 0.2,
+                    size = 3)
+```
+
+### Exercise 5
+
+- Combine multiple aesthetic mappings: map Month to color and shape, and map Day to size. Use geom_jitter() with a width of 0.2.
+
+```{r}
+airquality$Month <- as.factor(airquality$Month)    
+ggplot(data = airquality,
+  aes(x = Month,
+        y = Temp,
+        color = Month,
+        shape = Month,
+        size = Day)) +
+  geom_jitter(width = 0.2) +
+  theme_light()
+```

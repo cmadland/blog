@@ -6,6 +6,7 @@ categories: [EFA, dsur, dsus, R]
 editor: visual
 image: "ellie-snow.jpeg"
 bibliography: references.bib
+freeze: auto
 ---
 
 ```{r}
@@ -277,15 +278,15 @@ my_fa_object <- psych::fa(r,
                           )
 ```
 
-- `r` -> the data being fed into the function (`raq_items_tib` or `raq_cor`)
-- `n.obs = 2571` as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size
-- `nfactors = 1` the number of factors to extract (default is 1)
-- `fm = "minres"` method of factor analysis, typically leave the default
-- `rotate = "oblimin"` method of factor rotation
-- `scores = "regression"` method of computing factor scores. because we should use oblique rotation, change this argument to `scores = "tenBerge"`
-- `max.iter = 50` number of iterations. If you get a n error message about convergence, increase this number
-- `use = "pairwise"` determines how missing values are treated, default is fine
-- `cor = "cor"` same as defined for `fa.parallel()`
+-   `r` -\> the data being fed into the function (`raq_items_tib` or `raq_cor`)
+-   `n.obs = 2571` as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size
+-   `nfactors = 1` the number of factors to extract (default is 1)
+-   `fm = "minres"` method of factor analysis, typically leave the default
+-   `rotate = "oblimin"` method of factor rotation
+-   `scores = "regression"` method of computing factor scores. because we should use oblique rotation, change this argument to `scores = "tenBerge"`
+-   `max.iter = 50` number of iterations. If you get a n error message about convergence, increase this number
+-   `use = "pairwise"` determines how missing values are treated, default is fine
+-   `cor = "cor"` same as defined for `fa.parallel()`
 
 ::: callout-tip
 ## Factor rotation
@@ -295,8 +296,8 @@ factor rotation requires `GPArotation` package loaded
 
 ### Code Example
 
-- as with parallel analysis we can either feed the raw data into the function remembering to set `cor = "poly"` so the analysis is based on polychoric correlations
-- or we can feed in the correlation matrix and sample size
+-   as with parallel analysis we can either feed the raw data into the function remembering to set `cor = "poly"` so the analysis is based on polychoric correlations
+-   or we can feed in the correlation matrix and sample size
 
 ```{r}
 raq_fa <- psych::fa(raq_items_tib, 
@@ -307,96 +308,97 @@ raq_fa <- psych::fa(raq_items_tib,
   raq_fa 
 ```
 
-- factors are labeled `MR1`, `MR2`, `MR3`, and `MR4`
-- below the pattern matrix is information about how much variance each factor accounts for
-  - `Proportion var` - `MR1` accounts for 0.13 of the overall variance (13%), etc
-  - `Cumulative var` is the proportion of the variance explained cumulatively by the factors - `MR1` accounts for 0.13 and `MR1` + `MR2` together account for 0.13 + 0.10 = 0.23 (23%)
-    - all four together account for 0.40 (40%)
-  - `Proportion explained` is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to `MR1`
-- next, correlations between factors are displayed
-  - all are non-zero, indicating the factors are correlated (and oblique rotation was appropriate)
-  - all factors are positively and fairly strongly correlated to teach other meaning the latent constructs represented by the factors are related.
-- several fit indices that tell us how the model fits the data
-  - chi-square statistic for the model is given as the `likelihood chi square`, $X^2=267.21, p<0.001$
-    - we want this to be non-significant but ours is highly significant. Our sample size is 2571 so small deviations from a good fit will be significant. This highlights the limitation of using significance to indicate model fit.
-    - the Tucker Lewis Index of factoring reliability (TLI) is given as 0.991
-    - RMSEA is 0.015 90% CI[0.012, 0.019]
-    - RMSR is 0.01
+-   factors are labeled `MR1`, `MR2`, `MR3`, and `MR4`
+-   below the pattern matrix is information about how much variance each factor accounts for
+    -   `Proportion var` - `MR1` accounts for 0.13 of the overall variance (13%), etc
+    -   `Cumulative var` is the proportion of the variance explained cumulatively by the factors - `MR1` accounts for 0.13 and `MR1` + `MR2` together account for 0.13 + 0.10 = 0.23 (23%)
+        -   all four together account for 0.40 (40%)
+    -   `Proportion explained` is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to `MR1`
+-   next, correlations between factors are displayed
+    -   all are non-zero, indicating the factors are correlated (and oblique rotation was appropriate)
+    -   all factors are positively and fairly strongly correlated to teach other meaning the latent constructs represented by the factors are related.
+-   several fit indices that tell us how the model fits the data
+    -   chi-square statistic for the model is given as the `likelihood chi square`, $X^2=267.21, p<0.001$
+        -   we want this to be non-significant but ours is highly significant. Our sample size is 2571 so small deviations from a good fit will be significant. This highlights the limitation of using significance to indicate model fit.
+        -   the Tucker Lewis Index of factoring reliability (TLI) is given as 0.991
+        -   RMSEA is 0.015 90% CI\[0.012, 0.019\]
+        -   RMSR is 0.01
 
-::: {.callout-note}
+::: callout-note
 ## Fit Indices
+
 Good fit is (probably) indicated by
 
-- combination of TLI > 0.96, and SRMR (RMSR in the output) < 0.06
-- combination of RMSEA < 0.05 and SRMR < 0.09
+-   combination of TLI \> 0.96, and SRMR (RMSR in the output) \< 0.06
+-   combination of RMSEA \< 0.05 and SRMR \< 0.09
 
 The TLI is 0.99, which is greater than 0.96, and RMSR is 0.01 which is smaller than both 0.09 and 0.06. Furthermore, RMSEA is 0.015, which is less than 0.05. With the caveat that universal cut-offs need to be taken with a pinch of salt, it’s reasonable to conclude that the model has excellent fit.
 :::
 
 ### Interpreting FA
 
-- look at factor loadings (top of output in the pattern matrix) for each question on each factor to see which items load most heavily onto which factors
-- this is difficult to interpret in the raw form, so use `parameters::model_parameters()` to sort items by their factor loadings and suppress factor loading sbelow a certain value
+-   look at factor loadings (top of output in the pattern matrix) for each question on each factor to see which items load most heavily onto which factors
+-   this is difficult to interpret in the raw form, so use `parameters::model_parameters()` to sort items by their factor loadings and suppress factor loading sbelow a certain value
 
 General form
-```
+
+```         
 parameters::model_parameters(my_fa_object, sort = TRUE, threshold = "max")
 ```
 
-- `my_fa_object` is the factor analysis object containing the factor loadings.
-- `sort = "TRUE"` sorts items by their factor loadings
-- set `threshold` to a value above which we will show values. Default is  maximum loading. To see all factor loadings, set `threshold = NULL`
-
+-   `my_fa_object` is the factor analysis object containing the factor loadings.
+-   `sort = "TRUE"` sorts items by their factor loadings
+-   set `threshold` to a value above which we will show values. Default is maximum loading. To see all factor loadings, set `threshold = NULL`
 
 ```{r}
 parameters::model_parameters(raq_fa, sort = TRUE, threshold = "0.2") |>
   knitr::kable(digits = 2)
 ```
 
-- Now we can see patterns in the questions that load onto the same factors
-- Items that load highly on `MR1` seem to be items that relate to fear of computers
-  - raq_05: I don’t understand statistics (also loads highly onto `MR4`)
-  - raq_06: I have little experience of computers
-  - raq_07: All computers hate me
-  - raq_10: Computers are useful only for playing games
-  - raq_13: I worry that I will cause irreparable damage because of my incompetence with computers
-  - raq_14: Computers have minds of their own and deliberately go wrong whenever I use them
-  - raq_15: Computers are out to get me
-  - raq_18: R always crashes when I try to use it
-- Items that load onto `MR2` relate to fear of peer/social evaluation
-  - raq_02: My friends will think I’m stupid for not being able to cope with R
-  - raq_09: My friends are better at statistics than me
-  - raq_19: Everybody looks at me when I use R
-  - raq_22: My friends are better at R than I am
-  - raq_23: If I am good at statistics people will think I am a nerd
-- Questions that load onto `MR4` relate to fear of statistics
-  - raq_01: Statistics make me cry
-  - raq_03: Standard deviations excite me
-  - raq_04: I dream that Pearson is attacking me with correlation coefficients
-  - raq_05: I don’t understand statistics
-  - raq_12: People try to tell you that R makes statistics easier to understand but it doesn’t
-  - raq_16: I weep openly at the mention of central tendency
-  - raq_20: I can’t sleep for thoughts of eigenvectors
-  - raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution
-- questions that load onto `MR3` relate to fear of math
-  - raq_08: I have never been good at mathematics
-  - raq_11: I did badly at mathematics at school
-  - raq_17: I slip into a coma whenever I see an equation
+-   Now we can see patterns in the questions that load onto the same factors
+-   Items that load highly on `MR1` seem to be items that relate to fear of computers
+    -   raq_05: I don’t understand statistics (also loads highly onto `MR4`)
+    -   raq_06: I have little experience of computers
+    -   raq_07: All computers hate me
+    -   raq_10: Computers are useful only for playing games
+    -   raq_13: I worry that I will cause irreparable damage because of my incompetence with computers
+    -   raq_14: Computers have minds of their own and deliberately go wrong whenever I use them
+    -   raq_15: Computers are out to get me
+    -   raq_18: R always crashes when I try to use it
+-   Items that load onto `MR2` relate to fear of peer/social evaluation
+    -   raq_02: My friends will think I’m stupid for not being able to cope with R
+    -   raq_09: My friends are better at statistics than me
+    -   raq_19: Everybody looks at me when I use R
+    -   raq_22: My friends are better at R than I am
+    -   raq_23: If I am good at statistics people will think I am a nerd
+-   Questions that load onto `MR4` relate to fear of statistics
+    -   raq_01: Statistics make me cry
+    -   raq_03: Standard deviations excite me
+    -   raq_04: I dream that Pearson is attacking me with correlation coefficients
+    -   raq_05: I don’t understand statistics
+    -   raq_12: People try to tell you that R makes statistics easier to understand but it doesn’t
+    -   raq_16: I weep openly at the mention of central tendency
+    -   raq_20: I can’t sleep for thoughts of eigenvectors
+    -   raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution
+-   questions that load onto `MR3` relate to fear of math
+    -   raq_08: I have never been good at mathematics
+    -   raq_11: I did badly at mathematics at school
+    -   raq_17: I slip into a coma whenever I see an equation
 
 Analysis seems to reveal that the questionnaire is composed of four subscales: fear of statistics, fear of computers, fear of maths, fear of negative peer evaluation.
 
-- two possibilities:
-  - the RAQ failed to measure what it set out to measure -> R anxiety but instead measures related constructs
-  - these four constructs are subcomponents of R anxiety
-- However, the factor analysis does not indicate which of these is true.
+-   two possibilities:
+    -   the RAQ failed to measure what it set out to measure -\> R anxiety but instead measures related constructs
+    -   these four constructs are subcomponents of R anxiety
+-   However, the factor analysis does not indicate which of these is true.
 
 ## Reliability Analysis
 
 ### McDonald's $\omega_t$ and $\omega_h$
 
-- if  items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into `omega()` functions in the `psych` package
+-   if items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into `omega()` functions in the `psych` package
 
-```
+```         
 my_omg <- psych::omega(
     my_tibble
     nfactors = 1,
@@ -407,27 +409,30 @@ my_omg <- psych::omega(
   )
 ```
 
-  `my_omg`
-  : name to give the object that stores the results
+`my_omg`
 
-  `my_tibble`
-  : name of the tibble containing your data
+:   name to give the object that stores the results
+
+`my_tibble`
+
+:   name of the tibble containing your data
 
 ### Code Example
 
-  - need to recreate the original FA
-  - arguments will be the same as they were set for the fa
-  - the `key ` argument allows us to reverse item scoring on the fly
-  - supply the key argument with a vector of 1s and -1s that is the same length as the number of variables being fed into the `omega()` function
-  - for RAQ, we have 23 items with the third being reverse coded
-  - entering the items in order into `omega()` gives
-```
+-   need to recreate the original FA
+-   arguments will be the same as they were set for the fa
+-   the `key` argument allows us to reverse item scoring on the fly
+-   supply the key argument with a vector of 1s and -1s that is the same length as the number of variables being fed into the `omega()` function
+-   for RAQ, we have 23 items with the third being reverse coded
+-   entering the items in order into `omega()` gives
+
+```         
 key = c(1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 ```
 
 or
 
-```
+```         
 key = c(1, 1, -1, rep(1, 20))
 ```
 
@@ -441,56 +446,73 @@ raq_omg <- psych::omega(raq_items_tib,
 raq_omg
 ```
 
-- note the table of factor loadings and that `raq_03-` is labeled with a minus to indicate it is reverse coded
-- column labeled `g`shows the loading of each item on the general factor
-  - if any items load poorly, then a common factor model isn't appropriate
-  - all items here have a factor loading far enough from zero that a general factor model is appropriate
-- Columns F1-F4 show the loadings of each item on the four factors we extracted
-  - these values differ from the original factor analysis because this one includes a general factor
-  - the patterns of item loadings to factors follow the same pattern as the original FA
+-   note the table of factor loadings and that `raq_03-` is labeled with a minus to indicate it is reverse coded
 
-- at the top of the text output are reliability estimates for the general factor, including
-  - Chronbach's $\alpha=0.88$
-  - $\omega_h=0.68$
-  - $\omega_t=0.9$
+-   column labeled `g`shows the loading of each item on the general factor
 
-- $\omega_h$ is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor
-- further down in the output, we see that  only 48% of the variance in the common factor is explained by the items
-- $\omega_t$ is the total reliability and 0.90 is high, suggesting scores are reliable
+    -   if any items load poorly, then a common factor model isn't appropriate
+    -   all items here have a factor loading far enough from zero that a general factor model is appropriate
 
-- next are two sets of model fit stats
-- the first set are for the model that has four factors and repeat the nformation from the original EFA
-  - `chi-square` is significant, $X^2= 267.21, p<0.001$, which is a bad thing but unsurprising given the sample size
-  - `RMSR = 0.01`
-  - `RMSEA = 0.02 90% CI[0.01-0.02]`
-- Next is the same information but for the model that contains only the general factor and not the four sub-factors
-  - the fit gets worse as shown by 
-    - larger and more significant `chi-square, $X^2=6122.42, p<0.001$`
-    - larger `RMSR=0.10`
-    - larger `RMSEA=0.1090% CI[0.10, 0.10]`
-- all this tells us that the model that characterizes the RAQ in terms of four factors is a better fit of the data than a model that characterises it as a single factor
+-   Columns F1-F4 show the loadings of each item on the four factors we extracted
 
-- finally, under the Total, General, and Subset omega for each subset, we get the $\omega_t$ (labeled omega total) and $\omega_h$ (labeled omega general) for the general factor (column `g`) and for the subfactors.
-- values for the general factor repeat the information at tht e start of the output
-- the values for the subfactors are particularly relvant for $\omega_t$ because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales
-  - for anxiety related to computers (F1) we have $\omega_t=0.83$
-  - anxiety around peer or social evaluation (F2) $\omega_t=0.80
-  - anxiety around statistics (F3) $\omega_t=0.69$
-  - anxiety around maths (F4) $\omega_t=0.81$
-- scores from ach subscale are reliable, although somewhat less so for anxiety around statistics
+    -   these values differ from the original factor analysis because this one includes a general factor
+    -   the patterns of item loadings to factors follow the same pattern as the original FA
+
+-   at the top of the text output are reliability estimates for the general factor, including
+
+    -   Chronbach's $\alpha=0.88$
+    -   $\omega_h=0.68$
+    -   $\omega_t=0.9$
+
+-   $\omega_h$ is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor
+
+-   further down in the output, we see that only 48% of the variance in the common factor is explained by the items
+
+-   $\omega_t$ is the total reliability and 0.90 is high, suggesting scores are reliable
+
+-   next are two sets of model fit stats
+
+-   the first set are for the model that has four factors and repeat the nformation from the original EFA
+
+    -   `chi-square` is significant, $X^2= 267.21, p<0.001$, which is a bad thing but unsurprising given the sample size
+    -   `RMSR = 0.01`
+    -   `RMSEA = 0.02 90% CI[0.01-0.02]`
+
+-   Next is the same information but for the model that contains only the general factor and not the four sub-factors
+
+    -   the fit gets worse as shown by
+        -   larger and more significant `chi-square, $X^2=6122.42, p<0.001$`
+        -   larger `RMSR=0.10`
+        -   larger `RMSEA=0.1090% CI[0.10, 0.10]`
+
+-   all this tells us that the model that characterizes the RAQ in terms of four factors is a better fit of the data than a model that characterises it as a single factor
+
+-   finally, under the Total, General, and Subset omega for each subset, we get the $\omega_t$ (labeled omega total) and $\omega_h$ (labeled omega general) for the general factor (column `g`) and for the subfactors.
+
+-   values for the general factor repeat the information at tht e start of the output
+
+-   the values for the subfactors are particularly relvant for $\omega_t$ because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales
+
+    -   for anxiety related to computers (F1) we have $\omega_t=0.83$
+    -   anxiety around peer or social evaluation (F2) \$\omega\_t=0.80
+    -   anxiety around statistics (F3) $\omega_t=0.69$
+    -   anxiety around maths (F4) $\omega_t=0.81$
+
+-   scores from ach subscale are reliable, although somewhat less so for anxiety around statistics
 
 ## Cronbach's $\alpha$
 
-- Lots of reasons not to use Cronbach's $\alpha$ (see the book for details)
-- if Cronbach's $\alpha$ is needed, it must be computed on the individual subscales
-  - Anxiety related to computers: raq_06, raq_07, raq_10, raq_13, raq_14, raq_15 and raq_18
-  - Anxiety around peer or social evaluation: raq_02, raq_09, raq_19, raq_22, and raq_2
-  - Anxiety around statistics: raq_01, raq_03 (reverse scored), raq_04, raq_05, raq_12, raq_16, raq_20, and raq_21
-  - Anxiety around maths: raq_08, raq_11 and raq_17
-- pipe the variables for each subscale into `psych::alpha()` function
+-   Lots of reasons not to use Cronbach's $\alpha$ (see the book for details)
+-   if Cronbach's $\alpha$ is needed, it must be computed on the individual subscales
+    -   Anxiety related to computers: raq_06, raq_07, raq_10, raq_13, raq_14, raq_15 and raq_18
+    -   Anxiety around peer or social evaluation: raq_02, raq_09, raq_19, raq_22, and raq_2
+    -   Anxiety around statistics: raq_01, raq_03 (reverse scored), raq_04, raq_05, raq_12, raq_16, raq_20, and raq_21
+    -   Anxiety around maths: raq_08, raq_11 and raq_17
+-   pipe the variables for each subscale into `psych::alpha()` function
 
 ### Code example for `fear of computers`
-- example excludes `raq_05`, which makes more sense on the fear of statistics factor [[See github issue](https://github.com/profandyfield/discovr/issues/19)]
+
+-   example excludes `raq_05`, which makes more sense on the fear of statistics factor \[[See github issue](https://github.com/profandyfield/discovr/issues/19)\]
 
 ```{r}
 raq_tib |> 
@@ -498,23 +520,29 @@ raq_tib |>
   psych::alpha()
 ```
 
-- value at the top is Cronbach's $\alpha$, with the 95% CI below.
-- looking for between 0.70 and 0.80, in this case Cronbach's $\alpha$=0.77 [0.75, 0.78] indicating good reliability
+-   value at the top is Cronbach's $\alpha$, with the 95% CI below.
 
-- next is a table of statistics for the scale if we deleted each item in turn
-- the values in the column `raw_alpha` are the values of the overall $\alpha$ 
-- we are looking for a change in Cronbach's $\alpha$ (0.77)
-  - if values are greater than 0.77, then reliability would have improved if the item were removed -  not the case here
+-   looking for between 0.70 and 0.80, in this case Cronbach's $\alpha$=0.77 \[0.75, 0.78\] indicating good reliability
 
-- the table labeled `item statistics` shows, in `raw.r`, the correlations between each item and the total score from the scale - `item-total correlations`
-  - there is a problem with this statistic in that the item is included in the scale total, which inflates the overall correlation.
-  - we want these correlations to be computed without the item in question, and these values are in `r.drop`
-  - in a reliable scale all items should correlate with the total, so we're looking for items that don't correlate with the overall score from the subscale. If any values of `r.drop` are elss than 0.3, we have problems becasuse that means an item does not correlate well with the subscale
-    - 0.3 is 'reasonable' -  use your judgement
+-   next is a table of statistics for the scale if we deleted each item in turn
 
-- the final table tells us what percentage of people gave each response to each of the items, which is useful to make sure everyone in the sample is not giving the same response.
-  - usually, if everyone gives the same response, the item will have poor reliability statistics
-  - for this subscale, few people responded with a 1 on any of the items suggesting that no one is feeling the love for computers or that the items are doing a poor job of eliciting those extreme responses
+-   the values in the column `raw_alpha` are the values of the overall $\alpha$
+
+-   we are looking for a change in Cronbach's $\alpha$ (0.77)
+
+    -   if values are greater than 0.77, then reliability would have improved if the item were removed - not the case here
+
+-   the table labeled `item statistics` shows, in `raw.r`, the correlations between each item and the total score from the scale - `item-total correlations`
+
+    -   there is a problem with this statistic in that the item is included in the scale total, which inflates the overall correlation.
+    -   we want these correlations to be computed without the item in question, and these values are in `r.drop`
+    -   in a reliable scale all items should correlate with the total, so we're looking for items that don't correlate with the overall score from the subscale. If any values of `r.drop` are elss than 0.3, we have problems becasuse that means an item does not correlate well with the subscale
+        -   0.3 is 'reasonable' - use your judgement
+
+-   the final table tells us what percentage of people gave each response to each of the items, which is useful to make sure everyone in the sample is not giving the same response.
+
+    -   usually, if everyone gives the same response, the item will have poor reliability statistics
+    -   for this subscale, few people responded with a 1 on any of the items suggesting that no one is feeling the love for computers or that the items are doing a poor job of eliciting those extreme responses
 
 ### Code example for `fear of peer/social evaluation`
 
@@ -524,10 +552,10 @@ raq_tib |>
   psych::alpha()
 ```
 
-- good overall reliability ($\alpha=0.78 [o.77, 0.80]$)
-- no items improve the value if they are dropped
-- item correlations with the total are all good
-- again we have issues with the items not eliciting extremely low responses
+-   good overall reliability ($\alpha=0.78 [o.77, 0.80]$)
+-   no items improve the value if they are dropped
+-   item correlations with the total are all good
+-   again we have issues with the items not eliciting extremely low responses
 
 ### Code example for `fear of maths`
 
@@ -537,24 +565,25 @@ raq_tib |>
   psych::alpha()
 ```
 
-- fairly high reliability ($\alpha=0.77 [0.76, 0.79]$)
-- no items improve value if they are dropped
-- item correlations with the total subscale are all good
-- still issues with items not eliciting low responses
+-   fairly high reliability ($\alpha=0.77 [0.76, 0.79]$)
+-   no items improve value if they are dropped
+-   item correlations with the total subscale are all good
+-   still issues with items not eliciting low responses
 
 ### Code example for `fear of statistics`
 
-- the `fear of statistics` subscale contains `raq_3`, which is reverse scored so we need to include the `keys` argument within the function
-- note that in the `omega()` function, the argument is `key`, but in the `alpha()` function, the argument is `keys`
--  
+-   the `fear of statistics` subscale contains `raq_3`, which is reverse scored so we need to include the `keys` argument within the function
+-   note that in the `omega()` function, the argument is `key`, but in the `alpha()` function, the argument is `keys`
+-   
+
 ```{r}
 raq_tib |> 
   dplyr::select(raq_01, raq_03, raq_04, raq_05, raq_12, raq_16, raq_20, raq_21)  |> 
   psych::alpha(keys = c(1, -1, 1, 1, 1, 1, 1, 1))
 ```
 
-- note that `raq_03-` has a minus to indicate reverse scoring
-- acceptable overall reliability ($\alpha=0.71 [0.69, 0.72]$)
-- no items improve the value if they are dropped
-- item correlations with the total subscale are ok (0.27-0.49)
-- issue with items not eliciting extreme responses
+-   note that `raq_03-` has a minus to indicate reverse scoring
+-   acceptable overall reliability ($\alpha=0.71 [0.69, 0.72]$)
+-   no items improve the value if they are dropped
+-   item correlations with the total subscale are ok (0.27-0.49)
+-   issue with items not eliciting extreme responses
