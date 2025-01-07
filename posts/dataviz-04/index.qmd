@@ -84,8 +84,9 @@ In this module, we will build on the airquality data set introduced earlier. To 
 airquality$Month <- as.factor(airquality$Month)           # Convert Month to factor
 ```
 
-### Create a boxplot mapping the Month column to the x-axis and the Temp column to the y-axis. Save the plot as a data object named my_ggp3 and display the plot.
-
+:::{.callout} 
+Create a boxplot mapping the Month column to the x-axis and the Temp column to the y-axis. Save the plot as a data object named my_ggp3 and display the plot.
+:::
 ```{r}
 my_ggp3 <- ggplot(airquality,
   aes(x = Month,
@@ -94,8 +95,9 @@ my_ggp3 <- ggplot(airquality,
 my_ggp3
 ```
 
-### Enhance the plot stored in my_ggp3 by adding a jitter layer with a width of 0.1. Save the enhanced plot as my_ggp4 and display it.
-
+:::{.callout}
+Enhance the plot stored in my_ggp3 by adding a jitter layer with a width of 0.1. Save the enhanced plot as my_ggp4 and display it.
+:::
 ```{r}
 
 my_ggp4 <- my_ggp3 +                                      # Create new data object
@@ -106,7 +108,10 @@ my_ggp4
 
 
 
-### Modify the plot stored in my_ggp4 by applying the theme_classic(). Save the modified plot as my_ggp5 and display it.
+::: {.callout}
+Modify the plot stored in my_ggp4 by applying the theme_classic(). Save the modified plot as my_ggp5 and display it.
+
+:::
 
 ```{r}
 my_ggp5 <- my_ggp4 +

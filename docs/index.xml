@@ -302,8 +302,16 @@ font-style: inherit;">$</span>Month)           <span class="co" style="color: #5
 background-color: null;
 font-style: inherit;"># Convert Month to factor</span></span></code></pre></div>
 </div>
-<section id="create-a-boxplot-mapping-the-month-column-to-the-x-axis-and-the-temp-column-to-the-y-axis.-save-the-plot-as-a-data-object-named-my_ggp3-and-display-the-plot." class="level3">
-<h3 class="anchored" data-anchor-id="create-a-boxplot-mapping-the-month-column-to-the-x-axis-and-the-temp-column-to-the-y-axis.-save-the-plot-as-a-data-object-named-my_ggp3-and-display-the-plot.">Create a boxplot mapping the Month column to the x-axis and the Temp column to the y-axis. Save the plot as a data object named my_ggp3 and display the plot.</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Create a boxplot mapping the Month column to the x-axis and the Temp column to the y-axis. Save the plot as a data object named my_ggp3 and display the plot.</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">my_ggp3 <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -332,9 +340,16 @@ font-style: inherit;">geom_boxplot</span>()</span>
 </div>
 </div>
 </div>
-</section>
-<section id="enhance-the-plot-stored-in-my_ggp3-by-adding-a-jitter-layer-with-a-width-of-0.1.-save-the-enhanced-plot-as-my_ggp4-and-display-it." class="level3">
-<h3 class="anchored" data-anchor-id="enhance-the-plot-stored-in-my_ggp3-by-adding-a-jitter-layer-with-a-width-of-0.1.-save-the-enhanced-plot-as-my_ggp4-and-display-it.">Enhance the plot stored in my_ggp3 by adding a jitter layer with a width of 0.1. Save the enhanced plot as my_ggp4 and display it.</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Enhance the plot stored in my_ggp3 by adding a jitter layer with a width of 0.1. Save the enhanced plot as my_ggp4 and display it.</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">my_ggp4 <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -364,9 +379,16 @@ font-style: inherit;">"#1b98e0"</span>)</span>
 </div>
 </div>
 </div>
-</section>
-<section id="modify-the-plot-stored-in-my_ggp4-by-applying-the-theme_classic.-save-the-modified-plot-as-my_ggp5-and-display-it." class="level3">
-<h3 class="anchored" data-anchor-id="modify-the-plot-stored-in-my_ggp4-by-applying-the-theme_classic.-save-the-modified-plot-as-my_ggp5-and-display-it.">Modify the plot stored in my_ggp4 by applying the theme_classic(). Save the modified plot as my_ggp5 and display it.</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Modify the plot stored in my_ggp4 by applying the theme_classic(). Save the modified plot as my_ggp5 and display it.</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">my_ggp5 <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -387,7 +409,6 @@ font-style: inherit;">theme_classic</span>()</span>
 </div>
 
 
-</section>
 </section>
 
  ]]></description>
