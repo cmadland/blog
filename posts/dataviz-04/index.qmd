@@ -1,0 +1,115 @@
+---
+title: "layered plotting"
+author: "Colin Madland"
+date: "2025-01-06"
+categories: [ggplot2, tidyverse, statsglobe, R, layers]
+image: "ubumuntu.jpg"
+freeze: auto
+---
+
+[Data Visualization in R Using ggplot2 - Module 4](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
+```{r}
+library(ggplot2)
+data(ToothGrowth) 
+str(ToothGrowth)
+data(airquality)
+```
+
+```{r}
+data(ToothGrowth)                                         # Load example data
+ 
+ggplot(data = ToothGrowth,                                # Basic Boxplot
+       aes(x = supp,
+           y = len)) +
+  geom_boxplot()
+```
+
+Add a layer of data points to the boxplot layer.
+```{r}
+ggplot(data = ToothGrowth,                                # Overlay jittered points
+       aes(x = supp,
+           y = len)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2,
+              color = "#1b98e0")
+```
+
+```{r}
+my_ggp1 <- ggplot(data = ToothGrowth,                     # Save plot in data object
+                  aes(x = supp,
+                      y = len)) +
+  geom_boxplot()
+my_ggp1                                                   # Draw plot in data object
+```
+
+Add a layer to the plot object...
+
+```{r}
+my_ggp1 +                                                 # Add layer to data object
+  geom_jitter(width = 0.2,
+              color = "#1b98e0")
+```
+
+Save as new object...
+
+```{r}
+my_ggp2 <- my_ggp1 +                                      # Create new data object
+  geom_jitter(width = 0.2,
+              color = "#1b98e0")
+my_ggp2   
+```
+
+Adding different layer types
+
+```{r}
+my_ggp2 +                                                 # Different layer types
+  stat_summary(fun = mean, 
+               geom = "point", 
+               color = "red", 
+               size = 10,
+               shape = 18) +
+  annotate(geom = "text",
+           x = 1, 
+           y = 34,
+           label = "Plot with different layer types!",
+           size = 5) +
+  theme_void()
+```
+
+## Exercises
+
+In this module, we will build on the airquality data set introduced earlier. To prepare, we will install and load the ggplot2 package, convert the Month column to a factor class to use it as a categorical variable, and set a random seed for reproducibility.
+
+```{r}
+airquality$Month <- as.factor(airquality$Month)           # Convert Month to factor
+```
+
+### Create a boxplot mapping the Month column to the x-axis and the Temp column to the y-axis. Save the plot as a data object named my_ggp3 and display the plot.
+
+```{r}
+my_ggp3 <- ggplot(airquality,
+  aes(x = Month,
+      y = Temp)) +
+    geom_boxplot()
+my_ggp3
+```
+
+### Enhance the plot stored in my_ggp3 by adding a jitter layer with a width of 0.1. Save the enhanced plot as my_ggp4 and display it.
+
+```{r}
+
+my_ggp4 <- my_ggp3 +                                      # Create new data object
+  geom_jitter(width = 0.1,
+              color = "#1b98e0")
+my_ggp4
+```
+
+
+
+### Modify the plot stored in my_ggp4 by applying the theme_classic(). Save the modified plot as my_ggp5 and display it.
+
+```{r}
+my_ggp5 <- my_ggp4 +
+  theme_classic()
+my_ggp5
+```
