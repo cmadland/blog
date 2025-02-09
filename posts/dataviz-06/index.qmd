@@ -1,0 +1,152 @@
+---
+title: "Colo(u)rs & Themes"
+author: "Colin Madland"
+date: "2025-02-08"
+categories: [ggplot2, tidyverse, statsglobe, R, colour]
+image: "cold-lake.jpg"
+freeze: false
+---
+
+[Data Visualization in R Using ggplot2 - Module 6](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
+
+```{r}
+library(ggplot2)  
+library(tidyverse)                       # Install & load ggthemes
+library(ggthemes)
+```
+
+```{r}
+my_data <- data.frame(x = 1:100,                          # Create example data
+                      y = c(cumsum(rnorm(100, 0, 0.5)),
+                            cumsum(rnorm(100, 0.1, 0.6)),
+                            cumsum(rnorm(100, 0.3, 0.2)),
+                            cumsum(rnorm(100, 0.2, 0.8)),
+                            cumsum(rnorm(100, 0.2, 1.5))),
+                      group = rep(LETTERS[1:5], each = 100))
+```
+
+```{r}
+view(my_data)
+```
+
+```{r}
+ggplot(data = my_data,                                    # Plot without color
+       aes(x = x,
+           y = y,
+           group = group)) +
+  geom_line(linewidth = 2)
+```
+
+```{r}
+my_ggp1 <- ggplot(data = my_data,                         # Default colors
+                  aes(x = x,
+                      y = y,
+                      color = group)) +
+  geom_line(linewidth = 2)
+my_ggp1
+```
+
+```{r}
+my_ggp1 +                                                 # Change colors
+  scale_color_manual(values = c("A" = "orange", 
+                                "B" = "dodgerblue", 
+                                "C" = "#009E73", 
+                                "D" = "#F0E442", 
+                                "E" = "#D55E00"))
+```
+
+```{r}
+my_ggp1 +                                                 # Discrete color palettes
+  scale_color_brewer(palette = "Set1")
+ 
+my_ggp1 +
+  scale_color_brewer(palette = "Set2")
+ 
+my_ggp1 +
+  scale_color_brewer(palette = "Set3")
+```
+
+```{r}
+my_ggp2 <- ggplot(data = my_data,                         # Default scatter plot
+                  aes(x = x,
+                      y = y,
+                      color = x)) +
+  geom_point(size = 3)
+my_ggp2 
+```
+
+```{r}
+my_ggp2 +                                                 # Continuous color palettes
+  scale_color_viridis_c(option = "A")
+ 
+my_ggp2 +
+  scale_color_viridis_c(option = "D")
+ 
+my_ggp2 +
+  scale_color_viridis_c(option = "E")
+```
+
+```{r}
+my_ggp2 +                                                 # Custom color ranges
+  scale_color_gradientn(colors = c("#009E73", 
+                                   "#D55E00"))
+ 
+my_ggp2 +
+  scale_color_gradientn(colors = c("#009E73", 
+                                   "#F0E442", 
+                                   "#D55E00"))
+```
+
+```{r}
+my_ggp2 +                                                 # Change theme colors
+  theme(panel.background = element_rect(fill = "lightgray"), # Panel background
+        plot.background = element_rect(fill = "aliceblue"))  # Plot background
+```
+
+```{r}
+my_ggp2 +                                                 # Border color
+  theme(plot.background = element_rect(color = "deepskyblue3",
+                                       linewidth = 5))
+```
+
+```{r}
+my_ggp2 +                                                 # ggplot2 themes
+  theme_bw()
+ 
+my_ggp2 +
+  theme_void()
+ 
+my_ggp2 +
+  theme_dark()
+```
+
+```{r}
+my_ggp2 +                                                 # Themes by ggthemes
+  theme_calc()
+ 
+my_ggp2 +
+  theme_gdocs()
+ 
+my_ggp2 +
+  theme_economist()
+
+```
+
+Exercises
+In this module, we will work with the CO2 data set, which contains measurements of carbon dioxide uptake in grass plants under different conditions. To prepare, we will install and load the ggplot2 package and load the CO2 data set. This data set provides both numeric and categorical variables, making it ideal for exploring different colors and themes.
+
+```{r}
+data(CO2)             # Load example data
+```
+
+
+
+Now, let’s move on to the exercises for this module:
+
+- Create a bar plot mapping Plant to the x-axis and uptake to the y-axis, using the fill aesthetic to assign default colors for each plant. Save the plot as my_ggp1 and display it.
+- Modify the bar plot my_ggp1 by changing the fill colors manually using scale_fill_manual(). Note that, in contrast to the lecture script, we use scale_fill_manual() instead of scale_color_manual() as we are now using the fill argument within the aes() function. Assign “orange” to Qn1 and “red” to Mn1.
+- Apply a discrete color palette using scale_fill_brewer() with the palette Set3.
+- Create a scatter plot mapping conc to the x-axis and uptake to the y-axis, using color to represent conc. Save the plot as my_ggp2 and display it.
+- Modify the scatter plot my_ggp2 by applying a continuous color palette using scale_color_viridis_c() with the option C.
+- Enhance the scatter plot my_ggp2 by applying the theme_bw() theme.
+- Install and load the ggthemes package, then apply the theme_economist() to my_ggp2.
