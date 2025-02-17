@@ -1,0 +1,81 @@
+--- 
+title: "Development Indicators by Continent"
+author: "Gapminder Analytics Group"
+format: dashboard
+scrolling: true
+draft: true
+--- 
+
+```{r}
+library(ggplot2)  
+library(tidyverse)                       # Install & load ggthemes
+library(ggthemes)
+```
+
+```{r}
+my_data <- data.frame(x = 1:100,                          # Create example data
+                      y = c(cumsum(rnorm(100, 0, 0.5)),
+                            cumsum(rnorm(100, 0.1, 0.6)),
+                            cumsum(rnorm(100, 0.3, 0.2)),
+                            cumsum(rnorm(100, 0.2, 0.8)),
+                            cumsum(rnorm(100, 0.2, 1.5))),
+                      group = rep(LETTERS[1:5], each = 100))
+```
+
+
+## Row {height=60%}
+
+```{r}
+#| title: GDP and Life Expectancy
+ggplot(data = my_data,                                    # Plot without color
+       aes(x = x,
+           y = y,
+           group = group)) +
+  geom_line(linewidth = 2)
+```
+
+## Row {height=20%}
+
+
+
+```{r}
+#| title: GDP and Life Expectancy 2
+my_ggp1 <- ggplot(data = my_data,                         # Default colors
+                  aes(x = x,
+                      y = y,
+                      color = group)) +
+  geom_line(linewidth = 2)
+my_ggp1
+```
+
+```{r}
+#| title: GDP and Life Expectancy 3
+my_ggp1 +                                                 # Change colors
+  scale_color_manual(values = c("A" = "orange", 
+                                "B" = "dodgerblue", 
+                                "C" = "#009E73", 
+                                "D" = "#F0E442", 
+                                "E" = "#D55E00"))
+```
+
+## Row {height=20%}
+
+```{r}
+#| title: GDP and Life Expectancy 2
+my_ggp1 <- ggplot(data = my_data,                         # Default colors
+                  aes(x = x,
+                      y = y,
+                      color = group)) +
+  geom_line(linewidth = 2)
+my_ggp1
+```
+
+```{r}
+#| title: GDP and Life Expectancy 3
+my_ggp1 +                                                 # Change colors
+  scale_color_manual(values = c("A" = "orange", 
+                                "B" = "dodgerblue", 
+                                "C" = "#009E73", 
+                                "D" = "#F0E442", 
+                                "E" = "#D55E00"))
+```
