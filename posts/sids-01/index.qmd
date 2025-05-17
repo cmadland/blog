@@ -1,0 +1,45 @@
+---
+title: "SIDS Ch 1"
+author: "Colin Madland"
+date: "2025-05-216"
+categories: [tidyverse, R]
+image: ""
+freeze: auto
+---
+
+::: {.callout}
+
+Ismay, C., Kim, A. Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546
+:::
+
+```{r}
+library(dplyr)
+library(nycflights23)
+library(knitr)
+library(ggplot2)
+```
+
+```{r}
+flights
+```
+
+```{r}
+glimpse(flights)
+```
+
+```{r}
+airlines
+kable(airlines)
+```
+
+```{r}
+airlines$name
+```
+
+```{r}
+glimpse(airports)
+```
+
+```{r}
+?flights
+```
