@@ -10,7 +10,7 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.6.8</generator>
-<lastBuildDate>Invalid Date</lastBuildDate>
+<lastBuildDate>Fri, 16 May 2025 07:00:00 GMT</lastBuildDate>
 <item>
   <title>SIDS Ch 1</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -241,8 +241,8 @@ $ tzone &lt;chr&gt; "America/New_York", "America/Chicago", "America/New_York", "
   <category>tidyverse</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/sids-01/</guid>
-  <pubDate>Invalid Date</pubDate>
-  <media:content url="https://cmadland.github.io/blog/posts/sids-01" medium="image"/>
+  <pubDate>Fri, 16 May 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/sids-01/sunrise.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Colo(u)rs &amp; Themes</title>

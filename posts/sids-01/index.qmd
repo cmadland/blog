@@ -1,9 +1,9 @@
 ---
 title: "SIDS Ch 1"
 author: "Colin Madland"
-date: "2025-05-216"
+date: "2025-05-16"
 categories: [tidyverse, R]
-image: ""
+image: "sunrise.jpg"
 freeze: auto
 ---
 
