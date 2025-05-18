@@ -9,7 +9,7 @@ freeze: auto
 
 ::: {.callout}
 
-Ismay, C., Kim, A. Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546
+Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)](https://moderndive.com/v2/). Chapman and Hall/CRC. 
 :::
 
 ```{r}

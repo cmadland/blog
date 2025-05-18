@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546</p>
+<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)</a>. Chapman and Hall/CRC.</p>
 </div>
 </div>
 </div>
@@ -501,6 +501,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // default icon
+          link.classList.add("external");
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

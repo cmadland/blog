@@ -9,7 +9,7 @@ freeze: auto
 
 ::: {.callout}
 
-Ismay, C., Kim, A. Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546
+Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)](https://moderndive.com/v2/). Chapman and Hall/CRC. 
 :::
 
 
@@ -29,7 +29,7 @@ library(tibble)
 
 ### Other components
 
-- faceting breaks up a plot into several plots split by the values of another variable (Section 2.6)
+- `facet`  to break up a plot into several plots split by the values of another variable (Section 2.6)
 - position adjustments for barplots (Section 2.8)
 
 ### Five Named graphs - 5NG
@@ -127,3 +127,86 @@ ggplot(data = weather, mapping = aes(x = wind_speed)) +
   geom_histogram(binwidth = 5, color = "white") +
   facet_wrap(~ month)
 ```
+
+#### Boxplots
+
+Display the distribution of data and include five numbers to summarize the data:
+
+- minimum
+- first quartile (25th percentile)
+- median (2nd quartile, 50th percentile)
+- third quartile (75th percentile)
+- maximum
+- also shows the IQR (middle 50%)
+  - whiskers extend no more than 1.5 IQR units beyond 25th and 75 percentile.
+  - points beyond 1.5 IQR units may be considered outliers.
+
+
+
+```{r}
+ggplot(data = weather, mapping = aes(x = month, y = wind_speed)) +
+  geom_boxplot()
+```
+
+::: {.callout-note}
+Returns an invalid plot and a warning.
+:::
+
+```{r}
+ggplot(data = weather, mapping = aes(x = month, y = wind_speed, group = month)) +
+  geom_boxplot() 
+```
+OR
+
+- represent months as factors and use `geom(violin)` for a more detailed plot.
+
+```{r}
+ggplot(data = weather, mapping = aes(x = factor(month), y = wind_speed)) +
+  geom_violin()
+```
+
+#### Barplots
+
+Simpler representation of the distribution known as `frequencxies`
+- depends on whether the items are counted or not.
+
+```{r}
+fruits <- tibble(fruit = c("apple", "apple", "orange", "apple", "orange"))
+fruits_counted <- tibble(
+  fruit = c("apple", "orange"),
+  number = c(3, 2))
+```
+
+```{r}
+ggplot(data = fruits, mapping = aes(x = fruit)) +
+  geom_bar()
+```
+
+```{r}
+ggplot(data = fruits_counted, mapping = aes(x = fruit)) +
+  geom_bar()
+```
+
+```{r}
+ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
+  geom_col()
+```
+
+- when items are not counted, use `geom_bar()` with `fruit` mapped to the x `aes`
+- when items are counted, we add `number` to the y `aes` and use `geom_col()`
+
+```{r}
+ggplot(flights,  aes(x = carrier)) +
+  geom_bar()
+```
+
+- `geom_histogram()` has bars that touch, but `geom_bar()` has bars with white space between
+
+```{r}
+View(airlines)
+```
+
+::: {.callout-important}
+[The best pie-chart is a bar-chart.](https://moderndive.com/v2/viz.html#must-avoid-pie-charts)
+:::
+

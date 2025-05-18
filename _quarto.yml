@@ -21,6 +21,7 @@ website:
   draft-mode: unlinked
 format:
   html:
+    link-external-icon: true
     theme: flatly
     css: styles.css
   # pdf: default

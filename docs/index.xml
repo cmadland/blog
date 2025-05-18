@@ -27,7 +27,7 @@
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546</p>
+<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)</a>. Chapman and Hall/CRC.</p>
 </div>
 </div>
 </div>
@@ -260,7 +260,7 @@ $ tzone &lt;chr&gt; "America/New_York", "America/Chicago", "America/New_York", "
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546</p>
+<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)</a>. Chapman and Hall/CRC.</p>
 </div>
 </div>
 </div>
@@ -288,7 +288,7 @@ font-style: inherit;">library</span>(tibble)</span></code></pre></div>
 <section id="other-components" class="level3">
 <h3 class="anchored" data-anchor-id="other-components">Other components</h3>
 <ul>
-<li>faceting breaks up a plot into several plots split by the values of another variable (Section 2.6)</li>
+<li><code>facet</code> to break up a plot into several plots split by the values of another variable (Section 2.6)</li>
 <li>position adjustments for barplots (Section 2.8)</li>
 </ul>
 </section>
@@ -689,6 +689,311 @@ font-style: inherit;">~</span> month)</span></code></pre></div>
 <p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+</section>
+<section id="boxplots" class="level4">
+<h4 class="anchored" data-anchor-id="boxplots">Boxplots</h4>
+<p>Display the distribution of data and include five numbers to summarize the data:</p>
+<ul>
+<li>minimum</li>
+<li>first quartile (25th percentile)</li>
+<li>median (2nd quartile, 50th percentile)</li>
+<li>third quartile (75th percentile)</li>
+<li>maximum</li>
+<li>also shows the IQR (middle 50%)
+<ul>
+<li>whiskers extend no more than 1.5 IQR units beyond 25th and 75 percentile.</li>
+<li>points beyond 1.5 IQR units may be considered outliers.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> month, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb25-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Continuous x aesthetic
+ℹ did you forget `aes(group = ...)`?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Returns an invalid plot and a warning.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> month, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> wind_speed, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">group =</span> month)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb28-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_boxplot</span>() </span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>OR</p>
+<ul>
+<li>represent months as factors and use <code>geom(violin)</code> for a more detailed plot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">factor</span>(month), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb30-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_violin</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_ydensity()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="barplots" class="level4">
+<h4 class="anchored" data-anchor-id="barplots">Barplots</h4>
+<p>Simpler representation of the distribution known as <code>frequencxies</code> - depends on whether the items are counted or not.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">fruits <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fruit =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"orange"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"orange"</span>))</span>
+<span id="cb32-2">fruits_counted <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb32-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fruit =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"orange"</span>),</span>
+<span id="cb32-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">number =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> fruits, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> fruit)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb33-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> fruits_counted, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> fruit)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb34-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> fruits_counted, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> fruit, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> number)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb35-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>when items are not counted, use <code>geom_bar()</code> with <code>fruit</code> mapped to the x <code>aes</code></li>
+<li>when items are counted, we add <code>number</code> to the y <code>aes</code> and use <code>geom_col()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(flights,  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> carrier)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb36-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><code>geom_histogram()</code> has bars that touch, but <code>geom_bar()</code> has bars with white space between</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">View</span>(airlines)</span></code></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://moderndive.com/v2/viz.html#must-avoid-pie-charts">The best pie-chart is a bar-chart.</a></p>
 </div>
 </div>
 

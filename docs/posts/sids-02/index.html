@@ -200,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546</p>
+<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). <a href="https://moderndive.com/v2/">Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)</a>. Chapman and Hall/CRC.</p>
 </div>
 </div>
 </div>
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="other-components" class="level3">
 <h3 class="anchored" data-anchor-id="other-components">Other components</h3>
 <ul>
-<li>faceting breaks up a plot into several plots split by the values of another variable (Section 2.6)</li>
+<li><code>facet</code> to break up a plot into several plots split by the values of another variable (Section 2.6)</li>
 <li>position adjustments for barplots (Section 2.8)</li>
 </ul>
 </section>
@@ -433,6 +433,165 @@ $ time_hour  &lt;dttm&gt; 2023-01-01 00:00:00, 2023-01-01 01:00:00, 2023-01-01 0
 </div>
 </div>
 </div>
+</section>
+<section id="boxplots" class="level4">
+<h4 class="anchored" data-anchor-id="boxplots">Boxplots</h4>
+<p>Display the distribution of data and include five numbers to summarize the data:</p>
+<ul>
+<li>minimum</li>
+<li>first quartile (25th percentile)</li>
+<li>median (2nd quartile, 50th percentile)</li>
+<li>third quartile (75th percentile)</li>
+<li>maximum</li>
+<li>also shows the IQR (middle 50%)
+<ul>
+<li>whiskers extend no more than 1.5 IQR units beyond 25th and 75 percentile.</li>
+<li>points beyond 1.5 IQR units may be considered outliers.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> wind_speed)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Continuous x aesthetic
+ℹ did you forget `aes(group = ...)`?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Returns an invalid plot and a warning.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> wind_speed, <span class="at">group =</span> month)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>OR</p>
+<ul>
+<li>represent months as factors and use <code>geom(violin)</code> for a more detailed plot.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> weather, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(month), <span class="at">y =</span> wind_speed)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_ydensity()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="barplots" class="level4">
+<h4 class="anchored" data-anchor-id="barplots">Barplots</h4>
+<p>Simpler representation of the distribution known as <code>frequencxies</code> - depends on whether the items are counted or not.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">fruit =</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>, <span class="st">"apple"</span>, <span class="st">"orange"</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>fruits_counted <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fruit =</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"orange"</span>),</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">number =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fruits, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fruit)) <span class="sc">+</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fruits_counted, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fruit)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fruits_counted, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> fruit, <span class="at">y =</span> number)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>when items are not counted, use <code>geom_bar()</code> with <code>fruit</code> mapped to the x <code>aes</code></li>
+<li>when items are counted, we add <code>number</code> to the y <code>aes</code> and use <code>geom_col()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(flights,  <span class="fu">aes</span>(<span class="at">x =</span> carrier)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><code>geom_histogram()</code> has bars that touch, but <code>geom_bar()</code> has bars with white space between</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(airlines)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://moderndive.com/v2/viz.html#must-avoid-pie-charts">The best pie-chart is a bar-chart.</a></p>
+</div>
+</div>
 
 
 </section>
@@ -546,6 +705,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // default icon
+          link.classList.add("external");
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
