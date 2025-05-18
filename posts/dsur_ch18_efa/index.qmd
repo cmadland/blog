@@ -6,7 +6,7 @@ categories: [EFA, dsur, dsus, R]
 editor: visual
 image: "ellie-snow.jpeg"
 bibliography: references.bib
-freeze: auto
+
 ---
 
 ```{r}

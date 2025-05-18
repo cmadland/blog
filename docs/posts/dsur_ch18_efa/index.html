@@ -251,9 +251,9 @@ window.Quarto = {
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -2094,36 +2094,36 @@ Omega H asymptotic:    0.75
 Omega Total            0.9 
 
 Schmid Leiman Factor loadings greater than  0.2 
-           g   F1*   F2*   F3*   F4*   h2   u2   p2
-raq_01  0.32              0.26       0.17 0.83 0.57
-raq_02  0.37        0.43             0.38 0.62 0.37
-raq_03- 0.34              0.29       0.20 0.80 0.56
-raq_04  0.43              0.38       0.33 0.67 0.56
-raq_05  0.62  0.32        0.27       0.54 0.46 0.70
-raq_06  0.61  0.60                   0.73 0.27 0.51
-raq_07  0.44  0.39                   0.35 0.65 0.54
-raq_08  0.62                    0.61 0.75 0.25 0.51
-raq_09  0.32        0.73             0.62 0.38 0.17
-raq_10  0.37  0.35                   0.26 0.74 0.53
-raq_11  0.54                    0.50 0.55 0.45 0.54
-raq_12  0.22              0.25       0.11 0.89 0.44
-raq_13  0.42  0.40                   0.34 0.66 0.51
-raq_14  0.36  0.30                   0.22 0.78 0.59
-raq_15  0.41  0.34                   0.29 0.71 0.59
-raq_16  0.34              0.34       0.23 0.77 0.49
-raq_17  0.52                    0.47 0.49 0.51 0.55
-raq_18  0.48  0.44                   0.43 0.57 0.54
-raq_19  0.43        0.51             0.50 0.50 0.37
-raq_20  0.43              0.36       0.32 0.68 0.58
-raq_21  0.49              0.40       0.40 0.60 0.59
-raq_22  0.41        0.46             0.41 0.59 0.41
-raq_23  0.30        0.71             0.59 0.41 0.15
+           g   F1*   F2*   F3*   F4*    h2   h2   u2   p2  com
+raq_01  0.32              0.26             0.17 0.83 0.57 1.99
+raq_02  0.37        0.43              0.38 0.38 0.62 0.37 2.34
+raq_03- 0.34              0.29        0.20 0.20 0.80 0.56 1.97
+raq_04  0.43              0.38        0.33 0.33 0.67 0.56 1.98
+raq_05  0.62  0.32        0.27        0.54 0.54 0.46 0.70 1.90
+raq_06  0.61  0.60                    0.73 0.73 0.27 0.51 2.00
+raq_07  0.44  0.39                    0.35 0.35 0.65 0.54 2.00
+raq_08  0.62                    0.61  0.75 0.75 0.25 0.51 2.00
+raq_09  0.32        0.73              0.62 0.62 0.38 0.17 1.39
+raq_10  0.37  0.35                    0.26 0.26 0.74 0.53 2.07
+raq_11  0.54                    0.50  0.55 0.55 0.45 0.54 1.99
+raq_12  0.22              0.25             0.11 0.89 0.44 2.05
+raq_13  0.42  0.40                    0.34 0.34 0.66 0.51 2.02
+raq_14  0.36  0.30                    0.22 0.22 0.78 0.59 1.98
+raq_15  0.41  0.34                    0.29 0.29 0.71 0.59 1.97
+raq_16  0.34              0.34        0.23 0.23 0.77 0.49 2.02
+raq_17  0.52                    0.47  0.49 0.49 0.51 0.55 1.99
+raq_18  0.48  0.44                    0.43 0.43 0.57 0.54 2.02
+raq_19  0.43        0.51              0.50 0.50 0.50 0.37 2.23
+raq_20  0.43              0.36        0.32 0.32 0.68 0.58 1.95
+raq_21  0.49              0.40        0.40 0.40 0.60 0.59 1.97
+raq_22  0.41        0.46              0.41 0.41 0.59 0.41 2.16
+raq_23  0.30        0.71              0.59 0.59 0.41 0.15 1.35
 
 With Sums of squares  of:
-   g  F1*  F2*  F3*  F4* 
-4.40 1.39 1.71 0.85 0.86 
+   g  F1*  F2*  F3*  F4*   h2 
+4.40 1.39 1.71 0.85 0.86 4.37 
 
-general/max  2.58   max/min =   2.01
+general/max  1.01   max/min =   5.15
 mean percent general =  0.49    with sd =  0.13 and cv of  0.26 
 Explained Common Variance of the general factor =  0.48 
 
@@ -2131,7 +2131,7 @@ The degrees of freedom are 167  and the fit is  0.1
 The number of observations was  2571  with Chi Square =  267.21  with prob &lt;  1.3e-06
 The root mean square of the residuals is  0.01 
 The df corrected root mean square of the residuals is  0.02
-RMSEA index =  0.015  and the 10 % confidence intervals are  0.012 0.019
+RMSEA index =  0.015  and the 90 % confidence intervals are  0.012 0.019
 BIC =  -1044.08
 
 Compare this with the adequacy of just a general factor and no group factors
@@ -2140,7 +2140,7 @@ The number of observations was  2571  with Chi Square =  6122.42  with prob &lt;
 The root mean square of the residuals is  0.1 
 The df corrected root mean square of the residuals is  0.11 
 
-RMSEA index =  0.1  and the 10 % confidence intervals are  0.098 0.102
+RMSEA index =  0.1  and the 90 % confidence intervals are  0.098 0.102
 BIC =  4316.45 
 
 Measures of factor score adequacy             
@@ -2415,7 +2415,7 @@ Call: psych::alpha(x = dplyr::select(raq_tib, raq_01, raq_03, raq_04,
     1, 1, 1, 1, 1, 1))
 
   raw_alpha std.alpha G6(smc) average_r S/N    ase mean   sd median_r
-      0.71      0.54    0.56      0.13 1.2 0.0087  3.4 0.57      0.2
+      0.71      0.71    0.68      0.23 2.4 0.0087  3.4 0.57     0.22
 
     95% confidence boundaries 
          lower alpha upper
@@ -2423,26 +2423,26 @@ Feldt     0.69  0.71  0.72
 Duhachek  0.69  0.71  0.72
 
  Reliability if an item is dropped:
-        raw_alpha std.alpha G6(smc) average_r  S/N alpha se  var.r med.r
-raq_01       0.69      0.49    0.52      0.12 0.95   0.0092 0.0520  0.20
-raq_03-      0.69      0.69    0.66      0.24 2.19   0.0094 0.0051  0.23
-raq_04       0.67      0.44    0.48      0.10 0.79   0.0100 0.0461  0.18
-raq_05       0.66      0.44    0.47      0.10 0.78   0.0102 0.0421  0.18
-raq_12       0.71      0.51    0.54      0.13 1.04   0.0088 0.0542  0.23
-raq_16       0.68      0.48    0.51      0.11 0.91   0.0095 0.0496  0.20
-raq_20       0.67      0.46    0.49      0.11 0.84   0.0099 0.0447  0.19
-raq_21       0.66      0.44    0.47      0.10 0.78   0.0103 0.0415  0.19
+        raw_alpha std.alpha G6(smc) average_r S/N alpha se  var.r med.r
+raq_01       0.69      0.69    0.67      0.24 2.2   0.0092 0.0050  0.24
+raq_03-      0.69      0.69    0.66      0.24 2.2   0.0094 0.0051  0.23
+raq_04       0.67      0.67    0.64      0.22 2.0   0.0100 0.0046  0.22
+raq_05       0.66      0.66    0.63      0.22 1.9   0.0102 0.0035  0.21
+raq_12       0.71      0.71    0.68      0.26 2.4   0.0088 0.0032  0.24
+raq_16       0.68      0.68    0.66      0.24 2.2   0.0095 0.0051  0.22
+raq_20       0.67      0.67    0.64      0.22 2.0   0.0099 0.0037  0.22
+raq_21       0.66      0.66    0.63      0.22 1.9   0.0103 0.0032  0.21
 
  Item statistics 
            n raw.r std.r r.cor r.drop mean   sd
 raq_01  2571  0.52  0.52  0.39   0.33  3.5 0.99
-raq_03- 2571  0.54 -0.12 -0.46   0.36  2.5 0.99
-raq_04  2571  0.61  0.62  0.56   0.45  3.5 0.99
-raq_05  2571  0.64  0.62  0.58   0.48  3.5 1.00
-raq_12  2571  0.46  0.47  0.31   0.27  3.5 0.98
+raq_03- 2571  0.54  0.54  0.42   0.36  2.5 0.99
+raq_04  2571  0.61  0.61  0.53   0.45  3.5 0.99
+raq_05  2571  0.64  0.64  0.58   0.48  3.5 1.00
+raq_12  2571  0.46  0.46  0.32   0.27  3.5 0.98
 raq_16  2571  0.55  0.55  0.44   0.37  3.5 0.98
-raq_20  2571  0.61  0.59  0.52   0.44  3.5 1.00
-raq_21  2571  0.64  0.63  0.58   0.49  3.5 0.98
+raq_20  2571  0.61  0.60  0.52   0.44  3.5 1.00
+raq_21  2571  0.64  0.65  0.58   0.49  3.5 0.98
 
 Non missing response frequency for each item
           1    2    3    4    5 miss

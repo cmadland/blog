@@ -4,7 +4,7 @@ author: "Colin Madland"
 date: "2025-01-06"
 categories: [ggplot2, tidyverse, statsglobe, R, layers]
 image: "ubumuntu.jpg"
-freeze: auto
+
 ---
 
 [Data Visualization in R Using ggplot2 - Module 4](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)

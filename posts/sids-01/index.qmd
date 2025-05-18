@@ -4,7 +4,7 @@ author: "Colin Madland"
 date: "2025-05-16"
 categories: [tidyverse, R]
 image: "sunrise.jpg"
-freeze: auto
+
 ---
 
 ::: {.callout}

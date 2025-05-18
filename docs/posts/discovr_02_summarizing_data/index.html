@@ -205,9 +205,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -780,9 +780,13 @@ Missing Values
 <span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">include_factors =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ci =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Variable   |  Mean |   SD | IQR |          Range | Skewness | Kurtosis |       n | n_Missing
---------------------------------------------------------------------------------------------
-upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43 | 2323000 |         0</code></pre>
+<pre><code>Variable   |  Mean |   SD | IQR |          Range | Skewness | Kurtosis
+----------------------------------------------------------------------
+upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43
+
+Variable   |       n | n_Missing
+--------------------------------
+upload_day | 2323000 |         0</code></pre>
 </div>
 </div>
 

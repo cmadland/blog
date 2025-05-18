@@ -11,7 +11,7 @@ bibliography: ../../references.bib
 csl: ../../apa.csl
 logo: otessa-logo-CS6.png
 footer: "Special thanks to BCcampus" 
-freeze: auto
+
 ---
 
 ## Evolving our understanding of technology-integrated assessment: A review of the literature and development of a new framework

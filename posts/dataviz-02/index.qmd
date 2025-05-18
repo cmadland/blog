@@ -4,7 +4,7 @@ author: "Colin Madland"
 date: "2025-01-02"
 categories: [ggplot2, tidyverse, statsglobe, R, grammar]
 image: "bouganvillea.jpg"
-freeze: auto
+
 ---
 
 [Data Visualization in R Using ggplot2 - Module 2](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
