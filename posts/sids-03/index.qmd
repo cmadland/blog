@@ -17,261 +17,44 @@ Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [Statistical Inference via Data Sc
 ```{r}
 library(nycflights23)
 library(ggplot2)
-library(moderndive)
-library(tibble)
 library(viridis)
 library(dplyr)
 ```
 
-## 3 components of the Grammar or Graphiics
+## Wrangling data
 
-- `data`: the dataset containing the variables of interest.
-- `geom`: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.
-- `aes`: aesthetic attributes of the geometric object. For example, x/y position, color, shape, and size. Aesthetic attributes are mapped to variables in the dataset.
+- `filter()` a data frame’s existing rows to only pick out a subset of them. For example, the alaska_flights data frame.
+- `summarize()` one or more of its columns/variables with a summary statistic. Examples of summary statistics include the median and interquartile range of temperatures as we saw in Section 2.7 on boxplots.
+- `group_by()` its rows. In other words, assign different rows to be part of the same group. We can then combine `group_by()` with `summarize()` to report summary statistics for each group separately. For example, say you don’t want a single overall average departure delay `dep_delay` for all three origin airports combined, but rather three separate average departure delays, one computed for each of the three origin airports.
+- `mutate()` its existing columns/variables to create new ones. For example, convert hourly temperature readings from Fahrenheit to Celsius.
+- `arrange()` its rows. For example, sort the rows of weather in ascending or descending order of temp.
+- `join()` it with another data frame by matching along a “key” variable. In other words, merge these two data frames together.
 
-### Other components
+## Piper DOWN!! `|>r` DOWN!
 
-- `facet`  to break up a plot into several plots split by the values of another variable (Section 2.6)
-- position adjustments for barplots (Section 2.8)
+- the `|>` was introduced to R in 2021 to replace the clumsy `%>%`
+- allows users to create a sequence of operations within one set of instructions
 
-### Five Named graphs - 5NG
-
-1. Scatterplots
-2. line graphs
-3. bar graphs
-4. histograms
-5. boxplots
-
-
-#### Scatterplots
-
-Used to see the relationship between two numerical variables.
-
-```{r}
-View(envoy_flights)
-```
-
-```{r}
-ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point()
-```
-
-- there is a problem of the points overlapping
-  - change transparency with `alpha` argument
-
-
-```{r}
-ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_point(alpha = 0.2)
-```
-
-- add jitter
-
-```{r}
-ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
-  geom_jitter(width = 30, height = 30)
-```
-
-#### Linegraphs
-
-Show the relationship between two variables when the x-axis (explanatory variable) is sequential.
-
-```{r}
-View(weather)
-```
-
-```{r}
-glimpse(weather)
-```
-
-```{r}
-ggplot(data = early_january_2023_weather, 
-       mapping = aes(x = time_hour, y = wind_speed)) +
-  geom_line()
-```
-
-#### Histograms
-
-Shows the distribution of a variable.
-
-```{r}
-ggplot(data = weather, mapping = aes(x = wind_speed)) +
-  geom_histogram()
-```
-
-```{r}
-ggplot(data = weather, mapping = aes(x = wind_speed)) +
-  geom_histogram(color = "white", fill = "steelblue")
-```
-
-##### adjusting bins
-
-- number of bins
-
-```{r}
-ggplot(data = weather, mapping = aes(x = wind_speed)) +
-  geom_histogram(bins = 20, color = "white")
-```
-
-- binwidth
-
-```{r}
-ggplot(data = weather, mapping = aes(x = wind_speed)) +
-  geom_histogram(binwidth = 5, color = "white")
-```
-
-#### Facets
-
-Dividing plots by subcategories in the data.
-
-```{r}
-ggplot(data = weather, mapping = aes(x = wind_speed)) +
-  geom_histogram(binwidth = 5, color = "white") +
-  facet_wrap(~ month)
-```
-
-#### Boxplots
-
-Display the distribution of data and include five numbers to summarize the data:
-
-- minimum
-- first quartile (25th percentile)
-- median (2nd quartile, 50th percentile)
-- third quartile (75th percentile)
-- maximum
-- also shows the IQR (middle 50%)
-  - whiskers extend no more than 1.5 IQR units beyond 25th and 75 percentile.
-  - points beyond 1.5 IQR units may be considered outliers.
-
-
-
-```{r}
-ggplot(data = weather, mapping = aes(x = month, y = wind_speed)) +
-  geom_boxplot()
-```
-
-::: {.callout-note}
-Returns an invalid plot and a warning.
+::: {.callout}
+- Take x then
+- Use x as an input to a function f() then
+- Use the output of f(x) as an input to a function g() then
+- Use the output of g(f(x)) as an input to a function h()
 :::
 
-```{r}
-ggplot(data = weather, mapping = aes(x = month, y = wind_speed, group = month)) +
-  geom_boxplot() 
-```
-OR
+One way is to nest parentheses...
 
-- represent months as factors and use `geom(violin)` for a more detailed plot.
+`h(g(f(x)))`
 
-```{r}
-ggplot(data = weather, mapping = aes(x = factor(month), y = wind_speed)) +
-  geom_violin()
-```
-
-#### Barplots
-
-Simpler representation of the distribution known as `frequencxies`
-- depends on whether the items are counted or not.
-
-```{r}
-fruits <- tibble(fruit = c("apple", "apple", "orange", "apple", "orange"))
-fruits_counted <- tibble(
-  fruit = c("apple", "orange"),
-  number = c(3, 2))
-```
-
-```{r}
-ggplot(data = fruits, mapping = aes(x = fruit)) +
-  geom_bar()
-```
-
-```{r}
-ggplot(data = fruits_counted, mapping = aes(x = fruit)) +
-  geom_bar()
-```
-
-```{r}
-ggplot(data = fruits_counted, mapping = aes(x = fruit, y = number)) +
-  geom_col()
-```
-
-- when items are not counted, use `geom_bar()` with `fruit` mapped to the x `aes`
-- when items are counted, we add `number` to the y `aes` and use `geom_col()`
-
-```{r}
-ggplot(flights,  aes(x = carrier)) +
-  geom_bar()
-```
-
-- `geom_histogram()` has bars that touch, but `geom_bar()` has bars with white space between
-
-```{r}
-View(airlines)
-```
-
-::: {.callout-important}
-[The best pie-chart is a bar-chart.](https://moderndive.com/v2/viz.html#must-avoid-pie-charts)
-:::
-
-##### Stacked Barplot
-
-```{r}
-ggplot(data = flights, mapping = aes(x = carrier, fill = origin)) +
-  geom_bar()
+Not hard to read as there are only 3 simple arguments, but this quickly gets out of hand with many complex arguments...so...
 
 ```
+x |> 
+  f() |> 
+  g() |> 
+  h()
+  ```
 
-##### Dodged Barplot
+The pipe takes the output of one function an 'pipes' it into the next function as an argument.
 
-```{r}
-ggplot(data = flights, mapping = aes(x = carrier, fill = origin)) +
-  geom_bar(position = "dodge") +
-  scale_fill_viridis_d(option = "plasma")
-```
 
-## Summary
-
-|Named graph	|Shows	|Geometric object	|Notes|
-| :---: | :---: | --- | --- | 
-|1|	Scatterplot |	Relationship between 2 numerical variables	geom_point()	|   |
-|2	|Linegraph|	Relationship between 2 numerical variables	geom_line() |	Used when there is a sequential order to x-variable, e.g., time|
-|3	|Histogram	|Distribution of 1 numerical variable	geom_histogram()	|Facetted histograms show the distribution of 1 numerical variable split by the values of another variable|
-|4	|Boxplot	|Distribution of 1 numerical variable split by the values of another variable	geom_boxplot()	|   |
-|5|	Barplot|	Distribution of 1 categorical variable	geom_bar() when counts are not pre-counted, geom_col() when counts are pre-counted	| Stacked, side-by-side, and faceted barplots show the joint distribution of 2 categorical variables|
-<!-- ```{r viz-summary-table, echo=FALSE, message=FALSE, purl=FALSE}
-# The following Google Doc is published to CSV and loaded using read_csv():
-# https://docs.google.com/spreadsheets/d/1vzqlFiT6qm5wzy_L_0nL7EWAd6jiUZmLSCFhDhztDSg/edit#gid=0
-
-if (!file.exists("rds/summary_table_ch2-v2.rds")) {
-  summary_table_ch3 <-
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGaUW6EMIGPhg2V7CahoSdVi_JCcESFRYV5tov6bjcwOcn7DZDzfpZgrvjfFG6PV57gcJYIrwl_Q2c/pub?gid=0&single=true&output=csv" |>
-    read_csv(na = "")
-  summary_table_ch3$Notes[2] <- "Used when there is a sequential order to x-variable, e.g., time"
-  write_rds(summary_table_ch3, "rds/summary_table_ch2-v2.rds")
-} else {
-  summary_table_ch2 <- read_rds("rds/summary_table_ch2-v2.rds") |>
-    rename(` ` = `...1`)
-}
-
-if (is_latex_output()) {
-  summary_table_ch2 |>
-    # Weird tick marks show up in PDF:
-    mutate(`Geometric object` = str_replace_all(`Geometric object`, "`", "")) |>
-    kbl(
-      caption = "Summary of Five Named Graphs",
-      booktabs = TRUE,
-      format = "latex",
-      linesep = ""
-    ) |>
-    kable_styling(font_size = 10) |>
-    column_spec(3, width = "1.1in") |>
-    column_spec(4, width = "1.2in") |>
-    column_spec(5, width = "1.6in")
-} else {
-  summary_table_ch2 |>
-    kable(
-      caption = "Summary of Five Named Graphs",
-      booktabs = TRUE,
-      format = "html"
-    )
-}
-``` -->
