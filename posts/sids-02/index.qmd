@@ -19,6 +19,8 @@ library(nycflights23)
 library(ggplot2)
 library(moderndive)
 library(tibble)
+library(viridis)
+library(dplyr)
 ```
 
 ## 3 components of the Grammar or Graphiics
@@ -210,3 +212,66 @@ View(airlines)
 [The best pie-chart is a bar-chart.](https://moderndive.com/v2/viz.html#must-avoid-pie-charts)
 :::
 
+##### Stacked Barplot
+
+```{r}
+ggplot(data = flights, mapping = aes(x = carrier, fill = origin)) +
+  geom_bar()
+
+```
+
+##### Dodged Barplot
+
+```{r}
+ggplot(data = flights, mapping = aes(x = carrier, fill = origin)) +
+  geom_bar(position = "dodge") +
+  scale_fill_viridis_d(option = "plasma")
+```
+
+## Summary
+
+|Named graph	|Shows	|Geometric object	|Notes|
+| :---: | :---: | --- | --- | 
+|1|	Scatterplot |	Relationship between 2 numerical variables	geom_point()	|   |
+|2	|Linegraph|	Relationship between 2 numerical variables	geom_line() |	Used when there is a sequential order to x-variable, e.g., time|
+|3	|Histogram	|Distribution of 1 numerical variable	geom_histogram()	|Facetted histograms show the distribution of 1 numerical variable split by the values of another variable|
+|4	|Boxplot	|Distribution of 1 numerical variable split by the values of another variable	geom_boxplot()	|   |
+|5|	Barplot|	Distribution of 1 categorical variable	geom_bar() when counts are not pre-counted, geom_col() when counts are pre-counted	| Stacked, side-by-side, and faceted barplots show the joint distribution of 2 categorical variables|
+<!-- ```{r viz-summary-table, echo=FALSE, message=FALSE, purl=FALSE}
+# The following Google Doc is published to CSV and loaded using read_csv():
+# https://docs.google.com/spreadsheets/d/1vzqlFiT6qm5wzy_L_0nL7EWAd6jiUZmLSCFhDhztDSg/edit#gid=0
+
+if (!file.exists("rds/summary_table_ch2-v2.rds")) {
+  summary_table_ch3 <-
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGaUW6EMIGPhg2V7CahoSdVi_JCcESFRYV5tov6bjcwOcn7DZDzfpZgrvjfFG6PV57gcJYIrwl_Q2c/pub?gid=0&single=true&output=csv" |>
+    read_csv(na = "")
+  summary_table_ch3$Notes[2] <- "Used when there is a sequential order to x-variable, e.g., time"
+  write_rds(summary_table_ch3, "rds/summary_table_ch2-v2.rds")
+} else {
+  summary_table_ch2 <- read_rds("rds/summary_table_ch2-v2.rds") |>
+    rename(` ` = `...1`)
+}
+
+if (is_latex_output()) {
+  summary_table_ch2 |>
+    # Weird tick marks show up in PDF:
+    mutate(`Geometric object` = str_replace_all(`Geometric object`, "`", "")) |>
+    kbl(
+      caption = "Summary of Five Named Graphs",
+      booktabs = TRUE,
+      format = "latex",
+      linesep = ""
+    ) |>
+    kable_styling(font_size = 10) |>
+    column_spec(3, width = "1.1in") |>
+    column_spec(4, width = "1.2in") |>
+    column_spec(5, width = "1.6in")
+} else {
+  summary_table_ch2 |>
+    kable(
+      caption = "Summary of Five Named Graphs",
+      booktabs = TRUE,
+      format = "html"
+    )
+}
+``` -->

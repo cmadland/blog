@@ -276,7 +276,30 @@ background-color: null;
 font-style: inherit;">library</span>(moderndive)</span>
 <span id="cb1-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(tibble)</span></code></pre></div>
+font-style: inherit;">library</span>(tibble)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(viridis)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: viridisLite</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
 </div>
 <section id="components-of-the-grammar-or-graphiics" class="level2">
 <h2 class="anchored" data-anchor-id="components-of-the-grammar-or-graphiics">3 components of the Grammar or Graphiics</h2>
@@ -305,12 +328,12 @@ font-style: inherit;">library</span>(tibble)</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="scatterplots">Scatterplots</h4>
 <p>Used to see the relationship between two numerical variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">View</span>(envoy_flights)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -325,7 +348,7 @@ background-color: null;
 font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+<span id="cb8-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -347,7 +370,7 @@ font-style: inherit;">geom_point</span>()</span></code></pre></div>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -362,7 +385,7 @@ background-color: null;
 font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -385,7 +408,7 @@ font-style: inherit;">0.2</span>)</span></code></pre></div>
 <li>add jitter</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -400,7 +423,7 @@ background-color: null;
 font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -428,12 +451,12 @@ font-style: inherit;">30</span>)</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="linegraphs">Linegraphs</h4>
 <p>Show the relationship between two variables when the x-axis (explanatory variable) is sequential.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">View</span>(weather)</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glimpse</span>(weather)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -457,12 +480,12 @@ $ time_hour  &lt;dttm&gt; 2023-01-01 00:00:00, 2023-01-01 01:00:00, 2023-01-01 0
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> early_january_2023_weather, </span>
-<span id="cb12-2">       <span class="at" style="color: #657422;
+<span id="cb17-2">       <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -473,7 +496,7 @@ background-color: null;
 font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+<span id="cb17-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -489,7 +512,7 @@ font-style: inherit;">geom_line</span>()</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="histograms">Histograms</h4>
 <p>Shows the distribution of a variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -502,7 +525,7 @@ background-color: null;
 font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -521,7 +544,7 @@ font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -534,7 +557,7 @@ background-color: null;
 font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb16-2">  <span class="fu" style="color: #4758AB;
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -566,7 +589,7 @@ font-style: inherit;">"steelblue"</span>)</span></code></pre></div>
 <li>number of bins</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -579,7 +602,7 @@ background-color: null;
 font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+<span id="cb24-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -606,7 +629,7 @@ font-style: inherit;">"white"</span>)</span></code></pre></div>
 <li>binwidth</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -619,7 +642,7 @@ background-color: null;
 font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb21-2">  <span class="fu" style="color: #4758AB;
+<span id="cb26-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -648,7 +671,7 @@ font-style: inherit;">"white"</span>)</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="facets">Facets</h4>
 <p>Dividing plots by subcategories in the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -661,7 +684,7 @@ background-color: null;
 font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb23-2">  <span class="fu" style="color: #4758AB;
+<span id="cb28-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -674,7 +697,7 @@ background-color: null;
 font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb23-3">  <span class="fu" style="color: #4758AB;
+<span id="cb28-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -708,7 +731,7 @@ font-style: inherit;">~</span> month)</span></code></pre></div>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -723,7 +746,7 @@ background-color: null;
 font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb25-2">  <span class="fu" style="color: #4758AB;
+<span id="cb30-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_boxplot</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -756,7 +779,7 @@ Note
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -773,7 +796,7 @@ background-color: null;
 font-style: inherit;">group =</span> month)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb28-2">  <span class="fu" style="color: #4758AB;
+<span id="cb33-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_boxplot</span>() </span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -793,7 +816,7 @@ font-style: inherit;">geom_boxplot</span>() </span></code></pre></div>
 <li>represent months as factors and use <code>geom(violin)</code> for a more detailed plot.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -810,7 +833,7 @@ background-color: null;
 font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb30-2">  <span class="fu" style="color: #4758AB;
+<span id="cb35-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_violin</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -830,7 +853,7 @@ font-style: inherit;">geom_violin</span>()</span></code></pre></div>
 <h4 class="anchored" data-anchor-id="barplots">Barplots</h4>
 <p>Simpler representation of the distribution known as <code>frequencxies</code> - depends on whether the items are counted or not.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">fruits <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">fruits <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -849,12 +872,12 @@ background-color: null;
 font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"orange"</span>))</span>
-<span id="cb32-2">fruits_counted <span class="ot" style="color: #003B4F;
+<span id="cb37-2">fruits_counted <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tibble</span>(</span>
-<span id="cb32-3">  <span class="at" style="color: #657422;
+<span id="cb37-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">fruit =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -863,7 +886,7 @@ background-color: null;
 font-style: inherit;">"apple"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"orange"</span>),</span>
-<span id="cb32-4">  <span class="at" style="color: #657422;
+<span id="cb37-4">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">number =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -874,7 +897,7 @@ background-color: null;
 font-style: inherit;">2</span>))</span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -887,7 +910,7 @@ background-color: null;
 font-style: inherit;">x =</span> fruit)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb33-2">  <span class="fu" style="color: #4758AB;
+<span id="cb38-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -899,7 +922,7 @@ font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -912,7 +935,7 @@ background-color: null;
 font-style: inherit;">x =</span> fruit)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb34-2">  <span class="fu" style="color: #4758AB;
+<span id="cb39-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -924,7 +947,7 @@ font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -939,7 +962,7 @@ background-color: null;
 font-style: inherit;">y =</span> number)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb35-2">  <span class="fu" style="color: #4758AB;
+<span id="cb40-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_col</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -955,7 +978,7 @@ font-style: inherit;">geom_col</span>()</span></code></pre></div>
 <li>when items are counted, we add <code>number</code> to the y <code>aes</code> and use <code>geom_col()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(flights,  <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -964,7 +987,7 @@ background-color: null;
 font-style: inherit;">x =</span> carrier)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb36-2">  <span class="fu" style="color: #4758AB;
+<span id="cb41-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -979,7 +1002,7 @@ font-style: inherit;">geom_bar</span>()</span></code></pre></div>
 <li><code>geom_histogram()</code> has bars that touch, but <code>geom_bar()</code> has bars with white space between</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">View</span>(airlines)</span></code></pre></div>
 </div>
@@ -996,10 +1019,172 @@ Important
 <p><a href="https://moderndive.com/v2/viz.html#must-avoid-pie-charts">The best pie-chart is a bar-chart.</a></p>
 </div>
 </div>
-
-
+<section id="stacked-barplot" class="level5">
+<h5 class="anchored" data-anchor-id="stacked-barplot">Stacked Barplot</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> flights, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> carrier, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> origin)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb43-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="dodged-barplot" class="level5">
+<h5 class="anchored" data-anchor-id="dodged-barplot">Dodged Barplot</h5>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> flights, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> carrier, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> origin)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb44-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_bar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dodge"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb44-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_d</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">option =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plasma"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 31%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Named graph</th>
+<th style="text-align: center;">Shows</th>
+<th>Geometric object</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Scatterplot</td>
+<td>Relationship between 2 numerical variables geom_point()</td>
+<td></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Linegraph</td>
+<td>Relationship between 2 numerical variables geom_line()</td>
+<td>Used when there is a sequential order to x-variable, e.g., time</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Histogram</td>
+<td>Distribution of 1 numerical variable geom_histogram()</td>
+<td>Facetted histograms show the distribution of 1 numerical variable split by the values of another variable</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Boxplot</td>
+<td>Distribution of 1 numerical variable split by the values of another variable geom_boxplot()</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Barplot</td>
+<td>Distribution of 1 categorical variable geom_bar() when counts are not pre-counted, geom_col() when counts are pre-counted</td>
+<td>Stacked, side-by-side, and faceted barplots show the joint distribution of 2 categorical variables</td>
+</tr>
+</tbody>
+</table>
+<!-- ```{r viz-summary-table, echo=FALSE, message=FALSE, purl=FALSE}
+# The following Google Doc is published to CSV and loaded using read_csv():
+# https://docs.google.com/spreadsheets/d/1vzqlFiT6qm5wzy_L_0nL7EWAd6jiUZmLSCFhDhztDSg/edit#gid=0
+
+if (!file.exists("rds/summary_table_ch2-v2.rds")) {
+  summary_table_ch3 <-
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGaUW6EMIGPhg2V7CahoSdVi_JCcESFRYV5tov6bjcwOcn7DZDzfpZgrvjfFG6PV57gcJYIrwl_Q2c/pub?gid=0&single=true&output=csv" |>
+    read_csv(na = "")
+  summary_table_ch3$Notes[2] <- "Used when there is a sequential order to x-variable, e.g., time"
+  write_rds(summary_table_ch3, "rds/summary_table_ch2-v2.rds")
+} else {
+  summary_table_ch2 <- read_rds("rds/summary_table_ch2-v2.rds") |>
+    rename(` ` = `...1`)
+}
+
+if (is_latex_output()) {
+  summary_table_ch2 |>
+    # Weird tick marks show up in PDF:
+    mutate(`Geometric object` = str_replace_all(`Geometric object`, "`", "")) |>
+    kbl(
+      caption = "Summary of Five Named Graphs",
+      booktabs = TRUE,
+      format = "latex",
+      linesep = ""
+    ) |>
+    kable_styling(font_size = 10) |>
+    column_spec(3, width = "1.1in") |>
+    column_spec(4, width = "1.2in") |>
+    column_spec(5, width = "1.6in")
+} else {
+  summary_table_ch2 |>
+    kable(
+      caption = "Summary of Five Named Graphs",
+      booktabs = TRUE,
+      format = "html"
+    )
+}
+``` -->
+
+
 </section>
 
  ]]></description>
