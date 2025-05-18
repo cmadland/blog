@@ -4,7 +4,6 @@ author: "Colin Madland"
 date: "2025-01-18"
 categories: [ggplot2, tidyverse, statsglobe, R, facets]
 image: "kigali-family.jpg"
-freeze: false
 ---
 
 [Data Visualization in R Using ggplot2 - Module 5](https://statisticsglobe.com/online-course-data-visualization-ggplot2-r)
