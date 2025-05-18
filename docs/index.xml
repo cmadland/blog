@@ -245,6 +245,466 @@ $ tzone &lt;chr&gt; "America/New_York", "America/Chicago", "America/New_York", "
   <media:content url="https://cmadland.github.io/blog/posts/sids-01/sunrise.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>SIDS Ch 2 - Data Viz</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/sids-02/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546</p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(nycflights23)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(moderndive)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tibble)</span></code></pre></div>
+</div>
+<section id="components-of-the-grammar-or-graphiics" class="level2">
+<h2 class="anchored" data-anchor-id="components-of-the-grammar-or-graphiics">3 components of the Grammar or Graphiics</h2>
+<ul>
+<li><code>data</code>: the dataset containing the variables of interest.</li>
+<li><code>geom</code>: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.</li>
+<li><code>aes</code>: aesthetic attributes of the geometric object. For example, x/y position, color, shape, and size. Aesthetic attributes are mapped to variables in the dataset.</li>
+</ul>
+<section id="other-components" class="level3">
+<h3 class="anchored" data-anchor-id="other-components">Other components</h3>
+<ul>
+<li>faceting breaks up a plot into several plots split by the values of another variable (Section 2.6)</li>
+<li>position adjustments for barplots (Section 2.8)</li>
+</ul>
+</section>
+<section id="five-named-graphs---5ng" class="level3">
+<h3 class="anchored" data-anchor-id="five-named-graphs---5ng">Five Named graphs - 5NG</h3>
+<ol type="1">
+<li>Scatterplots</li>
+<li>line graphs</li>
+<li>bar graphs</li>
+<li>histograms</li>
+<li>boxplots</li>
+</ol>
+<section id="scatterplots" class="level4">
+<h4 class="anchored" data-anchor-id="scatterplots">Scatterplots</h4>
+<p>Used to see the relationship between two numerical variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">View</span>(envoy_flights)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> envoy_flights, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> dep_delay, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>there is a problem of the points overlapping
+<ul>
+<li>change transparency with <code>alpha</code> argument</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> envoy_flights, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> dep_delay, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>add jitter</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> envoy_flights, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> dep_delay, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> arr_delay)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_jitter</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 3 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="linegraphs" class="level4">
+<h4 class="anchored" data-anchor-id="linegraphs">Linegraphs</h4>
+<p>Show the relationship between two variables when the x-axis (explanatory variable) is sequential.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">View</span>(weather)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">glimpse</span>(weather)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 26,207
+Columns: 15
+$ origin     &lt;chr&gt; "JFK", "JFK", "JFK", "JFK", "JFK", "JFK", "JFK", "JFK", "JF…
+$ year       &lt;int&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023,…
+$ month      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ day        &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ hour       &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+$ temp       &lt;dbl&gt; 48.0, 48.2, 49.0, 49.0, 49.0, 48.0, 46.4, 46.0, 48.0, 47.0,…
+$ dewp       &lt;dbl&gt; 48.0, 48.2, 49.0, 49.0, 49.0, 48.0, 46.4, 46.0, 48.0, 47.0,…
+$ humid      &lt;dbl&gt; 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100.00, 100…
+$ wind_dir   &lt;dbl&gt; 0, 190, 190, 250, 170, 0, 250, 230, 260, 250, 240, 260, 260…
+$ wind_speed &lt;dbl&gt; 0.00000, 4.60312, 5.75390, 5.75390, 8.05546, 0.00000, 9.206…
+$ wind_gust  &lt;dbl&gt; 0.000000, 5.297178, 6.621473, 6.621473, 9.270062, 0.000000,…
+$ precip     &lt;dbl&gt; 1e-02, 1e-02, 1e-04, 2e-02, 1e-04, 1e-04, 0e+00, 0e+00, 0e+…
+$ pressure   &lt;dbl&gt; 1010.2, 1009.2, 1009.0, 1008.0, 1007.8, 1007.6, 1007.3, 100…
+$ visib      &lt;dbl&gt; 0.25, 2.50, 0.25, 4.00, 0.75, 0.75, 0.24, 0.50, 8.00, 5.00,…
+$ time_hour  &lt;dttm&gt; 2023-01-01 00:00:00, 2023-01-01 01:00:00, 2023-01-01 02:00…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> early_january_2023_weather, </span>
+<span id="cb12-2">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> time_hour, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="histograms" class="level4">
+<h4 class="anchored" data-anchor-id="histograms">Histograms</h4>
+<p>Shows the distribution of a variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb13-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb16-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"steelblue"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="adjusting-bins" class="level5">
+<h5 class="anchored" data-anchor-id="adjusting-bins">adjusting bins</h5>
+<ul>
+<li>number of bins</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">bins =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>binwidth</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb21-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="facets" class="level4">
+<h4 class="anchored" data-anchor-id="facets">Facets</h4>
+<p>Dividing plots by subcategories in the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> weather, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> wind_speed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_histogram</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">binwidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">facet_wrap</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> month)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
+(`stat_bin()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://cmadland.github.io/blog/posts/sids-02/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+ ]]></description>
+  <category>tidyverse</category>
+  <category>R</category>
+  <guid>https://cmadland.github.io/blog/posts/sids-02/</guid>
+  <pubDate>Fri, 16 May 2025 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/sids-02/sails.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>Colo(u)rs &amp; Themes</title>
   <dc:creator>Colin Madland</dc:creator>
   <link>https://cmadland.github.io/blog/posts/dataviz-06/</link>
@@ -12542,31 +13002,6 @@ font-style: inherit;">sort</span>(wts)</span></code></pre></div>
   <category>standard deviation</category>
   <guid>https://cmadland.github.io/blog/posts/variance-std-dev/</guid>
   <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Welcome To My Blog</title>
-  <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/welcome/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Hey!</p>
-<p><img src="https://cmadland.github.io/blog/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
-<p>I plan to use this space to record my learning and review of stats using R and this blog built with <a href="https://quarto.org/docs/websites/website-blog.html">Quarto</a>. The last time I was semi-serious about a blog was in Grav, and WordPress before that, so I’m curious to see how this works out.</p>
-<p>I’m using a few books in this journey, including</p>
-<p>Desjardins, C. D., &amp; Bulut, O. (2018). Handbook of Educational Measurement and Psychometrics Using R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b20498</p>
-<p>Field, A. P. (2018). Discovering statistics using IBM SPSS statistics (5th edition, North American edition). Sage Publications Inc.</p>
-<p>Navarro, D. (n.d.). Learning statistics with R: A tutorial for psychology students and other beginners. (Version 0.6.1). Retrieved January 8, 2020, from https://learningstatisticswithr.com/book/</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <guid>https://cmadland.github.io/blog/posts/welcome/</guid>
-  <pubDate>Wed, 14 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

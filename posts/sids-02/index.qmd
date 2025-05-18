@@ -1,0 +1,129 @@
+---
+title: "SIDS Ch 2 - Data Viz"
+author: "Colin Madland"
+date: "2025-05-16"
+categories: [tidyverse, R]
+image: "sails.jpg"
+freeze: auto
+---
+
+::: {.callout}
+
+Ismay, C., Kim, A. Y., & Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9781032724546
+:::
+
+
+
+```{r}
+library(nycflights23)
+library(ggplot2)
+library(moderndive)
+library(tibble)
+```
+
+## 3 components of the Grammar or Graphiics
+
+- `data`: the dataset containing the variables of interest.
+- `geom`: the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.
+- `aes`: aesthetic attributes of the geometric object. For example, x/y position, color, shape, and size. Aesthetic attributes are mapped to variables in the dataset.
+
+### Other components
+
+- faceting breaks up a plot into several plots split by the values of another variable (Section 2.6)
+- position adjustments for barplots (Section 2.8)
+
+### Five Named graphs - 5NG
+
+1. Scatterplots
+2. line graphs
+3. bar graphs
+4. histograms
+5. boxplots
+
+
+#### Scatterplots
+
+Used to see the relationship between two numerical variables.
+
+```{r}
+View(envoy_flights)
+```
+
+```{r}
+ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
+  geom_point()
+```
+
+- there is a problem of the points overlapping
+  - change transparency with `alpha` argument
+
+
+```{r}
+ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
+  geom_point(alpha = 0.2)
+```
+
+- add jitter
+
+```{r}
+ggplot(data = envoy_flights, mapping = aes(x = dep_delay, y = arr_delay)) + 
+  geom_jitter(width = 30, height = 30)
+```
+
+#### Linegraphs
+
+Show the relationship between two variables when the x-axis (explanatory variable) is sequential.
+
+```{r}
+View(weather)
+```
+
+```{r}
+glimpse(weather)
+```
+
+```{r}
+ggplot(data = early_january_2023_weather, 
+       mapping = aes(x = time_hour, y = wind_speed)) +
+  geom_line()
+```
+
+#### Histograms
+
+Shows the distribution of a variable.
+
+```{r}
+ggplot(data = weather, mapping = aes(x = wind_speed)) +
+  geom_histogram()
+```
+
+```{r}
+ggplot(data = weather, mapping = aes(x = wind_speed)) +
+  geom_histogram(color = "white", fill = "steelblue")
+```
+
+##### adjusting bins
+
+- number of bins
+
+```{r}
+ggplot(data = weather, mapping = aes(x = wind_speed)) +
+  geom_histogram(bins = 20, color = "white")
+```
+
+- binwidth
+
+```{r}
+ggplot(data = weather, mapping = aes(x = wind_speed)) +
+  geom_histogram(binwidth = 5, color = "white")
+```
+
+#### Facets
+
+Dividing plots by subcategories in the data.
+
+```{r}
+ggplot(data = weather, mapping = aes(x = wind_speed)) +
+  geom_histogram(binwidth = 5, color = "white") +
+  facet_wrap(~ month)
+```
