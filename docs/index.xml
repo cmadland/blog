@@ -12434,11 +12434,11 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-27.640</td>
+<td style="text-align: right;">-26.355</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-57.014</td>
-<td style="text-align: right;">5.403</td>
-<td style="text-align: right;">0.096</td>
+<td style="text-align: right;">-55.353</td>
+<td style="text-align: right;">6.875</td>
+<td style="text-align: right;">0.112</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
@@ -12450,18 +12450,18 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.369</td>
+<td style="text-align: right;">3.361</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.764</td>
-<td style="text-align: right;">4.012</td>
+<td style="text-align: right;">2.793</td>
+<td style="text-align: right;">3.945</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">11.027</td>
+<td style="text-align: right;">10.940</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.641</td>
-<td style="text-align: right;">15.273</td>
+<td style="text-align: right;">6.355</td>
+<td style="text-align: right;">15.096</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 </tbody>
@@ -13153,22 +13153,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.422e+00 3.422e-02      3.422e-02
-adverts 8.419e-02 6.915e-03 6.915e-05      6.915e-05
-airplay 3.333e+00 2.798e-01 2.798e-03      2.798e-03
-image   1.100e+01 2.469e+00 2.469e-02      2.469e-02
-sig2    2.250e+03 2.320e+02 2.320e+00      2.446e+00
-g       9.852e-01 1.762e+00 1.762e-02      1.762e-02
+mu      1.932e+02 3.339e+00 3.339e-02      3.339e-02
+adverts 8.403e-02 6.911e-03 6.911e-05      6.874e-05
+airplay 3.337e+00 2.785e-01 2.785e-03      2.764e-03
+image   1.098e+01 2.430e+00 2.430e-02      2.430e-02
+sig2    2.246e+03 2.295e+02 2.295e+00      2.379e+00
+g       9.908e-01 1.730e+00 1.730e-02      1.757e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu       186.4841 1.909e+02 1.932e+02 1.955e+02 1.999e+02
-adverts    0.0708 7.949e-02 8.417e-02 8.876e-02 9.819e-02
-airplay    2.7894 3.141e+00 3.331e+00 3.522e+00 3.885e+00
-image      6.1729 9.373e+00 1.099e+01 1.266e+01 1.585e+01
-sig2    1842.2861 2.087e+03 2.236e+03 2.395e+03 2.755e+03
-g          0.1761 3.715e-01 6.044e-01 1.051e+00 3.934e+00</code></pre>
+mu      1.868e+02 1.910e+02 1.932e+02 1.955e+02 1.997e+02
+adverts 7.042e-02 7.933e-02 8.405e-02 8.861e-02 9.752e-02
+airplay 2.795e+00 3.150e+00 3.337e+00 3.525e+00 3.880e+00
+image   6.243e+00 9.380e+00 1.100e+01 1.258e+01 1.577e+01
+sig2    1.837e+03 2.085e+03 2.229e+03 2.389e+03 2.732e+03
+g       1.736e-01 3.723e-01 6.127e-01 1.062e+00 4.042e+00</code></pre>
 </div>
 </div>
 <ul>
