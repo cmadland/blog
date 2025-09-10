@@ -3,10 +3,8 @@ title: "dsus_18 - Exploratory Factor Analysis"
 author: "Colin Madland"
 date: "2024-04-26"
 categories: [EFA, dsur, dsus, R]
-editor: visual
 image: "ellie-snow.jpeg"
 bibliography: references.bib
-
 ---
 
 ```{r}

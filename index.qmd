@@ -2,8 +2,10 @@
 title: "Stats Blog"
 listing:
   contents: posts
-  sort: "date desc"
-  type: default
+  type: table
+  sort: 
+    - "date desc"
+  fields: [date, title, reading-time]
   categories: true
   feed: true
   sort-ui: false

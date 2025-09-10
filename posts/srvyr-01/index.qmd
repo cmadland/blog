@@ -1,0 +1,16 @@
+---
+title: "srvyr Ch 1"
+author: "Colin Madland"
+date: "2025-09-09"
+categories: [tidyverse, R, srvyr, survey]
+image: "mission-creek-greenway.jpg"
+draft: true
+---
+
+::: {.callout}
+
+Zimmer, S. A., Powell, R. J., & Velásquez, I. C. (2025). [*Exploring Complex Survey Data Analysis Using R*](https://tidy-survey-r.github.io/tidy-survey-book/index.html). CRC Press. 
+
+Lorico Hertz, Z. (2021, June 29). *An Introduction to Using the `{survey}` Package in R.* https://zacharylhertz.github.io/posts/2021-06-29-survey-package/
+
+:::

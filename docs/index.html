@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -208,891 +208,266 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="tidyverse,R" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="912">
-<div class="thumbnail">
-<p><a href="./posts/sids-02/index.html" class="no-external"></a></p><a href="./posts/sids-02/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/sids-02/gloom.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/sids-02/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/sids-02/index.html" class="no-external">SIDS Ch 3 - Data Wrangling</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/sids-02/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/sids-02/index.html" class="no-external">Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/sids-02/index.html" class="no-external">
-<div class="listing-date">
-May 18, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="tidyverse,R" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1747609161007" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="327">
-<div class="thumbnail">
-<p><a href="./posts/sids-03/index.html" class="no-external"></a></p><a href="./posts/sids-03/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/sids-03/sails.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/sids-03/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/sids-03/index.html" class="no-external">SIDS Ch 2 - Data Viz</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/sids-03/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/sids-03/index.html" class="no-external">Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/sids-03/index.html" class="no-external">
-<div class="listing-date">
-May 18, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="tidyverse,R" data-listing-date-sort="1747378800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
-<div class="thumbnail">
-<p><a href="./posts/sids-01/index.html" class="no-external"></a></p><a href="./posts/sids-01/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/sids-01/sunrise.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/sids-01/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/sids-01/index.html" class="no-external">SIDS Ch 1</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/sids-01/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/sids-01/index.html" class="no-external">Ismay, C., Kim, A. Y., &amp; Valdivia, A. (2025). Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.). Chapman and Hall/CRC.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/sids-01/index.html" class="no-external">
-<div class="listing-date">
-May 16, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="ggplot2,tidyverse,statsglobe,R,colour" data-listing-date-sort="1739001600000" data-listing-file-modified-sort="1747608193622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1583">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-06/index.html" class="no-external"></a></p><a href="./posts/dataviz-06/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-06/cold-lake.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-06/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-06/index.html" class="no-external">Colo(u)rs &amp; Themes</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-06/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('colour'); return false;">
-colour
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-06/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 6</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-06/index.html" class="no-external">
-<div class="listing-date">
-Feb 8, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="ggplot2,tidyverse,statsglobe,R,facets" data-listing-date-sort="1737187200000" data-listing-file-modified-sort="1747608186519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1241">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-05/index.html" class="no-external"></a></p><a href="./posts/dataviz-05/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-05/kigali-family.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-05/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-05/index.html" class="no-external">Multiplot Layouts Using Facets</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-05/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('facets'); return false;">
-facets
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-05/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 5</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-05/index.html" class="no-external">
-<div class="listing-date">
-Jan 18, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="cheating,acadmic integrity,validity,standards-based-grading" data-listing-date-sort="1736841600000" data-listing-file-modified-sort="1736867596097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
-<div class="thumbnail">
-<p><a href="./posts/cheating-validity/index.html" class="no-external"></a></p><a href="./posts/cheating-validity/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/cheating-validity/japanese-garden.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/cheating-validity/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/cheating-validity/index.html" class="no-external">Validity is more important than cheating</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/cheating-validity/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('cheating'); return false;">
-cheating
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('acadmic integrity'); return false;">
-acadmic integrity
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('validity'); return false;">
-validity
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('standards-based-grading'); return false;">
-standards-based-grading
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/cheating-validity/index.html" class="no-external">Philip Dawson, Margaret Bearman, Mollie Dollinger, and David Boud <span class="citation" data-cites="dawsonValidityMattersMore2024">(Dawson et al., 2024)</span> recently published an excellent article addressing cheating in higher education…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/cheating-validity/index.html" class="no-external">
-<div class="listing-date">
-Jan 14, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="ggplot2,tidyverse,statsglobe,R,layers" data-listing-date-sort="1736150400000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="912">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-04/index.html" class="no-external"></a></p><a href="./posts/dataviz-04/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-04/ubumuntu.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-04/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-04/index.html" class="no-external">layered plotting</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-04/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('layers'); return false;">
-layers
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-04/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 4</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-04/index.html" class="no-external">
-<div class="listing-date">
-Jan 6, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="ggplot2,tidyverse,statsglobe,R,grammar" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-02/index.html" class="no-external"></a></p><a href="./posts/dataviz-02/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-02/bouganvillea.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-02/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-02/index.html" class="no-external">grammar of graphics</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-02/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('grammar'); return false;">
-grammar
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-02/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 2</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-02/index.html" class="no-external">
-<div class="listing-date">
-Jan 2, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="ggplot2,tidyverse,statsglobe,R,aes" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="961">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-03/index.html" class="no-external"></a></p><a href="./posts/dataviz-03/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-03/giraffe.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-03/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-03/index.html" class="no-external">aesthetic mapping</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-03/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aes'); return false;">
-aes
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-03/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 3</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-03/index.html" class="no-external">
-<div class="listing-date">
-Jan 2, 2025
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="ggplot2,tidyverse,statsglobe,R" data-listing-date-sort="1734681600000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="270">
-<div class="thumbnail">
-<p><a href="./posts/dataviz-01/index.html" class="no-external"></a></p><a href="./posts/dataviz-01/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dataviz-01/rainbow-yeti.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dataviz-01/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dataviz-01/index.html" class="no-external">ggplot &amp; the tidyverse</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dataviz-01/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('tidyverse'); return false;">
-tidyverse
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('statsglobe'); return false;">
-statsglobe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dataviz-01/index.html" class="no-external">Data Visualization in R Using ggplot2 - Module 1</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dataviz-01/index.html" class="no-external">
-<div class="listing-date">
-Dec 20, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1747831654536" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/deck-otessa24/index.html" class="no-external"></a></p><a href="./posts/deck-otessa24/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/deck-otessa24/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/deck-otessa24/index.html" class="no-external">OTESSA24</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/deck-otessa24/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/deck-otessa24/index.html" class="no-external"></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/deck-otessa24/index.html" class="no-external">
-<div class="listing-date">
-Jun 20, 2024
-</div>
-<div class="listing-author">
-Colin Madland<sup>1</sup>, Valerie Irvine<sup>1</sup>, Christopher DeLuca<sup>2</sup>, and Okan Bulut<sup>3</sup>
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="BCcampus,fellowship" data-listing-date-sort="1714633200000" data-listing-file-modified-sort="1747607839101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="708">
-<div class="thumbnail">
-<p><a href="./posts/fellowship/index.html" class="no-external"></a></p><a href="./posts/fellowship/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/fellowship/lake.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/fellowship/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/fellowship/index.html" class="no-external">Technology-Integrated Assessment in BC Higher Education</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/fellowship/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('BCcampus'); return false;">
-BCcampus
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('fellowship'); return false;">
-fellowship
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/fellowship/index.html" class="no-external">In the fall of 2021, I embarked on the BCcampus Student Research Fellowship, a project funded by BCcampus intended to promote research on teaching and learning in BC. My…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/fellowship/index.html" class="no-external">
-<div class="listing-date">
-May 2, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="EFA,dsur,dsus,R" data-listing-date-sort="1714114800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5024">
-<div class="thumbnail">
-<p><a href="./posts/dsur_ch18_efa/index.html" class="no-external"></a></p><a href="./posts/dsur_ch18_efa/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/dsur_ch18_efa/ellie-snow.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/dsur_ch18_efa/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/dsur_ch18_efa/index.html" class="no-external">dsus_18 - Exploratory Factor Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/dsur_ch18_efa/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('EFA'); return false;">
-EFA
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dsur'); return false;">
-dsur
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dsus'); return false;">
-dsus
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/dsur_ch18_efa/index.html" class="no-external">Notes here are from</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/dsur_ch18_efa/index.html" class="no-external">
-<div class="listing-date">
-Apr 26, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-categories="ggplot2,visualizing data,R,discovr" data-listing-date-sort="1713855600000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443">
-<div class="thumbnail">
-<p><a href="./posts/discovr_05_visualizing_data/index.html" class="no-external"></a></p><a href="./posts/discovr_05_visualizing_data/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_05_visualizing_data/raft-canyon.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_05_visualizing_data/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_05_visualizing_data/index.html" class="no-external">discovr_05 - Visualizing Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_05_visualizing_data/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('visualizing data'); return false;">
-visualizing data
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_05_visualizing_data/index.html" class="no-external">controls aesthetics of the plot</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_05_visualizing_data/index.html" class="no-external">
-<div class="listing-date">
-Apr 23, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-categories="frequency,histograms,variance,standard deviation,IQR,R,discovr" data-listing-date-sort="1713423600000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1505">
-<div class="thumbnail">
-<p><a href="./posts/discovr_02_summarizing_data/index.html" class="no-external"></a></p><a href="./posts/discovr_02_summarizing_data/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_02_summarizing_data/raft-falls.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_02_summarizing_data/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_02_summarizing_data/index.html" class="no-external">discovr_02 - Summarizing Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_02_summarizing_data/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('frequency'); return false;">
-frequency
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('histograms'); return false;">
-histograms
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('variance'); return false;">
-variance
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('standard deviation'); return false;">
-standard deviation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('IQR'); return false;">
-IQR
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_02_summarizing_data/index.html" class="no-external">groups data by whatever variable(s) you name within the function</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_02_summarizing_data/index.html" class="no-external">
-<div class="listing-date">
-Apr 18, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-categories="bias,R,discovr" data-listing-date-sort="1713250800000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="992">
-<div class="thumbnail">
-<p><a href="./posts/discovr_06_bias/index.html" class="no-external"></a></p><a href="./posts/discovr_06_bias/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_06_bias/ellie.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_06_bias/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_06_bias/index.html" class="no-external">discovr_06 - The Beast of Bias</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_06_bias/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('bias'); return false;">
-bias
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_06_bias/index.html" class="no-external">Data that are arranged such that scores on a variable appear in a single column and rows represent a combination of the attributes of those scores – the entity from which…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_06_bias/index.html" class="no-external">
-<div class="listing-date">
-Apr 16, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-categories="correlation,R,discovr" data-listing-date-sort="1710057600000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316">
-<div class="thumbnail">
-<p><a href="./posts/discovr_07_associations/index.html" class="no-external"></a></p><a href="./posts/discovr_07_associations/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_07_associations/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_07_associations/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_07_associations/index.html" class="no-external">discovr_07 - Associations</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_07_associations/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('correlation'); return false;">
-correlation
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_07_associations/index.html" class="no-external">should be replaced with the name of tibble containing any variables to correlate</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_07_associations/index.html" class="no-external">
-<div class="listing-date">
-Mar 10, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-categories="efa,R,discovr" data-listing-date-sort="1709020800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/discovr_18_efa/index.html" class="no-external"></a></p><a href="./posts/discovr_18_efa/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_18_efa/happy-rock.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_18_efa/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_18_efa/index.html" class="no-external">discovr_18 - Exploratory Factor Analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_18_efa/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('efa'); return false;">
-efa
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_18_efa/index.html" class="no-external">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr…</code></pre></div><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="ot"></span><span class="sc"></span><span class="fu"></span><span class="st"></span><span class="sc"></span></span><span id="cb3-2"><span class="sc"></span><span class="fu"></span></span></code></pre></div><div class="cell-output cell-output-stderr"><pre><code></code></pre></div></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_18_efa/index.html" class="no-external">
-<div class="listing-date">
-Feb 27, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-categories="regression,R,discovr" data-listing-date-sort="1708934400000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6223">
-<div class="thumbnail">
-<p><a href="./posts/discovr_08_the_glm/index.html" class="no-external"></a></p><a href="./posts/discovr_08_the_glm/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/discovr_08_the_glm/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/discovr_08_the_glm/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/discovr_08_the_glm/index.html" class="no-external">discovr_08 - General Linear Model</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/discovr_08_the_glm/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('regression'); return false;">
-regression
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('discovr'); return false;">
-discovr
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/discovr_08_the_glm/index.html" class="no-external">assumption of equal or similar variances in different groups being compared</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/discovr_08_the_glm/index.html" class="no-external">
-<div class="listing-date">
-Feb 26, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-categories="505" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1708957296034" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1276">
-<div class="thumbnail">
-<p><a href="./posts/simple-regression/index.html" class="no-external"></a></p><a href="./posts/simple-regression/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/simple-regression/slope.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/simple-regression/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/simple-regression/index.html" class="no-external">Simple Regression</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/simple-regression/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('505'); return false;">
-505
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/simple-regression/index.html" class="no-external">Linear regression expresses the relationship between two variables, <span class="math inline">\(X_i\)</span> and <span class="math inline">\(Y_i\)</span>.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/simple-regression/index.html" class="no-external">
-<div class="listing-date">
-Feb 18, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-categories="intro stats,variance,standard deviation" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1734757794316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
-<div class="thumbnail">
-<p><a href="./posts/variance-std-dev/index.html" class="no-external"></a></p><a href="./posts/variance-std-dev/index.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/variance-std-dev/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/variance-std-dev/index.html" class="no-external">Variance and Standard Deviation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/variance-std-dev/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('intro stats'); return false;">
-intro stats
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('variance'); return false;">
-variance
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('standard deviation'); return false;">
-standard deviation
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/variance-std-dev/index.html" class="no-external"><span class="math inline">\(sample variance=s^2=\frac{1}{n-1}‎‎\sum_i(x_i - \bar{x})^2\)</span></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/variance-std-dev/index.html" class="no-external">
-<div class="listing-date">
-Feb 18, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="21" data-categories="news" data-listing-date-sort="1707897600000" data-listing-file-modified-sort="1708020106281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="115">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html" class="no-external"></a></p><a href="./posts/welcome/index.html" class="no-external">
-<p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/welcome/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/welcome/index.html" class="no-external">Welcome To My Blog</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/welcome/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/welcome/index.html" class="no-external">Hey!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/welcome/index.html" class="no-external">
-<div class="listing-date">
-Feb 14, 2024
-</div>
-<div class="listing-author">
-Colin Madland
-</div>
-</a>
-</div>
-</div>
-</div>
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Reading Time
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="tidyverse,R" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1757431053327" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="908" data-listing-title-sort="SIDS Ch 3 - Data Wrangling" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 18, 2025</span>
+</td>
+<td>
+<a href="./posts/sids-02/index.html" class="title listing-title">SIDS Ch 3 - Data Wrangling</a>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="tidyverse,R" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1747609161007" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="327" data-listing-title-sort="SIDS Ch 2 - Data Viz" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 18, 2025</span>
+</td>
+<td>
+<a href="./posts/sids-03/index.html" class="title listing-title">SIDS Ch 2 - Data Viz</a>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="tidyverse,R" data-listing-date-sort="1747378800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28" data-listing-title-sort="SIDS Ch 1" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 16, 2025</span>
+</td>
+<td>
+<a href="./posts/sids-01/index.html" class="title listing-title">SIDS Ch 1</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="ggplot2,tidyverse,statsglobe,R,colour" data-listing-date-sort="1739001600000" data-listing-file-modified-sort="1747608193622" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1583" data-listing-title-sort="Colo(u)rs &amp; Themes" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 8, 2025</span>
+</td>
+<td>
+<a href="./posts/dataviz-06/index.html" class="title listing-title">Colo(u)rs &amp; Themes</a>
+</td>
+<td>
+<span class="listing-reading-time">8 min</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="ggplot2,tidyverse,statsglobe,R,facets" data-listing-date-sort="1737187200000" data-listing-file-modified-sort="1747608186519" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1241" data-listing-title-sort="Multiplot Layouts Using Facets" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 18, 2025</span>
+</td>
+<td>
+<a href="./posts/dataviz-05/index.html" class="title listing-title">Multiplot Layouts Using Facets</a>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
+</td>
+</tr>
+<tr data-index="5" data-categories="cheating,acadmic integrity,validity,standards-based-grading" data-listing-date-sort="1736841600000" data-listing-file-modified-sort="1736867596097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365" data-listing-title-sort="Validity is more important than cheating" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 14, 2025</span>
+</td>
+<td>
+<a href="./posts/cheating-validity/index.html" class="title listing-title">Validity is more important than cheating</a>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="ggplot2,tidyverse,statsglobe,R,layers" data-listing-date-sort="1736150400000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="912" data-listing-title-sort="layered plotting" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 6, 2025</span>
+</td>
+<td>
+<a href="./posts/dataviz-04/index.html" class="title listing-title">layered plotting</a>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="ggplot2,tidyverse,statsglobe,R,grammar" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436" data-listing-title-sort="grammar of graphics" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 2, 2025</span>
+</td>
+<td>
+<a href="./posts/dataviz-02/index.html" class="title listing-title">grammar of graphics</a>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="8" data-categories="ggplot2,tidyverse,statsglobe,R,aes" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="961" data-listing-title-sort="aesthetic mapping" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jan 2, 2025</span>
+</td>
+<td>
+<a href="./posts/dataviz-03/index.html" class="title listing-title">aesthetic mapping</a>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="9" data-categories="ggplot2,tidyverse,statsglobe,R" data-listing-date-sort="1734681600000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="270" data-listing-title-sort="ggplot &amp; the tidyverse" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Dec 20, 2024</span>
+</td>
+<td>
+<a href="./posts/dataviz-01/index.html" class="title listing-title">ggplot &amp; the tidyverse</a>
+</td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
+</tr>
+<tr data-index="10" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1747831654536" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="OTESSA24" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Jun 20, 2024</span>
+</td>
+<td>
+<a href="./posts/deck-otessa24/index.html" class="title listing-title">OTESSA24</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="11" data-categories="BCcampus,fellowship" data-listing-date-sort="1714633200000" data-listing-file-modified-sort="1747607839101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="708" data-listing-title-sort="Technology-Integrated Assessment in BC Higher Education" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">May 2, 2024</span>
+</td>
+<td>
+<a href="./posts/fellowship/index.html" class="title listing-title">Technology-Integrated Assessment in BC Higher Education</a>
+</td>
+<td>
+<span class="listing-reading-time">4 min</span>
+</td>
+</tr>
+<tr data-index="12" data-categories="EFA,dsur,dsus,R" data-listing-date-sort="1714114800000" data-listing-file-modified-sort="1749826139777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5024" data-listing-title-sort="dsus_18 - Exploratory Factor Analysis" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 26, 2024</span>
+</td>
+<td>
+<a href="./posts/dsur_ch18_efa/index.html" class="title listing-title">dsus_18 - Exploratory Factor Analysis</a>
+</td>
+<td>
+<span class="listing-reading-time">26 min</span>
+</td>
+</tr>
+<tr data-index="13" data-categories="ggplot2,visualizing data,R,discovr" data-listing-date-sort="1713855600000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="443" data-listing-title-sort="discovr_05 - Visualizing Data" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 23, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_05_visualizing_data/index.html" class="title listing-title">discovr_05 - Visualizing Data</a>
+</td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
+</tr>
+<tr data-index="14" data-categories="frequency,histograms,variance,standard deviation,IQR,R,discovr" data-listing-date-sort="1713423600000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1505" data-listing-title-sort="discovr_02 - Summarizing Data" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 18, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_02_summarizing_data/index.html" class="title listing-title">discovr_02 - Summarizing Data</a>
+</td>
+<td>
+<span class="listing-reading-time">8 min</span>
+</td>
+</tr>
+<tr data-index="15" data-categories="bias,R,discovr" data-listing-date-sort="1713250800000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="992" data-listing-title-sort="discovr_06 - The Beast of Bias" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Apr 16, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_06_bias/index.html" class="title listing-title">discovr_06 - The Beast of Bias</a>
+</td>
+<td>
+<span class="listing-reading-time">5 min</span>
+</td>
+</tr>
+<tr data-index="16" data-categories="correlation,R,discovr" data-listing-date-sort="1710057600000" data-listing-file-modified-sort="1747607602199" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316" data-listing-title-sort="discovr_07 - Associations" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Mar 10, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_07_associations/index.html" class="title listing-title">discovr_07 - Associations</a>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
+</td>
+</tr>
+<tr data-index="17" data-categories="efa,R,discovr" data-listing-date-sort="1709020800000" data-listing-file-modified-sort="1749826098586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6" data-listing-title-sort="discovr_18 - Exploratory Factor Analysis" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 27, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_18_efa/index.html" class="title listing-title">discovr_18 - Exploratory Factor Analysis</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="18" data-categories="regression,R,discovr" data-listing-date-sort="1708934400000" data-listing-file-modified-sort="1747607602200" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6223" data-listing-title-sort="discovr_08 - General Linear Model" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 26, 2024</span>
+</td>
+<td>
+<a href="./posts/discovr_08_the_glm/index.html" class="title listing-title">discovr_08 - General Linear Model</a>
+</td>
+<td>
+<span class="listing-reading-time">32 min</span>
+</td>
+</tr>
+<tr data-index="19" data-categories="505" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1708957296034" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1276" data-listing-title-sort="Simple Regression" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 18, 2024</span>
+</td>
+<td>
+<a href="./posts/simple-regression/index.html" class="title listing-title">Simple Regression</a>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
+</td>
+</tr>
+<tr data-index="20" data-categories="intro stats,variance,standard deviation" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1734757794316" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17" data-listing-title-sort="Variance and Standard Deviation" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 18, 2024</span>
+</td>
+<td>
+<a href="./posts/variance-std-dev/index.html" class="title listing-title">Variance and Standard Deviation</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+<tr data-index="21" data-categories="news" data-listing-date-sort="1707897600000" data-listing-file-modified-sort="1708020106281" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="115" data-listing-title-sort="Welcome To My Blog" data-listing-filename-sort="index.qmd">
+<td>
+<span class="listing-date">Feb 14, 2024</span>
+</td>
+<td>
+<a href="./posts/welcome/index.html" class="title listing-title">Welcome To My Blog</a>
+</td>
+<td>
+<span class="listing-reading-time">1 min</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
