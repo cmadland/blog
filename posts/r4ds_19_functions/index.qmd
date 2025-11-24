@@ -1,0 +1,21 @@
+---
+title: "R for Data Science 2e - Ch25 - Functions"
+author: "Colin Madland"
+date: "2025-11-23"
+categories: [quarto, R, reproducability]
+image: "sunrise.jpg"
+
+---
+
+::: {.callout}
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). [R for Data Science (2e).](https://r4ds.hadley.nz/) 
+ 
+:::
+
+```{r}
+library(tidyverse)
+
+```
+
+Based on a recommendation from the [Productive R Workflow](https://www.productive-r-workflow.com/) course, this page will be a sorting through of how to create functions in R...but the Seahawks are playing and I need to go pick up the pizza...

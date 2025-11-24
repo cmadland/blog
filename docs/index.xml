@@ -10,7 +10,56 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.6.8</generator>
-<lastBuildDate>Sun, 18 May 2025 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 23 Nov 2025 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>R for Data Science 2e - Ch25 - Functions</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/r4ds_19_functions/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <a href="https://r4ds.hadley.nz/">R for Data Science (2e).</a></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<p>Based on a recommendation from the <a href="https://www.productive-r-workflow.com/">Productive R Workflow</a> course, this page will be a sorting through of how to create functions in R…but the Seahawks are playing and I need to go pick up the pizza…</p>
+
+
+
+ ]]></description>
+  <category>quarto</category>
+  <category>R</category>
+  <category>reproducability</category>
+  <guid>https://cmadland.github.io/blog/posts/r4ds_19_functions/</guid>
+  <pubDate>Sun, 23 Nov 2025 08:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/r4ds_19_functions/sunrise.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>SIDS Ch 3 - Data Wrangling</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -307,7 +356,7 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
@@ -347,7 +396,7 @@ font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"steelblue"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 1041 rows containing non-finite outside the scale range
@@ -1330,9 +1379,9 @@ font-style: inherit;"># Install &amp; load ggthemes</span></span></code></pre></
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.4     ✔ tibble    3.2.1
-✔ purrr     1.0.4     ✔ tidyr     1.3.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.1.0     ✔ tidyr     1.3.1
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -1977,9 +2026,9 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ lubridate 1.9.4     ✔ tibble    3.2.1
-✔ purrr     1.0.4     ✔ tidyr     1.3.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.1.0     ✔ tidyr     1.3.1
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -3772,10 +3821,10 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -4121,10 +4170,10 @@ font-style: inherit;">library</span>(tidyverse, knitr)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -5786,90 +5835,90 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 <tr class="odd">
 <td style="text-align: left;">raq_06</td>
 <td style="text-align: right;">0.84</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.03</td>
 <td style="text-align: right;">1.00</td>
 <td style="text-align: right;">0.27</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_18</td>
 <td style="text-align: right;">0.63</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.07</td>
 <td style="text-align: right;">1.03</td>
 <td style="text-align: right;">0.57</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_13</td>
 <td style="text-align: right;">0.57</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">-0.03</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.66</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_07</td>
 <td style="text-align: right;">0.56</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.04</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.65</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_10</td>
 <td style="text-align: right;">0.49</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.09</td>
+<td style="text-align: right;">-0.02</td>
 <td style="text-align: right;">1.08</td>
 <td style="text-align: right;">0.74</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_15</td>
 <td style="text-align: right;">0.48</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.05</td>
 <td style="text-align: right;">1.04</td>
 <td style="text-align: right;">0.71</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_05</td>
 <td style="text-align: right;">0.45</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.01</td>
 <td style="text-align: right;">0.39</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.02</td>
 <td style="text-align: right;">1.97</td>
 <td style="text-align: right;">0.46</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_14</td>
 <td style="text-align: right;">0.42</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.06</td>
 <td style="text-align: right;">1.06</td>
 <td style="text-align: right;">0.78</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_09</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.07</td>
 <td style="text-align: right;">0.81</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.03</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.38</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_23</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.08</td>
 <td style="text-align: right;">0.79</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.01</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.41</td>
 </tr>
@@ -5877,17 +5926,17 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 <td style="text-align: left;">raq_19</td>
 <td style="text-align: right;">0.26</td>
 <td style="text-align: right;">0.56</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.01</td>
 <td style="text-align: right;">1.41</td>
 <td style="text-align: right;">0.50</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_22</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.19</td>
 <td style="text-align: right;">0.52</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.05</td>
 <td style="text-align: right;">1.29</td>
 <td style="text-align: right;">0.59</td>
 </tr>
@@ -5895,97 +5944,97 @@ font-style: inherit;">2</span>)</span></code></pre></div>
 <td style="text-align: left;">raq_02</td>
 <td style="text-align: right;">0.25</td>
 <td style="text-align: right;">0.48</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">-0.03</td>
 <td style="text-align: right;">1.54</td>
 <td style="text-align: right;">0.62</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_21</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.02</td>
+<td style="text-align: right;">0.05</td>
 <td style="text-align: right;">0.59</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.06</td>
 <td style="text-align: right;">1.04</td>
 <td style="text-align: right;">0.60</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_04</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">-0.02</td>
 <td style="text-align: right;">0.56</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
 <td style="text-align: right;">1.01</td>
 <td style="text-align: right;">0.67</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_20</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
 <td style="text-align: right;">0.54</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.05</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.68</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_16</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.05</td>
+<td style="text-align: right;">0.02</td>
 <td style="text-align: right;">0.51</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.01</td>
 <td style="text-align: right;">1.02</td>
 <td style="text-align: right;">0.77</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_03</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.01</td>
 <td style="text-align: right;">-0.43</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.03</td>
 <td style="text-align: right;">1.01</td>
 <td style="text-align: right;">0.80</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_01</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.03</td>
+<td style="text-align: right;">0.01</td>
 <td style="text-align: right;">0.39</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.06</td>
 <td style="text-align: right;">1.06</td>
 <td style="text-align: right;">0.83</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_12</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.01</td>
 <td style="text-align: right;">0.37</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.07</td>
 <td style="text-align: right;">1.07</td>
 <td style="text-align: right;">0.89</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_08</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-0.01</td>
 <td style="text-align: right;">0.88</td>
 <td style="text-align: right;">1.00</td>
 <td style="text-align: right;">0.25</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">raq_11</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">0.01</td>
+<td style="text-align: right;">0.03</td>
 <td style="text-align: right;">0.72</td>
 <td style="text-align: right;">1.00</td>
 <td style="text-align: right;">0.45</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">raq_17</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.03</td>
+<td style="text-align: right;">0.02</td>
+<td style="text-align: right;">0.00</td>
 <td style="text-align: right;">0.68</td>
 <td style="text-align: right;">1.00</td>
 <td style="text-align: right;">0.51</td>
@@ -6625,10 +6674,10 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -7013,10 +7062,10 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -7422,7 +7471,7 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">geom_histogram</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
@@ -8089,10 +8138,10 @@ font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></di
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -8543,10 +8592,10 @@ font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></di
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -8704,11 +8753,6 @@ font-style: inherit;">+</span></span>
 <span id="cb11-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -8763,24 +8807,24 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <p>To use the function, - pipe tibble into the <code>select()</code> function from <code>dplyr</code> to select variables to correlate, then pipe that into the correlation function - use the same syntax whether you want to correlate two variables or produce all correlations between pairs of multiple variables]</p>
 <p>To calculate Pearson correlation btwn variables <code>exam_grade</code> and <code>revise</code> in <code>exam_tib</code>…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">exam_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">exam_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb14-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb13-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(exam_grade, revise) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb14-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb13-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb14-4">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb13-4">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8838,24 +8882,24 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">exam_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">exam_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb15-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb14-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(exam_grade, anxiety) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb15-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb14-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb15-4">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb14-4">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -8913,24 +8957,24 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">exam_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">exam_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb16-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb15-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(exam_grade, revise, anxiety) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb16-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb15-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">correlation</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb16-4">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb15-4">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9075,30 +9119,30 @@ Rounding
 <h2 class="anchored" data-anchor-id="robust-correlation-coefficients">Robust correlation coefficients</h2>
 <p>Given the skew in the variables, we should use a robust correlation coefficient, like the <code>percentage bend correlation coefficient</code> by setting <code>method = "percentage"</code> within <code>correlation()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">exam_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">exam_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb17-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb16-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(exam_grade, revise, anxiety) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb17-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb16-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">correlation</span>(</span>
-<span id="cb17-4">   <span class="at" style="color: #657422;
+<span id="cb16-4">   <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"percentage"</span></span>
-<span id="cb17-5">   ) <span class="sc" style="color: #5E5E5E;
+<span id="cb16-5">   ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb17-6">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb16-6">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9230,7 +9274,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
 <li>Data are in</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">liar_tib</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">liar_tib</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 68 × 4
    id    creativity position novice          
@@ -9247,7 +9291,7 @@ font-style: inherit;">8</span>))</span></code></pre></div>
 10 dvew          50        2 First time      
 # ℹ 58 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">GGally<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">GGally<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9262,7 +9306,7 @@ background-color: null;
 font-style: inherit;">"position"</span>)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb20-2"><span class="fu" style="color: #4758AB;
+<span id="cb19-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -9275,17 +9319,17 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 <p>To get Spearman correlation, we use <code>correlation()</code> the same way as we did with <code>Pearson</code>, except we add <code>method = "spearman"</code> to the function</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">liar_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">liar_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb21-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb20-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(creativity, position) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb21-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb20-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9296,7 +9340,7 @@ background-color: null;
 font-style: inherit;">"spearman"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb21-4">    knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb20-4">    knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9374,17 +9418,17 @@ font-style: inherit;">8</span>))</span></code></pre></div>
 <li><code>correlation()</code> function will calculate Kendall’s <img src="https://latex.codecogs.com/png.latex?%5Ctau"> by including <code>method = "kendall"</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">liar_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">liar_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb22-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb21-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(creativity, position) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb22-3">  correlation<span class="sc" style="color: #5E5E5E;
+<span id="cb21-3">  correlation<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9395,7 +9439,7 @@ background-color: null;
 font-style: inherit;">"kendall"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb22-4">    knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb21-4">    knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9499,10 +9543,10 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -9563,10 +9607,10 @@ font-style: inherit;">library</span>(tidyverse, ggplot2)</span></code></pre></di
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ forcats   1.0.1     ✔ stringr   1.5.2
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -9732,11 +9776,6 @@ font-style: inherit;">+</span></span>
 <span id="cb13-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Registered S3 method overwritten by 'GGally':
-  method from   
-  +.gg   ggplot2</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -9785,7 +9824,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">album_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">album_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9796,7 +9835,7 @@ background-color: null;
 font-style: inherit;">data =</span> album_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb15-2"><span class="fu" style="color: #4758AB;
+<span id="cb14-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(album_lm)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -9819,14 +9858,14 @@ Residual standard error: 65.99 on 198 degrees of freedom
 Multiple R-squared:  0.3346,    Adjusted R-squared:  0.3313 
 F-statistic: 99.59 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glance</span>(album_lm)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb17-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb16-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9903,7 +9942,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9974,7 +10013,7 @@ font-style: inherit;">TRUE</span>)</span></code></pre></div>
 <li>add predictors to the R code the same way as we do in the equation, by adding <code>+</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">album_full_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">album_full_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -9989,7 +10028,7 @@ background-color: null;
 font-style: inherit;">data =</span> album_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb20-2"><span class="fu" style="color: #4758AB;
+<span id="cb19-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(album_full_lm)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -10015,14 +10054,14 @@ Residual standard error: 47.09 on 196 degrees of freedom
 Multiple R-squared:  0.6647,    Adjusted R-squared:  0.6595 
 F-statistic: 129.5 on 3 and 196 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glance</span>(album_full_lm)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb22-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb21-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10104,12 +10143,12 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <li>list the models in order that we want to compare</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">anova</span>(album_lm, album_full_lm) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb23-2">broom<span class="sc" style="color: #5E5E5E;
+<span id="cb22-2">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10148,7 +10187,7 @@ Tip
 <section id="model-parameter-estimates-hatb" class="level3">
 <h3 class="anchored" data-anchor-id="model-parameter-estimates-hatb">Model parameter estimates (<img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb%7D">)</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10159,7 +10198,7 @@ background-color: null;
 font-style: inherit;">TRUE</span>)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb25-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb24-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10265,7 +10304,7 @@ How would we interpret the 𝑏̂ (11.086) for band image?
 <p>The <code>lm()</code> function does not provide standardized betas, so use <code>model_parameters()</code></p>
 <p><code>parameters::model_parameters(my_model, standardize = refit)</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">parameters<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">parameters<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10276,7 +10315,7 @@ background-color: null;
 font-style: inherit;">"refit"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb26-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb25-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10482,7 +10521,7 @@ Report
 <section id="metal-and-mental-health" class="level3">
 <h3 class="anchored" data-anchor-id="metal-and-mental-health">Metal and mental health</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">metal_tib</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">metal_tib</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,506 × 2
       hm suicide
@@ -10501,7 +10540,7 @@ Report
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">GGally<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1">GGally<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10535,7 +10574,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">metal_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1">metal_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10546,14 +10585,14 @@ background-color: null;
 font-style: inherit;">data =</span> metal_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb32-2">broom<span class="sc" style="color: #5E5E5E;
+<span id="cb31-2">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glance</span>(metal_lm) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb32-3">knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb31-3">knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10614,7 +10653,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10692,7 +10731,7 @@ As listening to heavy metal increases by 1 unit, by how much does suicide risk c
 <section id="predicting-social-anxiety" class="level3">
 <h3 class="anchored" data-anchor-id="predicting-social-anxiety">Predicting Social Anxiety</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1">soc_anx_tib</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1">soc_anx_tib</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 134 × 4
     spai   iii   obq tosca
@@ -10711,7 +10750,7 @@ As listening to heavy metal increases by 1 unit, by how much does suicide risk c
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">GGally<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1">GGally<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10726,7 +10765,7 @@ background-color: null;
 font-style: inherit;">"tosca"</span>))  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb37-2"><span class="fu" style="color: #4758AB;
+<span id="cb36-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -10738,7 +10777,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1">soc_anx_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">soc_anx_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10749,14 +10788,14 @@ background-color: null;
 font-style: inherit;">data =</span> soc_anx_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb38-2">broom<span class="sc" style="color: #5E5E5E;
+<span id="cb37-2">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glance</span>(soc_anx_lm)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb38-3">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb37-3">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10815,7 +10854,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10837,7 +10876,7 @@ font-style: inherit;">0.95</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">soc_anx_obq_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1">soc_anx_obq_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10850,14 +10889,14 @@ background-color: null;
 font-style: inherit;">data =</span> soc_anx_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb41-2">broom<span class="sc" style="color: #5E5E5E;
+<span id="cb40-2">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glance</span>(soc_anx_obq_lm)  <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb41-3">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb40-3">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10916,7 +10955,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </tbody>
 </table>
 </div>
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1">broom<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1">broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10939,7 +10978,7 @@ font-style: inherit;">0.95</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1">parameters<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1">parameters<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -10950,7 +10989,7 @@ background-color: null;
 font-style: inherit;">"refit"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb44-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb43-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11051,15 +11090,15 @@ Error message
 </div>
 <p>Here is the fixed code, adding <code>.cols = everything()</code>, and the intended output</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1">soc_anx_tib <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1">soc_anx_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb46-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb45-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summarise</span>(</span>
-<span id="cb46-3">    <span class="fu" style="color: #4758AB;
+<span id="cb45-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">across</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -11092,7 +11131,7 @@ background-color: null;
 font-style: inherit;">.names =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"{.col}_{.fn}"</span>)</span>
-<span id="cb46-4">    )</span></code></pre></div>
+<span id="cb45-4">    )</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 8
   spai_valid spai_missing iii_valid iii_missing obq_valid obq_missing
@@ -11102,12 +11141,12 @@ font-style: inherit;">"{.col}_{.fn}"</span>)</span>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1">soc_anx_lm <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1">soc_anx_lm <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> soc_anx_tib <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb48-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb47-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11116,31 +11155,31 @@ background-color: null;
 font-style: inherit;">-</span>iii) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb48-3">  <span class="fu" style="color: #4758AB;
+<span id="cb47-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">na.omit</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb48-4">  <span class="fu" style="color: #4758AB;
+<span id="cb47-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">lm</span>(spai <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">~</span> tosca, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">data =</span> _)</span>
-<span id="cb48-5"><span class="fu" style="color: #4758AB;
+<span id="cb47-5"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">anova</span>(soc_anx_lm, soc_anx_obq_lm) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb48-6">  broom<span class="sc" style="color: #5E5E5E;
+<span id="cb47-6">  broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">tidy</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb48-7">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb47-7">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11333,7 +11372,7 @@ What does homoscedasticity mean?
 <p>Use <code>plot()</code> function</p>
 <p><code>plot(my_model, which = numbers_of_the_plots_you_want)</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(album_full_lm)</span></code></pre></div>
 <div class="cell-output-display">
@@ -11376,7 +11415,7 @@ font-style: inherit;">plot</span>(album_full_lm)</span></code></pre></div>
 </ol>
 <p>To get plot #1</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(album_full_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -11393,7 +11432,7 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 </div>
 <p>To get plot #1 and #2</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(album_full_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -11441,7 +11480,7 @@ Tip
 </ul>
 <p><strong>Figure 2</strong> <img src="https://cmadland.github.io/blog/posts/discovr_08_the_glm/dsr2_fig_06_29_pred_resid.png" class="img-fluid" alt="Examples of residual plots from Field (2023)"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(album_full_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -11485,7 +11524,7 @@ Comparing the plot to those in Figure 2, how would you interpret it?
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(album_full_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -11534,12 +11573,12 @@ Using <code>GGfortify</code>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1">ggplot2<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1">ggplot2<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">autoplot</span>(album_full_lm,</span>
-<span id="cb54-2">                  <span class="at" style="color: #657422;
+<span id="cb53-2">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">which =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11550,31 +11589,50 @@ background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>),</span>
-<span id="cb54-3">                  <span class="at" style="color: #657422;
+<span id="cb53-3">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#440154"</span>,</span>
-<span id="cb54-4">                  <span class="at" style="color: #657422;
+<span id="cb53-4">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">smooth.colour =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#5ec962"</span>,</span>
-<span id="cb54-5">                  <span class="at" style="color: #657422;
+<span id="cb53-5">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.5</span>,</span>
-<span id="cb54-6">                  <span class="at" style="color: #657422;
+<span id="cb53-6">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb54-7">  <span class="fu" style="color: #4758AB;
+<span id="cb53-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `fortify(&lt;lm&gt;)` was deprecated in ggplot2 3.6.0.
+ℹ Please use `broom::augment(&lt;lm&gt;)` instead.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
+ℹ Please use tidy evaluation idioms with `aes()`.
+ℹ See also `vignette("ggplot2-in-packages")` for more information.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ggfortify package.
+  Please report the issue at &lt;https://github.com/sinhrks/ggfortify/issues&gt;.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -11616,12 +11674,12 @@ Important
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1">ggplot2<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1">ggplot2<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">autoplot</span>(album_full_lm,</span>
-<span id="cb55-2">                  <span class="at" style="color: #657422;
+<span id="cb57-2">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">which =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11632,29 +11690,29 @@ background-color: null;
 font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">6</span>),</span>
-<span id="cb55-3">                  <span class="at" style="color: #657422;
+<span id="cb57-3">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">colour =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#440154"</span>,</span>
-<span id="cb55-4">                  <span class="at" style="color: #657422;
+<span id="cb57-4">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">smooth.colour =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#5ec962"</span>,</span>
-<span id="cb55-5">                  <span class="at" style="color: #657422;
+<span id="cb57-5">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.5</span>,</span>
-<span id="cb55-6">                  <span class="at" style="color: #657422;
+<span id="cb57-6">                  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span> </span>
-<span id="cb55-7">  <span class="fu" style="color: #4758AB;
+<span id="cb57-7">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 <div class="cell-output-display">
@@ -11707,19 +11765,19 @@ De-bug: residuals when you have missing values
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1">album_full_rsd <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1">album_full_rsd <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> album_full_lm <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb56-2">  broom<span class="sc" style="color: #5E5E5E;
+<span id="cb58-2">  broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">augment</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb56-3">  tibble<span class="sc" style="color: #5E5E5E;
+<span id="cb58-3">  tibble<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11728,19 +11786,19 @@ background-color: null;
 font-style: inherit;">var =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"case_no"</span>) </span>
-<span id="cb56-4"><span class="fu" style="color: #4758AB;
+<span id="cb58-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">head</span>(album_full_rsd) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb56-5">  tibble<span class="sc" style="color: #5E5E5E;
+<span id="cb58-5">  tibble<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glimpse</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb56-6">    knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb58-6">    knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11880,10 +11938,10 @@ $ .std.resid &lt;dbl&gt; 2.1774041, -2.3230828, 1.4688016, 0.1501160, -0.1237983
 <p>Standardized residuals are in a variable called <code>.std.resid</code> and the Cook’s distances in <code>.cooksd</code></p>
 <p>to see what percentage of standardized residuals fall outside the limits of 1.96 (95%), 2-2.5 (99%) or above 3, we can filter the tibble using the <code>abs()</code> function to return the absolute value (ignoring the plus/minus signs) of the residual</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb58-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb60-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11896,14 +11954,14 @@ background-color: null;
 font-style: inherit;">1.96</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb58-3">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb60-3">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb58-4">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb60-4">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -11928,43 +11986,6 @@ font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb60-2">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2.5</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb60-3">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb60-4">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  case_no .std.resid .resid
-    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
-1     164      -2.63  -121.
-2     169       3.09   144.</code></pre>
-</div>
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb62" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
@@ -11978,7 +11999,7 @@ font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5
 background-color: null;
 font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3.0</span>) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">2.5</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb62-3">  dplyr<span class="sc" style="color: #5E5E5E;
@@ -11989,6 +12010,43 @@ font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
 <span id="cb62-4">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  case_no .std.resid .resid
+    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1     164      -2.63  -121.
+2     169       3.09   144.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb64-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.0</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb64-3">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb64-4">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12053,10 +12111,10 @@ All things considered do you think there are outliers?
 <li>also use <code>select()</code> so we only see Cook’s value and case numbers</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1">album_full_rsd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb64-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb66-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12065,7 +12123,7 @@ background-color: null;
 font-style: inherit;">desc</span>(.cooksd)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb64-3">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb66-3">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12111,7 +12169,7 @@ font-style: inherit;">select</span>(case_no, .cooksd)</span></code></pre></div>
 <li>can’t use any <code>broom</code> functions with <code>lmRob()</code>, so text output using <code>summary()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1">album_full_rob <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1">album_full_rob <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12126,7 +12184,7 @@ background-color: null;
 font-style: inherit;">data =</span> album_tib, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">na.action =</span> na.exclude)</span>
-<span id="cb66-2"><span class="fu" style="color: #4758AB;
+<span id="cb68-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(album_full_rob)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -12206,7 +12264,7 @@ LS-estimate     7.659  0.1049</code></pre>
 <li><p><code>vcov = "HC3"</code> willuse HC3 method, though some think <code>HC4</code> is better</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1">parameters<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1">parameters<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12217,7 +12275,7 @@ background-color: null;
 font-style: inherit;">"HC4"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb68-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb70-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12302,7 +12360,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1">parameters<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb71" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1">parameters<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12313,7 +12371,7 @@ background-color: null;
 font-style: inherit;">"HC3"</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb69-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb71-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12410,7 +12468,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <li>by default, 1000 bootstrap samples are used</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1">parameters<span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1">parameters<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12421,7 +12479,7 @@ background-color: null;
 font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb70-2">  knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb72-2">  knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12445,34 +12503,34 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-26.273</td>
+<td style="text-align: right;">-25.860</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-56.278</td>
-<td style="text-align: right;">8.582</td>
-<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">-58.803</td>
+<td style="text-align: right;">7.284</td>
+<td style="text-align: right;">0.11</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">0.072</td>
-<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.098</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.364</td>
+<td style="text-align: right;">3.376</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.803</td>
-<td style="text-align: right;">3.977</td>
+<td style="text-align: right;">2.797</td>
+<td style="text-align: right;">4.032</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.981</td>
+<td style="text-align: right;">10.976</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.454</td>
-<td style="text-align: right;">15.226</td>
+<td style="text-align: right;">6.069</td>
+<td style="text-align: right;">15.388</td>
 <td style="text-align: right;">0.00</td>
 </tr>
 </tbody>
@@ -12532,7 +12590,7 @@ The bootstrap confidence interval for image ranges from 6.63 to 15.45 (the value
 <section id="unguided-example-1" class="level2">
 <h2 class="anchored" data-anchor-id="unguided-example-1">Unguided example</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(soc_anx_obq_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -12559,7 +12617,7 @@ font-style: inherit;">3</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(soc_anx_obq_lm, <span class="at" style="color: #657422;
 background-color: null;
@@ -12595,12 +12653,12 @@ font-style: inherit;">6</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1">soc_anx_obq_rsd <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb75" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1">soc_anx_obq_rsd <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> soc_anx_obq_lm <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb73-2">  broom<span class="sc" style="color: #5E5E5E;
+<span id="cb75-2">  broom<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12609,7 +12667,7 @@ background-color: null;
 font-style: inherit;">data =</span> soc_anx_tib) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb73-3">    tibble<span class="sc" style="color: #5E5E5E;
+<span id="cb75-3">    tibble<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12620,19 +12678,19 @@ background-color: null;
 font-style: inherit;">"case_no"</span>) </span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">head</span>(soc_anx_obq_rsd) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb74-2">  tibble<span class="sc" style="color: #5E5E5E;
+<span id="cb76-2">  tibble<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">glimpse</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb74-3">    knitr<span class="sc" style="color: #5E5E5E;
+<span id="cb76-3">    knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12770,10 +12828,10 @@ $ .std.resid &lt;dbl&gt; -1.5846267, -0.1175478, -0.1529180, 1.2144842, -0.64012
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1">soc_anx_obq_rsd <span class="sc" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1">soc_anx_obq_rsd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb76-2">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb78-2">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12786,14 +12844,14 @@ background-color: null;
 font-style: inherit;">1.96</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb76-3">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb78-3">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
-<span id="cb76-4">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb78-4">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -12811,43 +12869,6 @@ font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1">soc_anx_obq_rsd <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb78-2">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2.5</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span id="cb78-3">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span id="cb78-4">  dplyr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 3
-  case_no .std.resid .resid
-    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
-1       8       2.61   74.6
-2      45       2.64   75.7</code></pre>
-</div>
-</div>
-<div class="cell">
 <div class="sourceCode cell-code" id="cb80" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1">soc_anx_obq_rsd <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span> </span>
@@ -12861,7 +12882,7 @@ font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5
 background-color: null;
 font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3.0</span>) <span class="sc" style="color: #5E5E5E;
+font-style: inherit;">2.5</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
 <span id="cb80-3">  dplyr<span class="sc" style="color: #5E5E5E;
@@ -12877,8 +12898,11 @@ font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 3
-# ℹ 3 variables: case_no &lt;int&gt;, .std.resid &lt;dbl&gt;, .resid &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 2 × 3
+  case_no .std.resid .resid
+    &lt;int&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1       8       2.61   74.6
+2      45       2.64   75.7</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -12889,12 +12913,46 @@ font-style: inherit;">|&gt;</span> </span>
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
+font-style: inherit;">filter</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(.std.resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.0</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb82-3">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(case_no, .std.resid, .resid) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb82-4">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(.std.resid)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 3
+# ℹ 3 variables: case_no &lt;int&gt;, .std.resid &lt;dbl&gt;, .resid &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1">soc_anx_obq_rsd <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb84-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
 font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">desc</span>(.cooksd)) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">|&gt;</span></span>
-<span id="cb82-3">  dplyr<span class="sc" style="color: #5E5E5E;
+<span id="cb84-3">  dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -13039,7 +13097,7 @@ Are there any Cook’s distances greater than 1?
 </ul>
 <p>Fitting the model with Bayes factors</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1">album_bf <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb86" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1">album_bf <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> BayesFactor<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -13061,7 +13119,7 @@ font-style: inherit;">data =</span> album_tib)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: data coerced from tibble to data frame</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb86" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1">album_bf</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb88" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1">album_bf</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
@@ -13095,7 +13153,7 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 <li><code>lmBF()</code> fits only the model we specify</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1">album_full_bf <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1">album_full_bf <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> BayesFactor<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -13117,7 +13175,7 @@ font-style: inherit;">data =</span> album_tib)</span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: data coerced from tibble to data frame</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb90" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1">album_full_bf</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1">album_full_bf</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bayes factor analysis
 --------------
@@ -13139,7 +13197,7 @@ Bayes factor type: BFlinearModel, JZS</code></pre>
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1">album_full_post <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb94" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1">album_full_post <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> BayesFactor<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -13150,7 +13208,7 @@ background-color: null;
 font-style: inherit;">iterations =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10000</span>)</span>
-<span id="cb92-2"><span class="fu" style="color: #4758AB;
+<span id="cb94-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">summary</span>(album_full_post) </span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -13164,22 +13222,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.370e+00 3.370e-02      3.370e-02
-adverts 8.403e-02 6.981e-03 6.981e-05      7.094e-05
-airplay 3.333e+00 2.789e-01 2.789e-03      2.712e-03
-image   1.095e+01 2.441e+00 2.441e-02      2.441e-02
-sig2    2.247e+03 2.293e+02 2.293e+00      2.393e+00
-g       9.741e-01 1.778e+00 1.778e-02      1.778e-02
+mu      1.932e+02 3.390e+00 3.390e-02      3.390e-02
+adverts 8.405e-02 6.994e-03 6.994e-05      6.994e-05
+airplay 3.335e+00 2.801e-01 2.801e-03      2.801e-03
+image   1.097e+01 2.444e+00 2.444e-02      2.444e-02
+sig2    2.251e+03 2.331e+02 2.331e+00      2.414e+00
+g       9.998e-01 1.648e+00 1.648e-02      1.648e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.955e+02 1.997e+02
-adverts 7.025e-02 7.927e-02 8.407e-02 8.881e-02 9.783e-02
-airplay 2.774e+00 3.147e+00 3.332e+00 3.519e+00 3.878e+00
-image   6.111e+00 9.331e+00 1.095e+01 1.261e+01 1.571e+01
-sig2    1.839e+03 2.089e+03 2.233e+03 2.392e+03 2.739e+03
-g       1.741e-01 3.717e-01 5.996e-01 1.032e+00 3.931e+00</code></pre>
+mu      1.866e+02 1.909e+02 1.932e+02 1.955e+02 1.998e+02
+adverts 7.039e-02 7.938e-02 8.406e-02 8.864e-02 9.778e-02
+airplay 2.781e+00 3.146e+00 3.339e+00 3.523e+00 3.874e+00
+image   6.176e+00 9.332e+00 1.099e+01 1.259e+01 1.575e+01
+sig2    1.847e+03 2.085e+03 2.234e+03 2.400e+03 2.747e+03
+g       1.736e-01 3.735e-01 6.054e-01 1.055e+00 4.182e+00</code></pre>
 </div>
 </div>
 <ul>
@@ -13256,277 +13314,6 @@ Important
   <guid>https://cmadland.github.io/blog/posts/discovr_08_the_glm/</guid>
   <pubDate>Mon, 26 Feb 2024 08:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_08_the_glm/image.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Simple Regression</title>
-  <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/simple-regression/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="regression-equation" class="level2">
-<h2 class="anchored" data-anchor-id="regression-equation">Regression Equation</h2>
-<p>Linear regression expresses the relationship between two variables, <img src="https://latex.codecogs.com/png.latex?X_i"> and <img src="https://latex.codecogs.com/png.latex?Y_i">.</p>
-<p>The <img src="https://latex.codecogs.com/png.latex?_i"> refers to the cases in the dataset, so if there are 1000 cases, then <img src="https://latex.codecogs.com/png.latex?_i"> is 1-1000. Each <img src="https://latex.codecogs.com/png.latex?_i"> refers to a ‘student’.</p>
-<p><img src="https://latex.codecogs.com/png.latex?Y_i=b_0+%7Bb_1%7D%7BX_i%7D+%5Cepsilon_i"></p>
-<p>Where:</p>
-<ul>
-<li><img src="https://latex.codecogs.com/png.latex?b_1"> is the slope or regression coefficient (how much <img src="https://latex.codecogs.com/png.latex?Y"> will change when <img src="https://latex.codecogs.com/png.latex?X"> increases by 1)<br>
-</li>
-<li><img src="https://latex.codecogs.com/png.latex?b_0"> is the <img src="https://latex.codecogs.com/png.latex?Y">-intercept, where the regression line crosses the <img src="https://latex.codecogs.com/png.latex?Y"> axis</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Cepsilon_i"> is the error term</li>
-</ul>
-<p>or</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+%7Bb_1%7D%7BX_i%7D"></p>
-<p>Where:</p>
-<ul>
-<li><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"> is the predicted value of <img src="https://latex.codecogs.com/png.latex?Y"></li>
-</ul>
-<p>Notes:</p>
-<p>Larger values of <img src="https://latex.codecogs.com/png.latex?b_1"> indicate a steeper regression line</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/slope.png" class="img-fluid figure-img"></p>
-<figcaption>examples of slope and intercept</figcaption>
-</figure>
-</div>
-<ul>
-<li>left image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)</li>
-<li>right image, all slopes positive</li>
-</ul>
-</section>
-<section id="calculating-regression" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-regression">Calculating Regression</h2>
-<ul>
-<li>any dataset is made up of points, and regression finds the best fitting straight line for the dataset</li>
-</ul>
-</section>
-<section id="best-fit" class="level2">
-<h2 class="anchored" data-anchor-id="best-fit">Best Fit</h2>
-<ul>
-<li>need to define mathematically the distance between each data point and the regression line<br>
-</li>
-<li>for every <img src="https://latex.codecogs.com/png.latex?X"> value in the data, the linear equation can determine the <img src="https://latex.codecogs.com/png.latex?Y"> value on the line - called <strong>predicted <img src="https://latex.codecogs.com/png.latex?Y"></strong>, or <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"></li>
-<li>this distance measures the error between the line and the data</li>
-<li>if all data points were on the line, then the line ‘fits’ the data perfectly</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"> should be close to actual <img src="https://latex.codecogs.com/png.latex?Y"></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/predicted.png" class="img-fluid figure-img"></p>
-<figcaption>graph showing the difference between predicted and actual values of <img src="https://latex.codecogs.com/png.latex?Y"></figcaption>
-</figure>
-</div>
-<ul>
-<li>green dots = <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D"></li>
-<li>blue dots = <img src="https://latex.codecogs.com/png.latex?Y"></li>
-<li>distance between the green and blue dots is the prediction error - need to minimize</li>
-<li>some are positive (above the line) and some are negative (below the line)<br>
-</li>
-<li>since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error</li>
-</ul>
-<p><img src="https://latex.codecogs.com/png.latex?total%20%5Cspace%20squared%20%5Cspace%20error%20=%7B%5Csum%5En_%7Bi=1%7D%7D(%7BY_i%7D-%7B%5Chat%7BY_i%7D%7D)%5E2"></p>
-<ul>
-<li>for each poissible line, we can calculate the total squared error, then choose the line with the lowest total squared error, which is the regression line</li>
-<li>this minimizes the difference between the line and the observed data</li>
-<li>this line is called the <em>least squared error</em> solution</li>
-<li>this method is inefficient due to the infinite number of lines possible</li>
-<li>calculus is a mathematical technique to find the maxima or minima of a mathematical expression.</li>
-<li>Using this method, the regression coefficients (slope (<img src="https://latex.codecogs.com/png.latex?b_1">) and intercept (<img src="https://latex.codecogs.com/png.latex?b_0">)) that produce the minimum errors can be calculated.</li>
-</ul>
-</section>
-<section id="calculating-regression-coefficients" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-regression-coefficients">Calculating Regression Coefficients</h2>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D_i=b_0+b_1X_i"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_0%7D=M_Y-%5Chat%7Bb_1%7DM_x"></p>
-<p>Where</p>
-<p><img src="https://latex.codecogs.com/png.latex?r"> is the correlation between <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"><br>
-<img src="https://latex.codecogs.com/png.latex?S_X"> and <img src="https://latex.codecogs.com/png.latex?S_Y"> are sample standard deviations for <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"><br>
-<img src="https://latex.codecogs.com/png.latex?M_X"> and <img src="https://latex.codecogs.com/png.latex?M_Y"> are sample means for <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"></p>
-<p>These are <em>raw regression coefficients</em> (<img src="https://latex.codecogs.com/png.latex?b_1">): the change in outcome is associated with a change in the predictor</p>
-<section id="standardized-regression-coefficients" class="level3">
-<h3 class="anchored" data-anchor-id="standardized-regression-coefficients">Standardized regression coefficients</h3>
-<ul>
-<li>tell us the same thing, except expressed as standard deviations</li>
-<li>if both variables <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"> have been standardized by transforming tehm into <em>Z-scores</em> before calculating the regression coefficients, then the regression coefficients become *standardized coefficients</li>
-</ul>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D=%5Cbeta%7BZ_%7BX_i%7D%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cbeta=r"></p>
-<p>Where</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D"> is the standard deviation of <img src="https://latex.codecogs.com/png.latex?Y"><br>
-<img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BX_i%7D%7D"> is the styandard deviation of <img src="https://latex.codecogs.com/png.latex?X"><br>
-<img src="https://latex.codecogs.com/png.latex?%5Cbeta"> is the correlation coefficient</p>
-<p>Standardizing <img src="https://latex.codecogs.com/png.latex?X"> and <img src="https://latex.codecogs.com/png.latex?Y"> puts the variables on the same scale - when <img src="https://latex.codecogs.com/png.latex?X"> increases by 1SD, <img src="https://latex.codecogs.com/png.latex?Y"> increases by 1SD</p>
-</section>
-</section>
-<section id="analysis-of-regression" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-of-regression">Analysis of regression</h2>
-<ul>
-<li>regression line is only a model based on the data</li>
-<li>process of testing the significance of a regression equation is called <em>analysis of regression</em></li>
-<li>null hypothesis in the analysis of regression states that the equation does not account for a significant proportion of the variance in <img src="https://latex.codecogs.com/png.latex?Y"> scores</li>
-<li>analysis of regression is similar to ANOVA</li>
-</ul>
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/anoreg.png" class="img-fluid"></p>
-<p>Sum Square Total (<img src="https://latex.codecogs.com/png.latex?SS_T"> (left plot)) is <img src="https://latex.codecogs.com/png.latex?%5Csum(Y-%5Cbar%7BY%7D)%5E2"></p>
-<p>Sum Square Residual (<img src="https://latex.codecogs.com/png.latex?SS_R"> (right plot)) is <img src="https://latex.codecogs.com/png.latex?%5Csum(Y-%5Chat%7BY%7D)%5E2"></p>
-<ul>
-<li>prediction error - squared distance between the data and the regression line</li>
-<li>needs to be minimized</li>
-<li>this is the variability that is not explained by the regression equation</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/ssm.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
-</figure>
-</div>
-<p>Sum Square model (<img src="https://latex.codecogs.com/png.latex?SS_M">) is <img src="https://latex.codecogs.com/png.latex?%5Csum(%5Chat%7BY%7D-%5Cbar%7BY%7D)%5E2"></p>
-<ul>
-<li><p>in this equation, <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+b_1X"></p></li>
-<li><p><img src="https://latex.codecogs.com/png.latex?SS_T">: total variability is the variability between the scores and the mean<br>
-</p></li>
-<li><p><img src="https://latex.codecogs.com/png.latex?SS_R">: sum squared residual is the residual or error variability between the regression model and the data<br>
-</p></li>
-<li><p><img src="https://latex.codecogs.com/png.latex?SS_M"> or sum square regression: Model variability - difference in variability between the model and the mean.<img src="https://latex.codecogs.com/png.latex?Y"> are determined by the value of <img src="https://latex.codecogs.com/png.latex?X"><br>
-</p></li>
-<li><p><img src="https://latex.codecogs.com/png.latex?SS_T"> is the sum of <img src="https://latex.codecogs.com/png.latex?SS_R"> and <img src="https://latex.codecogs.com/png.latex?SS_M"></p>
-<ul>
-<li>part of the variability is residual - we don’t know what is causing<br>
-</li>
-<li>part of it is due to the model - the relationship between <img src="https://latex.codecogs.com/png.latex?Y"> and <img src="https://latex.codecogs.com/png.latex?X"></li>
-</ul></li>
-</ul>
-<p>The proportion of variability in <img src="https://latex.codecogs.com/png.latex?Y"> that is predicted by its relationship with <img src="https://latex.codecogs.com/png.latex?X">:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BSS_%7Bregression%7D%7D%7BSS_T%7D=r%5E2"></p>
-<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is an effect size that tells us the proportion of variability that is accounted for by the model</p>
-<p>The proportion of the variability that is not accounted for is</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BSS_%7Bresidual%7D%7D%7BSS_T%7D=1-r%5E2"></p>
-<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is very mieaningful</p>
-<p>if <img src="https://latex.codecogs.com/png.latex?R%5E2"> is 20%, then the amount of the variability in <img src="https://latex.codecogs.com/png.latex?Y"> that is accounted for by the model is 20%, which is quite large.</p>
-<p>Therefore</p>
-<p><img src="https://latex.codecogs.com/png.latex?SS_%7Bregression%7D=r%5E2SS_T"></p>
-<p><img src="https://latex.codecogs.com/png.latex?SS_%7Bresidual%7D=(1-r%5E2)SS_Y"></p>
-<p><img src="https://latex.codecogs.com/png.latex?SS_Y"> is the same thing as <img src="https://latex.codecogs.com/png.latex?SS_T"></p>
-<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> is the Pearson Correlation Coefficient squared</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/components.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
-</figure>
-</div>
-<p>Total variability is partitioned into two - sum squared regression (explained by the model) and sum squared residual (not explained by the model).</p>
-<p>Same for degrees of freedom</p>
-<p>Sums of squares are total values and can be expressed as averages called <em>Mean Squares</em>, or <img src="https://latex.codecogs.com/png.latex?MS"> AKA <em>variance</em></p>
-<p><img src="https://latex.codecogs.com/png.latex?MS_%7Bregression%7D=%5Cfrac%7BSS_%7Bregression%7D%7D%7Bdf_%7Bregression%7D%7D"></p>
-<ul>
-<li>mean square variance is the variance accounted for in the model</li>
-</ul>
-<p><img src="https://latex.codecogs.com/png.latex?MS_%7Bresidual%7D=%5Cfrac%7BSS_%7Bresidual%7D%7D%7Bdf_%7Bresidual%7D%7D"></p>
-<ul>
-<li>mean square residual is the variance not accounted for in the model</li>
-</ul>
-<p>An <img src="https://latex.codecogs.com/png.latex?F">-ratio can be used to compare these two mean squares</p>
-<p><img src="https://latex.codecogs.com/png.latex?F=%5Cfrac%7BMS_%7Bregression%7D%7D%7BMS_%7Bresidual%7D%7D%20%5Ctext%7Bwith%7D%5C:%20df=1,n-2"></p>
-<ul>
-<li>if the mean square regression is small compared to the mean square residual, then the model does not account for much variance<br>
-</li>
-<li>if the mean square regression is larger than the mean square residual, then the model accounts for more variance</li>
-</ul>
-</section>
-<section id="an-example-fields" class="level2">
-<h2 class="anchored" data-anchor-id="an-example-fields">An Example (Fields)</h2>
-<ul>
-<li>record company boss interested in predicting album sales from advertising bsed on 200 different album releases<br>
-</li>
-<li>outcome variable: sales of CDs and downloads in the week after release<br>
-</li>
-<li>predictor variable: amount in GBP spent promoting the album before release</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/album-sales.png" class="img-fluid figure-img"></p>
-<figcaption>scatterplot of album sales by advertising budget</figcaption>
-</figure>
-</div>
-<p><img src="https://latex.codecogs.com/png.latex?r%5E2"> = 0.335, so 33.5% of the variability is shared by both variables (cutoffs, 9% - small, 25% - large effect size)</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/model-summary.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/anova.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cmadland.github.io/blog/posts/simple-regression/coefficients.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
-</figure>
-</div>
-</section>
-<section id="activities" class="level2">
-<h2 class="anchored" data-anchor-id="activities">Activities</h2>
-<p>In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:<br>
-<img src="https://latex.codecogs.com/png.latex?r_XY"> = .32, <img src="https://latex.codecogs.com/png.latex?N"> = 1, 296<br>
-Wife height: <img src="https://latex.codecogs.com/png.latex?M_X"> = 64.42, <img src="https://latex.codecogs.com/png.latex?S_X"> = 2.56<br>
-Husband height: <img src="https://latex.codecogs.com/png.latex?M_Y"> = 70.46, <img src="https://latex.codecogs.com/png.latex?S_Y"> = 2.87<br>
-a. Calculates the values of <img src="https://latex.codecogs.com/png.latex?b_0"> and <img src="https://latex.codecogs.com/png.latex?b_1"> to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation</p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32%5Cfrac%7B2.87%7D%7B2.56%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=0.35"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=M_Y-%5Chat%7Bb_1%7DM_X"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=70.46-(0.35*64.42)"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=70.46-22.54"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=47.91"></p>
-<p>Predictive Equation <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=b_0+%7Bb_1%7D%7BX_i%7D"> <img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=47.91+(0.35*%7BX_i%7D)"></p>
-<ol start="2" type="a">
-<li>For women: what is your own height? Substitute your own height into the equation from step a, and calculate the predicted height of your present or future spouse.</li>
-</ol>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=47.91+(0.35*67)"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=71.36"></p>
-<ol start="3" type="a">
-<li>Now reverse the roles of the variables (i.e., use husband height as the predictor and wife height as the outcome variable). Calculates the values of bb0 and bb1.</li>
-</ol>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=r%5Cfrac%7BS_Y%7D%7BS_X%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32%5Cfrac%7B2.56%7D%7B2.87%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.32*.89"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7Bb_1%7D=.28"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=M_Y-%5Chat%7Bb_1%7DM_X"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=64.42-(0.28*70.46)"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=64.42-19.72"></p>
-<p><img src="https://latex.codecogs.com/png.latex?b_0=44.7"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=44.7+(0.28*%7BX_i%7D)"></p>
-<ol start="4" type="a">
-<li>For men: what is your height in inches? Substitute your own height into the equation from step c, and calculate the predicted height of your present or future spouse.</li>
-</ol>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=44.7+(0.28*70)"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BY%7D=64.3"></p>
-<ol start="5" type="a">
-<li>What proportion of variance in husband height is predictable from wife height? Test the significance of the regression equation.</li>
-</ol>
-<p><img src="https://latex.codecogs.com/png.latex?r%5E2=.10"></p>
-<ol start="6" type="a">
-<li>If both X and Y have been standardized by transforming into Z scores before calculating the regression coefficients, what would be the values of bb0 and bb1 to predict husband height in inches (Y) from wife height in inches (X)? How does this standardized version of the prediction equation tell us about “regression toward the mean” for predictions?</li>
-</ol>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7BZ_%7BY_i%7D%7D=%5Cbeta%7BZ_%7BX_i%7D%7D"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%5Chat%7B2.87%7D=0.32%7B2.56%7D"></p>
-
-
-</section>
-
- ]]></description>
-  <category>505</category>
-  <guid>https://cmadland.github.io/blog/posts/simple-regression/</guid>
-  <pubDate>Sun, 18 Feb 2024 08:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

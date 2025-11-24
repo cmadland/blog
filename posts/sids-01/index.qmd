@@ -12,6 +12,8 @@ image: "sunrise.jpg"
 Ismay, C., Kim, A. Y., & Valdivia, A. (2025). [Statistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd ed.)](https://moderndive.com/v2/). Chapman and Hall/CRC. 
 :::
 
+
+
 ```{r}
 library(dplyr)
 library(nycflights23)

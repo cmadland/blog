@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Colin Madland">
-<meta name="dcterms.date" content="2024-02-27">
+<meta name="dcterms.date" content="2025-11-23">
 
-<title>discovr_18 - Exploratory Factor Analysis – Learning | Assessment | Technology</title>
+<title>R for Data Science 2e - Ch25 - Functions – Learning | Assessment | Technology</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -154,11 +154,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">discovr_18 - Exploratory Factor Analysis</h1>
+      <h1 class="title">R for Data Science 2e - Ch25 - Functions</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">efa</div>
+                <div class="quarto-category">quarto</div>
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">discovr</div>
+                <div class="quarto-category">reproducability</div>
               </div>
                   </div>
   </div>
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 27, 2024</p>
+        <p class="date">November 23, 2025</p>
       </div>
     </div>
     
@@ -195,6 +195,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Wickham, H., Çetinkaya-Rundel, M., &amp; Grolemund, G. (2023). <a href="https://r4ds.hadley.nz/">R for Data Science (2e).</a></p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -209,19 +219,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raq.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 2571 Columns: 24
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (1): id
-dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-</div>
+<p>Based on a recommendation from the <a href="https://www.productive-r-workflow.com/">Productive R Workflow</a> course, this page will be a sorting through of how to create functions in R…but the Seahawks are playing and I need to go pick up the pizza…</p>
 
 
 
