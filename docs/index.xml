@@ -14,7 +14,7 @@
 <item>
   <title>R for Data Science 2e - Ch25 - Functions</title>
   <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/r4ds_19_functions/</link>
+  <link>https://cmadland.github.io/blog/posts/r4ds_25_functions/</link>
   <description><![CDATA[ 
 
 
@@ -47,18 +47,742 @@ font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(nycflights13)</span></code></pre></div>
 </div>
 <p>Based on a recommendation from the <a href="https://www.productive-r-workflow.com/">Productive R Workflow</a> course, this page will be a sorting through of how to create functions in R…but the Seahawks are playing and I need to go pick up the pizza…</p>
+<p>…one week later…</p>
+<p>As you can see at the top of the post, I am following the <a href="https://r4ds.hadley.nz/">R4DS (2e)</a> online book <span class="citation" data-cites="wickhamDataScience2e2023">(Wickham, Çetinkaya-Rundel, and Grolemund 2023)</span>, but focusing on ch25, so if you aren’t familiar with R, you might need to back up a bit in the book.</p>
+<p>The need for me here is that the data is currently coming in for my PhD, and it is time to get serious about managing my workflow and R coding practices. Creating functions enhances reproducibility as there will only be one place for a particular task to run, rather than my copy/pasta/edit technique to date. This will not only create a more reproducible paper, but it will be cleaner in the <code>index.qmd</code> doc because I will only need to call the function, rather than include the entire code inline.</p>
+<section id="vector-functions" class="level2">
+<h2 class="anchored" data-anchor-id="vector-functions">Vector Functions</h2>
+<dl>
+<dt>vector functions</dt>
+<dd>
+take one or more vectors and return a vector as a result. Example from R4DS:
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb4-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb4-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb4-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb4-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">d =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb4-6">)</span>
+<span id="cb4-7"></span>
+<span id="cb4-8">df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb4-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> (a <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(a, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> </span>
+<span id="cb4-10">    (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(a, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(a, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)),</span>
+<span id="cb4-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> (b <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(a, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> </span>
+<span id="cb4-12">    (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(b, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(b, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)),</span>
+<span id="cb4-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> (c <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(c, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> </span>
+<span id="cb4-14">    (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(c, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(c, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)),</span>
+<span id="cb4-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">d =</span> (d <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(d, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> </span>
+<span id="cb4-16">    (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(d, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(d, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)),</span>
+<span id="cb4-17">)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+      a      b     c     d
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0     -0.324 0     0.420
+2 1      0.590 1     0    
+3 0.686  0.518 0.389 0.385
+4 0.241 -0.266 0.646 1    
+5 0.872  0.676 0.412 0.956</code></pre>
+</div>
+</div>
+<p>However, in <code>df |&gt; mutate</code>, the line <code>b = (b - min(a, na.rm = TRUE...))</code> should read <code>b = (b - min(b, na.rm = TRUE...))</code>. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.</p>
+<p>To visualize the repetitive components, we can pull the code out of <code>mutate()</code> and put each command on its own line:</p>
+<pre><code>(a - min(a, na.rm = TRUE)) / (max(a, na.rm = TRUE) - min(a, na.rm = TRUE))
+(b - min(b, na.rm = TRUE)) / (max(b, na.rm = TRUE) - min(b, na.rm = TRUE))
+(c - min(c, na.rm = TRUE)) / (max(c, na.rm = TRUE) - min(c, na.rm = TRUE))
+(d - min(d, na.rm = TRUE)) / (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))  </code></pre>
+<p>Replace the variable part with █</p>
+<pre><code>(█ - min(█, na.rm = TRUE)) / (max(█, na.rm = TRUE) - min(█, na.rm = TRUE))</code></pre>
+<p>Three things needed to turn this into a function:</p>
+<ol type="1">
+<li>a <code>name</code>, such as <code>rescale01</code> which describes what the function does: it rescales a vector to lie between 0 and 1.</li>
+<li><code>arguments</code> which vary across calls. here we have only one, which we’ll call <code>x</code> as the convention for a numeric vector</li>
+<li><code>body</code> which is the code repeated across calls</li>
+</ol>
+<pre><code>name &lt;- function(arguments) {
+  body
+}</code></pre>
+<p>So, in this case:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">rescale01 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb9-2">  (x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>))</span>
+<span id="cb9-3">}</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0 0.5 1.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00 0.25 0.50   NA 1.00</code></pre>
+</div>
+</div>
+<p>Now we can put the function back into <code>mutate()</code> as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mutate</span>(</span>
+<span id="cb14-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(a),</span>
+<span id="cb14-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(b),</span>
+<span id="cb14-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(c),</span>
+<span id="cb14-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">d =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rescale01</span>(d),</span>
+<span id="cb14-6">)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+      a      b     c     d
+  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0     0      0     0.420
+2 1     0.914  1     0    
+3 0.686 0.842  0.389 0.385
+4 0.241 0.0582 0.646 1    
+5 0.872 1      0.412 0.956</code></pre>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>In Chapter 26, you’ll learn how to use <code>across()</code> to reduce the duplication even further so all you need is <code>df |&gt; mutate(across(a:d, rescale01))</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="mutate-functions" class="level2">
+<h2 class="anchored" data-anchor-id="mutate-functions">Mutate functions</h2>
+<dl>
+<dt>Mutate functions</dt>
+<dd>
+work well within <code>mutate()</code> and <code>filter()</code> because they return an output the same length as the input.
+</dd>
+<dd>
+e.g.&nbsp;computing <code>Z-score</code> so a vector has a mean of <code>0</code> and sd of <code>1</code>
+</dd>
+</dl>
+<pre><code>z_score &lt;- function(x) {
+  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}</code></pre>
+<p>Or a function that ensures all values fall between a specified min and max, such as 3-7…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">clamp <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x, min, max) {</span>
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">case_when</span>(</span>
+<span id="cb17-3">    x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> min <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> min,</span>
+<span id="cb17-4">    x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> max <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> max,</span>
+<span id="cb17-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">.default =</span> x</span>
+<span id="cb17-6">  )</span>
+<span id="cb17-7">}</span>
+<span id="cb17-8"></span>
+<span id="cb17-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clamp</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3 3 3 4 5 6 7 7 7 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  [1] 3 3 3 4 5 6 7 7 7 7</span></span></code></pre></div>
+</div>
+<p>Doesn’t have to be numeric…could manipulate a string, such as ensuring first letter is capitalized:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">first_upper <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb20-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_sub</span>(x, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_to_upper</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_sub</span>(x, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb20-3">  x</span>
+<span id="cb20-4">}</span>
+<span id="cb20-5"></span>
+<span id="cb20-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">first_upper</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"what is this"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "What is this"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; [1] "Hello"</span></span></code></pre></div>
+</div>
+<p>or strip punctuation before converting to a number…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># https://twitter.com/NVlabormarket/status/1571939851922198530</span></span>
+<span id="cb23-2">clean_number <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb23-3">  is_pct <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_detect</span>(x, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%"</span>)</span>
+<span id="cb23-4">  num <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb23-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove_all</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"%"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb23-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove_all</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">","</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb23-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_remove_all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">fixed</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb23-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>()</span>
+<span id="cb23-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">if_else</span>(is_pct, num <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, num)</span>
+<span id="cb23-10">}</span>
+<span id="cb23-11"></span>
+<span id="cb23-12"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clean_number</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"$12,300"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 12300</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">clean_number</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"45%"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.45</code></pre>
+</div>
+</div>
+<p>Or if a variable is coded as 999, 998, or 997 and you want to convert those to NA…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">fix_na <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">if_else</span>(x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">997</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">998</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">999</span>), <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, x)</span>
+<span id="cb27-3">}</span></code></pre></div>
+</div>
+</section>
+<section id="summary-functions" class="level2">
+<h2 class="anchored" data-anchor-id="summary-functions">Summary Functions</h2>
+<dl>
+<dt>summary function</dt>
+<dd>
+functions that return a single value for use in <code>summarize()</code>
+</dd>
+</dl>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1">commas <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb28-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">str_flatten</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">collapse =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">", "</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">last =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" and "</span>)</span>
+<span id="cb28-3">}</span>
+<span id="cb28-4"></span>
+<span id="cb28-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">commas</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cat"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dog"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pigeon"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cat, dog and pigeon"</code></pre>
+</div>
+</div>
+<p>or wrap a simple calculation such as <code>coefficient of variation</code> which divides standard deviation by mean</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1">cv <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) {</span>
+<span id="cb30-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sd</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> na.rm) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">na.rm =</span> na.rm)</span>
+<span id="cb30-3">}</span>
+<span id="cb30-4"></span>
+<span id="cb30-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cv</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runif</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5930262</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; [1] 0.5196276</span></span>
+<span id="cb32-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cv</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runif</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">500</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6426804</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; [1] 0.5652554</span></span></code></pre></div>
+</div>
+<p>or to automate a common task to make it easier to remember</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># https://twitter.com/gbganalyst/status/1571619641390252033</span></span>
+<span id="cb35-2">n_missing <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb35-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(x))</span>
+<span id="cb35-4">} </span></code></pre></div>
+</div>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<pre><code>mean(is.na(x))
+mean(is.na(y))
+mean(is.na(z))
+
+x / sum(x, na.rm = TRUE)
+y / sum(y, na.rm = TRUE)
+z / sum(z, na.rm = TRUE)
+
+round(x / sum(x, na.rm = TRUE) * 100, 1)
+round(y / sum(y, na.rm = TRUE) * 100, 1)
+round(z / sum(z, na.rm = TRUE) * 100, 1)</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1">pct_missing <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb37-2">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.na</span>(x))</span>
+<span id="cb37-3">}</span>
+<span id="cb37-4"></span>
+<span id="cb37-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Sample data with missing values</span></span>
+<span id="cb37-6">data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span>
+<span id="cb37-7"></span>
+<span id="cb37-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Apply the function</span></span>
+<span id="cb37-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pct_missing</span>(data)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4285714</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># x / sum(x, na.rm = TRUE)</span></span></code></pre></div>
+</div>
 
 
 
- ]]></description>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-wickhamDataScience2e2023" class="csl-entry">
+Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>.
+</div>
+</div></section></div> ]]></description>
   <category>quarto</category>
   <category>R</category>
   <category>reproducability</category>
-  <guid>https://cmadland.github.io/blog/posts/r4ds_19_functions/</guid>
+  <guid>https://cmadland.github.io/blog/posts/r4ds_25_functions/</guid>
   <pubDate>Sun, 23 Nov 2025 08:00:00 GMT</pubDate>
-  <media:content url="https://cmadland.github.io/blog/posts/r4ds_19_functions/sunrise.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://cmadland.github.io/blog/posts/r4ds_25_functions/sunrise.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>SIDS Ch 3 - Data Wrangling</title>
@@ -12503,35 +13227,35 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-25.860</td>
+<td style="text-align: right;">-27.528</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">-58.803</td>
-<td style="text-align: right;">7.284</td>
-<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">-55.656</td>
+<td style="text-align: right;">3.024</td>
+<td style="text-align: right;">0.082</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">adverts</td>
 <td style="text-align: right;">0.085</td>
 <td style="text-align: right;">0.95</td>
 <td style="text-align: right;">0.071</td>
-<td style="text-align: right;">0.098</td>
-<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.099</td>
+<td style="text-align: right;">0.000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">airplay</td>
-<td style="text-align: right;">3.376</td>
+<td style="text-align: right;">3.385</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">2.797</td>
-<td style="text-align: right;">4.032</td>
-<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">2.803</td>
+<td style="text-align: right;">4.011</td>
+<td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">image</td>
-<td style="text-align: right;">10.976</td>
+<td style="text-align: right;">11.138</td>
 <td style="text-align: right;">0.95</td>
-<td style="text-align: right;">6.069</td>
-<td style="text-align: right;">15.388</td>
-<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">6.406</td>
+<td style="text-align: right;">14.954</td>
+<td style="text-align: right;">0.002</td>
 </tr>
 </tbody>
 </table>
@@ -13222,22 +13946,22 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
              Mean        SD  Naive SE Time-series SE
-mu      1.932e+02 3.390e+00 3.390e-02      3.390e-02
-adverts 8.405e-02 6.994e-03 6.994e-05      6.994e-05
-airplay 3.335e+00 2.801e-01 2.801e-03      2.801e-03
-image   1.097e+01 2.444e+00 2.444e-02      2.444e-02
-sig2    2.251e+03 2.331e+02 2.331e+00      2.414e+00
-g       9.998e-01 1.648e+00 1.648e-02      1.648e-02
+mu      1.931e+02 3.368e+00 3.368e-02      3.368e-02
+adverts 8.405e-02 6.908e-03 6.908e-05      6.908e-05
+airplay 3.332e+00 2.779e-01 2.779e-03      2.779e-03
+image   1.095e+01 2.445e+00 2.445e-02      2.445e-02
+sig2    2.247e+03 2.283e+02 2.283e+00      2.395e+00
+g       1.065e+00 3.862e+00 3.862e-02      3.862e-02
 
 2. Quantiles for each variable:
 
              2.5%       25%       50%       75%     97.5%
-mu      1.866e+02 1.909e+02 1.932e+02 1.955e+02 1.998e+02
-adverts 7.039e-02 7.938e-02 8.406e-02 8.864e-02 9.778e-02
-airplay 2.781e+00 3.146e+00 3.339e+00 3.523e+00 3.874e+00
-image   6.176e+00 9.332e+00 1.099e+01 1.259e+01 1.575e+01
-sig2    1.847e+03 2.085e+03 2.234e+03 2.400e+03 2.747e+03
-g       1.736e-01 3.735e-01 6.054e-01 1.055e+00 4.182e+00</code></pre>
+mu      1.865e+02 1.908e+02 1.931e+02 1.954e+02 1.997e+02
+adverts 7.039e-02 7.941e-02 8.405e-02 8.871e-02 9.766e-02
+airplay 2.784e+00 3.138e+00 3.333e+00 3.519e+00 3.875e+00
+image   6.171e+00 9.306e+00 1.096e+01 1.260e+01 1.576e+01
+sig2    1.841e+03 2.084e+03 2.235e+03 2.391e+03 2.737e+03
+g       1.731e-01 3.767e-01 6.022e-01 1.059e+00 4.025e+00</code></pre>
 </div>
 </div>
 <ul>

@@ -1,0 +1,253 @@
+---
+title: "R for Data Science 2e - Ch25 - Functions"
+author: "Colin Madland"
+date: "2025-11-23"
+categories: [quarto, R, reproducability]
+image: "sunrise.jpg"
+bibliography: ../../references.bib
+
+---
+
+::: {.callout}
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. (2023). [R for Data Science (2e).](https://r4ds.hadley.nz/) 
+ 
+:::
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+```
+
+Based on a recommendation from the [Productive R Workflow](https://www.productive-r-workflow.com/) course, this page will be a sorting through of how to create functions in R...but the Seahawks are playing and I need to go pick up the pizza...
+
+...one week later...
+
+As you can see at the top of the post, I am following the [R4DS (2e)](https://r4ds.hadley.nz/) online book [@wickhamDataScience2e2023], but focusing on ch25, so if you aren't familiar with R, you might need to back up a bit in the book.
+
+The need for me here is that the data is currently coming in for my PhD, and it is time to get serious about managing my workflow and R coding practices. Creating functions enhances reproducibility as there will only be one place for a particular task to run, rather than my copy/pasta/edit technique to date. This will not only create a more reproducible paper, but it will be cleaner in the `index.qmd` doc because I will only need to call the function, rather than include the entire code inline. 
+
+## Vector Functions
+
+vector functions 
+: take one or more vectors and return a vector as a result. Example from R4DS:
+
+```{r}
+df <- tibble(
+  a = rnorm(5),
+  b = rnorm(5),
+  c = rnorm(5),
+  d = rnorm(5),
+)
+
+df |> mutate(
+  a = (a - min(a, na.rm = TRUE)) / 
+    (max(a, na.rm = TRUE) - min(a, na.rm = TRUE)),
+  b = (b - min(a, na.rm = TRUE)) / 
+    (max(b, na.rm = TRUE) - min(b, na.rm = TRUE)),
+  c = (c - min(c, na.rm = TRUE)) / 
+    (max(c, na.rm = TRUE) - min(c, na.rm = TRUE)),
+  d = (d - min(d, na.rm = TRUE)) / 
+    (max(d, na.rm = TRUE) - min(d, na.rm = TRUE)),
+)
+```
+
+However, in `df |> mutate`, the line `b = (b - min(a, na.rm = TRUE...))` should read `b = (b - min(b, na.rm = TRUE...))`. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.
+
+To visualize the repetitive components, we can pull the code out of `mutate()` and put each command on its own line:
+
+```
+(a - min(a, na.rm = TRUE)) / (max(a, na.rm = TRUE) - min(a, na.rm = TRUE))
+(b - min(b, na.rm = TRUE)) / (max(b, na.rm = TRUE) - min(b, na.rm = TRUE))
+(c - min(c, na.rm = TRUE)) / (max(c, na.rm = TRUE) - min(c, na.rm = TRUE))
+(d - min(d, na.rm = TRUE)) / (max(d, na.rm = TRUE) - min(d, na.rm = TRUE))  
+```
+
+Replace the variable part with █
+
+```
+(█ - min(█, na.rm = TRUE)) / (max(█, na.rm = TRUE) - min(█, na.rm = TRUE))
+```
+
+Three things needed to turn this into a function:
+
+1. a `name`, such as `rescale01` which describes what the function does: it rescales a vector to lie between 0 and 1.
+2. `arguments` which vary across calls. here we have only one, which we'll call `x` as the convention for a numeric vector
+3. `body` which is the code repeated across calls
+
+```
+name <- function(arguments) {
+  body
+}
+```
+
+So, in this case:
+
+```{r}
+rescale01 <- function(x) {
+  (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))
+}
+```
+
+```{r}
+rescale01(c(-10, 0, 10))
+rescale01(c(1, 2, 3, NA, 5))
+
+```
+
+Now we can put the function back into `mutate()` as
+
+```{r}
+df |> mutate(
+  a = rescale01(a),
+  b = rescale01(b),
+  c = rescale01(c),
+  d = rescale01(d),
+)
+
+```
+
+::: {.callout}
+In Chapter 26, you’ll learn how to use `across()` to reduce the duplication even further so all you need is `df |> mutate(across(a:d, rescale01))`.
+:::
+
+
+## Mutate functions
+
+Mutate functions
+: work well within `mutate()` and `filter()` because they return an output the same length as the input.
+: e.g. computing `Z-score` so a vector has a mean of `0` and sd of `1`
+
+```
+z_score <- function(x) {
+  (x - mean(x, na.rm = TRUE)) / sd(x, na.rm = TRUE)
+}
+```
+
+Or a function that ensures all values fall between a specified min and max, such as 3-7...
+
+```{r}
+clamp <- function(x, min, max) {
+  case_when(
+    x < min ~ min,
+    x > max ~ max,
+    .default = x
+  )
+}
+
+clamp(1:10, min = 3, max = 7)
+#>  [1] 3 3 3 4 5 6 7 7 7 7
+```
+
+Doesn't have to be numeric...could manipulate a string, such as ensuring first letter is capitalized:
+
+```{r}
+first_upper <- function(x) {
+  str_sub(x, 1, 1) <- str_to_upper(str_sub(x, 1, 1))
+  x
+}
+
+first_upper("what is this")
+#> [1] "Hello"
+```
+
+or strip punctuation before converting to a number...
+
+
+```{r}
+# https://twitter.com/NVlabormarket/status/1571939851922198530
+clean_number <- function(x) {
+  is_pct <- str_detect(x, "%")
+  num <- x |> 
+    str_remove_all("%") |> 
+    str_remove_all(",") |> 
+    str_remove_all(fixed("$")) |> 
+    as.numeric()
+  if_else(is_pct, num / 100, num)
+}
+
+clean_number("$12,300")
+
+clean_number("45%")
+```
+
+Or if a variable is coded as 999, 998, or 997 and you want to convert those to NA...
+
+
+```{r}
+fix_na <- function(x) {
+  if_else(x %in% c(997, 998, 999), NA, x)
+}
+```
+
+## Summary Functions
+
+summary function
+: functions that return a single value for use in `summarize()`
+
+
+```{r}
+commas <- function(x) {
+  str_flatten(x, collapse = ", ", last = " and ")
+}
+
+commas(c("cat", "dog", "pigeon"))
+```
+
+or wrap a simple calculation such as `coefficient of variation` which divides standard deviation by mean
+
+
+```{r}
+cv <- function(x, na.rm = FALSE) {
+  sd(x, na.rm = na.rm) / mean(x, na.rm = na.rm)
+}
+
+cv(runif(100, min = 0, max = 50))
+#> [1] 0.5196276
+cv(runif(100, min = 0, max = 500))
+#> [1] 0.5652554
+```
+
+or to automate a common task to make it easier to remember
+
+
+```{r}
+# https://twitter.com/gbganalyst/status/1571619641390252033
+n_missing <- function(x) {
+  sum(is.na(x))
+} 
+```
+
+## Exercises
+
+```
+mean(is.na(x))
+mean(is.na(y))
+mean(is.na(z))
+
+x / sum(x, na.rm = TRUE)
+y / sum(y, na.rm = TRUE)
+z / sum(z, na.rm = TRUE)
+
+round(x / sum(x, na.rm = TRUE) * 100, 1)
+round(y / sum(y, na.rm = TRUE) * 100, 1)
+round(z / sum(z, na.rm = TRUE) * 100, 1)
+```
+
+
+```{r}
+pct_missing <- function(x) {
+    mean(is.na(x))
+}
+
+# Sample data with missing values
+data <- c(1, 4, NA, 4, NA, NA, 7)
+
+# Apply the function
+pct_missing(data)
+```
+
+
+```{r}
+# x / sum(x, na.rm = TRUE)
+```
