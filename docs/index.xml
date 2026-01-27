@@ -263,7 +263,7 @@ df_data_items.rds
 df_high_completers_long.rds 
 f_high_completers.rds 
 n_less_90pct.rds</code></pre>
-<p>For example, if I want to see the table of descriptives of the clean data, I simply call And I get the following table in my document:</p>
+<p>For example, if I want to see the table of descriptives of the clean data, I only need 2 lines to display a table in my paper.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
 background-color: null;
@@ -294,8 +294,8 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
     <script>
 
-      function styleCell_xy2lmax0672mtvwip1ts(i, j, css_id) {
-          var table = document.getElementById("tinytable_xy2lmax0672mtvwip1ts");
+      function styleCell_o1nknjw1z6hm8rdkxv8g(i, j, css_id) {
+          var table = document.getElementById("tinytable_o1nknjw1z6hm8rdkxv8g");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -304,8 +304,8 @@ font-style: inherit;">)</span></span></code></pre></div></div>
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_xy2lmax0672mtvwip1ts(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_xy2lmax0672mtvwip1ts");
+      function spanCell_o1nknjw1z6hm8rdkxv8g(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_o1nknjw1z6hm8rdkxv8g");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -336,24 +336,24 @@ font-style: inherit;">)</span></span></code></pre></div></div>
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '1', j: 0 }, { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 },  ], css_id: 'tinytable_css_w3sppsklx7dp886tutok',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_tfhpuqsjnqxp1ang9thr',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 },  ], css_id: 'tinytable_css_thjxjqn30augrfc9nf8q',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_8l20h4g63ahxnonzzvr0',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_xy2lmax0672mtvwip1ts(cell.i, cell.j, group.css_id);
+                  styleCell_o1nknjw1z6hm8rdkxv8g(cell.i, cell.j, group.css_id);
               });
           });
       });
     </script><style>
       /* tinytable css entries after */
-      .table td.tinytable_css_w3sppsklx7dp886tutok, .table th.tinytable_css_w3sppsklx7dp886tutok { border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_tfhpuqsjnqxp1ang9thr, .table th.tinytable_css_tfhpuqsjnqxp1ang9thr { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_thjxjqn30augrfc9nf8q, .table th.tinytable_css_thjxjqn30augrfc9nf8q { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_8l20h4g63ahxnonzzvr0, .table th.tinytable_css_8l20h4g63ahxnonzzvr0 { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
 <div class="container">
-      <table class="table table-borderless" id="tinytable_xy2lmax0672mtvwip1ts" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_o1nknjw1z6hm8rdkxv8g" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead><tr>
 <th scope="col" data-row="0" data-col="0">n</th>
                 <th scope="col" data-row="0" data-col="1">missing</th>
@@ -371,6 +371,9 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
+<p>What’s more, if I get new data, all I need to do to update every single plot, table, or dataframe that I create is to update 2-3 characters twice, and everything is updated with the new data, and all the plots and tables automatically display the new analysis.</p>
+<p>What’s even more, because all the data is in my repository (this data is anonymous, and I have permission to store on GitHub), someone can fork my repo, rerun the analysis, run new analyses, and check my work. They can also tweak my code and send a pull request back to me so I have the option of including their changes.</p>
+<p>It’s quite swell, and very transparent.</p>
 
 
 </section> ]]></description>
@@ -739,11 +742,11 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <pre><code># A tibble: 5 × 4
       a       b     c     d
   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0.167 -0.600  0.899 0    
-2 0      0.400  1     0.442
-3 1      0.0372 0.687 1    
-4 0.973  0.0154 0.763 0.161
-5 0.542  0.0366 0     0.657</code></pre>
+1 0.662  0.355  0.218 0    
+2 0.791  0.742  0.171 0.389
+3 0      0.934  1     0.391
+4 1      0.525  0.765 1    
+5 0.500 -0.0661 0     0.686</code></pre>
 </div>
 </div>
 <p>However, in <code>df |&gt; mutate</code>, the line <code>b = (b - min(a, na.rm = TRUE...))</code> should read <code>b = (b - min(b, na.rm = TRUE...))</code>. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.</p>
@@ -954,11 +957,11 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <pre><code># A tibble: 5 × 4
       a     b     c     d
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0.167 0     0.899 0    
-2 0     1     1     0.442
-3 1     0.637 0.687 1    
-4 0.973 0.615 0.763 0.161
-5 0.542 0.636 0     0.657</code></pre>
+1 0.662 0.421 0.218 0    
+2 0.791 0.808 0.171 0.389
+3 0     1     1     0.391
+4 1     0.591 0.765 1    
+5 0.500 0     0     0.686</code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1480,7 +1483,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5667758</code></pre>
+<pre><code>[1] 0.6091543</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1509,7 +1512,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5106253</code></pre>
+<pre><code>[1] 0.5571005</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;

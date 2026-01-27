@@ -256,11 +256,11 @@ take one or more vectors and return a vector as a result. Example from R4DS:
 <pre><code># A tibble: 5 × 4
       a       b     c     d
   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0.167 -0.600  0.899 0    
-2 0      0.400  1     0.442
-3 1      0.0372 0.687 1    
-4 0.973  0.0154 0.763 0.161
-5 0.542  0.0366 0     0.657</code></pre>
+1 0.662  0.355  0.218 0    
+2 0.791  0.742  0.171 0.389
+3 0      0.934  1     0.391
+4 1      0.525  0.765 1    
+5 0.500 -0.0661 0     0.686</code></pre>
 </div>
 </div>
 <p>However, in <code>df |&gt; mutate</code>, the line <code>b = (b - min(a, na.rm = TRUE...))</code> should read <code>b = (b - min(b, na.rm = TRUE...))</code>. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.</p>
@@ -310,11 +310,11 @@ take one or more vectors and return a vector as a result. Example from R4DS:
 <pre><code># A tibble: 5 × 4
       a     b     c     d
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0.167 0     0.899 0    
-2 0     1     1     0.442
-3 1     0.637 0.687 1    
-4 0.973 0.615 0.763 0.161
-5 0.542 0.636 0     0.657</code></pre>
+1 0.662 0.421 0.218 0    
+2 0.791 0.808 0.171 0.389
+3 0     1     1     0.391
+4 1     0.591 0.765 1    
+5 0.500 0     0     0.686</code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -422,12 +422,12 @@ functions that return a single value for use in <code><a href="https://dplyr.tid
 <span></span>
 <span><span class="fu">cv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5667758</code></pre>
+<pre><code>[1] 0.6091543</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; [1] 0.5196276</span></span>
 <span><span class="fu">cv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5106253</code></pre>
+<pre><code>[1] 0.5571005</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; [1] 0.5652554</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

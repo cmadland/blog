@@ -259,7 +259,7 @@ f_high_completers.rds
 n_less_90pct.rds
 ```
 
-For example, if I want to see the table of descriptives of the clean data, I simply call And I get the following table in my document:
+For example, if I want to see the table of descriptives of the clean data, I only need 2 lines to display a table in my paper.
 
 
 ```{r}
@@ -267,3 +267,9 @@ For example, if I want to see the table of descriptives of the clean data, I sim
 df_data_clean <- readRDS(file = "data_clean_desc.rds")
 tt(df_data_clean)
 ```
+
+What's more, if I get new data, all I need to do to update every single plot, table, or dataframe that I create is to update 2-3 characters twice, and everything is updated with the new data, and all the plots and tables automatically display the new analysis.
+
+What's even more, because all the data is in my repository (this data is anonymous, and I have permission to store on GitHub), someone can fork my repo, rerun the analysis, run new analyses, and check my work. They can also tweak my code and send a pull request back to me so I have the option of including their changes.
+
+It's quite swell, and very transparent.
