@@ -22,6 +22,7 @@ website:
 format:
   html:
     link-external-icon: true
+    code-link: true
     theme: flatly
     css: styles.css
   # pdf: default

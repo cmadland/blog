@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/wrangling/index.html",
       "/posts/r4ds_25_functions/index.html",
       "/posts/sids-02/index.html",
       "/posts/sids-03/index.html",

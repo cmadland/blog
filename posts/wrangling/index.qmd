@@ -1,0 +1,269 @@
+---
+title: "Data Wrangling"
+author: "Colin Madland"
+date: "2026-01-26"
+categories: [EFA, dissie, tidyverse, R]
+image: "helmcken.jpeg"
+bibliography: references.bib
+---
+
+```{r}
+library(tinytable, tidyverse)
+```
+
+Lets's GOOOO!!
+
+Data collection has (mostly) closed on my dissertation survey and I hit a little over 300 responses from faculty and instructors across the province, so I am pleased with that. So now begins the work of making sense of it all in light of my previous work on assessment in higher ed.
+
+::: {.callout}
+Madland, C., Irvine, V., DeLuca, C., & Bulut, O. (2024a). [Developing the Technology-Integrated Assessment Framework.](https://doi.org/10.18357/otessaj.2024.4.1.63) The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–19.   
+Madland, C., Irvine, V., DeLuca, C., & Bulut, O. (2024b). [Technology-Integrated Assessment: A Literature Review.](https://doi.org/10.18357/otessaj.2024.4.1.57) The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–48. 
+
+:::
+
+To improve reproducibility, share my process, and help future me remember what today me did, I am endeavouring to use this space as an analysis journal. I want to say I lost some work on Friday evening, but that is a bit too passive. I deleted some work because I hadn't pushed changes in a while, saw that there was a whole bunch of changed files in my directory and deleted a bunch. Unfortunately for me, I deleted my changes on my `analysis.r` file shortly after figuring out why I was getting errors. 
+
+I'll share R scripts and files, but will keep the whole repo private until it's time to publish, when the entire dataset will be published under an open license.
+
+## General Workflow
+
+I'm composing this paper using Positron, a data science integrated development environment (IDE). For the uninitiated, Positron is a text editor that connects to a git service to allow for composing text in Markdown with embedded R code for the analysis of the data. Positron is created and maintained by the company Posit, who also created a scientific and academic publishing platform called Quarto that integrates with Positron.
+
+I thus use Positron to create documents that have R code embedded in them. I am using R to manage the entire data analysis process, beginning with taking the raw csv exported from SurveyMonkey, making sure it is `tidy` (each column is a variable, each row is a case, and each cell is a single observation), excluding incomplete submissions (currently anything below 90% complete is excluded), calculating `missingness` (how many NA responses are in the resulting dataset), and saving the data in a long format (going from 301 rows and 80 columns to 12636 rows and two columns).
+
+## Wrangling the Data
+
+Following recommended practice, I am splitting the analysis into multiple files. Embedding all of the R code in the text of a paper makes for an unwieldy paper, with hundreds or eventually thousands of lines of code interrupting the text of the paper. Currently I have a file called `analysis.R` which contains the data wrangling code for the paper. When I run that code, it exports all of the requested R objects to an `output` folder. So instead of dozens of lines of code in my paper to generate a single plot or table, I simply call the saved R object and display it inline with 1-2 lines of code.
+
+<details>
+<summary>Click to view code example</summary>
+
+```
+#| label: load_libraries
+
+library(tidyverse, knitr)
+library(ggplot2, ggfortify, robust)
+library(viridis, viridisLite)
+library(GPArotation)
+library(naniar)
+library(datawizard)
+library(psych)
+library(tinytable)
+library(ggridges)
+library(beeswarm)
+library(grateful)
+library(lubridate)
+
+
+#| label: read_data
+# read data from excel
+df_data_raw <- read_csv("data/input/20260123/data_raw.csv"
+) |>
+  dplyr::select(-c(1:10)) |>
+  dplyr::slice(-1)
+
+#| label: read_dates
+# read dates of completion from survey responses
+df_dates <- read_csv("data/input/20260123/data_raw.csv") |> 
+  dplyr::select(3) |> 
+  dplyr::slice(-1)
+
+tt(df_dates)
+
+# names(df_dates) <- (date)
+
+#| label: rename_columns
+
+# rename columns with item names 
+
+
+names(df_data_raw) <- c("inst", "inst_other", "role", "role_other", "status", "status_other", "aol1", "aol2", "aol3", "afl1", "afl2", "afl3", "aal1", "aal2", "aal3", "bias1", "bias2", "bias3", "bias4", "incl1", "incl2", "incl3", "rltn1", "rltn2", "rltn3", "rltn4", "eth_tech1", "eth_tech2", "eth_tech3", "eth_tech4", "meas1", "meas2", "meas3", "meas4", "ac_int_fac1", "ac_int_fac2", "ac_int_fac3", "ac_int_fac4", "ac_int_learner1", "ac_int_learner2", "ac_int_learner3", "relevant1", "relevant2", "relevant3", "reciprocity1", "reciprocity2", "reciprocity3", "reciprocity4", "perf_exp1", "perf_exp2", "perf_exp3", "eff_exp1", "eff_exp2", "eff_exp3", "soc_infl1", "soc_infl2", "soc_infl3", "fac_cond1", "fac_cond2", "fac_cond3", "ai_level", "ai_level_other", "ai_use_auto_create", "ai_use_feedback", "ai_use_chatbot", "ai_use_assessing", "ai_use_materials", "ai_use_commentary", "ai_use_media", "ai_use_alt_version", "ai_use_none", "ai_use_other", "ai_impact", "ai_asmt_change", "ai_asmt_change_explanation", "demo_culture", "demo_culture_other", "demo_gender", "demo_gender_alt", "demo_age_group")
+# tt(df_data_raw) 
+
+
+
+#| label: convert_data
+# Convert Likert responses to numeric
+
+df_data_raw[df_data_raw == "Strongly disagree"] <- "1"
+df_data_raw[df_data_raw == "Disagree"] <- "2"
+df_data_raw[df_data_raw == "Somewhat disagree"] <- "3"
+df_data_raw[df_data_raw == "Somewhat agree"] <- "4"
+df_data_raw[df_data_raw == "Agree"] <- "5"
+df_data_raw[df_data_raw == "Strongly Agree"] <- "6"
+df_data_raw[df_data_raw == "Strongly agree"] <- "6"
+
+df_data_raw[df_data_raw == "Strongly negative impact"] <- "1"
+df_data_raw[df_data_raw == "Negative impact"] <- "2"
+df_data_raw[df_data_raw == "Somewhat negative impact"] <- "3"
+df_data_raw[df_data_raw == "Somewhat positive impact"] <- "4"
+df_data_raw[df_data_raw == "Positive impact"] <- "5"
+df_data_raw[df_data_raw == "Strongly positive impact"] <- "6"
+
+# tt(df_data_raw) |> 
+#   theme_striped()
+
+
+#| label: select_items
+
+# select only columns containing TIAF values(, drop NA)
+df_data_items <- df_data_raw |> 
+  dplyr::select(-c(1:6, 61:80)) # |>
+  # drop_na() 
+
+tt(df_data_items) |> 
+  theme_striped()
+
+
+
+#| label: reshape_data
+
+# Reshape the data: gather all columns into key-value pairs
+
+df_data_items_long <- df_data_items |> 
+  tidyr::pivot_longer(        
+    cols = everything(),
+    names_to = "variable",
+    values_to = "rating"
+    # values_drop_na = TRUE
+  )
+
+# tt(df_data_items_long)
+
+
+
+
+#| label: write_objects
+# write csv and rds files to data/output~
+
+
+saveRDS(df_data_items_long, file = "data/output/df_data_items_long.rds")
+saveRDS(df_data_items, file = "data/output/df_data_items.rds")
+write_csv(df_data_items, file = "data/output/df_data_items.csv")
+write_csv(df_data_items_long, file = "data/output/df_data_items_long.csv")
+
+
+## Drop NA
+
+## Missingness
+
+# Get the column names for all items
+data_item_names <- names(df_data_items)
+
+# Find the midpoint index
+data_midpoint <- ceiling(length(data_item_names) / 2)
+
+
+# Count non-missing responses for the first item (number who started the survey)
+n_started <- sum(!is.na(df_data_items[[data_item_names[1]]]))
+
+# Number who continued after the midpoint (non-missing for the first item after midpoint)
+n_after_mid <- sum(!is.na(df_data_items[[data_item_names[data_midpoint + 1]]]))
+
+# Show results
+continued_after_midpoint <- data.frame(
+  Started = n_started,
+  Continued_After_Midpoint = n_after_mid
+)
+
+tt(continued_after_midpoint)
+
+# Calculate the number of items
+n_items <- ncol(df_data_items)
+
+# For each respondent, count non-missing responses
+n_completed <- df_data_items |>
+  dplyr::mutate(  
+    non_missing = rowSums(!is.na(across(everything()))),
+    prop_completed = non_missing / n_items
+  )
+
+# Number of respondents who completed 90% or more of items
+n_90pct <- sum(n_completed$prop_completed >= 0.9)
+
+# Number of respondents who completed less than 90% of items
+n_less_90pct <- sum(n_completed$prop_completed < 0.9)
+
+n_90pct
+n_less_90pct
+
+saveRDS(n_less_90pct, file = "data/output/n_less_90pct.rds")
+
+
+
+# Filter to respondents who completed 90% or more of items
+high_completers <- n_completed |>
+  dplyr::filter(prop_completed >= 0.9) |>
+  dplyr::select(-non_missing, -prop_completed)
+
+# Count total skipped items among these respondents
+n_skipped_high <- sum(is.na(as.matrix(high_completers)))
+n_total_high <- prod(dim(high_completers))
+pct_skipped_high <- round(100 * n_skipped_high / n_total_high, 2)
+
+
+n_cols <- ncol(df_data_items)
+
+df_high_completers <- df_data_items |>
+  dplyr::mutate(
+    non_missing = rowSums(!is.na(across(everything()))),
+    prop_completed = non_missing / n_cols
+  ) |>
+  dplyr::filter(prop_completed >= 0.9) |>
+  dplyr::select(-non_missing, -prop_completed)
+
+tt(df_high_completers)
+
+
+
+
+
+#| label: save df_high_completers
+
+# save df_high_completers as RDS and csv
+
+saveRDS(df_high_completers, file = "data/output/df_high_completers.rds")
+
+write_csv(df_high_completers, file = "data/output/df_high_completers.csv")
+
+#| label: reshape_clean_data
+
+# Reshape the data: gather all columns into key-value pairs
+
+df_high_completers_long <- df_high_completers |> 
+  tidyr::pivot_longer(        
+    cols = everything(),
+    names_to = "variable",
+    values_to = "rating"
+    # values_drop_na = TRUE
+  )
+
+tt(df_high_completers_long)
+
+saveRDS(df_high_completers_long, file = "data/output/df_high_completers_long.rds")
+
+write_csv(df_high_completers_long, file = "data/output/df_high_completers_long.csv")
+```
+</details>
+
+Those 200 lines of code create 7 key outputs that I can tehn call in my article without having to include all the code in the article.
+
+
+```
+data_clean_desc.rds 
+data_long_desc.rds 
+df_data_items_long.rds 
+df_data_items.rds 
+df_high_completers_long.rds 
+f_high_completers.rds 
+n_less_90pct.rds
+```
+
+For example, if I want to see the table of descriptives of the clean data, I simply call And I get the following table in my document:
+
+
+```{r}
+
+df_data_clean <- readRDS(file = "data_clean_desc.rds")
+tt(df_data_clean)
+```

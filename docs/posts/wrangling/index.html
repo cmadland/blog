@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Colin Madland">
+<meta name="dcterms.date" content="2026-01-26">
+<title>Data Wrangling – Learning | Assessment | Technology</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Learning | Assessment | Technology</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/cmadland/blog"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://bsky.app/profile/cmad.land"> <i class="bi bi-bluesky" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Data Wrangling</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">EFA</div>
+                <div class="quarto-category">dissie</div>
+                <div class="quarto-category">tidyverse</div>
+                <div class="quarto-category">R</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Colin Madland </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 26, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/tinytable/">tinytable</a></span>, <span class="va">tidyverse</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Lets’s GOOOO!!</p>
+<p>Data collection has (mostly) closed on my dissertation survey and I hit a little over 300 responses from faculty and instructors across the province, so I am pleased with that. So now begins the work of making sense of it all in light of my previous work on assessment in higher ed.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Madland, C., Irvine, V., DeLuca, C., &amp; Bulut, O. (2024a). <a href="https://doi.org/10.18357/otessaj.2024.4.1.63">Developing the Technology-Integrated Assessment Framework.</a> The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–19.<br>
+Madland, C., Irvine, V., DeLuca, C., &amp; Bulut, O. (2024b). <a href="https://doi.org/10.18357/otessaj.2024.4.1.57">Technology-Integrated Assessment: A Literature Review.</a> The Open/Technology in Education, Society, and Scholarship Association Journal, 4(1), 1–48.</p>
+</div>
+</div>
+</div>
+<p>To improve reproducibility, share my process, and help future me remember what today me did, I am endeavouring to use this space as an analysis journal. I want to say I lost some work on Friday evening, but that is a bit too passive. I deleted some work because I hadn’t pushed changes in a while, saw that there was a whole bunch of changed files in my directory and deleted a bunch. Unfortunately for me, I deleted my changes on my <code>analysis.r</code> file shortly after figuring out why I was getting errors.</p>
+<p>I’ll share R scripts and files, but will keep the whole repo private until it’s time to publish, when the entire dataset will be published under an open license.</p>
+<section id="general-workflow" class="level2"><h2 class="anchored" data-anchor-id="general-workflow">General Workflow</h2>
+<p>I’m composing this paper using Positron, a data science integrated development environment (IDE). For the uninitiated, Positron is a text editor that connects to a git service to allow for composing text in Markdown with embedded R code for the analysis of the data. Positron is created and maintained by the company Posit, who also created a scientific and academic publishing platform called Quarto that integrates with Positron.</p>
+<p>I thus use Positron to create documents that have R code embedded in them. I am using R to manage the entire data analysis process, beginning with taking the raw csv exported from SurveyMonkey, making sure it is <code>tidy</code> (each column is a variable, each row is a case, and each cell is a single observation), excluding incomplete submissions (currently anything below 90% complete is excluded), calculating <code>missingness</code> (how many NA responses are in the resulting dataset), and saving the data in a long format (going from 301 rows and 80 columns to 12636 rows and two columns).</p>
+</section><section id="wrangling-the-data" class="level2"><h2 class="anchored" data-anchor-id="wrangling-the-data">Wrangling the Data</h2>
+<p>Following recommended practice, I am splitting the analysis into multiple files. Embedding all of the R code in the text of a paper makes for an unwieldy paper, with hundreds or eventually thousands of lines of code interrupting the text of the paper. Currently I have a file called <code>analysis.R</code> which contains the data wrangling code for the paper. When I run that code, it exports all of the requested R objects to an <code>output</code> folder. So instead of dozens of lines of code in my paper to generate a single plot or table, I simply call the saved R object and display it inline with 1-2 lines of code.</p>
+<details><summary>
+Click to view code example
+</summary><pre><code><a href="https://rdrr.io/r/base/library.html">#| label: load_libraries
+
+library(tidyverse, knitr)
+library(ggplot2, ggfortify, robust)
+library(viridis, viridisLite)
+library(GPArotation)
+library(naniar)
+library(datawizard)
+library(psych)
+library(tinytable)
+library(ggridges)
+library(beeswarm)
+library(grateful)
+library(lubridate)
+
+
+#| label: read_data
+# read data from excel
+df_data_raw &lt;- read_csv("data/input/20260123/data_raw.csv"
+) |&gt;
+  dplyr::select(-c(1:10)) |&gt;
+  dplyr::slice(-1)
+
+#| label: read_dates
+# read dates of completion from survey responses
+df_dates &lt;- read_csv("data/input/20260123/data_raw.csv") |&gt; 
+  dplyr::select(3) |&gt; 
+  dplyr::slice(-1)
+
+tt(df_dates)
+
+# names(df_dates) &lt;- (date)
+
+#| label: rename_columns
+
+# rename columns with item names 
+
+
+names(df_data_raw) &lt;- c("inst", "inst_other", "role", "role_other", "status", "status_other", "aol1", "aol2", "aol3", "afl1", "afl2", "afl3", "aal1", "aal2", "aal3", "bias1", "bias2", "bias3", "bias4", "incl1", "incl2", "incl3", "rltn1", "rltn2", "rltn3", "rltn4", "eth_tech1", "eth_tech2", "eth_tech3", "eth_tech4", "meas1", "meas2", "meas3", "meas4", "ac_int_fac1", "ac_int_fac2", "ac_int_fac3", "ac_int_fac4", "ac_int_learner1", "ac_int_learner2", "ac_int_learner3", "relevant1", "relevant2", "relevant3", "reciprocity1", "reciprocity2", "reciprocity3", "reciprocity4", "perf_exp1", "perf_exp2", "perf_exp3", "eff_exp1", "eff_exp2", "eff_exp3", "soc_infl1", "soc_infl2", "soc_infl3", "fac_cond1", "fac_cond2", "fac_cond3", "ai_level", "ai_level_other", "ai_use_auto_create", "ai_use_feedback", "ai_use_chatbot", "ai_use_assessing", "ai_use_materials", "ai_use_commentary", "ai_use_media", "ai_use_alt_version", "ai_use_none", "ai_use_other", "ai_impact", "ai_asmt_change", "ai_asmt_change_explanation", "demo_culture", "demo_culture_other", "demo_gender", "demo_gender_alt", "demo_age_group")
+# tt(df_data_raw) 
+
+
+
+#| label: convert_data
+# Convert Likert responses to numeric
+
+df_data_raw[df_data_raw == "Strongly disagree"] &lt;- "1"
+df_data_raw[df_data_raw == "Disagree"] &lt;- "2"
+df_data_raw[df_data_raw == "Somewhat disagree"] &lt;- "3"
+df_data_raw[df_data_raw == "Somewhat agree"] &lt;- "4"
+df_data_raw[df_data_raw == "Agree"] &lt;- "5"
+df_data_raw[df_data_raw == "Strongly Agree"] &lt;- "6"
+df_data_raw[df_data_raw == "Strongly agree"] &lt;- "6"
+
+df_data_raw[df_data_raw == "Strongly negative impact"] &lt;- "1"
+df_data_raw[df_data_raw == "Negative impact"] &lt;- "2"
+df_data_raw[df_data_raw == "Somewhat negative impact"] &lt;- "3"
+df_data_raw[df_data_raw == "Somewhat positive impact"] &lt;- "4"
+df_data_raw[df_data_raw == "Positive impact"] &lt;- "5"
+df_data_raw[df_data_raw == "Strongly positive impact"] &lt;- "6"
+
+# tt(df_data_raw) |&gt; 
+#   theme_striped()
+
+
+#| label: select_items
+
+# select only columns containing TIAF values(, drop NA)
+df_data_items &lt;- df_data_raw |&gt; 
+  dplyr::select(-c(1:6, 61:80)) # |&gt;
+  # drop_na() 
+
+tt(df_data_items) |&gt; 
+  theme_striped()
+
+
+
+#| label: reshape_data
+
+# Reshape the data: gather all columns into key-value pairs
+
+df_data_items_long &lt;- df_data_items |&gt; 
+  tidyr::pivot_longer(        
+    cols = everything(),
+    names_to = "variable",
+    values_to = "rating"
+    # values_drop_na = TRUE
+  )
+
+# tt(df_data_items_long)
+
+
+
+
+#| label: write_objects
+# write csv and rds files to data/output~
+
+
+saveRDS(df_data_items_long, file = "data/output/df_data_items_long.rds")
+saveRDS(df_data_items, file = "data/output/df_data_items.rds")
+write_csv(df_data_items, file = "data/output/df_data_items.csv")
+write_csv(df_data_items_long, file = "data/output/df_data_items_long.csv")
+
+
+## Drop NA
+
+## Missingness
+
+# Get the column names for all items
+data_item_names &lt;- names(df_data_items)
+
+# Find the midpoint index
+data_midpoint &lt;- ceiling(length(data_item_names) / 2)
+
+
+# Count non-missing responses for the first item (number who started the survey)
+n_started &lt;- sum(!is.na(df_data_items[[data_item_names[1]]]))
+
+# Number who continued after the midpoint (non-missing for the first item after midpoint)
+n_after_mid &lt;- sum(!is.na(df_data_items[[data_item_names[data_midpoint + 1]]]))
+
+# Show results
+continued_after_midpoint &lt;- data.frame(
+  Started = n_started,
+  Continued_After_Midpoint = n_after_mid
+)
+
+tt(continued_after_midpoint)
+
+# Calculate the number of items
+n_items &lt;- ncol(df_data_items)
+
+# For each respondent, count non-missing responses
+n_completed &lt;- df_data_items |&gt;
+  dplyr::mutate(  
+    non_missing = rowSums(!is.na(across(everything()))),
+    prop_completed = non_missing / n_items
+  )
+
+# Number of respondents who completed 90% or more of items
+n_90pct &lt;- sum(n_completed$prop_completed &gt;= 0.9)
+
+# Number of respondents who completed less than 90% of items
+n_less_90pct &lt;- sum(n_completed$prop_completed &lt; 0.9)
+
+n_90pct
+n_less_90pct
+
+saveRDS(n_less_90pct, file = "data/output/n_less_90pct.rds")
+
+
+
+# Filter to respondents who completed 90% or more of items
+high_completers &lt;- n_completed |&gt;
+  dplyr::filter(prop_completed &gt;= 0.9) |&gt;
+  dplyr::select(-non_missing, -prop_completed)
+
+# Count total skipped items among these respondents
+n_skipped_high &lt;- sum(is.na(as.matrix(high_completers)))
+n_total_high &lt;- prod(dim(high_completers))
+pct_skipped_high &lt;- round(100 * n_skipped_high / n_total_high, 2)
+
+
+n_cols &lt;- ncol(df_data_items)
+
+df_high_completers &lt;- df_data_items |&gt;
+  dplyr::mutate(
+    non_missing = rowSums(!is.na(across(everything()))),
+    prop_completed = non_missing / n_cols
+  ) |&gt;
+  dplyr::filter(prop_completed &gt;= 0.9) |&gt;
+  dplyr::select(-non_missing, -prop_completed)
+
+tt(df_high_completers)
+
+
+
+
+
+#| label: save df_high_completers
+
+# save df_high_completers as RDS and csv
+
+saveRDS(df_high_completers, file = "data/output/df_high_completers.rds")
+
+write_csv(df_high_completers, file = "data/output/df_high_completers.csv")
+
+#| label: reshape_clean_data
+
+# Reshape the data: gather all columns into key-value pairs
+
+df_high_completers_long &lt;- df_high_completers |&gt; 
+  tidyr::pivot_longer(        
+    cols = everything(),
+    names_to = "variable",
+    values_to = "rating"
+    # values_drop_na = TRUE
+  )
+
+tt(df_high_completers_long)
+
+saveRDS(df_high_completers_long, file = "data/output/df_high_completers_long.rds")
+
+write_csv(df_high_completers_long, file = "data/output/df_high_completers_long.csv")</a></code></pre>
+</details><p>Those 200 lines of code create 7 key outputs that I can tehn call in my article without having to include all the code in the article.</p>
+<pre><code>data_clean_desc.rds 
+data_long_desc.rds 
+df_data_items_long.rds 
+df_data_items.rds 
+df_high_completers_long.rds 
+f_high_completers.rds 
+n_less_90pct.rds</code></pre>
+<p>For example, if I want to see the table of descriptives of the clean data, I simply call And I get the following table in my document:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_data_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"data_clean_desc.rds"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://vincentarelbundock.github.io/tinytable/man/tt.html">tt</a></span><span class="op">(</span><span class="va">df_data_clean</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script>
+
+      function styleCell_xy2lmax0672mtvwip1ts(i, j, css_id) {
+          var table = document.getElementById("tinytable_xy2lmax0672mtvwip1ts");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+          if (cell) {
+              console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
+              cell.classList.add(css_id);
+          } else {
+              console.warn(`Cell at (${i}, ${j}) not found.`);
+          }
+      }
+      function spanCell_xy2lmax0672mtvwip1ts(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_xy2lmax0672mtvwip1ts");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
+        for (let r = 0; r < rowspan; r++) {
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
+            }
+          }
+        }
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
+      }
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '1', j: 0 }, { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 },  ], css_id: 'tinytable_css_w3sppsklx7dp886tutok',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_tfhpuqsjnqxp1ang9thr',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  styleCell_xy2lmax0672mtvwip1ts(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script><style>
+      /* tinytable css entries after */
+      .table td.tinytable_css_w3sppsklx7dp886tutok, .table th.tinytable_css_w3sppsklx7dp886tutok { border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_tfhpuqsjnqxp1ang9thr, .table th.tinytable_css_tfhpuqsjnqxp1ang9thr { border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+    </style>
+<div class="container">
+      <table class="table table-borderless" id="tinytable_xy2lmax0672mtvwip1ts" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+<thead><tr>
+<th scope="col" data-row="0" data-col="0">n</th>
+                <th scope="col" data-row="0" data-col="1">missing</th>
+                <th scope="col" data-row="0" data-col="2">missing_pct</th>
+                <th scope="col" data-row="0" data-col="3">mode</th>
+              </tr></thead>
+<tbody><tr>
+<td data-row="1" data-col="0">12580</td>
+                  <td data-row="1" data-col="1">56</td>
+                  <td data-row="1" data-col="2">0.445</td>
+                  <td data-row="1" data-col="3">4</td>
+                </tr></tbody>
+</table>
+</div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cmadland\.github\.io\/blog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+</body></html>

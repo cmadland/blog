@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.8">
-
+<meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Colin Madland">
 <meta name="dcterms.date" content="2024-04-26">
-
 <title>dsus_18 - Exploratory Factor Analysis – Learning | Assessment | Technology</title>
 <style>
 code{white-space: pre-wrap;}
@@ -23,8 +20,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -78,7 +76,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -86,16 +83,17 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-99e42d58961487636930fdd71fdb3421.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-f93c2b1f3f0577f377aefa4848a86a36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -121,12 +119,7 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -137,7 +130,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -151,17 +144,12 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
-
-<link rel="stylesheet" href="../../styles.css">
+</script><link rel="stylesheet" href="../../styles.css">
 </head>
-
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Learning | Assessment | Technology</span>
@@ -173,7 +161,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -193,15 +181,11 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">dsus_18 - Exploratory Factor Analysis</h1>
                                 <div class="quarto-categories">
@@ -239,14 +223,8 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="va">knitr</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -259,16 +237,16 @@ window.Quarto = {
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2, ggfortify, robust)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span>, <span class="va">ggfortify</span>, <span class="va">robust</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: viridisLite</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://optimizer.r-forge.r-project.org/GPArotation_www/">GPArotation</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/raq.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">read_csv</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span> <span class="op">&lt;-</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/raq.csv"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 2571 Columns: 24
 ── Column specification ────────────────────────────────────────────────────────
@@ -285,8 +263,7 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 <p>Code examples will be from:</p>
 <p>Field, A. (2023). discovr: Interactive tutorials and data for “Discovering Statistics Using R and RStudio” [Manual]. -&gt; <code>discovr</code></p>
 <p>R Core Team. (2023). R: A language and environment for statistical computing [Manual]. R Foundation for Statistical Computing. https://www.R-project.org/</p>
-<section id="when-to-use-factor-analysis-p.-571" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-factor-analysis-p.-571">When to use factor analysis (p.&nbsp;571)</h2>
+<section id="when-to-use-factor-analysis-p.-571" class="level2"><h2 class="anchored" data-anchor-id="when-to-use-factor-analysis-p.-571">When to use factor analysis (p.&nbsp;571)</h2>
 <ul>
 <li>when attempting to measure latent variables</li>
 <li>factor analysis and principal component analysis are used to identify clusters of variables</li>
@@ -297,8 +274,10 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 <li>reduce the size of a data set while retaining as much of the original information as possible
 <ul>
 <li>(FA can be used to solve the problem of multicollinearity by combining factors that are collinear)</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
@@ -324,33 +303,24 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 </div>
 </div>
 </div>
-<section id="examples-of-factor-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="examples-of-factor-analysis">Examples of factor analysis</h3>
+<section id="examples-of-factor-analysis" class="level3"><h3 class="anchored" data-anchor-id="examples-of-factor-analysis">Examples of factor analysis</h3>
 <ul>
 <li>extroversion, introversion, neuroticism traits</li>
 <li>personality questionnaires</li>
 <li>in economics to see whether productivity, profits, and workforce contribute to the underlying dimension of company growth</li>
-</ul>
-</section>
-<section id="efa-and-pca" class="level3">
-<h3 class="anchored" data-anchor-id="efa-and-pca">EFA and PCA</h3>
+</ul></section><section id="efa-and-pca" class="level3"><h3 class="anchored" data-anchor-id="efa-and-pca">EFA and PCA</h3>
 <ul>
 <li>they are not the same thing</li>
 <li>but they both are used to reduce a set of variables into a smaller set of dimensions (factors in EFA, and components in PCA)</li>
-</ul>
-</section>
-</section>
-<section id="factors-and-components" class="level2">
-<h2 class="anchored" data-anchor-id="factors-and-components">Factors and Components</h2>
+</ul></section></section><section id="factors-and-components" class="level2"><h2 class="anchored" data-anchor-id="factors-and-components">Factors and Components</h2>
 <ul>
-<li><p>measuring several variables with several questions gives us data that can be arranged in a correlation matrix (R matrix) as below. <img src="cor-matrix.png" class="img-fluid" alt="Example of a correlation matrix"></p>
-<p><em>Note:</em> Created with the <code>ggplot2</code> R package <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham 2016</a>)</span> with data from the <code>discovr</code> package <span class="citation" data-cites="field2023">(<a href="#ref-field2023" role="doc-biblioref">Field 2023</a>.)</span></p></li>
+<li>
+<p>measuring several variables with several questions gives us data that can be arranged in a correlation matrix (R matrix) as below. <img src="cor-matrix.png" class="img-fluid" alt="Example of a correlation matrix"></p>
+<p><em>Note:</em> Created with the <code>ggplot2</code> R package <span class="citation" data-cites="wickham2016">(<a href="#ref-wickham2016" role="doc-biblioref">Wickham 2016</a>)</span> with data from the <code>discovr</code> package <span class="citation" data-cites="field2023">(<a href="#ref-field2023" role="doc-biblioref">Field 2023</a>.)</span></p>
+</li>
 <li><p>factor analysis tries to explain the maximum amount of <em>common variance</em> in the matrix using the least number of explanatory constructs (latent variables), which represent clusters of variables that correlate highly with each other.</p></li>
 <li><p>PCA differs in that it tries to explain the maximum amount of <em>total variance</em> in a correlation matrix by transforming the original variables into linear components</p></li>
-</ul>
-</section>
-<section id="example---induced-anxiety-discovr_18-field2023" class="level2">
-<h2 class="anchored" data-anchor-id="example---induced-anxiety-discovr_18-field2023">Example - Induced Anxiety (<code>discovr_18</code> <span class="citation" data-cites="field2023">Field (<a href="#ref-field2023" role="doc-biblioref">2023</a>)</span>)</h2>
+</ul></section><section id="example---induced-anxiety-discovr_18-field2023" class="level2"><h2 class="anchored" data-anchor-id="example---induced-anxiety-discovr_18-field2023">Example - Induced Anxiety (<code>discovr_18</code> <span class="citation" data-cites="field2023">Field (<a href="#ref-field2023" role="doc-biblioref">2023</a>)</span>)</h2>
 <ul>
 <li>questionnaire developed to measure anxiety related to using R</li>
 <li>questions developed from interviews with anxious and non-anxious students</li>
@@ -379,10 +349,11 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 <li>raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution</li>
 <li>raq_22: My friends are better at R than I am</li>
 <li>raq_23: If I am good at statistics people will think I am a nerd</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>raq_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,571 × 24
    id    raq_01 raq_02 raq_03 raq_04 raq_05 raq_06 raq_07 raq_08 raq_09 raq_10
@@ -408,9 +379,9 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 <li>we don’t need the <code>id</code> in analyses so create a new tib without it</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>raq_items_tib <span class="ot">&lt;-</span> raq_tib <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>id)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>raq_items_tib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_items_tib</span> <span class="op">&lt;-</span> <span class="va">raq_tib</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">id</span><span class="op">)</span></span>
+<span><span class="va">raq_items_tib</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2,571 × 23
    raq_01 raq_02 raq_03 raq_04 raq_05 raq_06 raq_07 raq_08 raq_09 raq_10 raq_11
@@ -431,11 +402,10 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 #   raq_21 &lt;dbl&gt;, raq_22 &lt;dbl&gt;, raq_23 &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<section id="correlation-matrix" class="level3">
-<h3 class="anchored" data-anchor-id="correlation-matrix">Correlation matrix</h3>
+<section id="correlation-matrix" class="level3"><h3 class="anchored" data-anchor-id="correlation-matrix">Correlation matrix</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># feed the tibble with only the RAQ items into the correlation() function</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>correlation<span class="sc">::</span><span class="fu">correlation</span>(raq_items_tib)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># feed the tibble with only the RAQ items into the correlation() function</span></span>
+<span><span class="fu">correlation</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation</a></span><span class="op">(</span><span class="va">raq_items_tib</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># Correlation Matrix (pearson-method)
 
@@ -698,10 +668,10 @@ raq_22     |     raq_23 |  0.40 | [ 0.37,  0.43] |   22.17 | &lt; .001***
 p-value adjustment method: Holm (1979)
 Observations: 2571</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe into summary() to get a condensed table of correlations:</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>correlation<span class="sc">::</span><span class="fu">correlation</span>(raq_items_tib) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># pipe into summary() to get a condensed table of correlations:</span></span>
+<span><span class="fu">correlation</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/correlation/reference/correlation.html">correlation</a></span><span class="op">(</span><span class="va">raq_items_tib</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -729,8 +699,7 @@ Observations: 2571</code></pre>
 <col style="width: 4%">
 <col style="width: 4%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;">Parameter</th>
 <th style="text-align: right;">raq_23</th>
 <th style="text-align: right;">raq_22</th>
@@ -754,8 +723,7 @@ Observations: 2571</code></pre>
 <th style="text-align: right;">raq_04</th>
 <th style="text-align: right;">raq_03</th>
 <th style="text-align: right;">raq_02</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">raq_01</td>
@@ -1315,8 +1283,8 @@ Observations: 2571</code></pre>
 <li>because the items use Likert scales, should use <code>polychoric()</code> function from the <code>psych</code> package</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>raq_poly <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">polychoric</span>(raq_items_tib)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>raq_poly</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_poly</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/tetrachor.html">polychoric</a></span><span class="op">(</span><span class="va">raq_items_tib</span><span class="op">)</span></span>
+<span><span class="va">raq_poly</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: psych::polychoric(x = raq_items_tib)
 Polychoric correlations 
@@ -1390,14 +1358,13 @@ raq_23 -2.1 -1.01 -0.0015 1.01</code></pre>
 <li>matrix of correlations is stored in in a variable called <code>rho</code>, accessible with <code>raq_poly$rho</code> but we can store it in an object</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>raq_cor <span class="ot">&lt;-</span> raq_poly<span class="sc">$</span>rho</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_cor</span> <span class="op">&lt;-</span> <span class="va">raq_poly</span><span class="op">$</span><span class="va">rho</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">cor.plot</span>(raq_cor, <span class="at">upper =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/cor.plot.html">cor.plot</a></span><span class="op">(</span><span class="va">raq_cor</span>, upper <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1407,21 +1374,18 @@ raq_23 -2.1 -1.01 -0.0015 1.01</code></pre>
 <li><p>note items between $+/-$0.3</p></li>
 <li><p>note items greater than <span class="math inline">\(+/-\)</span> 0.9 as those may be collinear or singular</p></li>
 <li><p>in this case, all questions correlate reasonably well and none are excessively large</p></li>
-</ul>
-</section>
-</section>
-<section id="bartletts-test-and-kmo-test" class="level2">
-<h2 class="anchored" data-anchor-id="bartletts-test-and-kmo-test">Bartlett’s test and KMO test</h2>
-<section id="bartletts-test-of-sphericity" class="level3">
-<h3 class="anchored" data-anchor-id="bartletts-test-of-sphericity">Bartlett’s test of Sphericity</h3>
+</ul></section></section><section id="bartletts-test-and-kmo-test" class="level2"><h2 class="anchored" data-anchor-id="bartletts-test-and-kmo-test">Bartlett’s test and KMO test</h2>
+<section id="bartletts-test-of-sphericity" class="level3"><h3 class="anchored" data-anchor-id="bartletts-test-of-sphericity">Bartlett’s test of Sphericity</h3>
 <ul>
-<li><p>tests whether the correlation matrix is significantly different from an identity matrix (whether the correlations are all 0</p>
+<li>
+<p>tests whether the correlation matrix is significantly different from an identity matrix (whether the correlations are all 0</p>
 <ul>
 <li>in FA, sample sizes are large, so the test will almost always be significant, but if it is not, then there is a problem</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">cortest.bartlett</span>(raq_cor, <span class="at">n =</span> <span class="dv">2571</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/cortest.bartlett.html">cortest.bartlett</a></span><span class="op">(</span><span class="va">raq_cor</span>, n <span class="op">=</span> <span class="fl">2571</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$chisq
 [1] 17387.52
@@ -1435,24 +1399,23 @@ $df
 </div>
 <ul>
 <li>given large sample size, Bartlett’s test is highly significant, indicating there is not a significant problem</li>
-</ul>
-</section>
-<section id="kaiser-meyer-olkin-kmo" class="level3">
-<h3 class="anchored" data-anchor-id="kaiser-meyer-olkin-kmo">Kaiser-Meyer-Olkin (KMO)</h3>
+</ul></section><section id="kaiser-meyer-olkin-kmo" class="level3"><h3 class="anchored" data-anchor-id="kaiser-meyer-olkin-kmo">Kaiser-Meyer-Olkin (KMO)</h3>
 <ul>
 <li><p>check for sampling adequacy</p></li>
 <li><p>KMO varies between 0 and 1 with 0 indicating FA is not appropriate</p></li>
-<li><p>values closer to 1 indicate compact patterns of correlations and FA should reveal distinct and reliable factors</p>
+<li>
+<p>values closer to 1 indicate compact patterns of correlations and FA should reveal distinct and reliable factors</p>
 <ul>
 <li><p>Marvellous: values in the 0.90s</p></li>
 <li><p>Meritorious: values in the 0.80s</p></li>
 <li><p>Middling: values in the 0.70s</p></li>
 <li><p>Mediocre: values in the 0.60s</p></li>
 <li><p>Miserable: values in the 0.50s</p></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">KMO</span>(raq_cor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/KMO.html">KMO</a></span><span class="op">(</span><span class="va">raq_cor</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Kaiser-Meyer-Olkin factor adequacy
 Call: psych::KMO(r = raq_cor)
@@ -1483,35 +1446,36 @@ Note
 <p>If you find KMO values below 0.5, consider removing that variable, but be sure to run the KMO statistic again without the removed variable. Also run the analysis with and without the variable to compare</p>
 </div>
 </div>
-</section>
-</section>
-<section id="parallel-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="parallel-analysis">Parallel analysis</h2>
+</section></section><section id="parallel-analysis" class="level2"><h2 class="anchored" data-anchor-id="parallel-analysis">Parallel analysis</h2>
 <ul>
-<li><p>to determine how many factors to extract, run <code>psych::fa.parallel()</code></p></li>
-<li><p>most likely arguments</p>
+<li><p>to determine how many factors to extract, run <code><a href="https://rdrr.io/pkg/psych/man/fa.parallel.html">psych::fa.parallel()</a></code></p></li>
+<li>
+<p>most likely arguments</p>
 <ul>
 <li><p><code>n.obs() - need to tell the function the sample size (`n.obs = 2571`)</code></p></li>
-<li><p><code>fm = “minres”</code> - <code>psych</code> packages uses minimum residual (minres) by default</p>
+<li>
+<p><code>fm = “minres”</code> - <code>psych</code> packages uses minimum residual (minres) by default</p>
 <ul>
 <li>other options include principal axes (<code>pa</code>), alpha factoring (<code>alpha</code>), weighted least squares <code>wls</code>, minimum rank (<code>minrank</code>), or maximum likelihood (<code>ml</code>). Match this option to the one you’re going to use in the main factor analysis</li>
-</ul></li>
-<li><p><code>fa = "both"</code> - by default the function will tell the number of factors to extract, but also the number of components for PCA.</p>
+</ul>
+</li>
+<li>
+<p><code>fa = "both"</code> - by default the function will tell the number of factors to extract, but also the number of components for PCA.</p>
 <ul>
 <li>can change to <code>fa = "fa</code>” to see only the number of factors to extract. It is useful to look at both methods</li>
-</ul></li>
+</ul>
+</li>
 <li><p><code>use = “pairwise”</code> - by default, missing data are handled using all complete pairwise observations to calculate the correlation coefficients</p></li>
 <li><p><code>cor</code> - default is the function assumes you are providing Pearson correlation coefficients, however, with ordinal variables (likert), use <code>cor = "poly"</code> (polychoric) and for binary, use tetrachoric <code>cor = "tet"</code>; with a mix of variable types, use <code>cor ="mixed"</code></p></li>
-</ul></li>
 </ul>
-<section id="code-example" class="level3">
-<h3 class="anchored" data-anchor-id="code-example">Code example</h3>
+</li>
+</ul>
+<section id="code-example" class="level3"><h3 class="anchored" data-anchor-id="code-example">Code example</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">fa.parallel</span>(raq_items_tib, <span class="at">cor =</span> <span class="st">"poly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.parallel.html">fa.parallel</a></span><span class="op">(</span><span class="va">raq_items_tib</span>, cor <span class="op">=</span> <span class="st">"poly"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1523,11 +1487,10 @@ Note
 <li>or since we already stored polychoric correlations in <code>raq_cor</code>, we can just apply the function to that correlation matrix and specify the sample size</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">fa.parallel</span>(raq_cor, <span class="at">n.obs =</span> <span class="dv">2571</span>, <span class="at">fa =</span> <span class="st">"fa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.parallel.html">fa.parallel</a></span><span class="op">(</span><span class="va">raq_cor</span>, n.obs <span class="op">=</span> <span class="fl">2571</span>, fa <span class="op">=</span> <span class="st">"fa"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1538,25 +1501,24 @@ Note
 <ul>
 <li><p>eigenvalues represent the size of the factor</p></li>
 <li><p>factors are plotted on the x-axis with the eigenvalues on the y-axis</p></li>
-<li><p>each eigenvalue is compared to an eigenvalue from a simulated data set that has no underlying factors</p>
+<li>
+<p>each eigenvalue is compared to an eigenvalue from a simulated data set that has no underlying factors</p>
 <ul>
 <li><p>essentially, we are asking if the factors are bigger than imaginary factor</p></li>
 <li><p>factors that are bigger than their imaginary counterparts are retained</p></li>
-</ul></li>
+</ul>
+</li>
 <li><p>eigenvalues for the observed factors are blue triangles connected by a blue line.</p></li>
 <li><p>the red line shows corresponding simulated data.</p></li>
 <li><p>we keep the number of factors that are above the red line, in this case, four</p></li>
-</ul>
-</section>
-<section id="quiz" class="level3">
-<h3 class="anchored" data-anchor-id="quiz">Quiz</h3>
+</ul></section><section id="quiz" class="level3"><h3 class="anchored" data-anchor-id="quiz">Quiz</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<strong>Based on the parallel analysis that used principal components to compute the eiegenvalues, how many factors should be extracted?</strong>
+<span class="screen-reader-only">Important</span><strong>Based on the parallel analysis that used principal components to compute the eiegenvalues, how many factors should be extracted?</strong>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1569,12 +1531,9 @@ Note
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="factor-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="factor-analysis">Factor Analysis</h2>
+</section></section><section id="factor-analysis" class="level2"><h2 class="anchored" data-anchor-id="factor-analysis">Factor Analysis</h2>
 <ul>
-<li>we are now ready to run the FA, extracting four factors, using the <code>psych::fa()</code> function</li>
+<li>we are now ready to run the FA, extracting four factors, using the <code><a href="https://rdrr.io/pkg/psych/man/fa.html">psych::fa()</a></code> function</li>
 </ul>
 <pre><code>my_fa_object &lt;- psych::fa(r,    
                           n.obs = 2571,  
@@ -1587,15 +1546,26 @@ Note
                           cor = "cor" 
                           )</code></pre>
 <ul>
-<li><code>r</code> -&gt; the data being fed into the function (<code>raq_items_tib</code> or <code>raq_cor</code>)</li>
-<li><code>n.obs = 2571</code> as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size</li>
-<li><code>nfactors = 1</code> the number of factors to extract (default is 1)</li>
-<li><code>fm = "minres"</code> method of factor analysis, typically leave the default</li>
-<li><code>rotate = "oblimin"</code> method of factor rotation</li>
-<li><code>scores = "regression"</code> method of computing factor scores. because we should use oblique rotation, change this argument to <code>scores = "tenBerge"</code></li>
-<li><code>max.iter = 50</code> number of iterations. If you get a n error message about convergence, increase this number</li>
-<li><code>use = "pairwise"</code> determines how missing values are treated, default is fine</li>
-<li><code>cor = "cor"</code> same as defined for <code>fa.parallel()</code></li>
+<li>
+<code>r</code> -&gt; the data being fed into the function (<code>raq_items_tib</code> or <code>raq_cor</code>)</li>
+<li>
+<code>n.obs = 2571</code> as with parallel analysis, if we run the FA from the correlation matrix instead of the raw data, we must tell the function the sample size</li>
+<li>
+<code>nfactors = 1</code> the number of factors to extract (default is 1)</li>
+<li>
+<code>fm = "minres"</code> method of factor analysis, typically leave the default</li>
+<li>
+<code>rotate = "oblimin"</code> method of factor rotation</li>
+<li>
+<code>scores = "regression"</code> method of computing factor scores. because we should use oblique rotation, change this argument to <code>scores = "tenBerge"</code>
+</li>
+<li>
+<code>max.iter = 50</code> number of iterations. If you get a n error message about convergence, increase this number</li>
+<li>
+<code>use = "pairwise"</code> determines how missing values are treated, default is fine</li>
+<li>
+<code>cor = "cor"</code> same as defined for <code>fa.parallel()</code>
+</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1603,26 +1573,25 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Factor rotation
+<span class="screen-reader-only">Tip</span>Factor rotation
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>factor rotation requires <code>GPArotation</code> package loaded</p>
 </div>
 </div>
-<section id="code-example-1" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-1">Code Example</h3>
+<section id="code-example-1" class="level3"><h3 class="anchored" data-anchor-id="code-example-1">Code Example</h3>
 <ul>
 <li>as with parallel analysis we can either feed the raw data into the function remembering to set <code>cor = "poly"</code> so the analysis is based on polychoric correlations</li>
 <li>or we can feed in the correlation matrix and sample size</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>raq_fa <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">fa</span>(raq_items_tib, </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nfactors =</span> <span class="dv">4</span>, </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">scores =</span> <span class="st">"tenBerge"</span>, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">cor =</span> <span class="st">"poly"</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  raq_fa </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_fa</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/fa.html">fa</a></span><span class="op">(</span><span class="va">raq_items_tib</span>, </span>
+<span>  nfactors <span class="op">=</span> <span class="fl">4</span>, </span>
+<span>  scores <span class="op">=</span> <span class="st">"tenBerge"</span>, </span>
+<span>  cor <span class="op">=</span> <span class="st">"poly"</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="va">raq_fa</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Factor Analysis using method =  minres
 Call: psych::fa(r = raq_items_tib, nfactors = 4, scores = "tenBerge", 
@@ -1691,21 +1660,29 @@ Minimum correlation of possible factor scores     0.73 0.66 0.54 0.70</code></pr
 </div>
 </div>
 <ul>
-<li>factors are labeled <code>MR1</code>, <code>MR2</code>, <code>MR3</code>, and <code>MR4</code></li>
+<li>factors are labeled <code>MR1</code>, <code>MR2</code>, <code>MR3</code>, and <code>MR4</code>
+</li>
 <li>below the pattern matrix is information about how much variance each factor accounts for
 <ul>
-<li><code>Proportion var</code> - <code>MR1</code> accounts for 0.13 of the overall variance (13%), etc</li>
-<li><code>Cumulative var</code> is the proportion of the variance explained cumulatively by the factors - <code>MR1</code> accounts for 0.13 and <code>MR1</code> + <code>MR2</code> together account for 0.13 + 0.10 = 0.23 (23%)
+<li>
+<code>Proportion var</code> - <code>MR1</code> accounts for 0.13 of the overall variance (13%), etc</li>
+<li>
+<code>Cumulative var</code> is the proportion of the variance explained cumulatively by the factors - <code>MR1</code> accounts for 0.13 and <code>MR1</code> + <code>MR2</code> together account for 0.13 + 0.10 = 0.23 (23%)
 <ul>
 <li>all four together account for 0.40 (40%)</li>
-</ul></li>
-<li><code>Proportion explained</code> is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to <code>MR1</code></li>
-</ul></li>
+</ul>
+</li>
+<li>
+<code>Proportion explained</code> is the proportion of the explained variance that is explained by a factor, so of the 40% of the variiance accounted for, 0.33 (33%) is attributable to <code>MR1</code>
+</li>
+</ul>
+</li>
 <li>next, correlations between factors are displayed
 <ul>
 <li>all are non-zero, indicating the factors are correlated (and oblique rotation was appropriate)</li>
 <li>all factors are positively and fairly strongly correlated to teach other meaning the latent constructs represented by the factors are related.</li>
-</ul></li>
+</ul>
+</li>
 <li>several fit indices that tell us how the model fits the data
 <ul>
 <li>chi-square statistic for the model is given as the <code>likelihood chi square</code>, <span class="math inline">\(X^2=267.21, p&lt;0.001\)</span>
@@ -1714,8 +1691,10 @@ Minimum correlation of possible factor scores     0.73 0.66 0.54 0.70</code></pr
 <li>the Tucker Lewis Index of factoring reliability (TLI) is given as 0.991</li>
 <li>RMSEA is 0.015 90% CI[0.012, 0.019]</li>
 <li>RMSR is 0.01</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1723,7 +1702,7 @@ Minimum correlation of possible factor scores     0.73 0.66 0.54 0.70</code></pr
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Fit Indices
+<span class="screen-reader-only">Note</span>Fit Indices
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1735,27 +1714,27 @@ Fit Indices
 <p>The TLI is 0.99, which is greater than 0.96, and RMSR is 0.01 which is smaller than both 0.09 and 0.06. Furthermore, RMSEA is 0.015, which is less than 0.05. With the caveat that universal cut-offs need to be taken with a pinch of salt, it’s reasonable to conclude that the model has excellent fit.</p>
 </div>
 </div>
-</section>
-<section id="interpreting-fa" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-fa">Interpreting FA</h3>
+</section><section id="interpreting-fa" class="level3"><h3 class="anchored" data-anchor-id="interpreting-fa">Interpreting FA</h3>
 <ul>
 <li>look at factor loadings (top of output in the pattern matrix) for each question on each factor to see which items load most heavily onto which factors</li>
-<li>this is difficult to interpret in the raw form, so use <code>parameters::model_parameters()</code> to sort items by their factor loadings and suppress factor loading sbelow a certain value</li>
+<li>this is difficult to interpret in the raw form, so use <code><a href="https://easystats.github.io/parameters/reference/model_parameters.html">parameters::model_parameters()</a></code> to sort items by their factor loadings and suppress factor loading sbelow a certain value</li>
 </ul>
 <p>General form</p>
 <pre><code>parameters::model_parameters(my_fa_object, sort = TRUE, threshold = "max")</code></pre>
 <ul>
-<li><code>my_fa_object</code> is the factor analysis object containing the factor loadings.</li>
-<li><code>sort = "TRUE"</code> sorts items by their factor loadings</li>
-<li>set <code>threshold</code> to a value above which we will show values. Default is maximum loading. To see all factor loadings, set <code>threshold = NULL</code></li>
+<li>
+<code>my_fa_object</code> is the factor analysis object containing the factor loadings.</li>
+<li>
+<code>sort = "TRUE"</code> sorts items by their factor loadings</li>
+<li>set <code>threshold</code> to a value above which we will show values. Default is maximum loading. To see all factor loadings, set <code>threshold = NULL</code>
+</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>parameters<span class="sc">::</span><span class="fu">model_parameters</span>(raq_fa, <span class="at">sort =</span> <span class="cn">TRUE</span>, <span class="at">threshold =</span> <span class="st">"0.2"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">parameters</span><span class="fu">::</span><span class="fu"><a href="https://easystats.github.io/parameters/reference/model_parameters.html">model_parameters</a></span><span class="op">(</span><span class="va">raq_fa</span>, sort <span class="op">=</span> <span class="cn">TRUE</span>, threshold <span class="op">=</span> <span class="st">"0.2"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;">Variable</th>
 <th style="text-align: right;">MR1</th>
 <th style="text-align: right;">MR2</th>
@@ -1763,8 +1742,7 @@ Fit Indices
 <th style="text-align: right;">MR3</th>
 <th style="text-align: right;">Complexity</th>
 <th style="text-align: right;">Uniqueness</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">raq_06</td>
@@ -1989,7 +1967,8 @@ Fit Indices
 <li>raq_14: Computers have minds of their own and deliberately go wrong whenever I use them</li>
 <li>raq_15: Computers are out to get me</li>
 <li>raq_18: R always crashes when I try to use it</li>
-</ul></li>
+</ul>
+</li>
 <li>Items that load onto <code>MR2</code> relate to fear of peer/social evaluation
 <ul>
 <li>raq_02: My friends will think I’m stupid for not being able to cope with R</li>
@@ -1997,7 +1976,8 @@ Fit Indices
 <li>raq_19: Everybody looks at me when I use R</li>
 <li>raq_22: My friends are better at R than I am</li>
 <li>raq_23: If I am good at statistics people will think I am a nerd</li>
-</ul></li>
+</ul>
+</li>
 <li>Questions that load onto <code>MR4</code> relate to fear of statistics
 <ul>
 <li>raq_01: Statistics make me cry</li>
@@ -2008,13 +1988,15 @@ Fit Indices
 <li>raq_16: I weep openly at the mention of central tendency</li>
 <li>raq_20: I can’t sleep for thoughts of eigenvectors</li>
 <li>raq_21: I wake up under my duvet thinking that I am trapped under a normal distribution</li>
-</ul></li>
+</ul>
+</li>
 <li>questions that load onto <code>MR3</code> relate to fear of math
 <ul>
 <li>raq_08: I have never been good at mathematics</li>
 <li>raq_11: I did badly at mathematics at school</li>
 <li>raq_17: I slip into a coma whenever I see an equation</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Analysis seems to reveal that the questionnaire is composed of four subscales: fear of statistics, fear of computers, fear of maths, fear of negative peer evaluation.</p>
 <ul>
@@ -2022,15 +2004,12 @@ Fit Indices
 <ul>
 <li>the RAQ failed to measure what it set out to measure -&gt; R anxiety but instead measures related constructs</li>
 <li>these four constructs are subcomponents of R anxiety</li>
-</ul></li>
-<li>However, the factor analysis does not indicate which of these is true.</li>
 </ul>
-</section>
-</section>
-<section id="reliability-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="reliability-analysis">Reliability Analysis</h2>
-<section id="mcdonalds-omega_t-and-omega_h" class="level3">
-<h3 class="anchored" data-anchor-id="mcdonalds-omega_t-and-omega_h">McDonald’s <span class="math inline">\(\omega_t\)</span> and <span class="math inline">\(\omega_h\)</span></h3>
+</li>
+<li>However, the factor analysis does not indicate which of these is true.</li>
+</ul></section></section><section id="reliability-analysis" class="level2"><h2 class="anchored" data-anchor-id="reliability-analysis">Reliability Analysis</h2>
+<section id="mcdonalds-omega_t-and-omega_h" class="level3"><h3 class="anchored" data-anchor-id="mcdonalds-omega_t-and-omega_h">McDonald’s <span class="math inline">\(\omega_t\)</span> and <span class="math inline">\(\omega_h\)</span>
+</h3>
 <ul>
 <li>if items are all scored in the same direction, we can select the variables on a particular subscale and pipe them into <code>omega()</code> functions in the <code>psych</code> package</li>
 </ul>
@@ -2051,10 +2030,7 @@ Fit Indices
 <dd>
 <p>name of the tibble containing your data</p>
 </dd>
-</dl>
-</section>
-<section id="code-example-2" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-2">Code Example</h3>
+</dl></section><section id="code-example-2" class="level3"><h3 class="anchored" data-anchor-id="code-example-2">Code Example</h3>
 <ul>
 <li>need to recreate the original FA</li>
 <li>arguments will be the same as they were set for the fa</li>
@@ -2067,20 +2043,19 @@ Fit Indices
 <p>or</p>
 <pre><code>key = c(1, 1, -1, rep(1, 20))</code></pre>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>raq_omg <span class="ot">&lt;-</span> psych<span class="sc">::</span><span class="fu">omega</span>(raq_items_tib,</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">nfactors =</span> <span class="dv">4</span>,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">fm =</span> <span class="st">"minres"</span>,</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">key =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">20</span>)),</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">poly =</span> <span class="cn">TRUE</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_omg</span> <span class="op">&lt;-</span> <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/omega.html">omega</a></span><span class="op">(</span><span class="va">raq_items_tib</span>,</span>
+<span>                        nfactors <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>                        fm <span class="op">=</span> <span class="st">"minres"</span>,</span>
+<span>                        key <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>                        poly <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>                        <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>raq_omg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_omg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Omega 
 Call: omegah(m = m, nfactors = nfactors, fm = fm, key = key, flip = flip, 
@@ -2158,57 +2133,75 @@ Omega group for total scores and subscales    0.18 0.35 0.56 0.31 0.38</code></p
 </div>
 <ul>
 <li><p>note the table of factor loadings and that <code>raq_03-</code> is labeled with a minus to indicate it is reverse coded</p></li>
-<li><p>column labeled <code>g</code>shows the loading of each item on the general factor</p>
+<li>
+<p>column labeled <code>g</code>shows the loading of each item on the general factor</p>
 <ul>
 <li>if any items load poorly, then a common factor model isn’t appropriate</li>
 <li>all items here have a factor loading far enough from zero that a general factor model is appropriate</li>
-</ul></li>
-<li><p>Columns F1-F4 show the loadings of each item on the four factors we extracted</p>
+</ul>
+</li>
+<li>
+<p>Columns F1-F4 show the loadings of each item on the four factors we extracted</p>
 <ul>
 <li>these values differ from the original factor analysis because this one includes a general factor</li>
 <li>the patterns of item loadings to factors follow the same pattern as the original FA</li>
-</ul></li>
-<li><p>at the top of the text output are reliability estimates for the general factor, including</p>
+</ul>
+</li>
+<li>
+<p>at the top of the text output are reliability estimates for the general factor, including</p>
 <ul>
-<li>Chronbach’s <span class="math inline">\(\alpha=0.88\)</span></li>
+<li>Chronbach’s <span class="math inline">\(\alpha=0.88\)</span>
+</li>
 <li><span class="math inline">\(\omega_h=0.68\)</span></li>
 <li><span class="math inline">\(\omega_t=0.9\)</span></li>
-</ul></li>
+</ul>
+</li>
 <li><p><span class="math inline">\(\omega_h\)</span> is a measure of how much the items reflect a single construct, and a value of 0.68 suggests they do but there is still a lot of unexplained variance in the general factor</p></li>
 <li><p>further down in the output, we see that only 48% of the variance in the common factor is explained by the items</p></li>
 <li><p><span class="math inline">\(\omega_t\)</span> is the total reliability and 0.90 is high, suggesting scores are reliable</p></li>
 <li><p>next are two sets of model fit stats</p></li>
-<li><p>the first set are for the model that has four factors and repeat the nformation from the original EFA</p>
+<li>
+<p>the first set are for the model that has four factors and repeat the nformation from the original EFA</p>
 <ul>
-<li><code>chi-square</code> is significant, <span class="math inline">\(X^2= 267.21, p&lt;0.001\)</span>, which is a bad thing but unsurprising given the sample size</li>
+<li>
+<code>chi-square</code> is significant, <span class="math inline">\(X^2= 267.21, p&lt;0.001\)</span>, which is a bad thing but unsurprising given the sample size</li>
 <li><code>RMSR = 0.01</code></li>
 <li><code>RMSEA = 0.02 90% CI[0.01-0.02]</code></li>
-</ul></li>
-<li><p>Next is the same information but for the model that contains only the general factor and not the four sub-factors</p>
+</ul>
+</li>
+<li>
+<p>Next is the same information but for the model that contains only the general factor and not the four sub-factors</p>
 <ul>
 <li>the fit gets worse as shown by
 <ul>
-<li>larger and more significant <code>chi-square, $X^2=6122.42, p&lt;0.001$</code></li>
-<li>larger <code>RMSR=0.10</code></li>
-<li>larger <code>RMSEA=0.1090% CI[0.10, 0.10]</code></li>
-</ul></li>
-</ul></li>
+<li>larger and more significant <code>chi-square, $X^2=6122.42, p&lt;0.001$</code>
+</li>
+<li>larger <code>RMSR=0.10</code>
+</li>
+<li>larger <code>RMSEA=0.1090% CI[0.10, 0.10]</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>all this tells us that the model that characterizes the RAQ in terms of four factors is a better fit of the data than a model that characterises it as a single factor</p></li>
 <li><p>finally, under the Total, General, and Subset omega for each subset, we get the <span class="math inline">\(\omega_t\)</span> (labeled omega total) and <span class="math inline">\(\omega_h\)</span> (labeled omega general) for the general factor (column <code>g</code>) and for the subfactors.</p></li>
 <li><p>values for the general factor repeat the information at tht e start of the output</p></li>
-<li><p>the values for the subfactors are particularly relvant for <span class="math inline">\(\omega_t\)</span> because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales</p>
+<li>
+<p>the values for the subfactors are particularly relvant for <span class="math inline">\(\omega_t\)</span> because it represents the total reliability of the scores, so these values tell us the total reliability of the scores from the underlying subscales</p>
 <ul>
-<li>for anxiety related to computers (F1) we have <span class="math inline">\(\omega_t=0.83\)</span></li>
+<li>for anxiety related to computers (F1) we have <span class="math inline">\(\omega_t=0.83\)</span>
+</li>
 <li>anxiety around peer or social evaluation (F2) $_t=0.80</li>
-<li>anxiety around statistics (F3) <span class="math inline">\(\omega_t=0.69\)</span></li>
-<li>anxiety around maths (F4) <span class="math inline">\(\omega_t=0.81\)</span></li>
-</ul></li>
-<li><p>scores from ach subscale are reliable, although somewhat less so for anxiety around statistics</p></li>
+<li>anxiety around statistics (F3) <span class="math inline">\(\omega_t=0.69\)</span>
+</li>
+<li>anxiety around maths (F4) <span class="math inline">\(\omega_t=0.81\)</span>
+</li>
 </ul>
-</section>
-</section>
-<section id="cronbachs-alpha" class="level2">
-<h2 class="anchored" data-anchor-id="cronbachs-alpha">Cronbach’s <span class="math inline">\(\alpha\)</span></h2>
+</li>
+<li><p>scores from ach subscale are reliable, although somewhat less so for anxiety around statistics</p></li>
+</ul></section></section><section id="cronbachs-alpha" class="level2"><h2 class="anchored" data-anchor-id="cronbachs-alpha">Cronbach’s <span class="math inline">\(\alpha\)</span>
+</h2>
 <ul>
 <li>Lots of reasons not to use Cronbach’s <span class="math inline">\(\alpha\)</span> (see the book for details)</li>
 <li>if Cronbach’s <span class="math inline">\(\alpha\)</span> is needed, it must be computed on the individual subscales
@@ -2217,18 +2210,19 @@ Omega group for total scores and subscales    0.18 0.35 0.56 0.31 0.38</code></p
 <li>Anxiety around peer or social evaluation: raq_02, raq_09, raq_19, raq_22, and raq_2</li>
 <li>Anxiety around statistics: raq_01, raq_03 (reverse scored), raq_04, raq_05, raq_12, raq_16, raq_20, and raq_21</li>
 <li>Anxiety around maths: raq_08, raq_11 and raq_17</li>
-</ul></li>
-<li>pipe the variables for each subscale into <code>psych::alpha()</code> function</li>
 </ul>
-<section id="code-example-for-fear-of-computers" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-for-fear-of-computers">Code example for <code>fear of computers</code></h3>
+</li>
+<li>pipe the variables for each subscale into <code><a href="https://rdrr.io/pkg/psych/man/alpha.html">psych::alpha()</a></code> function</li>
+</ul>
+<section id="code-example-for-fear-of-computers" class="level3"><h3 class="anchored" data-anchor-id="code-example-for-fear-of-computers">Code example for <code>fear of computers</code>
+</h3>
 <ul>
 <li>example excludes <code>raq_05</code>, which makes more sense on the fear of statistics factor [<a href="https://github.com/profandyfield/discovr/issues/19">See github issue</a>]</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="sc">|&gt;</span> </span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(raq_06, raq_07, raq_10, raq_13, raq_14, raq_15, raq_18) <span class="sc">|&gt;</span> </span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">alpha</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">raq_06</span>, <span class="va">raq_07</span>, <span class="va">raq_10</span>, <span class="va">raq_13</span>, <span class="va">raq_14</span>, <span class="va">raq_15</span>, <span class="va">raq_18</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Reliability analysis   
@@ -2279,32 +2273,38 @@ raq_18 0.02 0.13 0.35 0.35 0.15    0</code></pre>
 <li><p>looking for between 0.70 and 0.80, in this case Cronbach’s <span class="math inline">\(\alpha\)</span>=0.77 [0.75, 0.78] indicating good reliability</p></li>
 <li><p>next is a table of statistics for the scale if we deleted each item in turn</p></li>
 <li><p>the values in the column <code>raw_alpha</code> are the values of the overall <span class="math inline">\(\alpha\)</span></p></li>
-<li><p>we are looking for a change in Cronbach’s <span class="math inline">\(\alpha\)</span> (0.77)</p>
+<li>
+<p>we are looking for a change in Cronbach’s <span class="math inline">\(\alpha\)</span> (0.77)</p>
 <ul>
 <li>if values are greater than 0.77, then reliability would have improved if the item were removed - not the case here</li>
-</ul></li>
-<li><p>the table labeled <code>item statistics</code> shows, in <code>raw.r</code>, the correlations between each item and the total score from the scale - <code>item-total correlations</code></p>
+</ul>
+</li>
+<li>
+<p>the table labeled <code>item statistics</code> shows, in <code>raw.r</code>, the correlations between each item and the total score from the scale - <code>item-total correlations</code></p>
 <ul>
 <li>there is a problem with this statistic in that the item is included in the scale total, which inflates the overall correlation.</li>
-<li>we want these correlations to be computed without the item in question, and these values are in <code>r.drop</code></li>
+<li>we want these correlations to be computed without the item in question, and these values are in <code>r.drop</code>
+</li>
 <li>in a reliable scale all items should correlate with the total, so we’re looking for items that don’t correlate with the overall score from the subscale. If any values of <code>r.drop</code> are elss than 0.3, we have problems becasuse that means an item does not correlate well with the subscale
 <ul>
 <li>0.3 is ‘reasonable’ - use your judgement</li>
-</ul></li>
-</ul></li>
-<li><p>the final table tells us what percentage of people gave each response to each of the items, which is useful to make sure everyone in the sample is not giving the same response.</p>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>the final table tells us what percentage of people gave each response to each of the items, which is useful to make sure everyone in the sample is not giving the same response.</p>
 <ul>
 <li>usually, if everyone gives the same response, the item will have poor reliability statistics</li>
 <li>for this subscale, few people responded with a 1 on any of the items suggesting that no one is feeling the love for computers or that the items are doing a poor job of eliciting those extreme responses</li>
-</ul></li>
 </ul>
-</section>
-<section id="code-example-for-fear-of-peersocial-evaluation" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-for-fear-of-peersocial-evaluation">Code example for <code>fear of peer/social evaluation</code></h3>
+</li>
+</ul></section><section id="code-example-for-fear-of-peersocial-evaluation" class="level3"><h3 class="anchored" data-anchor-id="code-example-for-fear-of-peersocial-evaluation">Code example for <code>fear of peer/social evaluation</code>
+</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="sc">|&gt;</span> </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(raq_02, raq_09, raq_19, raq_22, raq_23)  <span class="sc">|&gt;</span> </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">alpha</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">raq_02</span>, <span class="va">raq_09</span>, <span class="va">raq_19</span>, <span class="va">raq_22</span>, <span class="va">raq_23</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Reliability analysis   
@@ -2349,14 +2349,12 @@ raq_23 0.02 0.14 0.34 0.34 0.16    0</code></pre>
 <li>no items improve the value if they are dropped</li>
 <li>item correlations with the total are all good</li>
 <li>again we have issues with the items not eliciting extremely low responses</li>
-</ul>
-</section>
-<section id="code-example-for-fear-of-maths" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-for-fear-of-maths">Code example for <code>fear of maths</code></h3>
+</ul></section><section id="code-example-for-fear-of-maths" class="level3"><h3 class="anchored" data-anchor-id="code-example-for-fear-of-maths">Code example for <code>fear of maths</code>
+</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="sc">|&gt;</span> </span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(raq_08, raq_11, raq_17)  <span class="sc">|&gt;</span> </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">alpha</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">raq_08</span>, <span class="va">raq_11</span>, <span class="va">raq_17</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Reliability analysis   
@@ -2394,19 +2392,18 @@ raq_17 0.02 0.13 0.35 0.34 0.15    0</code></pre>
 <li>no items improve value if they are dropped</li>
 <li>item correlations with the total subscale are all good</li>
 <li>still issues with items not eliciting low responses</li>
-</ul>
-</section>
-<section id="code-example-for-fear-of-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="code-example-for-fear-of-statistics">Code example for <code>fear of statistics</code></h3>
+</ul></section><section id="code-example-for-fear-of-statistics" class="level3"><h3 class="anchored" data-anchor-id="code-example-for-fear-of-statistics">Code example for <code>fear of statistics</code>
+</h3>
 <ul>
 <li>the <code>fear of statistics</code> subscale contains <code>raq_3</code>, which is reverse scored so we need to include the <code>keys</code> argument within the function</li>
-<li>note that in the <code>omega()</code> function, the argument is <code>key</code>, but in the <code>alpha()</code> function, the argument is <code>keys</code></li>
-<li></li>
-</ul>
+<li>note that in the <code>omega()</code> function, the argument is <code>key</code>, but in the <code><a href="https://scales.r-lib.org/reference/alpha.html">alpha()</a></code> function, the argument is <code>keys</code>
+</li>
+<li>
+</li></ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>raq_tib <span class="sc">|&gt;</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(raq_01, raq_03, raq_04, raq_05, raq_12, raq_16, raq_20, raq_21)  <span class="sc">|&gt;</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">alpha</span>(<span class="at">keys =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">raq_tib</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">raq_01</span>, <span class="va">raq_03</span>, <span class="va">raq_04</span>, <span class="va">raq_05</span>, <span class="va">raq_12</span>, <span class="va">raq_16</span>, <span class="va">raq_20</span>, <span class="va">raq_21</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">(</span>keys <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Reliability analysis   
@@ -2466,253 +2463,253 @@ raq_21 0.02 0.14 0.34 0.35 0.15    0</code></pre>
 
 
 
-</section>
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-field2023" class="csl-entry" role="listitem">
 Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
 </div>
 <div id="ref-wickham2016" class="csl-entry" role="listitem">
 Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
-</div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/cmadland\.github\.io\/blog");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // default icon
-          link.classList.add("external");
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cmadland\.github\.io\/blog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // default icon
+            link.classList.add("external");
         }
       }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2720,187 +2717,162 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
-
 
 
 
