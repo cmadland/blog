@@ -19,12 +19,16 @@ website:
       - icon: rss
         href: index.xml
   draft-mode: unlinked
+  repo-url: https://github.com/cmadland/blog
+  repo-actions: [source, issue]
 format:
   html:
     link-external-icon: true
     code-link: true
     theme: flatly
     css: styles.css
+    toc: true
+    toc-title: On this page
   # pdf: default
 
 

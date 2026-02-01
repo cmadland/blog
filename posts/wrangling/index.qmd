@@ -3,7 +3,7 @@ title: "Data Wrangling"
 author: "Colin Madland"
 date: "2026-01-26"
 categories: [EFA, dissie, tidyverse, R]
-image: "helmcken.jpeg"
+image: "helmcken.jpg"
 bibliography: references.bib
 ---
 
