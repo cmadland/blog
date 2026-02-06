@@ -154,6 +154,10 @@ window.Quarto = {
       <h1 class="title">Simple Regression</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">505</div>
+                <div class="quarto-category">regression</div>
+                <div class="quarto-category">total squared error</div>
+                <div class="quarto-category">least squared error</div>
+                <div class="quarto-category">analysis of regression</div>
               </div>
                   </div>
   </div>
@@ -214,8 +218,10 @@ window.Quarto = {
 <p><span class="math display">\[Y_i=b_0+{b_1}{X_i}+\epsilon_i\]</span></p>
 <p>Where:</p>
 <ul>
-<li><span class="math inline">\(b_1\)</span> is the slope or regression coefficient (how much <span class="math inline">\(Y\)</span> will change when <span class="math inline">\(X\)</span> increases by 1)<br>
-</li>
+<li><span class="math inline">\(b_1\)</span> is the slope or regression coefficient (how much <span class="math inline">\(Y\)</span> will change when <span class="math inline">\(X\)</span> increases by 1)
+<ul>
+<li>larger values of <span class="math inline">\(b_1\)</span> = steeper regression line</li>
+</ul></li>
 <li><span class="math inline">\(b_0\)</span> is the <span class="math inline">\(Y\)</span>-intercept, where the regression line crosses the <span class="math inline">\(Y\)</span> axis</li>
 <li><span class="math inline">\(\epsilon_i\)</span> is the error term</li>
 </ul>
@@ -223,7 +229,7 @@ window.Quarto = {
 <p><span class="math display">\[\hat{Y}=b_0+{b_1}{X_i}\]</span></p>
 <p>Where:</p>
 <ul>
-<li><span class="math inline">\(\hat{Y}\)</span> is the predicted value of <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\hat{Y}\)</span> is the <em>predicted</em> value of <span class="math inline">\(Y\)</span></li>
 </ul>
 <p>Notes:</p>
 <p>Larger values of <span class="math inline">\(b_1\)</span> indicate a steeper regression line</p>
@@ -235,7 +241,7 @@ window.Quarto = {
 </div>
 <ul>
 <li>left image, red is positive slope and green is negative slope (negative correlation; when predictor increases, outcome decreases)</li>
-<li>right image, all slopes positive</li>
+<li>right image, all slopes positive, but different intercepts</li>
 </ul>
 </section>
 <section id="calculating-regression" class="level2">
@@ -252,7 +258,10 @@ window.Quarto = {
 <li>for every <span class="math inline">\(X\)</span> value in the data, the linear equation can determine the <span class="math inline">\(Y\)</span> value on the line - called <strong>predicted <span class="math inline">\(Y\)</span></strong>, or <span class="math inline">\(\hat{Y}\)</span></li>
 <li>this distance measures the error between the line and the data</li>
 <li>if all data points were on the line, then the line ‘fits’ the data perfectly</li>
-<li><span class="math inline">\(\hat{Y}\)</span> should be close to actual <span class="math inline">\(Y\)</span></li>
+<li><span class="math inline">\(\hat{Y}\)</span> should be close to actual <span class="math inline">\(Y\)</span>
+<ul>
+<li>difference between the two is considered <code>prediction error</code> (distance between the line and the data point)</li>
+</ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -263,16 +272,20 @@ window.Quarto = {
 <ul>
 <li>green dots = <span class="math inline">\(\hat{Y}\)</span></li>
 <li>blue dots = <span class="math inline">\(Y\)</span></li>
-<li>distance between the green and blue dots is the prediction error - need to minimize</li>
+<li>distance between the green and blue dots is the <code>prediction error</code>
+<ul>
+<li>need to minimize</li>
+<li><code>0</code> prediction error is very unlikely</li>
+</ul></li>
 <li>some are positive (above the line) and some are negative (below the line)<br>
 </li>
 <li>since some are positive and some are negative, if we want to add the error values together, we need to get rid of the signs by squaring the distance and adding the squared error</li>
 </ul>
 <p><span class="math display">\[total \space squared \space error ={\sum^n_{i=1}}({Y_i}-{\hat{Y_i}})^2\]</span></p>
 <ul>
-<li>for each poissible line, we can calculate the total squared error, then choose the line with the lowest total squared error, which is the regression line</li>
+<li>for each possible line, we can calculate the <code>total squared error</code>, then choose the line with the lowest total squared error, which is the <code>regression line</code></li>
 <li>this minimizes the difference between the line and the observed data</li>
-<li>this line is called the <em>least squared error</em> solution</li>
+<li>this line is called the <code>least squared error</code> solution</li>
 <li>this method is inefficient due to the infinite number of lines possible</li>
 <li>calculus is a mathematical technique to find the maxima or minima of a mathematical expression.</li>
 <li>Using this method, the regression coefficients (slope (<span class="math inline">\(b_1\)</span>) and intercept (<span class="math inline">\(b_0\)</span>)) that produce the minimum errors can be calculated.</li>
@@ -281,24 +294,28 @@ window.Quarto = {
 <section id="calculating-regression-coefficients" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-regression-coefficients">Calculating Regression Coefficients</h2>
 <p><span class="math display">\[\hat{Y}_i=b_0+b_1X_i\]</span></p>
-<p><span class="math display">\[\hat{b_1}=r\frac{S_Y}{S_X}\]</span></p>
-<p><span class="math display">\[\hat{b_0}=M_Y-\hat{b_1}M_x\]</span></p>
+<ul>
+<li>Estimated slope -&gt; <span class="math inline">\(\hat{b_1}=r\frac{S_Y}{S_X}\)</span></li>
+<li>Estimated intercept -&gt; <span class="math inline">\(\hat{b_0}=M_Y-\hat{b_1}M_x\)</span></li>
+</ul>
 <p>Where</p>
 <p><span class="math inline">\(r\)</span> is the correlation between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span><br>
 <span class="math inline">\(S_X\)</span> and <span class="math inline">\(S_Y\)</span> are sample standard deviations for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span><br>
 <span class="math inline">\(M_X\)</span> and <span class="math inline">\(M_Y\)</span> are sample means for <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
-<p>These are <em>raw regression coefficients</em> (<span class="math inline">\(b_1\)</span>): the change in outcome is associated with a change in the predictor</p>
+<p>These are <code>raw regression coefficients</code> (<span class="math inline">\(b_1\)</span>): the change in outcome is associated with a change in the predictor</p>
 <section id="standardized-regression-coefficients" class="level3">
 <h3 class="anchored" data-anchor-id="standardized-regression-coefficients">Standardized regression coefficients</h3>
 <ul>
 <li>tell us the same thing, except expressed as standard deviations</li>
-<li>if both variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have been standardized by transforming tehm into <em>Z-scores</em> before calculating the regression coefficients, then the regression coefficients become *standardized coefficients</li>
+<li>if both variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> have been standardized by transforming tehm into <code>Z-scores</code> before calculating the regression coefficients, then the regression coefficients become <code>standardized coefficients</code></li>
+<li>standardized slope (<span class="math inline">\(b_1\)</span>) = 1</li>
+<li>standardized intercept (<span class="math inline">\(b_0\)</span>) = 0</li>
 </ul>
 <p><span class="math display">\[\hat{Z_{Y_i}}=\beta{Z_{X_i}}\]</span></p>
 <p><span class="math display">\[\beta=r\]</span></p>
 <p>Where</p>
 <p><span class="math inline">\(\hat{Z_{Y_i}}\)</span> is the standard deviation of <span class="math inline">\(Y\)</span><br>
-<span class="math inline">\(\hat{Z_{X_i}}\)</span> is the styandard deviation of <span class="math inline">\(X\)</span><br>
+<span class="math inline">\(\hat{Z_{X_i}}\)</span> is the standard deviation of <span class="math inline">\(X\)</span><br>
 <span class="math inline">\(\beta\)</span> is the correlation coefficient</p>
 <p>Standardizing <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> puts the variables on the same scale - when <span class="math inline">\(X\)</span> increases by 1SD, <span class="math inline">\(Y\)</span> increases by 1SD</p>
 </section>
@@ -307,17 +324,20 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="analysis-of-regression">Analysis of regression</h2>
 <ul>
 <li>regression line is only a model based on the data</li>
-<li>process of testing the significance of a regression equation is called <em>analysis of regression</em></li>
+<li>process of testing the significance of a regression equation is called <code>analysis of regression</code></li>
 <li>null hypothesis in the analysis of regression states that the equation does not account for a significant proportion of the variance in <span class="math inline">\(Y\)</span> scores</li>
 <li>analysis of regression is similar to ANOVA</li>
 </ul>
 <p><img src="anoreg.png" class="img-fluid"></p>
-<p>Sum Square Total (<span class="math inline">\(SS_T\)</span> (left plot)) is <span class="math inline">\(\sum(Y-\bar{Y})^2\)</span></p>
-<p>Sum Square Residual (<span class="math inline">\(SS_R\)</span> (right plot)) is <span class="math inline">\(\sum(Y-\hat{Y})^2\)</span></p>
+<p><code>Sum Square Total</code> <span class="math inline">\(SS_T\)</span> (left plot) is <span class="math inline">\(\sum(Y-\bar{Y})^2\)</span> - difference between observed data <span class="math inline">\(Y\)</span>, and the mean of the data <span class="math inline">\(\bar{Y}\)</span></p>
+<p><code>Sum Square Residual</code> <span class="math inline">\(SS_R\)</span> (right plot) is <span class="math inline">\(\sum(Y-\hat{Y})^2\)</span> - difference between observed data <span class="math inline">\(Y\)</span> and the regression line <span class="math inline">\(\hat{Y}\)</span>, or predicted data</p>
 <ul>
-<li>prediction error - squared distance between the data and the regression line</li>
+<li><code>prediction error</code>
+<ul>
+<li>squared distance between the data and the regression line</li>
 <li>needs to be minimized</li>
 <li>this is the variability that is not explained by the regression equation</li>
+</ul></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -325,7 +345,7 @@ window.Quarto = {
 <figcaption>Alt text</figcaption>
 </figure>
 </div>
-<p>Sum Square model (<span class="math inline">\(SS_M\)</span>) is <span class="math inline">\(\sum(\hat{Y}-\bar{Y})^2\)</span></p>
+<p><code>Sum Square model</code> (<span class="math inline">\(SS_M\)</span>) is <span class="math inline">\(\sum(\hat{Y}-\bar{Y})^2\)</span> - difference between predicted quantity <span class="math inline">\(\hat{Y}\)</span> and the mean of the data <span class="math inline">\(\bar{Y}\)</span></p>
 <ul>
 <li><p>in this equation, <span class="math inline">\(\hat{Y}=b_0+b_1X\)</span></p></li>
 <li><p><span class="math inline">\(SS_T\)</span>: total variability is the variability between the scores and the mean<br>
