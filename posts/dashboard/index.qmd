@@ -4,6 +4,8 @@ author: "Gapminder Analytics Group"
 format: dashboard
 scrolling: false
 draft: true
+execute:
+    freeze: true
 --- 
 
 ```{r}

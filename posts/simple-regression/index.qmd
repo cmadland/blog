@@ -3,6 +3,8 @@ title: "Simple Regression"
 author: "Colin Madland"
 date: "2024-02-18"
 categories: [505, regression, total squared error, least squared error, analysis of regression]
+execute:
+    freeze: true
 ---
 
 ## Regression Equation
@@ -135,6 +137,7 @@ Standardizing $X$ and $Y$ puts the variables on the same scale
 - $SS_T$: total variability is the variability between the scores and the mean  
 - $SS_R$: sum squared residual is the residual or error variability between the regression model and the data  
 - $SS_M$ or sum square regression: Model variability - difference in variability between the model and the mean.$Y$ are determined by the value of $X$  
+  - if $b_1$ is positive, then larger $X$ will mean larger $Y$
 - $SS_T$ is the sum of $SS_R$ and $SS_M$  
   - part of the variability is residual - we don't know what is causing   
   - part of it is due to the model - the relationship between $Y$ and $X$
@@ -143,13 +146,16 @@ The proportion of variability in $Y$ that is predicted by its relationship with 
 
 $$\frac{SS_{regression}}{SS_T}=r^2$$
 
+::: {.callout-important}
+
 $r^2$ is an effect size that tells us the proportion of variability that is accounted for by the model
+:::
 
 The proportion of the variability that is not accounted for  is
 
 $$\frac{SS_{residual}}{SS_T}=1-r^2$$
 
-$r^2$ is very mieaningful
+$r^2$ is very meaningful
 
 if $R^2$ is 20%, then the amount of the variability in $Y$ that is accounted for by the model is 20%, which is quite large.
 
@@ -188,7 +194,7 @@ $$F=\frac{MS_{regression}}{MS_{residual}} \text{with}\: df=1,n-2$$
 
 ## An Example (Fields)
 
-- record company boss interested in predicting album sales from advertising bsed on 200 different album releases  
+- record company boss interested in predicting album sales from advertising based on 200 different album releases  
 - outcome variable: sales of CDs and downloads in the week after release  
 - predictor variable: amount in GBP spent promoting the album before release
 
@@ -198,16 +204,20 @@ $r^2$ = 0.335, so 33.5% of the variability is shared by both variables (cutoffs,
 
 ![Alt text](model-summary.png)
 
-![Alt text](anova.png)
+![F=99.587 means that the variance explained by the regression model is 99.587 times the variance explained by the residual model. F-test is significant.](anova.png)
+
+
 
 ![Alt text](coefficients.png)
 
 ## Activities
 
-In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:  
-$r_XY$ = .32, $N$ = 1, 296  
-Wife height: $M_X$ = 64.42, $S_X$ = 2.56  
-Husband height: $M_Y$ = 70.46, $S_Y$ = 2.87  
+In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable: 
+
+- $r_XY$ = .32, $N$ = 1, 296    
+- Wife height: $M_X$ = 64.42, $S_X$ = 2.56   
+- Husband height: $M_Y$ = 70.46, $S_Y$ = 2.87   
+
 a. Calculates the values of $b_0$ and $b_1$ to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation
 
 $$\hat{b_1}=r\frac{S_Y}{S_X}$$

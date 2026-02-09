@@ -5,6 +5,8 @@ date: "2026-01-26"
 categories: [EFA, dissie, tidyverse, R]
 image: "helmcken.jpg"
 bibliography: references.bib
+execute:
+    freeze: true
 ---
 
 ```{r}

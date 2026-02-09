@@ -487,30 +487,30 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
     <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script><script>
       // Create table-specific functions using external factory
-      const tableFns_46i4g8ilrxvuh11vy2iv = TinyTable.createTableFunctions("tinytable_46i4g8ilrxvuh11vy2iv");
+      const tableFns_timvnf86z54tnthe0xuk = TinyTable.createTableFunctions("tinytable_timvnf86z54tnthe0xuk");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 } ], css_id: 'tinytable_css_fwyu8e2ywx021ok01os2',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_ssa9ln7mx08937v6q1w8',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '1', j: 2 }, { i: '1', j: 3 }, { i: '1', j: 4 } ], css_id: 'tinytable_css_hf7km1l0lx2u9rq6j74x',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_oefth64pbxo7b3wxm0oh',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_46i4g8ilrxvuh11vy2iv.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_timvnf86z54tnthe0xuk.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
     </script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
 <style>
     /* tinytable css entries after */
-    #tinytable_46i4g8ilrxvuh11vy2iv td.tinytable_css_fwyu8e2ywx021ok01os2, #tinytable_46i4g8ilrxvuh11vy2iv th.tinytable_css_fwyu8e2ywx021ok01os2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_46i4g8ilrxvuh11vy2iv td.tinytable_css_ssa9ln7mx08937v6q1w8, #tinytable_46i4g8ilrxvuh11vy2iv th.tinytable_css_ssa9ln7mx08937v6q1w8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_timvnf86z54tnthe0xuk td.tinytable_css_hf7km1l0lx2u9rq6j74x, #tinytable_timvnf86z54tnthe0xuk th.tinytable_css_hf7km1l0lx2u9rq6j74x {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_timvnf86z54tnthe0xuk td.tinytable_css_oefth64pbxo7b3wxm0oh, #tinytable_timvnf86z54tnthe0xuk th.tinytable_css_oefth64pbxo7b3wxm0oh {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
 <div class="container">
-      <table class="tinytable" id="tinytable_46i4g8ilrxvuh11vy2iv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_timvnf86z54tnthe0xuk" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
 <thead><tr>
 <th scope="col" data-row="0" data-col="1">n</th>
                 <th scope="col" data-row="0" data-col="2">missing</th>
@@ -915,13 +915,13 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
-      a      b     c     d
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0     -0.160 0.361 0.825
-2 1     -0.402 1     0.498
-3 0.940 -0.140 0.729 0.465
-4 0.600  0.558 0     1    
-5 0.644 -0.442 0.433 0    </code></pre>
+       a      b     c     d
+   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0      -0.406 1     0.622
+2 1      -0.663 0     0    
+3 0.399  -0.385 0.452 0.697
+4 0.313   0.193 0.343 0.411
+5 0.0783  0.337 0.375 1    </code></pre>
 </div>
 </div>
 <p>However, in <code>df |&gt; mutate</code>, the line <code>b = (b - min(a, na.rm = TRUE...))</code> should read <code>b = (b - min(b, na.rm = TRUE...))</code>. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.</p>
@@ -1130,13 +1130,13 @@ background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
-      a      b     c     d
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0     0.282  0.361 0.825
-2 1     0.0395 1     0.498
-3 0.940 0.302  0.729 0.465
-4 0.600 1      0     1    
-5 0.644 0      0.433 0    </code></pre>
+       a     b     c     d
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0      0.257 1     0.622
+2 1      0     0     0    
+3 0.399  0.278 0.452 0.697
+4 0.313  0.856 0.343 0.411
+5 0.0783 1     0.375 1    </code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1658,7 +1658,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6489289</code></pre>
+<pre><code>[1] 0.5770062</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -1687,7 +1687,7 @@ font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6003304</code></pre>
+<pre><code>[1] 0.5452706</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
 background-color: null;

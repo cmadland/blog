@@ -4,7 +4,8 @@ author: "Colin Madland"
 date: "2025-05-18"
 categories: [tidyverse, R]
 image: "gloom.jpg"
-
+execute:
+    freeze: true
 ---
 
 ::: {.callout}

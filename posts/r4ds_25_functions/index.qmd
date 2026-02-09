@@ -5,7 +5,8 @@ date: "2025-11-23"
 categories: [quarto, R, reproducability]
 image: "sunrise.jpg"
 bibliography: ../../references.bib
-
+execute:
+    freeze: true
 ---
 
 ::: {.callout}

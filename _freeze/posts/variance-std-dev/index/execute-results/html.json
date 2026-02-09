@@ -1,0 +1,15 @@
+{
+  "hash": "024ac80578e09862064c70c880ac6322",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Variance and Standard Deviation\"\nauthor: \"Colin Madland\"\ndate: \"2024-02-18\"\ncategories: [intro stats, variance, standard deviation]\nexecute:\n    freeze: true\n---\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nrequire(UsingR)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nLoading required package: UsingR\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning in library(package, lib.loc = lib.loc, character.only = TRUE,\nlogical.return = TRUE, : there is no package called 'UsingR'\n```\n\n\n:::\n\n```{.r .cell-code}\nrequire(HistData)\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nLoading required package: HistData\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stderr}\n\n```\nWarning in library(package, lib.loc = lib.loc, character.only = TRUE,\nlogical.return = TRUE, : there is no package called 'HistData'\n```\n\n\n:::\n:::\n\n\n$sample variance=s^2=\\frac{1}{n-1}‎‎\\sum_i(x_i - \\bar{x})^2$\n\n\n::: {.cell}\n\n```{.r .cell-code}\nwts <- c(38, 43, 48, 61, 47, 24, 29, 48, 59, 24, 40, 27)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsort(wts)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n [1] 24 24 27 29 38 40 43 47 48 48 59 61\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

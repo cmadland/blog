@@ -281,13 +281,13 @@ take one or more vectors and return a vector as a result. Example from R4DS:
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
-      a      b     c     d
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0     -0.160 0.361 0.825
-2 1     -0.402 1     0.498
-3 0.940 -0.140 0.729 0.465
-4 0.600  0.558 0     1    
-5 0.644 -0.442 0.433 0    </code></pre>
+       a      b     c     d
+   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0      -0.406 1     0.622
+2 1      -0.663 0     0    
+3 0.399  -0.385 0.452 0.697
+4 0.313   0.193 0.343 0.411
+5 0.0783  0.337 0.375 1    </code></pre>
 </div>
 </div>
 <p>However, in <code>df |&gt; mutate</code>, the line <code>b = (b - min(a, na.rm = TRUE...))</code> should read <code>b = (b - min(b, na.rm = TRUE...))</code>. This is a super easy error to make with my current copy/pasta/edit workflow, but writing a function for this series of tasks will eliminate the possibility for that particular error.</p>
@@ -335,13 +335,13 @@ take one or more vectors and return a vector as a result. Example from R4DS:
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
-      a      b     c     d
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 0     0.282  0.361 0.825
-2 1     0.0395 1     0.498
-3 0.940 0.302  0.729 0.465
-4 0.600 1      0     1    
-5 0.644 0      0.433 0    </code></pre>
+       a     b     c     d
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 0      0.257 1     0.622
+2 1      0     0     0    
+3 0.399  0.278 0.452 0.697
+4 0.313  0.856 0.343 0.411
+5 0.0783 1     0.375 1    </code></pre>
 </div>
 </div>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -449,12 +449,12 @@ functions that return a single value for use in <code><a href="https://dplyr.tid
 <span></span>
 <span><span class="fu">cv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6489289</code></pre>
+<pre><code>[1] 0.5770062</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; [1] 0.5196276</span></span>
 <span><span class="fu">cv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">500</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6003304</code></pre>
+<pre><code>[1] 0.5452706</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; [1] 0.5652554</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

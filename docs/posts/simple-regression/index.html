@@ -352,8 +352,10 @@ window.Quarto = {
 </p></li>
 <li><p><span class="math inline">\(SS_R\)</span>: sum squared residual is the residual or error variability between the regression model and the data<br>
 </p></li>
-<li><p><span class="math inline">\(SS_M\)</span> or sum square regression: Model variability - difference in variability between the model and the mean.<span class="math inline">\(Y\)</span> are determined by the value of <span class="math inline">\(X\)</span><br>
-</p></li>
+<li><p><span class="math inline">\(SS_M\)</span> or sum square regression: Model variability - difference in variability between the model and the mean.<span class="math inline">\(Y\)</span> are determined by the value of <span class="math inline">\(X\)</span></p>
+<ul>
+<li>if <span class="math inline">\(b_1\)</span> is positive, then larger <span class="math inline">\(X\)</span> will mean larger <span class="math inline">\(Y\)</span></li>
+</ul></li>
 <li><p><span class="math inline">\(SS_T\)</span> is the sum of <span class="math inline">\(SS_R\)</span> and <span class="math inline">\(SS_M\)</span></p>
 <ul>
 <li>part of the variability is residual - we don’t know what is causing<br>
@@ -363,10 +365,22 @@ window.Quarto = {
 </ul>
 <p>The proportion of variability in <span class="math inline">\(Y\)</span> that is predicted by its relationship with <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\frac{SS_{regression}}{SS_T}=r^2\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><span class="math inline">\(r^2\)</span> is an effect size that tells us the proportion of variability that is accounted for by the model</p>
+</div>
+</div>
 <p>The proportion of the variability that is not accounted for is</p>
 <p><span class="math display">\[\frac{SS_{residual}}{SS_T}=1-r^2\]</span></p>
-<p><span class="math inline">\(r^2\)</span> is very mieaningful</p>
+<p><span class="math inline">\(r^2\)</span> is very meaningful</p>
 <p>if <span class="math inline">\(R^2\)</span> is 20%, then the amount of the variability in <span class="math inline">\(Y\)</span> that is accounted for by the model is 20%, which is quite large.</p>
 <p>Therefore</p>
 <p><span class="math display">\[SS_{regression}=r^2SS_T\]</span></p>
@@ -401,7 +415,7 @@ window.Quarto = {
 <section id="an-example-fields" class="level2">
 <h2 class="anchored" data-anchor-id="an-example-fields">An Example (Fields)</h2>
 <ul>
-<li>record company boss interested in predicting album sales from advertising bsed on 200 different album releases<br>
+<li>record company boss interested in predicting album sales from advertising based on 200 different album releases<br>
 </li>
 <li>outcome variable: sales of CDs and downloads in the week after release<br>
 </li>
@@ -423,7 +437,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="anova.png" class="img-fluid figure-img"></p>
-<figcaption>Alt text</figcaption>
+<figcaption>F=99.587 means that the variance explained by the regression model is 99.587 times the variance explained by the residual model. F-test is significant.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -435,11 +449,17 @@ window.Quarto = {
 </section>
 <section id="activities" class="level2">
 <h2 class="anchored" data-anchor-id="activities">Activities</h2>
-<p>In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:<br>
-<span class="math inline">\(r_XY\)</span> = .32, <span class="math inline">\(N\)</span> = 1, 296<br>
-Wife height: <span class="math inline">\(M_X\)</span> = 64.42, <span class="math inline">\(S_X\)</span> = 2.56<br>
-Husband height: <span class="math inline">\(M_Y\)</span> = 70.46, <span class="math inline">\(S_Y\)</span> = 2.87<br>
-a. Calculates the values of <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation</p>
+<p>In a survey that included assessment of husband and wife heights, Hodges, Krech and Crutchfield (1975) reported the following results. Let’s treat wife height as the predictor (X) variable and husband as the outcome (Y) variable:</p>
+<ul>
+<li><span class="math inline">\(r_XY\)</span> = .32, <span class="math inline">\(N\)</span> = 1, 296<br>
+</li>
+<li>Wife height: <span class="math inline">\(M_X\)</span> = 64.42, <span class="math inline">\(S_X\)</span> = 2.56<br>
+</li>
+<li>Husband height: <span class="math inline">\(M_Y\)</span> = 70.46, <span class="math inline">\(S_Y\)</span> = 2.87</li>
+</ul>
+<ol type="a">
+<li>Calculates the values of <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> to predict husband height in inches (Y) from wife height in inches (X), and write out this raw score predictive equation</li>
+</ol>
 <p><span class="math display">\[\hat{b_1}=r\frac{S_Y}{S_X}\]</span></p>
 <p><span class="math display">\[\hat{b_1}=.32\frac{2.87}{2.56}\]</span></p>
 <p><span class="math display">\[\hat{b_1}=0.35\]</span></p>

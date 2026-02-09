@@ -3,6 +3,8 @@ title: "Welcome To My Blog"
 author: "Colin Madland"
 date: "2024-02-14"
 categories: [news]
+execute:
+    freeze: true
 ---
 
 Hey!

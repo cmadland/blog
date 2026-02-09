@@ -5,6 +5,8 @@ date: "2024-04-26"
 categories: [EFA, dsur, dsus, R]
 image: "ellie-snow.jpeg"
 bibliography: references.bib
+execute:
+    freeze: true
 ---
 
 ```{r}
