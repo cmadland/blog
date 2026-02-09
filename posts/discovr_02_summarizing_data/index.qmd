@@ -3,7 +3,7 @@ title: "discovr_02 - Summarizing Data"
 author: "Colin Madland"
 date: "2024-04-18"
 categories: [frequency, histograms, variance, standard deviation, IQR, R, discovr]
-editor: visual
+editor: source
 image: "raft-falls.jpeg"
 execute:
     freeze: true

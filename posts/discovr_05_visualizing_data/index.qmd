@@ -3,7 +3,7 @@ title: "discovr_05 - Visualizing Data"
 author: "Colin Madland"
 date: "2024-04-23"
 categories: [ggplot2, visualizing data, R, discovr]
-editor: visual
+editor: source
 image: "raft-canyon.jpeg"
 execute:
     freeze: true
@@ -11,9 +11,14 @@ execute:
 
 ```{r}
 library(tidyverse)
-wish_tib <- here::here("data/jiminy_cricket.csv") |> readr::read_csv()
-notebook_tib <- here::here("data/notebook.csv") |> readr::read_csv()
-exam_tib <- here::here("data/exam_anxiety.csv") |> readr::read_csv()
+library(discovr)
+library(learnr)
+```
+
+```{r}
+wish_tib <- read_csv("data/jiminy_cricket.csv") 
+notebook_tib <- read_csv("data/notebook.csv") 
+exam_tib <- read_csv("data/exam_anxiety.csv") 
 ```
 
 -   need to turn categorical variables into factors

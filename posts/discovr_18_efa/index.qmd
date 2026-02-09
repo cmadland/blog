@@ -3,7 +3,7 @@ title: "discovr_18 - Exploratory Factor Analysis"
 author: "Colin Madland"
 date: "2024-02-27"
 categories: [efa, R, discovr]
-editor: visual
+editor: source
 image: "happy-rock.jpeg"
 execute:
     freeze: true

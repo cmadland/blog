@@ -3,7 +3,7 @@ title: "discovr_06 - The Beast of Bias"
 author: "Colin Madland"
 date: "2024-04-16"
 categories: [bias, R, discovr]
-editor: visual
+editor: source
 image: "ellie.jpeg"
 execute:
     freeze: true

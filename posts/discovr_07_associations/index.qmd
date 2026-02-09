@@ -3,7 +3,7 @@ title: "discovr_07 - Associations"
 author: "Colin Madland"
 date: "2024-03-10"
 categories: [correlation, R, discovr]
-editor: visual
+editor: source
 image: "image.jpg"
 execute:
     freeze: true

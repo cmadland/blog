@@ -63,5 +63,3 @@ PlantGrowth %>%                                           # Manipulation & visua
              y = mean_weight)) +
   geom_col()
 ```
-
- 
