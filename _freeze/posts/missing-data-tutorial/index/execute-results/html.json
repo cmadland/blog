@@ -1,0 +1,15 @@
+{
+  "hash": "aabcd092e6d48003a0b4c78abf8b23fe",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Missing Data Tutorial\"\nauthor: \"Colin Madland\"\ndate: \"2026-02-20\"\ncategories: [missingness, missing data]\nexecute:\n    freeze: true\nimage: megadeth.jpg\n---\n\n::: {.callout}\n\nI'm working through the tutorial published by M. Fatih Tüzen at [A Statistician's R Notebook](https://mfatihtuzen.netlify.app/posts/2025-08-18_missing_values/), and syndicated at [R-Bloggers](https://www.r-bloggers.com/2025/08/handling-missing-data-in-r-a-comprehensive-guide/)\n::: \n\nMissing data are important, and dealing with them appropriately is critical to avoid the bias that might be introduced if they are ignored or improperly dealt with. Missing values decrease statistical power and compromise the validity of the analysis and conclusions.\n\nFirst, we load the required libraries. Click or tap 'Show the code' to view and/or copy the code block. Within the code block, you will see that each function is linked to the documentation page for that function.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(NHANES)\nlibrary(tidyverse)\nlibrary(naniar)\nlibrary(VIM)\nlibrary(mice)\nlibrary(missForest)\nlibrary(grateful)\n```\n:::\n\n\nThe `NHANES` dataset, from the US National Health and Nutrition Examination Survey is very large, so the tutorial will only use a subset of variables:\n\nID\n: Unique identifier for each participant\n\nAge\n: Age of the participant\n\nGender\n: Biological sex (male or female)\n\nBMI\n: Body Mass Index\n\nBPSysAve\n: Average systolic blood pressure\n\nDiabetes\n: Whether the participant has been diagnosed with diabetes\n\nTake a glimpse at a subset of the `NHANES` dataset...\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Select relevant variables from NHANES dataset\nnhanes_sub <- NHANES |> \n  select(ID, Age, Gender, BMI, BPSysAve, Diabetes)\nglimpse(nhanes_sub)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nRows: 10,000\nColumns: 6\n$ ID       <int> 51624, 51624, 51624, 51625, 51630, 51638, 51646, 51647, 51647…\n$ Age      <int> 34, 34, 34, 4, 49, 9, 8, 45, 45, 45, 66, 58, 54, 10, 58, 50, …\n$ Gender   <fct> male, male, male, male, female, male, male, female, female, f…\n$ BMI      <dbl> 32.22, 32.22, 32.22, 15.30, 30.57, 16.82, 20.64, 27.24, 27.24…\n$ BPSysAve <int> 113, 113, 113, NA, 112, 86, 107, 118, 118, 118, 111, 104, 134…\n$ Diabetes <fct> No, No, No, No, No, No, No, No, No, No, No, No, No, No, No, N…\n```\n\n\n:::\n:::\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncite_packages(output = \"paragraph\", out.dir = \".\")\n```\n\n::: {.cell-output-display}\nWe used R v. 4.5.2 [@base] and the following R packages: mice v. 3.19.0 [@mice], missForest v. 1.6.1 [@missForest2012; @missForest2025], naniar v. 1.1.0 [@naniar], NHANES v. 2.1.0 [@NHANES], rmarkdown v. 2.30 [@rmarkdown2018; @rmarkdown2020; @rmarkdown2025], tidyverse v. 2.0.0 [@tidyverse], VIM v. 7.0.0 [@VIM].\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

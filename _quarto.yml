@@ -25,10 +25,14 @@ format:
   html:
     link-external-icon: true
     code-link: true
+    code-copy: true
     theme: flatly
     css: styles.css
     toc: true
     toc-title: On this page
+    code-fold: true
+    code-summary: "Show the code"
+    warning: false
   # pdf: default
 
 

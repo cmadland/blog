@@ -1,0 +1,89 @@
+---
+title: "Missing Data Tutorial"
+author: "Colin Madland"
+date: "2026-02-20"
+categories: [missingness, missing data]
+execute:
+    freeze: true
+image: megadeth.jpg
+draft: true
+---
+
+::: {.callout}
+
+I'm working through the tutorial published by M. Fatih Tüzen at [A Statistician's R Notebook](https://mfatihtuzen.netlify.app/posts/2025-08-18_missing_values/), and syndicated at [R-Bloggers](https://www.r-bloggers.com/2025/08/handling-missing-data-in-r-a-comprehensive-guide/)
+::: 
+
+Missing data are important, and dealing with them appropriately is critical to avoid the bias that might be introduced if they are ignored or improperly dealt with. Missing values decrease statistical power and compromise the validity of the analysis and conclusions.
+
+First, we load the required libraries. Click or tap 'Show the code' to view and/or copy the code block. Within the code block, you will see that each function is linked to the documentation page for that function.
+
+```{r}
+#| label: load-libraries
+library(NHANES)
+library(tidyverse)
+library(naniar)
+library(VIM)
+library(mice)
+library(missForest)
+library(grateful)
+```
+
+The `NHANES` dataset, from the US National Health and Nutrition Examination Survey is very large, so the tutorial will only use a subset of variables:
+
+ID
+: Unique identifier for each participant
+
+Age
+: Age of the participant
+
+Gender
+: Biological sex (male or female)
+
+BMI
+: Body Mass Index
+
+BPSysAve
+: Average systolic blood pressure
+
+Diabetes
+: Whether the participant has been diagnosed with diabetes
+
+Take a glimpse at a subset of the `NHANES` dataset...
+
+```{r}
+# Select relevant variables from NHANES dataset
+nhanes_sub <- NHANES |> 
+  select(ID, Age, Gender, BMI, BPSysAve, Diabetes)
+glimpse(nhanes_sub)
+```
+
+## Why missingness matters
+
+Missing data can lead to multiple problems with analysis:
+
+Biased results
+: if values are not missing at random, the analysis may systematically misrepresent the population
+
+Reduced sample size
+: dropping missing values reduces data availability and compromises statistical strength
+
+Model incompatibility
+: some modeling techniques in R (`lm`, `glm`) require complete data and will silently drop missing cases
+
+## BMI and Systolic BP
+
+If we want to explore the relationship between BMI and Systolic BP, and there are missing values in the BMI data, we will end up with biased conclusions.
+
+```{r}
+#| label: count-missing
+# How many missing in BMI?
+sum(is.na(nhanes_sub$BMI))
+```
+
+
+```{r}
+
+cite_packages(output = "paragraph", out.dir = ".")
+
+```
