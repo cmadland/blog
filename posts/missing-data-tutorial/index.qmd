@@ -27,6 +27,8 @@ library(VIM)
 library(mice)
 library(missForest)
 library(grateful)
+library(gt)
+library(tinytable)
 ```
 
 The `NHANES` dataset, from the US National Health and Nutrition Examination Survey is very large, so the tutorial will only use a subset of variables:
@@ -81,9 +83,11 @@ If we want to explore the relationship between BMI and Systolic BP, and there ar
 sum(is.na(nhanes_sub$BMI))
 ```
 
+## Packages Used
 
 ```{r}
 
-cite_packages(output = "paragraph", out.dir = ".")
+pkgs <- (cite_packages(output = "table", out.dir = "."))
+tt(pkgs)
 
 ```

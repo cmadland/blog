@@ -1,0 +1,17 @@
+{
+  "hash": "0357a91aa1f7f966a29f17881cd26790",
+  "result": {
+    "engine": "knitr",
+    "markdown": "--- \ntitle: \"Day 1\"\nauthor: \"Colin Madland\"\nformat: dashboard\nscrolling: false\ndraft: true\nexecute:\n    freeze: true\n--- \n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.cell}\n\n:::\n\n\n\n## Row {height=60%}\n\n\n::: {.cell title='GDP and Life Expectancy'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=768}\n:::\n:::\n\n\n## Row {height=20%}\n\n\n\n\n::: {.cell title='GDP and Life Expectancy 2'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){width=768}\n:::\n:::\n\n\n\n::: {.cell title='GDP and Life Expectancy 3'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-5-1.png){width=768}\n:::\n:::\n\n\n## Row {height=20%}\n\n\n::: {.cell title='GDP and Life Expectancy 2'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-6-1.png){width=768}\n:::\n:::\n\n\n\n::: {.cell title='GDP and Life Expectancy 3'}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-7-1.png){width=768}\n:::\n:::\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

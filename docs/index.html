@@ -81,7 +81,8 @@ ul.task-list li input[type="checkbox"] {
 
     const options = {
       valueNames: ['listing-date','listing-title','listing-image','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
@@ -198,7 +199,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(25)</span></div><div class="category" data-category="NTA1">505 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZG1pYyUyMGludGVncml0eQ==">acadmic integrity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWVz">aes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXMlMjBvZiUyMHJlZ3Jlc3Npb24=">analysis of regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QkNjYW1wdXM=">BCcampus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ymlhcw==">bias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hlYXRpbmc=">cheating <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Vy">colour <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29ycmVsYXRpb24=">correlation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlzY292cg==">discovr <span class="quarto-category-count">(6)</span></div><div class="category" data-category="ZGlzc2ll">dissie <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHN1cg==">dsur <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHN1cw==">dsus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RUZB">EFA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZWZh">efa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjZXRz">facets <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmVsbG93c2hpcA==">fellowship <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZnJlcXVlbmN5">frequency <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Z3JhbW1hcg==">grammar <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlzdG9ncmFtcw==">histograms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50cm8lMjBzdGF0cw==">intro stats <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SVFS">IQR <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGF5ZXJz">layers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVhc3QlMjBzcXVhcmVkJTIwZXJyb3I=">least squared error <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2JzaWRpYW4=">obsidian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(18)</span></div><div class="category" data-category="cmVncmVzc2lvbg==">regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cmVwcm9kdWNhYmlsaXR5">reproducability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhbmRhcmQlMjBkZXZpYXRpb24=">standard deviation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3RhbmRhcmRzLWJhc2VkLWdyYWRpbmc=">standards-based-grading <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdHNnbG9iZQ==">statsglobe <span class="quarto-category-count">(6)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(10)</span></div><div class="category" data-category="dG90YWwlMjBzcXVhcmVkJTIwZXJyb3I=">total squared error <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFsaWRpdHk=">validity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFyaWFuY2U=">variance <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dmlzdWFsaXppbmclMjBkYXRh">visualizing data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d29ya2Zsb3c=">workflow <span class="quarto-category-count">(1)</span></div><div class="category" data-category="em90ZXJv">zotero <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(26)</span></div><div class="category" data-category="NTA1">505 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWNhZG1pYyUyMGludGVncml0eQ==">acadmic integrity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YWVz">aes <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YW5hbHlzaXMlMjBvZiUyMHJlZ3Jlc3Npb24=">analysis of regression <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QkNjYW1wdXM=">BCcampus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ymlhcw==">bias <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hlYXRpbmc=">cheating <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29sb3Vy">colour <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29ycmVsYXRpb24=">correlation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlzY292cg==">discovr <span class="quarto-category-count">(6)</span></div><div class="category" data-category="ZGlzc2ll">dissie <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHN1cg==">dsur <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHN1cw==">dsus <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RUZB">EFA <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZWZh">efa <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmFjZXRz">facets <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmVsbG93c2hpcA==">fellowship <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZnJlcXVlbmN5">frequency <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Z3JhbW1hcg==">grammar <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlnaGVyJTIwZWQ=">higher ed <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlzdG9ncmFtcw==">histograms <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50cm8lMjBzdGF0cw==">intro stats <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SVFS">IQR <span class="quarto-category-count">(1)</span></div><div class="category" data-category="am9iJTIwbG9zcw==">job loss <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGF5ZXJz">layers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVhc3QlMjBzcXVhcmVkJTIwZXJyb3I=">least squared error <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(1)</span></div><div class="category" data-category="b2JzaWRpYW4=">obsidian <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(18)</span></div><div class="category" data-category="cmVncmVzc2lvbg==">regression <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cmVwcm9kdWNhYmlsaXR5">reproducability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhbmRhcmQlMjBkZXZpYXRpb24=">standard deviation <span class="quarto-category-count">(2)</span></div><div class="category" data-category="c3RhbmRhcmRzLWJhc2VkLWdyYWRpbmc=">standards-based-grading <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdHNnbG9iZQ==">statsglobe <span class="quarto-category-count">(6)</span></div><div class="category" data-category="dGlkeXZlcnNl">tidyverse <span class="quarto-category-count">(10)</span></div><div class="category" data-category="dG90YWwlMjBzcXVhcmVkJTIwZXJyb3I=">total squared error <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFsaWRpdHk=">validity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmFyaWFuY2U=">variance <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dmlzdWFsaXppbmclMjBkYXRh">visualizing data <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d29ya2Zsb3c=">workflow <span class="quarto-category-count">(1)</span></div><div class="category" data-category="em90ZXJv">zotero <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -212,7 +213,27 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="em90ZXJvJTJDb2JzaWRpYW4lMkN3b3JrZmxvdw==" data-listing-date-sort="1769846400000" data-listing-file-modified-sort="1770647126756" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="811">
+<div class="quarto-post image-right" data-index="0" data-categories="am9iJTIwbG9zcyUyQ2hpZ2hlciUyMGVk" data-listing-date-sort="1772611200000" data-listing-file-modified-sort="1772721945235" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="601">
+<div class="thumbnail"><a href="./posts/day-1/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/day-1/japanese-garden.jpg" class="thumbnail-image" alt="the Japanese garden in downtown Kelowna, BC. There is a small shine on the left foreground, supported by a arched concrete pedestal. Most of the picture is a pond, with Japanese plants around the outside. There is a bridge over a small stream in the back.">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/day-1/index.html" class="no-external">Day 1</a>
+</h3>
+</div>
+<div class="metadata">
+<a href="./posts/day-1/index.html" class="no-external">
+<div class="listing-date">
+Mar 4, 2026
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="em90ZXJvJTJDb2JzaWRpYW4lMkN3b3JrZmxvdw==" data-listing-date-sort="1769846400000" data-listing-file-modified-sort="1770647126756" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="811">
 <div class="thumbnail"><a href="./posts/zot-obsd/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/zot-obsd/ellie-sunrise.jpg" class="thumbnail-image" alt="Large Black and Tan German Shepherd x Bernese Mountain Dog mix in profile facing the left side of the image. The background is a sunrise on a cool winter morning overlooking vineyards and Lake Okanagan in British Columbia. Ellie is blind and is the goodest of all good girls.">
@@ -232,7 +253,7 @@ Jan 31, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="RUZBJTJDZGlzc2llJTJDdGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1769414400000" data-listing-file-modified-sort="1770647145635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1272">
+<div class="quarto-post image-right" data-index="2" data-categories="RUZBJTJDZGlzc2llJTJDdGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1769414400000" data-listing-file-modified-sort="1770647145635" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1272">
 <div class="thumbnail"><a href="./posts/wrangling/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/wrangling/helmcken.jpg" class="thumbnail-image">
@@ -252,7 +273,7 @@ Jan 26, 2026
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="cXVhcnRvJTJDUiUyQ3JlcHJvZHVjYWJpbGl0eQ==" data-listing-date-sort="1763884800000" data-listing-file-modified-sort="1770647203290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="999">
+<div class="quarto-post image-right" data-index="3" data-categories="cXVhcnRvJTJDUiUyQ3JlcHJvZHVjYWJpbGl0eQ==" data-listing-date-sort="1763884800000" data-listing-file-modified-sort="1770647203290" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="999">
 <div class="thumbnail"><a href="./posts/r4ds_25_functions/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/r4ds_25_functions/sunrise.jpg" class="thumbnail-image">
@@ -272,7 +293,7 @@ Nov 23, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1770647183615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="908">
+<div class="quarto-post image-right" data-index="4" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1770647183615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="908">
 <div class="thumbnail"><a href="./posts/sids-02/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/sids-02/sails.jpg" class="thumbnail-image">
@@ -292,7 +313,7 @@ May 18, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1770646556366" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="327">
+<div class="quarto-post image-right" data-index="5" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747551600000" data-listing-file-modified-sort="1770646556366" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="327">
 <div class="thumbnail"><a href="./posts/sids-03/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/sids-03/gloom.jpg" class="thumbnail-image">
@@ -312,7 +333,7 @@ May 18, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747378800000" data-listing-file-modified-sort="1770646537489" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="quarto-post image-right" data-index="6" data-categories="dGlkeXZlcnNlJTJDUg==" data-listing-date-sort="1747378800000" data-listing-file-modified-sort="1770646537489" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <div class="thumbnail"><a href="./posts/sids-01/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/sids-01/sunrise.jpg" class="thumbnail-image">
@@ -332,7 +353,7 @@ May 16, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDY29sb3Vy" data-listing-date-sort="1739001600000" data-listing-file-modified-sort="1770647321449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1583">
+<div class="quarto-post image-right" data-index="7" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDY29sb3Vy" data-listing-date-sort="1739001600000" data-listing-file-modified-sort="1770647321449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1583">
 <div class="thumbnail"><a href="./posts/dataviz-06/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-06/cold-lake.jpg" class="thumbnail-image">
@@ -352,7 +373,7 @@ Feb 8, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDZmFjZXRz" data-listing-date-sort="1737187200000" data-listing-file-modified-sort="1770647330930" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1241">
+<div class="quarto-post image-right" data-index="8" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDZmFjZXRz" data-listing-date-sort="1737187200000" data-listing-file-modified-sort="1770647330930" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1241">
 <div class="thumbnail"><a href="./posts/dataviz-05/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-05/kigali-family.jpg" class="thumbnail-image">
@@ -372,7 +393,7 @@ Jan 18, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="Y2hlYXRpbmclMkNhY2FkbWljJTIwaW50ZWdyaXR5JTJDdmFsaWRpdHklMkNzdGFuZGFyZHMtYmFzZWQtZ3JhZGluZw==" data-listing-date-sort="1736841600000" data-listing-file-modified-sort="1770647380672" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
+<div class="quarto-post image-right" data-index="9" data-categories="Y2hlYXRpbmclMkNhY2FkbWljJTIwaW50ZWdyaXR5JTJDdmFsaWRpdHklMkNzdGFuZGFyZHMtYmFzZWQtZ3JhZGluZw==" data-listing-date-sort="1736841600000" data-listing-file-modified-sort="1770647380672" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
 <div class="thumbnail"><a href="./posts/cheating-validity/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/cheating-validity/japanese-garden.jpeg" class="thumbnail-image">
@@ -392,7 +413,7 @@ Jan 14, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDbGF5ZXJz" data-listing-date-sort="1736150400000" data-listing-file-modified-sort="1770647339139" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="912">
+<div class="quarto-post image-right" data-index="10" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDbGF5ZXJz" data-listing-date-sort="1736150400000" data-listing-file-modified-sort="1770647339139" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="912">
 <div class="thumbnail"><a href="./posts/dataviz-04/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-04/ubumuntu.jpg" class="thumbnail-image">
@@ -412,7 +433,7 @@ Jan 6, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDZ3JhbW1hcg==" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1770647354053" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436">
+<div class="quarto-post image-right" data-index="11" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDZ3JhbW1hcg==" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1770647354053" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="436">
 <div class="thumbnail"><a href="./posts/dataviz-02/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-02/bouganvillea.jpg" class="thumbnail-image">
@@ -432,7 +453,7 @@ Jan 2, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDYWVz" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1770647346450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="961">
+<div class="quarto-post image-right" data-index="12" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNSJTJDYWVz" data-listing-date-sort="1735804800000" data-listing-file-modified-sort="1770647346450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="961">
 <div class="thumbnail"><a href="./posts/dataviz-03/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-03/giraffe.jpg" class="thumbnail-image">
@@ -452,7 +473,7 @@ Jan 2, 2025
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNS" data-listing-date-sort="1734681600000" data-listing-file-modified-sort="1770647478466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="269">
+<div class="quarto-post image-right" data-index="13" data-categories="Z2dwbG90MiUyQ3RpZHl2ZXJzZSUyQ3N0YXRzZ2xvYmUlMkNS" data-listing-date-sort="1734681600000" data-listing-file-modified-sort="1770647478466" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="269">
 <div class="thumbnail"><a href="./posts/dataviz-01/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dataviz-01/rainbow-yeti.jpg" class="thumbnail-image">
@@ -472,7 +493,7 @@ Dec 20, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1770647312963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="quarto-post image-right" data-index="14" data-listing-date-sort="1718866800000" data-listing-file-modified-sort="1770647312963" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <div class="thumbnail"><a href="./posts/deck-otessa24/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -492,7 +513,7 @@ Jun 20, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="QkNjYW1wdXMlMkNmZWxsb3dzaGlw" data-listing-date-sort="1714633200000" data-listing-file-modified-sort="1770646511901" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="708">
+<div class="quarto-post image-right" data-index="15" data-categories="QkNjYW1wdXMlMkNmZWxsb3dzaGlw" data-listing-date-sort="1714633200000" data-listing-file-modified-sort="1770646511901" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="708">
 <div class="thumbnail"><a href="./posts/fellowship/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/fellowship/lake.jpeg" class="thumbnail-image">
@@ -512,7 +533,7 @@ May 2, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="RUZBJTJDZHN1ciUyQ2RzdXMlMkNS" data-listing-date-sort="1714114800000" data-listing-file-modified-sort="1770647225000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5024">
+<div class="quarto-post image-right" data-index="16" data-categories="RUZBJTJDZHN1ciUyQ2RzdXMlMkNS" data-listing-date-sort="1714114800000" data-listing-file-modified-sort="1770647225000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5024">
 <div class="thumbnail"><a href="./posts/dsur_ch18_efa/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/dsur_ch18_efa/ellie-snow.jpeg" class="thumbnail-image">
@@ -532,7 +553,7 @@ Apr 26, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="Z2dwbG90MiUyQ3Zpc3VhbGl6aW5nJTIwZGF0YSUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1713855600000" data-listing-file-modified-sort="1770648962896" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="440">
+<div class="quarto-post image-right" data-index="17" data-categories="Z2dwbG90MiUyQ3Zpc3VhbGl6aW5nJTIwZGF0YSUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1713855600000" data-listing-file-modified-sort="1770648962896" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="440">
 <div class="thumbnail"><a href="./posts/discovr_05_visualizing_data/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_05_visualizing_data/raft-canyon.jpeg" class="thumbnail-image">
@@ -552,7 +573,7 @@ Apr 23, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="ZnJlcXVlbmN5JTJDaGlzdG9ncmFtcyUyQ3ZhcmlhbmNlJTJDc3RhbmRhcmQlMjBkZXZpYXRpb24lMkNJUVIlMkNSJTJDZGlzY292cg==" data-listing-date-sort="1713423600000" data-listing-file-modified-sort="1770648574712" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1505">
+<div class="quarto-post image-right" data-index="18" data-categories="ZnJlcXVlbmN5JTJDaGlzdG9ncmFtcyUyQ3ZhcmlhbmNlJTJDc3RhbmRhcmQlMjBkZXZpYXRpb24lMkNJUVIlMkNSJTJDZGlzY292cg==" data-listing-date-sort="1713423600000" data-listing-file-modified-sort="1770648574712" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1505">
 <div class="thumbnail"><a href="./posts/discovr_02_summarizing_data/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_02_summarizing_data/raft-falls.jpeg" class="thumbnail-image">
@@ -572,7 +593,7 @@ Apr 18, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="YmlhcyUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1713250800000" data-listing-file-modified-sort="1770647736134" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="992">
+<div class="quarto-post image-right" data-index="19" data-categories="YmlhcyUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1713250800000" data-listing-file-modified-sort="1770647736134" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="992">
 <div class="thumbnail"><a href="./posts/discovr_06_bias/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_06_bias/ellie.jpeg" class="thumbnail-image">
@@ -592,7 +613,7 @@ Apr 16, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="Y29ycmVsYXRpb24lMkNSJTJDZGlzY292cg==" data-listing-date-sort="1710057600000" data-listing-file-modified-sort="1770647604849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316">
+<div class="quarto-post image-right" data-index="20" data-categories="Y29ycmVsYXRpb24lMkNSJTJDZGlzY292cg==" data-listing-date-sort="1710057600000" data-listing-file-modified-sort="1770647604849" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1316">
 <div class="thumbnail"><a href="./posts/discovr_07_associations/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_07_associations/image.jpg" class="thumbnail-image">
@@ -612,7 +633,7 @@ Mar 10, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="20" data-categories="ZWZhJTJDUiUyQ2Rpc2NvdnI=" data-listing-date-sort="1709020800000" data-listing-file-modified-sort="1770647617854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
+<div class="quarto-post image-right" data-index="21" data-categories="ZWZhJTJDUiUyQ2Rpc2NvdnI=" data-listing-date-sort="1709020800000" data-listing-file-modified-sort="1770647617854" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="6">
 <div class="thumbnail"><a href="./posts/discovr_18_efa/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_18_efa/happy-rock.jpeg" class="thumbnail-image">
@@ -632,7 +653,7 @@ Feb 27, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="21" data-categories="cmVncmVzc2lvbiUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1708934400000" data-listing-file-modified-sort="1770647710856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6223">
+<div class="quarto-post image-right" data-index="22" data-categories="cmVncmVzc2lvbiUyQ1IlMkNkaXNjb3Zy" data-listing-date-sort="1708934400000" data-listing-file-modified-sort="1770647710856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6223">
 <div class="thumbnail"><a href="./posts/discovr_08_the_glm/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/discovr_08_the_glm/image.jpg" class="thumbnail-image">
@@ -652,7 +673,7 @@ Feb 26, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="NTA1JTJDcmVncmVzc2lvbiUyQ3RvdGFsJTIwc3F1YXJlZCUyMGVycm9yJTJDbGVhc3QlMjBzcXVhcmVkJTIwZXJyb3IlMkNhbmFseXNpcyUyMG9mJTIwcmVncmVzc2lvbg==" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1770647392736" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1419">
+<div class="quarto-post image-right" data-index="23" data-categories="NTA1JTJDcmVncmVzc2lvbiUyQ3RvdGFsJTIwc3F1YXJlZCUyMGVycm9yJTJDbGVhc3QlMjBzcXVhcmVkJTIwZXJyb3IlMkNhbmFseXNpcyUyMG9mJTIwcmVncmVzc2lvbg==" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1770647392736" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1419">
 <div class="thumbnail"><a href="./posts/505-1-simple-regression/index.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/505-1-simple-regression/slope.png"  class="thumbnail-image card-img"/></p>
@@ -672,7 +693,7 @@ Feb 18, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="aW50cm8lMjBzdGF0cyUyQ3ZhcmlhbmNlJTJDc3RhbmRhcmQlMjBkZXZpYXRpb24=" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1770647161449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
+<div class="quarto-post image-right" data-index="24" data-categories="aW50cm8lMjBzdGF0cyUyQ3ZhcmlhbmNlJTJDc3RhbmRhcmQlMjBkZXZpYXRpb24=" data-listing-date-sort="1708243200000" data-listing-file-modified-sort="1770647161449" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
 <div class="thumbnail"><a href="./posts/variance-std-dev/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -692,10 +713,10 @@ Feb 18, 2024
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="bmV3cw==" data-listing-date-sort="1707897600000" data-listing-file-modified-sort="1770646605478" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="115">
+<div class="quarto-post image-right" data-index="25" data-categories="bmV3cw==" data-listing-date-sort="1707897600000" data-listing-file-modified-sort="1770646605478" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="115">
 <div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
 
-<p class="card-img-top"><img src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
@@ -714,6 +735,9 @@ Feb 14, 2024
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
+<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

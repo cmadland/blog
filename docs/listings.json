@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/day-1/index.html",
       "/posts/zot-obsd/index.html",
       "/posts/wrangling/index.html",
       "/posts/r4ds_25_functions/index.html",

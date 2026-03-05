@@ -1,0 +1,61 @@
+---
+title: "Day 1"
+author: "Colin Madland"
+date: "2026-03-04"
+categories: [job loss, higher ed ]
+editor: source
+image: "japanese-garden.jpg"
+image-alt: "the Japanese garden in downtown Kelowna, BC. There is a small shine on the left foreground, supported by a arched concrete pedestal. Most of the picture is a pond, with Japanese plants around the outside. There is a bridge over a small stream in the back."
+# bibliography: references.bib
+# csl: apa.csl
+format:
+  html:
+    theme: flatly
+    css: styles.css
+  # pdf: default
+  # docx: default
+---
+
+Well, it came for me. My now former employer was hit hard by the reduction in international learners permitted to study in Canada, and so 'workforce reductions' were enacted. We were told a month ago the targeted number of 'reductions' and that further information would come March 3. On Mar 2, everyone received an email outlining that affected people would be invited to a 1v1 meeting for Mar 3, and, a bit unsurprisingly, that message showed up in my inbox before EOD.
+
+I was Director of Technology Integrated Learning and Assessment, and, as anyone who has been a director in austere times, a prime candidate for 'reduction'.
+
+So here I am. It was almost exactly 24 hours from receiving the first 'here is what will happen' email, to me in a Teams call (I have worked remotely since March 13, 2020) with HR and a VP, then another hour or so when my access to institutional logins went dead.
+
+I get it. The system, higher education in Canada, is shrinking, and this is the same scenario faced by countless others across the country. 
+
+But it's _hard_. 
+
+It's hard to be abruptly cut off from friends and colleagues.
+
+It's hard to be forced to drop all the projects that were so important a day ago.
+
+It's hard to be in the midst of the disorientation and confusion while still feeling the need to support your employees who were also let go.
+
+It's hard to not take it personally.
+
+Turns out its also hard to sleep when there are a billion things flying around your brain. It's currently almost 6am, and I've been awake since 3 or so. My only company is the dog snoring on the couch and the owls hooting outside.
+
+<!-- One of the hardest things for me is that my 17yo son had, just weeks ago, been accepted to start university at my institution, which is also my _alma mater_, and my Dad's _alma mater_, and one of the reasons he applied there is their generous scholarship for employee's kids.  -->
+
+I feel fortunate that my former boss (who was excluded from the process of identifying 'reductions') convened a meeting yesterday and invited those of us who had been fired to attend for a team debrief (such a weird word...debrief...I'll keep my briefs on, tyvm). So it was nice to be able to say farewell, to say some nice things to the people I had worked with, some for most of the last decade (all those things were true, I had good people to work with). And that was hard too.
+
+All that said, I have reason to be grateful.
+
+I'm grateful for what is likely a softer landing than many folks across the country in this same situation. 
+
+I'm grateful in a bit of a weird way that I know so many people who have been through this before. I'm grateful that they've been willing to stop and chat.
+
+I'm grateful that I'll have some time to finish my dissertation while I search for a new role.
+
+I'm grateful that I am not suddenly in a precarious housing situation, and that my wife has a stable job.
+
+I'm grateful for my PhD supervisor, who continues to step UP in so many different ways, and for my colleagues in our little UVic EdTech PhD posse who couldn't help but share job opps they had encountered recently.
+
+So...hopefully this space will be somewhere I can do some sense-making of */waves hands/* all this. If you're in this boat with me, or a different boat in the same river, or [pick your metaphor], feel free to reach out on [Bluesky](https://bsky.app/profile/cmad.land) or [LinkedIn](https://www.linkedin.com/in/colin-madland-4aa4ba9/).
+
+------------------------------------------------------------------------
+
+#### Conversations
+
+{{< bluesky-comments {https://bsky.app/profile/cmad.land/post/3mgczwpet622v} >}}
