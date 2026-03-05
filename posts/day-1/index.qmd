@@ -58,4 +58,4 @@ So...hopefully this space will be somewhere I can do some sense-making of */wave
 
 #### Conversations
 
-{{< bluesky-comments {https://bsky.app/profile/cmad.land/post/3mgd2ccugic2v} >}}
+{{< bluesky-comments {https://bsky.app/profile/cmad.land/post/3mgd2jrhjq22v} >}}
