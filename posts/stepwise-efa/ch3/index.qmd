@@ -1,0 +1,38 @@
+---
+title: "Stepwise EFA Ch4"
+author: "Colin Madland"
+date: "2026-03-16"
+categories: [EFA, exploratory factor analysis, R]
+image: "owl.jpg"
+execute:
+    freeze: true
+bibliography: ../../../references.bib
+csl: ../../../apa.csl
+---
+
+::: {.callout}
+This tutorial follows the steps in @watkinsStepbyStepGuideExploratory2020. 
+The first three chapters are introductory and I won't cover them here. Also, the text is specific to Rstudio and I'm using Positron, so I'll translate the code appropriately.
+:::
+
+# Importing and Saving Data and Results
+
+```{r}
+#| label: libraries
+#load required libraries
+library(psych)
+```
+
+
+```{r}
+#| label: read-data
+# Read  data files into R. Files were downloaded from the resources site (CH.2) as .xls and I have converted them to .csv using the 'Save-As' command in MS Excel.
+# Create a dataframe called `df_iq`
+
+df_iq <- read.csv(file = "stepwise-efa-data/iq.csv")
+
+# Display the first 6 rows of `df_iq`
+head(df_iq)
+```
+
+...continuing...

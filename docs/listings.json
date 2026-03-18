@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/stepwise-efa/ch3/index.html",
       "/posts/day-1/index.html",
       "/posts/zot-obsd/index.html",
       "/posts/wrangling/index.html",

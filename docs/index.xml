@@ -10,7 +10,97 @@
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
 <generator>quarto-1.8.27</generator>
-<lastBuildDate>Wed, 04 Mar 2026 08:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Mar 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Stepwise EFA Ch4</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/stepwise-efa/ch3/</link>
+  <description><![CDATA[ <div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This tutorial follows the steps in <span class="citation" data-cites="watkinsStepbyStepGuideExploratory2020">Watkins (2020)</span>. The first three chapters are introductory and I won’t cover them here. Also, the text is specific to Rstudio and I’m using Positron, so I’ll translate the code appropriately.</p>
+</div>
+</div>
+</div>
+<section id="importing-and-saving-data-and-results" class="level1"><h1>Importing and Saving Data and Results</h1>
+<div class="cell">
+<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#load required libraries</span></span>
+<span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Read  data files into R. Files were downloaded from the resources site (CH.2) as .xls and I have converted them to .csv using the 'Save-As' command in MS Excel.</span></span>
+<span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create a dataframe called `df_iq`</span></span>
+<span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Display the first 6 rows of `df_iq`</span></span>
+<span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">df_iq</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>file <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"stepwise-efa-data/iq.csv"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
+<span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">df_iq</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div></div>
+</details><div class="cell-output cell-output-stdout">
+<pre><code>  vocab1 designs1 similar1 matrix1 veranal2 vocab2 matrix2 designs2
+1    113      124      118     122      116    115     127      105
+2    100       95      115      97      121    102     106      112
+3    124      115      122     116      117    109     119      118
+4    125      110      124     130      114    115     126      127
+5    103       89      109      91      106    102     101       97
+6     88      113       89     110       96     88     109      111</code></pre>
+</div>
+</div>
+
+
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<div id="ref-watkinsStepbyStepGuideExploratory2020" class="csl-entry">
+Watkins, M. (2020). <em>A <span class="nocase">Step-by-Step Guide</span> to <span>Exploratory Factor Analysis</span> with <span>R</span> and <span>RStudio</span></em> (1st ed.). Routledge. <a href="https://doi.org/10.4324/9781003120001">https://doi.org/10.4324/9781003120001</a>
+</div>
+</div></section></div> ]]></description>
+  <category>EFA</category>
+  <category>exploratory factor analysis</category>
+  <category>R</category>
+  <guid>https://cmadland.github.io/blog/posts/stepwise-efa/ch3/</guid>
+  <pubDate>Mon, 16 Mar 2026 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/stepwise-efa/ch3/owl.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Day 1</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -12801,612 +12891,6 @@ upload_day | 2323000 |         0</code></pre>
   <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
   <pubDate>Thu, 18 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>discovr_06 - The Beast of Bias</title>
-  <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/discovr_06_bias/</link>
-  <description><![CDATA[ <div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.0     ✔ readr     2.1.6
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.2     ✔ tibble    3.3.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">here</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"data/download_festival.csv"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">readr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Rows: 810 Columns: 5
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): gender
-dbl (4): ticket_no, day_1, day_2, day_3
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    ticket_no <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ticket_no</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    gender <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">forcats</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://forcats.tidyverse.org/reference/as_factor.html">as_factor</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gender</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">forcats</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://forcats.tidyverse.org/reference/fct_relevel.html">fct_relevel</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Male"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Female"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Non-binary"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 810 × 5
-   ticket_no gender day_1 day_2 day_3
-   &lt;chr&gt;     &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 2111      Male    2.64  1.35  1.61
- 2 2229      Female  0.97  1.41  0.29
- 3 2338      Male    0.84 NA    NA   
- 4 2384      Female  3.03 NA    NA   
- 5 2401      Female  0.88  0.08 NA   
- 6 2405      Male    0.85 NA    NA   
- 7 2467      Female  1.56 NA    NA   
- 8 2478      Female  3.02 NA    NA   
- 9 2490      Male    2.29 NA    NA   
-10 2504      Female  1.11  0.44  0.55
-# ℹ 800 more rows</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Which of the following describes tidy data?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Data that are arranged such that scores on a variable appear in a single column and rows represent a combination of the attributes of those scores – the entity from which the scores came, when the score was recorded, etc. Scores from a single entity can appear over multiple rows where each row represents a combination of the attributes of the score – for example, levels of an independent variable or time point at which the score was recorded.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Are the download data in tidy or messy format?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Messy</p>
-<p>Correct - well done! The download data are messy because the hygiene scores on different days are spread across different columns rather than being in a single colum with an additional column to indicate the day of the festival that the hygiene score was measured.</p>
-</div>
-</div>
-</div>
-<p><code>tidyr</code> has two functions for converting data from messy to tidy. - <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> takes columns and puts them into rosw to make messy data tidy - <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> takes rows and puts them in columns to make tidy data messy</p>
-<section id="making-messy-data-tidy" class="level2"><h2 class="anchored" data-anchor-id="making-messy-data-tidy">Making messy data tidy</h2>
-<pre><code>tidyr::pivot_longer(
-  data = tibble,
-  cols = column_names,
-  names_to = "name_of_column_to_contain_variable_names",
-  values_to = "name_of_column_to_contain_values",
-)</code></pre>
-<dl>
-<dt><code>tibble</code></dt>
-<dd>
-<p>Name of the messy tibble</p>
-</dd>
-<dt><code>column_names</code></dt>
-<dd>
-<p>list of columns to be restructured into rows</p>
-</dd>
-<dt><code>names_to</code></dt>
-<dd>
-<p>name for the new variable that contains names of the original columns</p>
-</dd>
-<dt><code>value_to</code></dt>
-<dd>
-<p>name for the new variable that will contain the values.</p>
-</dd>
-</dl></section><section id="code-example" class="level2"><h2 class="anchored" data-anchor-id="code-example">Code example</h2>
-<ul>
-<li>in <code>download_tib</code>, there are three columns/variables that need to be restructured into rows</li>
-<li>specify the variables using <code>day_1:day_3</code>
-</li>
-<li>scores in these columns represent hygiene scores, so we could use <code>hygiene</code> as the variable to contain values after restructuring</li>
-<li>columns we are transforming represent different days at the festival, so we can use <code>day</code> as the name of the variable created to contain column names</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span>  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># create a new object called `download_tidy_tib`</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tidyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>                              <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># use the `pivot_longer()` function from `tidyr`</span></span>
-<span>  cols <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">day_1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">day_3</span>,                           <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># specify columns `day_1:day_3` for restructuring</span></span>
-<span>  names_to <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"day"</span>,                             <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># names of the columns be placed in a variable called `day`</span></span>
-<span>  values_to <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hygiene"</span>,                        <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># values of the columns placed in a variable called `hygiene`</span></span>
-<span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span>                               <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># display the new object</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,430 × 4
-   ticket_no gender day   hygiene
-   &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;   &lt;dbl&gt;
- 1 2111      Male   day_1    2.64
- 2 2111      Male   day_2    1.35
- 3 2111      Male   day_3    1.61
- 4 2229      Female day_1    0.97
- 5 2229      Female day_2    1.41
- 6 2229      Female day_3    0.29
- 7 2338      Male   day_1    0.84
- 8 2338      Male   day_2   NA   
- 9 2338      Male   day_3   NA   
-10 2384      Female day_1    3.03
-# ℹ 2,420 more rows</code></pre>
-</div>
-</div>
-</section><section id="tidying-labels" class="level2"><h2 class="anchored" data-anchor-id="tidying-labels">Tidying labels</h2>
-<ul>
-<li>the values in <code>day</code> match the original column names exactly (<code>day_1</code>)</li>
-<li>we want sentence case (<code>Day 1</code>)</li>
-<li>use <code>stringr</code>
-</li>
-</ul>
-<pre><code>download_tidy_tib &lt;- download_tidy_tib |&gt;   # recreates `download_tidy_tib` from itself
-   dplyr::mutate(                                             # uses `dplyr::mutate` to recreate the variable `day`
-    day = stringr::str_to_sentence(day) |&gt; stringr::str_replace("_", " ")                                                # uses `stringr::str_to_sentence` to capitalize the d, then `str_replace()` to find the underscore and replace it with a space
-  )</code></pre>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>   <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    day <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">stringr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">stringr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"_"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">" "</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,430 × 4
-   ticket_no gender day   hygiene
-   &lt;chr&gt;     &lt;fct&gt;  &lt;chr&gt;   &lt;dbl&gt;
- 1 2111      Male   Day 1    2.64
- 2 2111      Male   Day 2    1.35
- 3 2111      Male   Day 3    1.61
- 4 2229      Female Day 1    0.97
- 5 2229      Female Day 2    1.41
- 6 2229      Female Day 3    0.29
- 7 2338      Male   Day 1    0.84
- 8 2338      Male   Day 2   NA   
- 9 2338      Male   Day 3   NA   
-10 2384      Female Day 1    3.03
-# ℹ 2,420 more rows</code></pre>
-</div>
-</div>
-<p>## Making tidy data messy</p>
-<ul>
-<li>
-<code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> reverses the process above</li>
-</ul>
-<pre><code>tidyr::pivot_wider(
-  data = tibble,  # tibble to be restructured
-  id_cols = variables_that_you_do_not_want_to_restructure,
-  names_from = "variable_containing_the_names_of_columns",
-  values_from = " variable_containing_the_scores",
-)</code></pre>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tidy_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tidyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>  id_cols <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ticket_no</span>, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gender</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>  names_from <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"day"</span>,</span>
-<span>  values_from <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"hygiene"</span>,</span>
-<span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 810 × 5
-   ticket_no gender `Day 1` `Day 2` `Day 3`
-   &lt;chr&gt;     &lt;fct&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 2111      Male      2.64    1.35    1.61
- 2 2229      Female    0.97    1.41    0.29
- 3 2338      Male      0.84   NA      NA   
- 4 2384      Female    3.03   NA      NA   
- 5 2401      Female    0.88    0.08   NA   
- 6 2405      Male      0.85   NA      NA   
- 7 2467      Female    1.56   NA      NA   
- 8 2478      Female    3.02   NA      NA   
- 9 2490      Male      2.29   NA      NA   
-10 2504      Female    1.11    0.44    0.55
-# ℹ 800 more rows</code></pre>
-</div>
-</div>
-<ul>
-<li>in this case, having the variable names in sentence case (Day 1), is inconvenient because we will always have to put them in backticks</li>
-<li>rename using <code><a href="https://dplyr.tidyverse.org/reference/rename.html">dplyr::rename_with</a></code>
-</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename_with</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>.cols <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Day"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># finds all columns w/i download_tib that begin with the word `Day'</span></span>
-<span>     .fn <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> \<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">column</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">stringr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>string <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">column</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># creates a lambda or anonymous function that will be applied to the variables that begin with Day</span></span>
-<span>        pattern <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Day "</span>,  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># with next line, tells the function what to do</span></span>
-<span>        replacement <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"day_"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">download_tib</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 810 × 5
-   ticket_no gender day_1 day_2 day_3
-   &lt;chr&gt;     &lt;fct&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1 2111      Male    2.64  1.35  1.61
- 2 2229      Female  0.97  1.41  0.29
- 3 2338      Male    0.84 NA    NA   
- 4 2384      Female  3.03 NA    NA   
- 5 2401      Female  0.88  0.08 NA   
- 6 2405      Male    0.85 NA    NA   
- 7 2467      Female  1.56 NA    NA   
- 8 2478      Female  3.02 NA    NA   
- 9 2490      Male    2.29 NA    NA   
-10 2504      Female  1.11  0.44  0.55
-# ℹ 800 more rows</code></pre>
-</div>
-</div>
-</section><section id="spotting-outliers" class="level2"><h2 class="anchored" data-anchor-id="spotting-outliers">Spotting outliers</h2>
-<p>Two ways:</p>
-<ul>
-<li>visualize the data and look for unusual cases</li>
-<li>look for values that are poorly predicted by the model, using model residuals as described in DSUR</li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>What are the model residuals?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>The differences between the values a model predicts and the values observed in the data on which the model is based</li>
-</ul>
-</div>
-</div>
-</div>
-</section><section id="histograms-and-boxplots" class="level2"><h2 class="anchored" data-anchor-id="histograms-and-boxplots">Histograms and Boxplots</h2>
-
-
-</section> ]]></description>
-  <category>bias</category>
-  <category>R</category>
-  <category>discovr</category>
-  <guid>https://cmadland.github.io/blog/posts/discovr_06_bias/</guid>
-  <pubDate>Tue, 16 Apr 2024 07:00:00 GMT</pubDate>
-  <media:content url="https://cmadland.github.io/blog/posts/discovr_06_bias/ellie.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,15 @@
+{
+  "hash": "2adf8d81da8a7a169a6a7cb74972051d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Stepwise EFA Ch4\"\nauthor: \"Colin Madland\"\ndate: \"2026-03-16\"\ncategories: [EFA, exploratory factor analysis, R]\nimage: \"owl.jpg\"\nexecute:\n    freeze: true\nbibliography: ../../../references.bib\ncsl: ../../../apa.csl\n---\n\n::: {.callout}\nThis tutorial follows the steps in @watkinsStepbyStepGuideExploratory2020. \nThe first three chapters are introductory and I won't cover them here. Also, the text is specific to Rstudio and I'm using Positron, so I'll translate the code appropriately.\n:::\n\n# Importing and Saving Data and Results\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#load required libraries\nlibrary(psych)\n```\n:::\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Read  data files into R. Files were downloaded from the resources site (CH.2) as .xls and I have converted them to .csv using the 'Save-As' command in MS Excel.\n# Create a dataframe called `df_iq`\n# Display the first 6 rows of `df_iq`\ndf_iq <- read.csv(file = \"stepwise-efa-data/iq.csv\")\nhead(df_iq)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n  vocab1 designs1 similar1 matrix1 veranal2 vocab2 matrix2 designs2\n1    113      124      118     122      116    115     127      105\n2    100       95      115      97      121    102     106      112\n3    124      115      122     116      117    109     119      118\n4    125      110      124     130      114    115     126      127\n5    103       89      109      91      106    102     101       97\n6     88      113       89     110       96     88     109      111\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
