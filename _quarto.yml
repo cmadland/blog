@@ -23,6 +23,7 @@ website:
   repo-actions: [source, issue]
 format:
   html:
+    axe: true
     link-external-icon: true
     code-link: true
     code-copy: true
