@@ -9,8 +9,70 @@
 <link>https://cmadland.github.io/blog/</link>
 <atom:link href="https://cmadland.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Colin Madland thinks in public.</description>
-<generator>quarto-1.8.27</generator>
-<lastBuildDate>Mon, 16 Mar 2026 07:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.36</generator>
+<lastBuildDate>Mon, 11 May 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>SOLO Taxonomy</title>
+  <dc:creator>Colin Madland</dc:creator>
+  <link>https://cmadland.github.io/blog/posts/solo/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>An important reality of higher education is that I need to provide a single number between 0 and 100 to the university that encapsulates the effort, successes, failures, struggles, discoveries and messiness of your work during this course. If I am going to be fair about it, I need to consider where you are starting relative to where you end up, I need to understand your individual context, and I need to be able to determine that number by researching your work.</p>
+<p><strong><em>Assessment is research.</em></strong> You need to show me evidence that you have met the outcomes of the course in alignment with the parameters of the assignment, and you need to do so in a way that shows you can think clearly, write persuasively, and extend your learning beyond the boundaries of the course.</p>
+<p>This is a very tall order.</p>
+<p>One thing that you should consider is that my assessment of your work is not an assessment of you as a person. It is an assessment of what you have shown me in relation to the outcomes of the course. One way that you can ensure that you are providing reflections and creating work that is of high academic quality is to&nbsp;use the SOLO Taxonomy.</p>
+<section id="solo-taxonomy" class="level3">
+<h3 class="anchored" data-anchor-id="solo-taxonomy">SOLO Taxonomy</h3>
+<p>SOLO stands for <em>Structure of the Observed Learning Outcome</em> and is a gauge to help you (and me) ensure that you are writing at an appropriate level.</p>
+<p><img src="https://cmadland.github.io/blog/posts/solo/SOLO-taxonomy.png" class="img-fluid"></p>
+<section id="pre-structural" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pre-structural">Pre-Structural</h4>
+<p>A pre-structural response completely <strong><em>misses the point</em></strong> of the assessment.</p>
+</section>
+<section id="uni-structural" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="uni-structural">Uni-Structural</h4>
+<p>A uni-strucutral response displays knowledge or ability in <strong><em>one dimension of the construct</em></strong>.</p>
+</section>
+<section id="multi-structural" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="multi-structural">Multi-Structural</h4>
+<p>A multi-structural response displays knowledge or ability in <strong><em>multiple dimensions of the construct</em></strong>, but each dimension is <strong><em>disconnected</em></strong> from the others.</p>
+</section>
+<section id="relational" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="relational">Relational</h4>
+<p>A relational response displays knowledge or ability in <strong><em>multiple dimensions of the construct, and how they are related to each other</em></strong>.</p>
+</section>
+<section id="extended-abstract" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="extended-abstract">Extended Abstract</h4>
+<p>An extended abstract response displays knowledge or ability in <strong><em>multiple dimensions of the construct, how thy are related to each other, and how that construct can be applied to help us understand different constructs</em></strong>.</p>
+<p>If you are providing responses at a <code>pre- or uni-structural</code> level in a university course, you are going to have a bad time. <code>Multi-structural</code> responses will lead to grades in the ‘C’ range. At minimum, your responses should be <code>unambiguously relational</code> for a grade in the ‘B’ range and <code>extended abstract</code> for a grade in the ‘A’ range.</p>
+<p>The UVic Undergraduate Grading Scale, available on the syllabus for this course, describes ‘A’ work as</p>
+<blockquote class="blockquote">
+<p>An A+, A, or A- is earned by work which is technically superior, shows mastery of the subject matter, and in the case of an A+ offers original insight and/or goes beyond course expectations. Normally achieved by a minority of students.</p>
+</blockquote>
+<p>For a ‘B’, here is what you need to do:</p>
+<blockquote class="blockquote">
+<p>A B+, B, or B- is earned by work that indicates a good comprehension of the course material, a good command of the skills needed to work with the course material, and the student’s full engagement with the course requirements and activities. A B+ represents a more complex understanding and/or application of the course material. Normally achieved by the largest number of students.</p>
+</blockquote>
+<p>I am happy to have a conversation with you if you feel your work has been unfairly assessed and you can provide a justifiable rationale based on the product of your work in relation to the requirements of the assignment and the standards outlined above and in the University Calendar.</p>
+
+
+</section>
+</section>
+
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
+  <category>assessment</category>
+  <category>rubric</category>
+  <category>solo</category>
+  <category>biggs</category>
+  <category>collis</category>
+  <guid>https://cmadland.github.io/blog/posts/solo/</guid>
+  <pubDate>Mon, 11 May 2026 07:00:00 GMT</pubDate>
+  <media:content url="https://cmadland.github.io/blog/posts/solo/cookies.jpeg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Stepwise EFA Ch4</title>
   <dc:creator>Colin Madland</dc:creator>
@@ -89,7 +151,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-watkinsStepbyStepGuideExploratory2020" class="csl-entry">
 Watkins, M. (2020). <em>A <span class="nocase">Step-by-Step Guide</span> to <span>Exploratory Factor Analysis</span> with <span>R</span> and <span>RStudio</span></em> (1st ed.). Routledge. <a href="https://doi.org/10.4324/9781003120001">https://doi.org/10.4324/9781003120001</a>
 </div>
@@ -138,7 +200,7 @@ Watkins, M. (2020). <em>A <span class="nocase">Step-by-Step Guide</span> to <spa
 
 </section>
 
- ]]></description>
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>job loss</category>
   <category>higher ed</category>
   <guid>https://cmadland.github.io/blog/posts/day-1/</guid>
@@ -327,7 +389,7 @@ Note
 
 </section>
 
- ]]></description>
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>zotero</category>
   <category>obsidian</category>
   <category>workflow</category>
@@ -667,7 +729,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <p>It’s quite swell, and very transparent.</p>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>EFA</category>
   <category>dissie</category>
   <category>tidyverse</category>
@@ -745,7 +807,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 <p>Based on a recommendation from the <a href="https://www.productive-r-workflow.com/">Productive R Workflow</a> course, this page will be a sorting through of how to create functions in R…but the Seahawks are playing and I need to go pick up the pizza…</p>
 <p>…one week later…</p>
-<p>As you can see at the top of the post, I am following the <a href="https://r4ds.hadley.nz/">R4DS (2e)</a> online book <span class="citation" data-cites="wickhamDataScience2e2023">(Wickham, Çetinkaya-Rundel, and Grolemund 2023)</span>, but focusing on ch25, so if you aren’t familiar with R, you might need to back up a bit in the book.</p>
+<p>As you can see at the top of the post, I am following the <a href="https://r4ds.hadley.nz/">R4DS (2e)</a> online book <span class="citation" data-cites="wickhamDataScience2e2023">(Wickham et al. 2023)</span>, but focusing on ch25, so if you aren’t familiar with R, you might need to back up a bit in the book.</p>
 <p>The need for me here is that the data is currently coming in for my PhD, and it is time to get serious about managing my workflow and R coding practices. Creating functions enhances reproducibility as there will only be one place for a particular task to run, rather than my copy/pasta/edit technique to date. This will not only create a more reproducible paper, but it will be cleaner in the <code>index.qmd</code> doc because I will only need to call the function, rather than include the entire code inline.</p>
 <section id="vector-functions" class="level2"><h2 class="anchored" data-anchor-id="vector-functions">Vector Functions</h2>
 <dl>
@@ -1976,7 +2038,7 @@ font-style: inherit;"># x / sum(x, na.rm = TRUE)</span></span></code></pre></div
 
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-wickhamDataScience2e2023" class="csl-entry">
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>.
 </div>
@@ -2109,9 +2171,12 @@ aesthetic attributes of the geometric object. For example, x/y position, color, 
 <dl>
 <dt><code>facet</code></dt>
 <dd>
-to break up a plot into several plots split by the values of another variable (Section 2.6) - position adjustments for barplots (Section 2.8)
+to break up a plot into several plots split by the values of another variable (Section 2.6)
 </dd>
-</dl></section><section id="five-named-graphs---5ng" class="level3"><h3 class="anchored" data-anchor-id="five-named-graphs---5ng">Five Named graphs - 5NG</h3>
+</dl>
+<ul>
+<li>position adjustments for barplots (Section 2.8)</li>
+</ul></section><section id="five-named-graphs---5ng" class="level3"><h3 class="anchored" data-anchor-id="five-named-graphs---5ng">Five Named graphs - 5NG</h3>
 <ol type="1">
 <li>Scatterplots</li>
 <li>line graphs</li>
@@ -3323,7 +3388,7 @@ if (is_latex_output()) {
 }
 ``` -->
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>tidyverse</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/sids-02/</guid>
@@ -3454,7 +3519,7 @@ Attaching package: 'dplyr'</code></pre>
 <p>The pipe takes the output of one function an ‘pipes’ it into the next function as an argument.</p>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>tidyverse</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/sids-03/</guid>
@@ -3747,7 +3812,7 @@ font-style: inherit;">flights</span></span></code></pre></div></div>
 
 
 
- ]]></description>
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>tidyverse</category>
   <category>R</category>
   <guid>https://cmadland.github.io/blog/posts/sids-01/</guid>
@@ -4675,7 +4740,7 @@ font-style: inherit;"># Load example data</span></span></code></pre></div></div>
 
 
 
- ]]></description>
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -5802,7 +5867,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -5834,7 +5899,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-dawsonValidityMattersMore2024" class="csl-entry">
 Dawson, P., Bearman, M., Dollinger, M., &amp; Boud, D. (2024). Validity matters more than cheating. <em>Assessment &amp; Evaluation in Higher Education</em>, 1–12. <a href="https://doi.org/10.1080/02602938.2024.2386662">https://doi.org/10.1080/02602938.2024.2386662</a>
 </div>
@@ -6413,7 +6478,7 @@ font-style: inherit;">my_ggp5</span></span></code></pre></div></div>
 </div>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -6668,7 +6733,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -7381,7 +7446,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 </div>
 
 
-</section></section> ]]></description>
+</section></section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -7813,7 +7878,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 
 
- ]]></description>
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>tidyverse</category>
   <category>statsglobe</category>
@@ -7890,7 +7955,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
+<p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2">
 <div id="ref-bearman2022" class="csl-entry">
 Bearman, M., Nieminen, J., &amp; Ajjawi, R. (2022). Designing assessment in a digital world: An organising framework. <em>Assessment &amp; Evaluation in Higher Education</em>, <em>48</em>(3). <a href="https://doi.org/10.1080/02602938.2022.2069674">https://doi.org/10.1080/02602938.2022.2069674</a>
 </div>
@@ -8080,7 +8145,7 @@ dbl (23): raq_01, raq_02, raq_03, raq_04, raq_05, raq_06, raq_07, raq_08, ra...
 <p>e.g., if a factor predicts the outcome variable with <img src="https://latex.codecogs.com/png.latex?R=0.80"> and a second variable accounts for <em>the same variance</em> (i.e., it is highly correlated to the first variable) then it is only contributing to a very small amount of the unique variance in outcome and we might see <img src="https://latex.codecogs.com/png.latex?R=0.82">. If the two predictor variables are uncorrelated, then the second variable is contributing more unique variance and we might see <img src="https://latex.codecogs.com/png.latex?R=0.95"></p>
 </dd>
 <dd>
-<p>multicollinearity leads to interchangable predictors</p>
+multicollinearity leads to interchangable predictors
 </dd>
 </dl>
 </div>
@@ -10747,9 +10812,9 @@ raq_21 0.02 0.14 0.34 0.35 0.15    0</code></pre>
 
 
 
-</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+</section></section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-field2023" class="csl-entry">
-Field, Andy. 2023. <span>“Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span>.”</span>
+Field, Andy. 2023. <em>Discovr: Interactive Tutorials and Data for <span>"</span>Discovering Statistics Using r and RStudio<span>"</span></em>.
 </div>
 <div id="ref-wickham2016" class="csl-entry">
 Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
@@ -11323,7 +11388,7 @@ font-style: inherit;"># add minimal theme layer</span></span></code></pre></div>
 </ul>
 
 
-</section> ]]></description>
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p> ]]></description>
   <category>ggplot2</category>
   <category>visualizing data</category>
   <category>R</category>
@@ -11331,1566 +11396,6 @@ font-style: inherit;"># add minimal theme layer</span></span></code></pre></div>
   <guid>https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/</guid>
   <pubDate>Tue, 23 Apr 2024 07:00:00 GMT</pubDate>
   <media:content url="https://cmadland.github.io/blog/posts/discovr_05_visualizing_data/raft-canyon.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>discovr_02 - Summarizing Data</title>
-  <dc:creator>Colin Madland</dc:creator>
-  <link>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</link>
-  <description><![CDATA[ <div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.5.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.0     ✔ readr     2.1.6
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.2     ✔ tibble    3.3.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">here</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"data/ice_bucket.csv"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">readr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>Rows: 2323000 Columns: 1
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (1): upload_day
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<section id="frequency-tables" class="level2"><h2 class="anchored" data-anchor-id="frequency-tables">Frequency tables</h2>
-<ul>
-<li>use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> functions from <code>dplyr</code>
-</li>
-</ul>
-<dl>
-<dt><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code></dt>
-<dd>
-<p>groups data by whatever variable(s) you name within the function</p>
-</dd>
-<dt><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></dt>
-<dd>
-<p>creates summary table based on the variables in the function</p>
-</dd>
-<dt><code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code></dt>
-<dd>
-<p>counts the number of scores</p>
-</dd>
-</dl>
-<p>To count frequencies:</p>
-<ul>
-<li>tell R to treat values that are the same, as being in the same category
-<ul>
-<li>
-<code>group_by(upload_day)</code> tells R that scores that are the same within <code>upload_day</code> are in the same group</li>
-<li>subsequent operations are conducted on the groups</li>
-</ul>
-</li>
-<li>count how many scores fall into each category
-<ul>
-<li>
-<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> creates a variable called <code>frequency</code> that counts how many items are in each group created by <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>
-</li>
-</ul>
-</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">freq_tbl</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    frequency <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">freq_tbl</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 56 × 2
-   upload_day frequency
-        &lt;dbl&gt;     &lt;int&gt;
- 1         21      2000
- 2         22      2000
- 3         23      4000
- 4         24      4000
- 5         25      8000
- 6         26      8000
- 7         27     10000
- 8         28     16000
- 9         29     20000
-10         30     29000
-# ℹ 46 more rows</code></pre>
-</div>
-</div>
-<ul>
-<li>this is a large table and a bit unwieldy</li>
-<li>use a <code>grouped frequency distribution</code>
-<ul>
-<li>place values of <code>upload_days</code> into bins</li>
-</ul>
-</li>
-<li>if we want to split the variable <code>upload_day</code> into bins of 4 days…</li>
-</ul>
-<pre><code>ggplot2::cut_width(upload_day, 4)</code></pre>
-<ul>
-<li>combine this with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> to create a new variable called <code>days_group</code>
-</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    days_group <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,323,000 × 2
-   upload_day days_group
-        &lt;dbl&gt; &lt;fct&gt;     
- 1         34 (30,34]   
- 2         36 (34,38]   
- 3         31 (30,34]   
- 4         30 (26,30]   
- 5         33 (30,34]   
- 6         38 (34,38]   
- 7         36 (34,38]   
- 8         46 (42,46]   
- 9         45 (42,46]   
-10         31 (30,34]   
-# ℹ 2,322,990 more rows</code></pre>
-</div>
-</div>
-<ul>
-<li>this creates a new object called <code>gp_freq_dist</code> that contains each value within <code>ice_tib</code> but with an extra column/variable called <code>days_group</code> that indicates the bin the value of <code>upload_day</code> is in</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Set notation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>the value of <code>upload_day</code> now has a corresponding value of <code>days_group</code> containing the bin</li>
-<li>the first score of 34 has been assigned to the bin labelled `(30, 34] which is the bin containing any score above 30, up to and including 34</li>
-<li>the label uses standard mathematical notation for sets where <code>(</code> or <code>)</code> means ‘not including’ and <code>[</code> or <code>]</code> means ‘including’</li>
-</ul>
-</div>
-</div>
-<ul>
-<li>now we can use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> to count scores like before, except to use <code>days_group</code> instead of <code>upload_day</code>
-</li>
-</ul>
-<section id="coding-challenge" class="level3"><h3 class="anchored" data-anchor-id="coding-challenge">Coding challenge</h3>
-<p>Create a grouped frequency table called gp_freq_dist by starting with the code in the code example and then using the code we used to create freq_tbl to create a pipe that summarizes the grouped scores.</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    days_group <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">days_group</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    frequency <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 2
-   days_group frequency
-   &lt;fct&gt;          &lt;int&gt;
- 1 [18,22]         4000
- 2 (22,26]        24000
- 3 (26,30]        75000
- 4 (30,34]       367000
- 5 (34,38]       770000
- 6 (38,42]       534000
- 7 (42,46]       255000
- 8 (46,50]       102000
- 9 (50,54]        70000
-10 (54,58]        38000
-11 (58,62]        26000
-12 (62,66]        18000
-13 (66,70]        18000
-14 (70,74]        16000
-15 (74,78]         6000</code></pre>
-</div>
-</div>
-</section></section><section id="relative-frequencies" class="level2"><h2 class="anchored" data-anchor-id="relative-frequencies">Relative Frequencies</h2>
-<ul>
-<li>we have an object <code>gp_freq_dist</code> that contains the number of days grouped into bins of 4 days and the number of videos uploaded during each of the time periods represented by those bins</li>
-<li>to calculate the relative frequency we can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> to add a variable that divides the frequency by the total number of videos using <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>
-</li>
-</ul>
-<pre><code>... |&gt;
-    dplyr::mutate(
-        relative_freq = frequency/sum(frequency) # creates a new column
-    )</code></pre>
-</section><section id="efficient-code" class="level2"><h2 class="anchored" data-anchor-id="efficient-code">Efficient Code</h2>
-<ul>
-<li>rather than creating the table of relative frequencies step-by-step, it is usually more efficient to carry out the steps in one piece of code</li>
-<li>
-</li></ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    days_group <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/cut_interval.html">cut_width</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">days_group</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    frequency <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> </span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    relative_freq <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">frequency</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">frequency</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    percent <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">relative_freq</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span></span>
-<span>  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>  </span>
-<span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">gp_freq_dist</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 4
-   days_group frequency relative_freq percent
-   &lt;fct&gt;          &lt;int&gt;         &lt;dbl&gt;   &lt;dbl&gt;
- 1 [18,22]         4000       0.00172   0.172
- 2 (22,26]        24000       0.0103    1.03 
- 3 (26,30]        75000       0.0323    3.23 
- 4 (30,34]       367000       0.158    15.8  
- 5 (34,38]       770000       0.331    33.1  
- 6 (38,42]       534000       0.230    23.0  
- 7 (42,46]       255000       0.110    11.0  
- 8 (46,50]       102000       0.0439    4.39 
- 9 (50,54]        70000       0.0301    3.01 
-10 (54,58]        38000       0.0164    1.64 
-11 (58,62]        26000       0.0112    1.12 
-12 (62,66]        18000       0.00775   0.775
-13 (66,70]        18000       0.00775   0.775
-14 (70,74]        16000       0.00689   0.689
-15 (74,78]         6000       0.00258   0.258</code></pre>
-</div>
-</div>
-</section><section id="histograms" class="level2"><h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
-<ul>
-<li>
-<code>ggplot2</code> can produce data visualizations</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Tip: Always load <code>ggplot2</code>!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We’ve discussed elsewhere that if you include packages when you use functions (e.g., <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code>) you don’t need to explicitly load the package (in this case <code>dplyr</code>). However, to create plots with <code>ggplot2</code> you build them up layer by layer, which means you use a lot of <code>ggplot2</code> functions. For this reason, I advise loading it at the start of your Quarto document and not worrying too much about including package references when you use functions. You can load it either with <code><a href="https://ggplot2.tidyverse.org">library(ggplot2)</a></code> or by loading the entire tidyverse using <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>.</p>
-</div>
-</div>
-<ul>
-<li>general form of <code>ggplot2</code>
-</li>
-</ul>
-<pre><code>`ggplot2::ggplot(my_tib, aes(variable_for_x_axis, variable_for_y_axis))`</code></pre>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li>something is missing b/c we only told <code>ggplot2</code> ‘what’ to plot, not ‘how’ to plot it.</li>
-<li>need to add a <code>geom</code> with <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>
-</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stderr">
-<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="changing-bin-widths" class="level3"><h3 class="anchored" data-anchor-id="changing-bin-widths">Changing bin widths</h3>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>binwidth<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="changing-colours" class="level3"><h3 class="anchored" data-anchor-id="changing-colours">Changing colours</h3>
-<ul>
-<li>include <code>fill =</code> within the <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> function</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>binwidth <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#440154"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="transparency-and-axis-labels" class="level3"><h3 class="anchored" data-anchor-id="transparency-and-axis-labels">Transparency and axis labels</h3>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>binwidth <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#440154"</span>, alpha <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.25</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Frequency"</span>, x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Days since first ice bucket challenge video"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="themes" class="level3"><h3 class="anchored" data-anchor-id="themes">Themes</h3>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>binwidth <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, fill <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"#440154"</span>, alpha <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.9</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Frequency"</span>, x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Days since first ice bucket challenge video"</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section></section><section id="summarizing-data" class="level2"><h2 class="anchored" data-anchor-id="summarizing-data">Summarizing data</h2>
-<section id="mean-and-median" class="level3"><h3 class="anchored" data-anchor-id="mean-and-median">Mean and median</h3>
-<pre><code>mean(variable, trim = 0, na.rm = FALSE)</code></pre>
-<dl>
-<dt><code>trim</code></dt>
-<dd>
-<p>allows you to trim scores before calculating the mean by specifying a value between 0 and 0.5. default is 0 (no trim). to trim 10% of scores fom each end of the distribution you could set <code>trim = 0.1</code></p>
-</dd>
-<dt><code>na.rm</code></dt>
-<dd>
-<p>stands for <code>NA remove</code>. Missing values are denoted <code>NA</code>, for ‘not available’. by setting <code>na.rm = TRUE</code> (or <code>na.rm = T</code>), R will remove missing values before computing the mean</p>
-</dd>
-</dl>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Missing Values
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The default in many functions is not to remove missing values (e.g.&nbsp;<code>na.rm = FALSE</code>). If you have missing values in your data and don’t change this default behaviour R will throw an error. Therefore, if you get an error from a function like <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, check whether you have missing values and whether you have forgotten to set <code>na.rm = TRUE</code>.</p>
-</div>
-</div>
-<p>The function for median is similar, except no trim (median is effectively the mean with 50% trim)</p>
-<pre><code>median(variable, na.rm = FALSE)</code></pre>
-</section><section id="code-example" class="level3"><h3 class="anchored" data-anchor-id="code-example">Code example</h3>
-<ul>
-<li>if the defaults are ok, there is no need to set those arguments</li>
-</ul>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 39.678</code></pre>
-</div>
-</div>
-<p>To remove missing values:</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span> , na.rm <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 39.678</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">?</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">mean</span></span></code></pre></div></div>
-</details>
-</div>
-</section><section id="coding-challenge-1" class="level3"><h3 class="anchored" data-anchor-id="coding-challenge-1">coding challenge</h3>
-<p>Find the median number of days after the original ice bucket video that other videos were uploaded.</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 38</code></pre>
-</div>
-</div>
-</section></section><section id="quantifying-the-fit-of-the-mean" class="level2"><h2 class="anchored" data-anchor-id="quantifying-the-fit-of-the-mean">Quantifying the ‘fit’ of the mean</h2>
-<dl>
-<dt><code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code></dt>
-<dd>
-<p>variance</p>
-</dd>
-<dd>
-<p><code>var(variable_name, na.rm = FALSE)</code></p>
-</dd>
-<dt><code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code></dt>
-<dd>
-<p>standard deviation</p>
-</dd>
-<dd>
-<p><code>sd(variable_name, na.rm = FALSE)</code></p>
-</dd>
-</dl>
-<p><code><a href="https://rdrr.io/r/stats/cor.html">var()</a></code> and <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> take the same syntax as <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></p>
-<section id="coding-challenge-2" class="level3"><h3 class="anchored" data-anchor-id="coding-challenge-2">coding challenge</h3>
-<p>Use what you learned in the previous section and the code example above to get the variance and standard deviation of the days since the original ice bucket video that other videos were uploaded.</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 59.94197</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.74222</code></pre>
-</div>
-</div>
-</section></section><section id="inter-quartile-range" class="level2"><h2 class="anchored" data-anchor-id="inter-quartile-range">Inter-quartile range</h2>
-<dl>
-<dt><code><a href="https://rdrr.io/r/stats/IQR.html">IQR()</a></code></dt>
-<dd>
-<p><code>IQR(variable_name, na.rm = FALSE, type = 7)</code></p>
-</dd>
-</dl>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span>, type <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">7</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span>, type <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-</div>
-</section><section id="creating-a-summary-table" class="level2"><h2 class="anchored" data-anchor-id="creating-a-summary-table">Creating a summary table</h2>
-<ul>
-<li>used to comine all the above into one table</li>
-</ul>
-<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
-<pre><code>ice_tib |&gt;
-  dplyr::summarise(
-    median =  median(upload_day),  # creates new variable called `median` from the output of `median(upload_day)`
-    mean =  mean(upload_day), # creates new variable called `mean` from the output of `mean(upload_day)`
-    ...
-    )</code></pre>
-<section id="coding-challenge-3" class="level3"><h3 class="anchored" data-anchor-id="coding-challenge-3">coding challenge</h3>
-<p>Create a summary table containing the mean, median, IQR, variance and SD of the number of days since the original ice bucket video.</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    median <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># creates new variable called `median` from the output of `median(upload_day)`</span></span>
-<span>    mean <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># creates new variable called `mean` from the output of `mean(upload_day)`</span></span>
-<span>    IQR <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    var <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    sd <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  median  mean   IQR   var    sd
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     38  39.7     7  59.9  7.74</code></pre>
-</div>
-</div>
-</section><section id="code-example-1" class="level3"><h3 class="anchored" data-anchor-id="code-example-1">Code example</h3>
-<p>To store the summary of stats, we assign it to a new object:</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_summary</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    median <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    mean <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    IQR <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    variance <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    std_dev <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> </span>
-<span>    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_summary</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  median  mean   IQR variance std_dev
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-1     38  39.7     7     59.9    7.74</code></pre>
-</div>
-</div>
-</section></section><section id="rounding-values" class="level2"><h2 class="anchored" data-anchor-id="rounding-values">Rounding Values</h2>
-<p>use <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> function to round values and use <code>kable()</code> from <code>knitr</code> to round an entire table of values</p>
-<dl>
-<dt><code><a href="https://rdrr.io/r/base/Round.html">round()</a></code></dt>
-<dd>
-<p>round(x, digits = 0)</p>
-</dd>
-<dd>
-<p>default is 0</p>
-</dd>
-</dl>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3.211420</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
-</div>
-</div>
-<p>also use a pipe to feed a mean, median, or variance into the round function</p>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 59.942</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 39.678</code></pre>
-</div>
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.742</code></pre>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_summary</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dplyr</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span></span>
-<span>    median <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    mean <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    IQR <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    variance <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span>,</span>
-<span>    std_dev <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_day</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span>
-<span>    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> </span>
-<span>    <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">upload_summary</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span></span>
-<span>    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 5
-  median  mean   IQR variance std_dev
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-1     38  39.7     7     59.9    7.74</code></pre>
-</div>
-</div>
-</section><section id="datawizard" class="level2"><h2 class="anchored" data-anchor-id="datawizard">Datawizard</h2>
-<div class="cell">
-<details class="code-fold"><summary>Show the code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">datawizard</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;"><a href="https://easystats.github.io/datawizard/reference/describe_distribution.html">describe_distribution</a></span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span>x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">ice_tib</span>,</span>
-<span>  select <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span>  exclude <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NULL</span>,</span>
-<span>  centrality <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mean"</span>,</span>
-<span>  dispersion <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>,</span>
-<span>  iqr <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>,</span>
-<span>  range <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>,</span>
-<span>  quartiles <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>,</span>
-<span>  include_factors <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>,</span>
-<span>  ci <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NULL</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span></span></code></pre></div></div>
-</details><div class="cell-output cell-output-stdout">
-<pre><code>Variable   |  Mean |   SD | IQR |          Range | Skewness | Kurtosis
-----------------------------------------------------------------------
-upload_day | 39.68 | 7.74 |   7 | [21.00, 76.00] |     1.72 |     4.43
-
-Variable   |       n | n_Missing
---------------------------------
-upload_day | 2323000 |         0</code></pre>
-</div>
-</div>
-
-
-</section> ]]></description>
-  <category>frequency</category>
-  <category>histograms</category>
-  <category>variance</category>
-  <category>standard deviation</category>
-  <category>IQR</category>
-  <category>R</category>
-  <category>discovr</category>
-  <guid>https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/</guid>
-  <pubDate>Thu, 18 Apr 2024 07:00:00 GMT</pubDate>
-  <media:content url="https://cmadland.github.io/blog/posts/discovr_02_summarizing_data/raft-falls.jpeg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

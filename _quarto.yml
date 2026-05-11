@@ -9,6 +9,8 @@ website:
   title: "Learning | Assessment | Technology"
   site-url: https://cmadland.github.io/blog
   description: "Colin Madland thinks in public."
+  body-footer: |
+    Made with 🧠 and [Quarto](https://quarto.org) by Colin Madland. 
   navbar:
     right:
       - about.qmd

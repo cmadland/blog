@@ -5,6 +5,8 @@ date: "2024-02-18"
 categories: [505, regression, total squared error, least squared error, analysis of regression]
 execute:
     freeze: true
+brainmade:
+  type: "dark"
 ---
 
 ## Regression Equation
@@ -282,3 +284,5 @@ f. If both X and Y have been standardized by transforming into Z scores before c
 $$\hat{Z_{Y_i}}=\beta{Z_{X_i}}$$
 
 $$\hat{2.87}=0.32{2.56}$$
+
+{{< brainmade-dark-btn >}}

@@ -2,12 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Colin Madland">
 <meta name="dcterms.date" content="2025-11-23">
 <title>R for Data Science 2e - Ch25 - Functions – Learning | Assessment | Technology</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -58,7 +61,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -85,15 +87,16 @@ div.csl-indent {
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/quarto-axe/axe-check.js" type="module"></script>
+<script id="quarto-axe-checker-options" type="text/plain">dHJ1ZQ==</script>
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-505dc3a687120d4fe1f5d78914d53389.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3985166f549f317141f0250919aaee4e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -119,7 +122,7 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script id="quarto-axe-checker-options" type="text/plain">dHJ1ZQ==</script><link rel="stylesheet" href="../../styles.css">
+}</script><link rel="stylesheet" href="../../styles.css">
 </head>
 <body class="nav-fixed quarto-light">
 
@@ -253,7 +256,7 @@ div.csl-indent {
 </div>
 <p>Based on a recommendation from the <a href="https://www.productive-r-workflow.com/">Productive R Workflow</a> course, this page will be a sorting through of how to create functions in R…but the Seahawks are playing and I need to go pick up the pizza…</p>
 <p>…one week later…</p>
-<p>As you can see at the top of the post, I am following the <a href="https://r4ds.hadley.nz/">R4DS (2e)</a> online book <span class="citation" data-cites="wickhamDataScience2e2023">(<a href="#ref-wickhamDataScience2e2023" role="doc-biblioref">Wickham, Çetinkaya-Rundel, and Grolemund 2023</a>)</span>, but focusing on ch25, so if you aren’t familiar with R, you might need to back up a bit in the book.</p>
+<p>As you can see at the top of the post, I am following the <a href="https://r4ds.hadley.nz/">R4DS (2e)</a> online book <span class="citation" data-cites="wickhamDataScience2e2023">(<a href="#ref-wickhamDataScience2e2023" role="doc-biblioref">Wickham et al. 2023</a>)</span>, but focusing on ch25, so if you aren’t familiar with R, you might need to back up a bit in the book.</p>
 <p>The need for me here is that the data is currently coming in for my PhD, and it is time to get serious about managing my workflow and R coding practices. Creating functions enhances reproducibility as there will only be one place for a particular task to run, rather than my copy/pasta/edit technique to date. This will not only create a more reproducible paper, but it will be cleaner in the <code>index.qmd</code> doc because I will only need to call the function, rather than include the entire code inline.</p>
 <section id="vector-functions" class="level2"><h2 class="anchored" data-anchor-id="vector-functions">Vector Functions</h2>
 <dl>
@@ -505,7 +508,7 @@ round(z / sum(z, na.rm = TRUE) * 100, 1)</code></pre>
 
 
 
-</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+</section><p>Made with 🧠 and <a href="https://quarto.org">Quarto</a> by Colin Madland.</p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-wickhamDataScience2e2023" class="csl-entry" role="listitem">
 Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. <em>R for <span>Data Science</span> (2e)</em>. <a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>.
 </div>
