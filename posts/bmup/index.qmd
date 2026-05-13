@@ -6,8 +6,8 @@ categories: [cycling, transportation, West Kelowna, road safety]
 image: "sunrise.jpg"
 execute:
     freeze: true
-format:
-  pdf: default
+# format:
+#   pdf: default
 ---
 
 Dear West Kelowna City Council,
