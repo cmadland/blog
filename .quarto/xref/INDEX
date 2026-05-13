@@ -121,5 +121,9 @@
   },
   "posts/solo/index.qmd": {
     "index.html": "abaefebe"
+  },
+  "posts/bmup/index.qmd": {
+    "index.html": "0bb4dc65",
+    "index.tex": "f3734ae0"
   }
 }
