@@ -125,5 +125,8 @@
   "posts/bmup/index.qmd": {
     "index.html": "0bb4dc65",
     "index.tex": "f3734ae0"
+  },
+  "posts/bc-schools-petition/index.qmd": {
+    "index.html": "53cd98ad"
   }
 }

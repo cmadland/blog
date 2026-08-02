@@ -1,0 +1,11 @@
+---
+title: Petition
+author: "Colin Madland"
+date: "2026-08-02"
+categories: [petition, LLM, K-12, AI, BC]
+image: "knox-mtn.jpeg"
+---
+
+So-called 'AI' does not belong in K12 schools anywhere. Let the BC Government know...
+
+<link href='https://actionnetwork.org/css/style-embed-v3.css' rel='stylesheet' type='text/css' /><script src='https://actionnetwork.org/widgets/v6/petition/pause-on-generative-ai-in-bc-schools?format=js&source=widget'></script><div id='can-petition-area-pause-on-generative-ai-in-bc-schools' style='width: 100%'><!-- this div is the target for our HTML insertion --></div>
